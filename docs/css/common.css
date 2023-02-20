@@ -1154,7 +1154,16 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 
 
+.wow-enter {
+  
+  opacity: 0;
+}
 
+.wow-enter-active {
+  
+  opacity: 1;
+  transition: all 500ms;
+}
 
 
 

@@ -7,7 +7,7 @@ export default function Nav() {
       <div className="inr">
         <ul className="menu">
           <li><NavLink to="/" className="bt"><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
-          <li><NavLink to="/movie" className="bt"><i class="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+          <li><NavLink to="/movie" className="bt"><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
           <li><NavLink to="/search" className="bt"><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
           {/* <li><NavLink to="/movie/list" className="bt"><i className="fa-regular fa-camera"></i><em>Search</em></NavLink></li> */}
           {/* <li><a href='./react' className="bt"><i className="fa-regular fa-comments"></i><em>Chat</em></a></li>
