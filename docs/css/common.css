@@ -51,7 +51,7 @@ textarea:-ms-input-placeholder {color: #444444; font-weight: normal;}
 .header.trans{height: 0rem; }
 .header.trans>.inr{background-color: transparent; border-color: transparent;}
 .header.trans .htit{display: none;}
-.header.trans .rdt{display: none;}
+.header.trans .rdt{display: none;} 
 
 .header .ldt{ display: flex; align-items: center; }
 .header .cdt{position: absolute;left: 64rem;right: 64rem;text-align: center;z-index: 0;}
@@ -80,7 +80,7 @@ textarea:-ms-input-placeholder {color: #444444; font-weight: normal;}
 
 
 .container{transition: opacity 1.5s;}
-.container .contents{margin: 0rem 20rem; padding: 20rem 0rem 20rem 0rem;}
+.container .contents{margin: 0rem 0rem; padding: 0rem 0rem 0rem 0rem;}
 .pagehead{height: 50rem;}
 .pagehead>.inr{height: 50rem;display: flex;align-items: center;justify-content: space-between;position: fixed;left: 0;right: 0;top: 0;background: #555;padding: 0rem 20rem;z-index: 500;}
 .pagehead .ldt{position: relative;}
@@ -259,7 +259,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar .menu>li .bt em{display:block;font-size: 11rem;margin-top: 4rem;}
 .menubar .menu>li .bt i{font-size:18rem;}
 .menubar .menu>li .bt.router-link-active,
-.menubar .menu>li .bt:active{color: #41b883;}
+.menubar .menu>li .bt.active{color: #61dafb;}
 .menubar .menu>li .bt.router-link-active i{font-weight:900;}
 
 /* 플로팅 탑버튼 글쓰기버튼 */

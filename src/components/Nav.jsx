@@ -1,18 +1,20 @@
-import React from 'react'
+import React from 'react';
+import {NavLink} from 'react-router-dom'; // Link
 
 export default function Nav() {
   return (
 	  <nav id="menubar" className="menubar">
       <div className="inr">
         <ul className="menu">
-          <li><a href='./react' className="bt"><i className="fa-regular fa-house"></i><em>Home</em></a></li>
-          <li><a href='./react' className="bt"><i className="fa-regular fa-list"></i><em>Board</em></a></li>
-          <li><a href='./react' className="bt"><i className="fa-regular fa-camera"></i><em>Photo</em></a></li>
-          <li><a href='./react' className="bt"><i className="fa-regular fa-comments"></i><em>Chat</em></a></li>
+          <li><NavLink to="/" className="bt"><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
+          <li><NavLink to="/movie" className="bt"><i class="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+          <li><NavLink to="/search" className="bt"><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
+          {/* <li><NavLink to="/movie/list" className="bt"><i className="fa-regular fa-camera"></i><em>Search</em></NavLink></li> */}
+          {/* <li><a href='./react' className="bt"><i className="fa-regular fa-comments"></i><em>Chat</em></a></li>
           <li>
             <a href='./react' className="bt"><i className="fa-regular fa-right-from-bracket"></i><em>Logout</em></a>
             <a href='./react' className="bt"><i className="fa-regular fa-user"></i><em> Login</em></a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
