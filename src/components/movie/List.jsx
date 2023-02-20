@@ -45,12 +45,26 @@ const fetchDatas = async () => {
 					<li key={data.id}>
 						<div className="box">
 							<div className="cont">
-								<div className="pics"><img src={`https://image.tmdb.org/t/p/original/${img}`} alt="" className='img'/></div>
+								<div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
 								<div className="desc">
-									<div className="tits">{data.original_title}</div>
+									<div className="tits">{data.title}</div>
 									<div className="text">{data.overview}</div>
 								</div>
 							</div>
+							<div className="info">
+								<div className="dd">
+									<div className="user"><span className="txt">{data.genre_ids}</span></div>
+								</div>
+								<div className="dd">
+									<div className="hits">
+										
+										
+										<em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
+									</div>
+									<div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
+								</div>
+							</div>
+							<div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${data.backdrop_path})`}}></div>
 						</div>
 					</li>
 				)
