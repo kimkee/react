@@ -24,7 +24,7 @@ html{font-size: 1px;}
 @media screen and ( min-width:600px ) {
     html{font-size: 1.5px;}    
 }
-body{overflow-y: scroll;background-color: #0d1117;color: #999999;}
+body{overflow-y: scroll;background-color: #111111;color: #999999;}
 body:not(.is-dark){}
 a{color: #999999;text-decoration: none;}
 button{cursor:pointer;background: none;border: none;padding: 0; color: #aaaaaa;}
@@ -131,8 +131,8 @@ body.is-gnb .btn-gnb{}
 .gnb-screen {display: none;background-color: rgba(0,0,0,0.3);width: 100%;height: 100%;zoom: 1;position: fixed;left: 0rem;z-index: 700;top: 0rem;}
 
 .popup.movie.view{}
-.popup.movie.view.a>.pbd>.pct{padding: 50rem 20rem 30rem 20rem;}
-.popup.movie.view.a>.pbd>.pct .poptents{ padding: 0rem 0rem 0rem 0rem; }
+.popup.movie.view.a>.pbd>.pct{padding: 60rem 20rem 30rem 20rem;}
+.popup.movie.view.a>.pbd>.pct .poptents{ padding: 5rem 0rem 0rem 0rem; }
 .popup.movie.view .bgs{position: absolute; top: 0; left: 0; right: 0; height: 340rem; background-size: cover; opacity:0.4;}
 .popup.movie.view .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 340rem;background-image: linear-gradient(180deg, transparent, #111111);}
 .popup.movie.view .info{display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: row;}
@@ -156,6 +156,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .pop-layer.a>.pbd>.phd .ptit{font-size: 17rem;color:#ffffff;width: calc(100% - 90rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight: 700;}
 .pop-layer.a>.pbd .bt.hback{width:24rem;height:24rem;background: url(../img/cm/btn_top_back_B@2x.png) no-repeat;background-size:24rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';font-size:0rem;position: absolute;left: 20rem;top: 13rem;}
 .pop-layer.a>.pbd .btn-pop-close{position: absolute;right: 17rem;top: 17rem;font-size: 28rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;}
+.pop-layer.a>.pbd .btn-pop-close.back{left: 20rem; right: auto;}
 .pop-layer.a>.pbd>.pct{position: relative;}
 .pop-layer.a>.pbd>.pct::-webkit-scrollbar{}
 .pop-layer.a>.pbd>.pct.no-scroll{overflow:visible !important;max-height: initial !important;}
@@ -490,7 +491,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .bbs-opt .more a{color: #999;}
 .movie-list .list{margin-bottom: -1rem;display: flex;flex-wrap: wrap;}
 .movie-list .list>li{word-break: break-all;overflow: hidden;}
-.movie-list .list>li{border-bottom: 1rem solid #242b36;width: 3;}
+.movie-list .list>li{border-bottom: 1rem solid #242b36;}
 .movie-list .list>li .box{display: block;padding: 18rem 20rem 15rem 20rem; position: relative;}
 .movie-list .list>li .box:hover{/* background-color: #161c26; */}
 .movie-list .list>li .box .tits{color: #adb9c9;padding: 0rem 0rem;font-size: 14rem;text-align: left;max-width: 100%;display: block;-webkit-line-clamp: 1;max-height: 22rem;line-height: 1.4em;-webkit-box-orient: vertical;display: -webkit-box;text-overflow: ellipsis;overflow: hidden;word-break: break-all;margin: 2rem 0rem 3rem 0rem;}
