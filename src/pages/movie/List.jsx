@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link, Outlet } from 'react-router-dom';  // useParams
+// import View from 'View.jsx';
+
+
 
 export default function List() {
 
@@ -43,53 +47,56 @@ let cate = {};
 genr.genres.forEach( d=>{
   cate[d.id] = d.name;
   });
-  console.log(cate[16]);
-  console.log(genr);
+  // console.log(cate[16]);
+  // console.log(genr);
   console.log(datas.results);
   return (
-  <div className="container move">
-    <main className="contents">
-      <div className='movie-list'>
-        <ul className='list'>
-        {
-          datas.results.map((data) =>{
-            console.log(data.poster_path);
-            const img = data.poster_path ? data.poster_path : "/9DVtwkuxzCLGVMapioeJ4RflfyW.jpg";
-            return(
-              <li key={data.id}>
-                <div className="box">
-                  <div className="cont">
-                    <div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
-                    <div className="desc">
-                      <div className="tits">{data.title}</div>
-                      <div className="text">{data.overview}</div>
-                    </div>
-                  </div>
-                  <div className="info">
-                    <div className="dd">
-                      <div className="user">
-                          <span className="txt">
-                          <i className="fa-regular fa-list"></i>
-                          {data.genre_ids.map( item => <em key={item}> {cate[item]}</em> )}
-                        </span>
+  <>
+    <Outlet />
+    <div className="container move">
+      <main className="contents">
+        <div className='movie-list'>
+          <ul className='list'>
+          {
+            datas.results.map((data) =>{
+              // console.log(data.poster_path);
+              const img = data.poster_path ? data.poster_path : "/9DVtwkuxzCLGVMapioeJ4RflfyW.jpg";
+              return(
+                <li key={data.id}>
+                  <Link className="box" to={""+data.id}>
+                    <div className="cont">
+                      <div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
+                      <div className="desc">{data.id}
+                        <div className="tits">{data.title}</div>
+                        <div className="text">{data.overview}</div>
                       </div>
                     </div>
-                    <div className="dd">
-                      <div className="hits">
-                        <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
+                    <div className="info">
+                      <div className="dd">
+                        <div className="user">
+                            <span className="txt">
+                            <i className="fa-regular fa-list"></i>
+                            {data.genre_ids.map( item => <em key={item}> {cate[item]}</em> )}
+                          </span>
+                        </div>
                       </div>
-                      <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
+                      <div className="dd">
+                        <div className="hits">
+                          <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
+                        </div>
+                        <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${data.backdrop_path})`}}></div>
-                </div>
-              </li>
-            )
-          })
-        }
-        </ul>
-      </div>
-    </main>
-  </div>
+                    <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${data.backdrop_path})`}}></div>
+                  </Link>
+                </li>
+              )
+            })
+          }
+          </ul>
+        </div>
+      </main>
+    </div>
+  </>  
   )
 }
