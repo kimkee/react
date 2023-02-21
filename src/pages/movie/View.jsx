@@ -38,8 +38,8 @@ export default function View() {
     return () => {
       window.removeEventListener("resize",popResize);
       console.log('컴포넌트가 화면에서 사라짐');
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   
   const MovieInfo =({data},id)=>{
