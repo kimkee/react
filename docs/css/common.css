@@ -130,7 +130,8 @@ body.is-gnb nav.gnb::after{}
 body.is-gnb .btn-gnb{}
 .gnb-screen {display: none;background-color: rgba(0,0,0,0.3);width: 100%;height: 100%;zoom: 1;position: fixed;left: 0rem;z-index: 700;top: 0rem;}
 
-
+.popup.movie.view{}
+.popup.movie.view .bgs{position: absolute; top: 0; left: 0; right: 0; height: 200rem;}
 
 
 
