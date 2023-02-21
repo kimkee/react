@@ -8,6 +8,7 @@ export default function View() {
     fetchDatas();
     popResize();
     window.addEventListener("resize",popResize);
+    console.log(params , params.id);
     return () => {
       window.removeEventListener("resize",popResize);
       console.log('컴포넌트가 화면에서 사라짐');
@@ -16,7 +17,7 @@ export default function View() {
 
   let params = useParams()
   let navigate = useNavigate();
-  console.log(params , params.id);
+  
   const postID = params.id;
   const popResize = ()=>{
     let $pop =  document.querySelector(".pop-layer");
@@ -31,40 +32,43 @@ export default function View() {
 
 
   const [datas, setDatas] = useState(null);
-  const [genr, setGenr] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  let movieData = {};
+  // const [genr, setGenr] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+
+  const [bgImg, setBgImg] = useState('');
+
   const fetchDatas = async () => {
-    setLoading(true)
+    // setLoading(true)
     await axios.get(
       'https://api.themoviedb.org/3/movie/'+postID+'?language=ko&region=kr&moive_id=505642&api_key=f76021076e8162ea929bd2cea62c6646'
     ).then(response => {
       "성공"
       setDatas(response.data);
-      setLoading(false);
-      console.log(datas.title);
+      setBgImg('https://image.tmdb.org/t/p/w500'+response.data.backdrop_path);
+      // setLoading(false);
     }).catch( e => {
       console.log(e);
     });
   };
 
-  // if (loading) return <div>로딩중..</div>; 
+  // if (loading) return <div>로딩중..</div>;  /8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg
   
-  const [bgImg, setBgImg] = useState('/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg');
+  
   const MovieInfo =({data},id)=>{
     console.log( data);
-    if(!data)  return 
-
-    setBgImg(data.backdrop_path);
+    if(!data)  return ;
     return (
       <>
-        
-        <p>{data.poster_path}</p>
-        <p>{data.backdrop_path}</p>
-        <p>{data.title}</p>
-        <p>{data.overview}</p>
-        <p>{data.overview}</p>
+        <div className="info">
+          <div className="thum">
+            <div className="pics"><img src={'https://image.tmdb.org/t/p/w500'+data.poster_path} alt={data.title} className="img" /></div>
+          </div>
+          <div className="desc">
+            <p className="tit">{data.title}</p>
+          </div>
+          <p className="txt">{data.overview}</p>
+        </div>
       </>
     )
   }
@@ -73,7 +77,7 @@ export default function View() {
 
   // 아직 datas가 받아와 지지 않았을 때는 아무것도 표시되지 않도록 해줍니다.
   // if (!movieData) return null;
-  console.log(movieData);
+  // console.log(movieData);
 
 
   return (
@@ -81,12 +85,10 @@ export default function View() {
     <article className="pop-layer a on bottom popup movie view">
       <div className="pbd">
         <button type="button" className="btn-pop-close" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-xmark"></i></button>
-        {/* style={{background: `url(https://image.tmdb.org/t/p/w500${bgImg}) no-repeat`}} */}
         <div className="pct">
-          <div className="bgs" style={{background: `url(https://image.tmdb.org/t/p/w500${bgImg}) no-repeat`}}></div>
+        <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">
             <MovieInfo data={datas} id={params.id} />
-            
           </main>
         </div>
       </div>

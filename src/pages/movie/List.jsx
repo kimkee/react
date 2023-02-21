@@ -66,7 +66,7 @@ genr.genres.forEach( d=>{
                   <Link className="box" to={""+data.id}>
                     <div className="cont">
                       <div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
-                      <div className="desc">{data.id}
+                      <div className="desc">
                         <div className="tits">{data.title}</div>
                         <div className="text">{data.overview}</div>
                       </div>
@@ -74,14 +74,22 @@ genr.genres.forEach( d=>{
                     <div className="info">
                       <div className="dd">
                         <div className="user">
-                            <span className="txt">
+                          <span className="txt">
+                          
                             <i className="fa-regular fa-list"></i>
                             {data.genre_ids.map( item => <em key={item}> {cate[item]}</em> )}
+                            
+                            
                           </span>
+                          
                         </div>
                       </div>
                       <div className="dd">
                         <div className="hits">
+                           <em>
+                              <i className="fa-regular fa-list"></i>
+                              <b>{data.id} </b>
+                            </em>
                           <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
                         </div>
                         <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
