@@ -53,8 +53,21 @@ export default function View() {
           </div>
           <div className="desc">
             <p className="tit">{data.title}</p>
+            <p className="sit">{data.tagline}</p>
+            <p className="tio">{data.original_title}</p>
+            <ul className="lst">
+              <li className="vot">
+                <i className="fa-regular fa-thumbs-up"></i>
+                <b>평점</b> : {data.vote_average}</li>
+              <li className="opn">
+                <i className=" fa-regular fa-camera-movie"></i>
+                <b>개봉</b> : {data.release_date}</li>
+              <li className="tim">
+                <i className="fa-regular fa-timer"></i>
+                <b>시간</b> : {data.runtime} 분</li>
+            </ul>
           </div>
-          <p className="txt">{data.overview}</p>
+          <div className="vinf">{data.overview}</div>
         </div>
       </>
     )

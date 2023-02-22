@@ -7,48 +7,48 @@ import { Link, Outlet } from 'react-router-dom';  // useParams
 
 export default function List() {
 
-const [datas, setDatas] = useState(null);
-const [genr, setGenr] = useState(null);
-const [loading, setLoading] = useState(false);
-const [error, setError] = useState(null);
+  const [datas, setDatas] = useState(null);
+  const [genr, setGenr] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  let cate = {}; 
 
-const fetchDatas = async () => {
-  try {
-  // 요청이 시작 할 때에는 error 와 datas 를 초기화하고
-  setError(null);	
-  setDatas(null);
-  // loading 상태를 true 로 바꿉니다.
-  setLoading(true);
-  const response = await axios.get(
-    'https://api.themoviedb.org/3/movie/now_playing?api_key=f76021076e8162ea929bd2cea62c6646&language=ko&region=kr&page=1&sort_by=release_date.desc&page=1'
-  );
-  const getGenr = await axios.get(
-    'https://api.themoviedb.org/3/genre/movie/list?api_key=f76021076e8162ea929bd2cea62c6646&language=ko&region=kr'
-  );
-  setDatas(response.data); // 데이터는 response.data 안에 들어있습니다.
-  setGenr(getGenr.data); // 데이터는 response.data 안에 들어있습니다.
-  } catch (e) {
-    setError(e);
-  }
-  setLoading(false);
-};
+  const fetchDatas = async () => {
+    try {
+      // 요청이 시작 할 때에는 error 와 datas 를 초기화하고
+      setError(null);	
+      setDatas(null);
+      // loading 상태를 true 로 바꿉니다.
+      setLoading(true);
+      const response = await axios.get(
+        'https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=1&sort_by=release_date.desc&page=1&api_key=f76021076e8162ea929bd2cea62c6646'
+      );
+      const getGenr = await axios.get(
+        'https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=f76021076e8162ea929bd2cea62c6646'
+      );
+      setDatas(response.data); // 데이터는 response.data 안에 들어있습니다.
+      setGenr(getGenr.data); // 데이터는 getGenr.data 안에 들어있습니다.
+      
+    } catch (e) {
+      setError(e);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
     fetchDatas();
+    
   }, []);
 
-  if (loading) return <div>로딩중..</div>; 
-  if (error) return <div>에러가 발생했습니다</div>;
+  if (loading) return <div className="ui-loading-dot"> <div className="bx"><em><i></i></em></div> </div>;
+  if (error) return <div className="ui-loading-dot"><p>에러가 발생했습니다</p></div>;
 
   // 아직 datas가 받아와 지지 않았을 때는 아무것도 표시되지 않도록 해줍니다.
-  if (!datas) return null;
+  if (!datas || !genr) return null;
+  
+  genr.genres.forEach( d=> cate[d.id] = d.name);
   console.log(datas);
-let cate = {}; 
-genr.genres.forEach( d=>{
-  cate[d.id] = d.name;
-  });
-  // console.log(cate[16]);
-  // console.log(genr);
+  console.log(genr);
   console.log(datas.results);
   return (
   <>
@@ -75,11 +75,8 @@ genr.genres.forEach( d=>{
                       <div className="dd">
                         <div className="user">
                           <span className="txt">
-                          
                             <i className="fa-regular fa-list"></i>
                             {data.genre_ids.map( item => <em key={item}> {cate[item]}</em> )}
-                            
-                            
                           </span>
                           
                         </div>
