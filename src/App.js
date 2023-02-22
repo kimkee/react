@@ -1,6 +1,6 @@
 import React from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Header from './components/Header.jsx';
