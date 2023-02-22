@@ -209,7 +209,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 
 /* 팝업 레이어 c */
 .pop-layer.c{display: none; position:fixed;left:0rem;right:0rem;top:0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0);outline:none;touch-action: none !important;transition: background-color 0.4s !important;}
-.pop-layer.c.on{display:block;background-color: rgba(0,0,0,0.3);}
+.pop-layer.c.on{display:block;background-color: rgba(0,0,0,0.5);}
 .pop-layer.c.on .pbd{transform: translateY(0%);}
 .pop-layer.c{white-space:nowrap;text-align:center;font-size: 0rem;padding: 10rem 0rem 0rem 0rem;}
 .pop-layer.c::after{content: '';width:0;height:100%;display:inline-block;vertical-align:middle;}
