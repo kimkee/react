@@ -7,6 +7,7 @@ import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
 import List from './pages/movie/List.jsx';
+import List2 from './pages/movie/List2.jsx';
 import View from './pages/movie/View.jsx';
 import Search from './pages/movie/Search.jsx';
 function App() {
@@ -22,6 +23,11 @@ function App() {
             
             <Routes>
               <Route path="/" element={<Home />}  />
+              
+              <Route path="movie2" element={<List2 />}>                 
+                  <Route path=":id" element={<View />} />
+              </Route>
+
               <Route path="movie" element={<List />}>                 
                   <Route path=":id" element={<View />} />
               </Route>
