@@ -6,7 +6,7 @@ export default function View() {
 
   let params = useParams()
   let navigate = useNavigate();
-  let kkk = process.env.PUBLIC_URL
+
   
   const postID = params.id;
   const popResize = ()=>{
@@ -35,8 +35,6 @@ export default function View() {
     fetchDatas();
     popResize();
     window.addEventListener("resize",popResize);
-    // console.log(ui.ui().aaa);
-    console.log(kkk);
     ui.lock.using(true);
     return () => {
       window.removeEventListener("resize",popResize);
@@ -51,7 +49,6 @@ export default function View() {
   
   const MovieInfo =({data},id)=>{
     console.log( data);
-    console.log(process.env.PUBLIC_URL);
     if(!data)  return ;
     return (
       <>
