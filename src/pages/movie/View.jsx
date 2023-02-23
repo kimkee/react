@@ -87,7 +87,9 @@ export default function View() {
           <div className="inr">
             <div className="ptit">{datas?.title}</div>
           </div>
-        </div> */}
+        </div> */
+        
+        }
         <div className="pct">
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">

@@ -27,7 +27,7 @@ export default function List() {
     setPage(page);
     
     axios.get(
-      'https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=1&sort_by=release_date.desc&page='+page+'&api_key=f76021076e8162ea929bd2cea62c6646'
+      'https://api.themoviedb.org/3/movie/popular?language=ko&region=kr&page=1&sort_by=release_date.desc&page='+page+'&api_key=f76021076e8162ea929bd2cea62c6646'
     ).then(res =>{
       // console.log(page);
       console.log(res.data);
@@ -71,6 +71,7 @@ export default function List() {
             mlist.map((data,num) =>{
               // console.log(data.poster_path);
               const img = data.poster_path ? data.poster_path : "/9DVtwkuxzCLGVMapioeJ4RflfyW.jpg";
+              const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
               return(
                 <li key={data.id+num}>
                   <Link className="box" to={""+data.id}>
@@ -101,7 +102,7 @@ export default function List() {
                         <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
                       </div>
                     </div>
-                    <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${img})`}}></div>
+                    <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${bgs})`}}></div>
                   </Link>
                 </li>
               )
