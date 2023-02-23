@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link, Outlet } from 'react-router-dom';  // useParams
+import axios from 'axios';
+import ui from '../../ui';
 // import View from 'View.jsx';
 
 
@@ -22,6 +23,7 @@ export default function List() {
   
   
   const fetchMoive = (page)=>{
+    ui.loading.show();
     setPage(page);
     
     axios.get(
@@ -31,7 +33,8 @@ export default function List() {
       console.log(res.data);
       totalSet(res.data.total_pages);
       setMlist([...mlist,...res.data.results]);
-
+      console.log([...mlist,...res.data.results]);
+      ui.loading.hide();
       if( total <= page ) {
         document.querySelector(".ui-loadmore").classList.add("hide");
       };
@@ -80,10 +83,9 @@ export default function List() {
                     </div>
                     <div className="info">
                       <div className="dd">
-                        <div className="user">
+                        <div className="cate">
                           <span className="txt">
-                            <i className="fa-regular fa-list"></i>
-                            {data.genre_ids.map( item => <em key={item}> {cate[item]}</em> )}
+                            {data.genre_ids.map( item => <em className="ico" key={item}> {cate[item]}</em> )}
                           </span>
                           
                         </div>
@@ -91,7 +93,7 @@ export default function List() {
                       <div className="dd">
                         <div className="hits">
                            <em>
-                              <i className="fa-regular fa-list"></i>
+                              
                               <b>{data.id} </b>
                             </em>
                           <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>

@@ -106,6 +106,23 @@ const ui = {
             }
         }
     },
+    loading: { // 로딩중..
+        show: function () {
+            if (!document.querySelectorAll("body>.ui-loading-dot").length) {
+                // var els = '<div class="ui-loading"><em></em></div>';
+                var els =
+                    `<div class="ui-loading-dot">
+                    <div class="bx"><em><i></i></em></div>
+                </div>`;
+                document.querySelector("body").insertAdjacentHTML("afterbegin", els);
+                document.querySelector("body").classList.add("is-loading");
+            }
+        },
+        hide: function () {
+            document.querySelectorAll(".ui-loading-dot").forEach(el => el.remove());
+            document.querySelector("body").classList.remove("is-loading");
+        }
+    },
     lock: { // 스크롤 막기,풀기
         sct: 0,
         stat: false,
