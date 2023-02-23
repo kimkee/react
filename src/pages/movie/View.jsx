@@ -46,6 +46,9 @@ export default function View() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
   
+  // console.log(datas);
+  // if(!datas)  return ;
+  
   const MovieInfo =({data},id)=>{
     console.log( data);
     console.log(process.env.PUBLIC_URL);
@@ -78,12 +81,16 @@ export default function View() {
     )
   }
 
-
   return (
   <>
     <article className="pop-layer c on bottom popup movie view">
       <div className="pbd">
         <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-xmark"></i></button>
+        {/* <div className="phd">
+          <div className="inr">
+            <div className="ptit">{datas?.title}</div>
+          </div>
+        </div> */}
         <div className="pct">
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">

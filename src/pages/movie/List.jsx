@@ -92,7 +92,7 @@ export default function List() {
                         <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
                       </div>
                     </div>
-                    <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${data.backdrop_path})`}}></div>
+                    <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${img})`}}></div>
                   </Link>
                 </li>
               )
