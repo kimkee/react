@@ -20,6 +20,7 @@ export default function View() {
   }
 
   const [datas, setDatas] = useState(null);
+  const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
   const fetchURL = 'https://api.themoviedb.org/3/movie/'+postID+'?language=ko&region=kr&moive_id=505642&api_key=f76021076e8162ea929bd2cea62c6646';
@@ -31,8 +32,24 @@ export default function View() {
       console.log(e);
     });
   };
+  const castURL = 'https://api.themoviedb.org/3/movie/'+postID+'/credits?&region=kr&language=ko&api_key=f76021076e8162ea929bd2cea62c6646';
+  const fetchCast = () => {
+    axios.get( castURL ).then(response => {
+      console.log("배우");
+      console.log(response.data);
+      setCasts(response.data);
+      
+    }).catch( e => {
+      console.log(e);
+    });
+  };
+
+
+
+
   useEffect(() => {
     fetchDatas();
+    fetchCast();
     popResize();
     window.addEventListener("resize",popResize);
     ui.lock.using(true);
@@ -47,9 +64,12 @@ export default function View() {
   // console.log(datas);
   // if(!datas)  return ;
   
-  const MovieInfo =({data},id)=>{
+  const MovieInfo =({data},{cast},id)=>{
     console.log( data);
+    
     if(!data)  return ;
+    console.log( casts);
+    
     return (
       <>
         <div className="info">
@@ -74,6 +94,18 @@ export default function View() {
           </div>
         </div>
         <div className="vinf">{data.overview}</div>
+        <div className="cast">
+          {
+            casts?.cast.filter( (item, i) => i < 5 ).map( b => {
+              return (
+                <div key={b.id} className='profile'>
+                  <div className="pics"><img src={'https://image.tmdb.org/t/p/w500'+b.profile_path} alt={b.name} className="img" /></div>
+                  <div className="name">{b.name}</div>
+                </div>
+              )
+            })
+          }
+        </div>
       </>
     )
   }
@@ -88,12 +120,12 @@ export default function View() {
             <div className="ptit">{datas?.title}</div>
           </div>
         </div> */
-        
+
         }
         <div className="pct">
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">
-            <MovieInfo data={datas} id={params.id} />
+            <MovieInfo data={datas} id={params.id} cast={casts}/>
           </main>
         </div>
       </div>
