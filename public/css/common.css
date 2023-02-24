@@ -284,7 +284,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar.hide{transform: translateY(100%);}
 .menubar.hide>.inr{ }
 
-.menubar .menu{width: 100%;height:100%;align-items: center;display: flex;padding: 0rem 22rem 0rem 14rem;justify-content: space-between;}
+.menubar .menu{width: 100%;height:100%;align-items: center;display: flex;padding: 0rem 20rem 0rem 20rem;justify-content: space-between;}
 .menubar .menu>li{width: 100%;height: 100%;text-align: center;}
 .menubar .menu>li .bt{height: 100%;display:flex;flex-direction: column;align-items: center;justify-content: center;margin: 0rem auto 0rem auto;padding: 3rem 0rem 2rem 0rem;padding-bottom: calc(2rem + var(--safe-bottom));position: relative;}
 .menubar .menu>li .bt em{display:block;font-size: 11rem;margin-top: 4rem;}
@@ -1024,6 +1024,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .ui-loadmore.active{}
 .ui-loadmore.active .btn-load{ position:relative; left:auto;}
 .ui-loadmore.active>em{ overflow:visible; display:block; }
+.ui-loadmore.error>em{display: none;}
 .ui-loadmore.error .btn-load{ position:relative; left:auto; width:100%; height: 56rem; }
 .ui-loadmore.hide{opacity: 0; display:none;}
 
