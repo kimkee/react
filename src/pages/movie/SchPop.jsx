@@ -20,7 +20,9 @@ export default function View() {
   // if(!datas)  return ;
   const [stext ,stextSet]  = useState('');
   const goSearch = () => {
-    navigate('/movie/?search='+stext);
+    navigate('/search/?search='+stext,{
+      state: true,
+    });
   }
   
   const onChange = (event) => {

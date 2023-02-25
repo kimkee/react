@@ -34,9 +34,9 @@ function App() {
                 {/* <Route path=":keyword" element={<List />} /> */}
                 {/* <Route path="search:keyword" element={<List />} /> */}
               </Route>
-              <Route path="search">
-                <Route path="pop" element={<SchPop />} />
-                <Route path=":keyword"  element={<Search />}  />
+              <Route path="search" element={<Search />} >
+                <Route path=":id" element={<View />} />
+                <Route path=":keyword"  element={<Search />} />
               </Route>
 
             </Routes>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useSearchParams } from 'react-router-dom';  // useParams
+import { Link, Outlet, useSearchParams, useLocation } from 'react-router-dom';  // useParams
 import axios from 'axios';
 import ui from '../../ui';
 // import View from 'View.jsx';
@@ -13,11 +13,16 @@ export default function List() {
   // const [keyword, keywordSet ] = useState('');
 
   let keyword = searchParams.get('search') 
+  let {state} = useLocation();
+  console.log(state);
 
-  const [mlist, setMlist] = useState([]);
-  const [page, setPage] = useState(1);
   
-  // let page = 1;
+  
+  const [mlist, setMlist] = useState([]);
+  // const [page, setPage] = useState(1);
+  let page = 1;
+  
+  
   const [cate, setCate] = useState({});
   // const total;
   const getCate = ()=>{
@@ -32,7 +37,7 @@ export default function List() {
   
   const fetchMoive = (page)=>{
     ui.loading.show();
-    
+    if (state) { setMlist([])} 
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
     
@@ -79,6 +84,8 @@ export default function List() {
     }
     // eslint-disable-next-line
   },[]);
+
+
   // const [callStat, callStatSet] = useState(true);
   let callStat = true;
   const scrollEvent = ()=> {
@@ -93,9 +100,9 @@ export default function List() {
       callStat = false;
       console.log(callStat);
       setTimeout( ()=> {
-        setPage( page + 1 );
-        // page = page + 1;
-        fetchMoive( page + 1  );
+        // setPage( page + 1 );
+        page = page + 1;
+        fetchMoive( page   );
       } ,400 );
     }
   };
@@ -107,14 +114,18 @@ export default function List() {
   // console.log(cate);
   // if (!cate) return null;
   // console.log(dlist);
+
   return (
   <>
     <Outlet />
     <div className="container move">
       <main className="contents">
         <div className='movie-list'>
+            
           <ul className='list'>
+            
           {
+            
             mlist.map((data,num) =>{
               // console.log(data.poster_path);
               const img = data.poster_path ? data.poster_path : "/9DVtwkuxzCLGVMapioeJ4RflfyW.jpg";
@@ -162,7 +173,7 @@ export default function List() {
             <button onClick={ (e)=>{
               // setPage(page + 1)
               
-              fetchMoive( page + 1   , e)
+              fetchMoive( page + 1 , e)
             }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
           </div>
 

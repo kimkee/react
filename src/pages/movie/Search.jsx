@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';  // useParams
+import { Link, Outlet, useNavigate, useSearchParams  } from 'react-router-dom';  // useParams ,useLocation ,useParams,
+
 import axios from 'axios';
 import ui from '../../ui';
 // import View from 'View.jsx';
 
 
-
 export default function Search() {
-  const { keyword } = useParams();
+  const [searchParams] = useSearchParams();
+  // let params = useParams();
+  // let {state} = useLocation();
+  // console.log(state);
+  let [keyword,keywordSet] = useState(searchParams.get('search'));
   const [mlist, setMlist] = useState([]);
   // const [page, setPage] = useState(1);
   let page = 1;
@@ -21,27 +25,30 @@ export default function Search() {
   };
   // const keyword = "미녀";
   let fetchURL;
-  let word;
-  const fetchMoive = (page)=>{
+
+  const fetchMoive = (page , kwd )=>{
+    
     ui.loading.show();
     
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
-    if (!keyword) {
-      word = 'q';
-    }
-    if(keyword){
-      word = keyword;
-       fetchURL = 'https://api.themoviedb.org/3/search/movie?language=ko&region=kr&query='+word+'&api_key=f76021076e8162ea929bd2cea62c6646';
-    }else{
-      fetchURL = 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646';
-    }
+
+    kwd = keyword
+    
+    fetchURL = 'https://api.themoviedb.org/3/search/movie?language=ko&region=kr&page='+page+'&query='+kwd+'&api_key=f76021076e8162ea929bd2cea62c6646';
+    if(keyword == null) {
+      fetchURL = ''
+      ui.loading.hide();
+      return
+    };
+    
 
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
 
     axios.get( fetchURL ).then(res =>{
+      
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
       console.log( mlist );
@@ -51,27 +58,29 @@ export default function Search() {
       ui.loading.hide();
       if( res.data.total_pages <= page ) {
         callStat = false;
-        document.querySelector(".ui-loadmore").classList.add("hide");
+        document.querySelector(".ui-loadmore")?.classList.add("hide");
       };
 
-
+      
     }).catch(e=>{
       console.log(e);
       ui.loading.hide();
-      document.querySelector(".ui-loadmore").classList.add("error");
+      document.querySelector(".ui-loadmore")?.classList.add("error");
     }); 
   }
 
   useEffect(() => {
     getCate();
-    keyword && fetchMoive(page);
+    fetchMoive(page);
     
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[]);
+  },[keyword]);
+
+
   // const [callStat, callStatSet] = useState(true);
   let callStat = true;
   const scrollEvent = ()=> {
@@ -84,11 +93,11 @@ export default function Search() {
       // console.log( page);
       document.querySelector(".ui-loadmore")?.classList.add("active");
       callStat = false;
-      console.log(callStat);
+      // console.log(callStat);
       setTimeout( ()=> {
         // setPage( page + 1 );
         page = page + 1;
-        fetchMoive( page  );
+        fetchMoive( page );
       } ,400 );
     }
   };
@@ -100,21 +109,59 @@ export default function Search() {
   // console.log(cate);
   // if (!cate) return null;
   // console.log(dlist);
+  let navigate = useNavigate();
+  const [stext ,stextSet]  = useState('');
+  const goSearch = () => {
+    keywordSet( document.querySelector("#input_kwd").value )
+    navigate('/search/?search='+stext);
+
+    setMlist([]);
+    fetchMoive( 1 );
+  }
+  const onChange = (event) => {
+    stextSet(event.target.value )
+    keywordSet(event.target.value )
+    setMlist([]);
+    console.log(event.target.value);
+    // fetchMoive( 1 );
+    console.log(  document.querySelector("#input_kwd").value);
+  } 
+
+
+  console.log(mlist);
+ 
+
   return (
   <>
     <Outlet />
     <div className="container move search">
       <main className="contents">
+        <div className="schs-form">
+          <div className="inr">
+            <form className="form" onSubmit={ goSearch }>
+              <span className="input">
+                <input type="text" placeholder="영화 제목을 입력하세요." onChange={onChange} id="input_kwd"/>
+              </span>
+              <button type="submit" className="btn bt-sch"><i className="fa-regular fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+        { 
+        
+        mlist.length <= 0 || !keyword ? (
+        <div className="nodata"><p>검색 결과가 없습니다.</p></div>)
+         : 
         <div className='movie-list'>
           <ul className='list'>
           {
             mlist.map((data,num) =>{
               // console.log(data.poster_path);
               const img = data.poster_path ? data.poster_path : "/9DVtwkuxzCLGVMapioeJ4RflfyW.jpg";
+              
               const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
               return(
                 <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                  <Link className="box" to={"/movie/"+data.id}>
+                  <Link className="box" to={"/search/"+data.id}>
                     <div className="cont">
                       <div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
                       <div className="desc">
@@ -154,12 +201,14 @@ export default function Search() {
             <em><i className="fa-duotone fa-spinner"></i></em>
             <button onClick={ (e)=>{
               // setPage(page + 1)
-              
-              fetchMoive( page + 1   , e)
+              page = page + 1
+              fetchMoive( page , e)
             }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
           </div>
 
         </div>
+        
+        }
       </main>
     </div>
   </>  
