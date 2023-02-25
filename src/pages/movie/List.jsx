@@ -1,36 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';  // useParams
+import { Link, Outlet, useParams, useLocation, useSearchParams } from 'react-router-dom';  // useParams
 import axios from 'axios';
 import ui from '../../ui';
 // import View from 'View.jsx';
 
 
-
 export default function List() {
-  
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  console.log(location)
+  console.log(searchParams.get('search'));
+
+  // const { keyword } = useParams();
+  const { search } = useLocation();
+
+  // const [keyword, keywordSet ] = useState('');
+
+  let keyword = searchParams.get('search') 
+
   const [mlist, setMlist] = useState([]);
-  // const [page, setPage] = useState(1);
-  let page = 1;
+  const [page, setPage] = useState(1);
+  
+  // let page = 1;
   const [cate, setCate] = useState({});
   // const total;
   const getCate = ()=>{
     axios.get('https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=f76021076e8162ea929bd2cea62c6646').then(res =>{
       res.data.genres.forEach( d=> cate[d.id] = d.name);
-      setCate(cate); 
+      setCate(cate => cate); 
     });
   };
-  
-  
+  // const keyword = "미녀";
+  let fetchURL;
+  let word;
   
   const fetchMoive = (page)=>{
     ui.loading.show();
     
+    console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
     
-    axios.get(
-      // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
-      'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
-    ).then(res =>{
+    if(keyword){
+      word = keyword;
+      fetchURL = 'https://api.themoviedb.org/3/search/movie?page='+page+'&language=ko&region=kr&query='+word+'&api_key=f76021076e8162ea929bd2cea62c6646';
+    }else{
+      fetchURL = 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646';
+    }
+
+    // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
+    // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
+    // 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
+
+    axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
       console.log( mlist );
@@ -52,6 +73,7 @@ export default function List() {
   }
 
   useEffect(() => {
+    ui.viewport.scrollTop();
     getCate();
     fetchMoive(page);
     
@@ -60,7 +82,7 @@ export default function List() {
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[]);
+  },[search,keyword,page]);
   // const [callStat, callStatSet] = useState(true);
   let callStat = true;
   const scrollEvent = ()=> {
@@ -75,9 +97,9 @@ export default function List() {
       callStat = false;
       console.log(callStat);
       setTimeout( ()=> {
-        // setPage( page + 1 );
-        page = page + 1;
-        fetchMoive( page  );
+        setPage( page + 1 );
+        // page = page + 1;
+        fetchMoive( page + 1  );
       } ,400 );
     }
   };
@@ -103,7 +125,7 @@ export default function List() {
               const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
               return(
                 <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                  <Link className="box" to={""+data.id}>
+                  <Link className="box" to={"/movie/"+data.id}>
                     <div className="cont">
                       <div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
                       <div className="desc">
