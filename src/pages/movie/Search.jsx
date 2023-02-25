@@ -72,7 +72,7 @@ export default function Search() {
   useEffect(() => {
     getCate();
     fetchMoive(page);
-    
+    document.querySelector("#input_kwd").focus();
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
       window.removeEventListener("scroll", scrollEvent);
