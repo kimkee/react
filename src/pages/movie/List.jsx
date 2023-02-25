@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useParams, useLocation, useSearchParams } from 'react-router-dom';  // useParams
+import { Link, Outlet, useSearchParams } from 'react-router-dom';  // useParams
 import axios from 'axios';
 import ui from '../../ui';
 // import View from 'View.jsx';
 
 
 export default function List() {
-  const location = useLocation();
   const [searchParams] = useSearchParams();
-  console.log(location)
   console.log(searchParams.get('search'));
 
-  // const { keyword } = useParams();
-  const { search } = useLocation();
 
   // const [keyword, keywordSet ] = useState('');
 
@@ -82,7 +78,7 @@ export default function List() {
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[search,keyword,page]);
+  },[]);
   // const [callStat, callStatSet] = useState(true);
   let callStat = true;
   const scrollEvent = ()=> {
