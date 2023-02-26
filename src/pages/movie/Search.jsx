@@ -111,21 +111,22 @@ export default function Search() {
   // console.log(dlist);
   let navigate = useNavigate();
   const [stext ,stextSet]  = useState('');
-  const goSearch = () => {
-    keywordSet( document.querySelector("#input_kwd").value )
+  const goSearch = (e) => {
+    keywordSet( document.querySelector("#input_kwd")?.value );
     navigate('/search/?search='+stext);
-
     setMlist([]);
     fetchMoive( 1 );
+    e.preventDefault();
+    document.querySelector(".movie-list").focus();
   }
   const onChange = (event) => {
     stextSet(event.target.value )
     keywordSet(event.target.value )
     setMlist([]);
-    console.log(event.target.value);
     // fetchMoive( 1 );
-    console.log(  document.querySelector("#input_kwd").value);
   } 
+  
+  console.log(  document.querySelector("#input_kwd")?.value );
 
 
   console.log(mlist);
@@ -151,7 +152,7 @@ export default function Search() {
         mlist.length <= 0 || !keyword ? (
         <div className="nodata"><p>검색 결과가 없습니다.</p></div>)
          : 
-        <div className='movie-list'>
+        <div className='movie-list' tabIndex="-1">
           <ul className='list'>
           {
             mlist.map((data,num) =>{
