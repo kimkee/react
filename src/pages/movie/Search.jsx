@@ -157,14 +157,14 @@ export default function Search() {
           {
             mlist.map((data,num) =>{
               // console.log(data.poster_path);
-              const img = data.poster_path ? data.poster_path : "/9DVtwkuxzCLGVMapioeJ4RflfyW.jpg";
+              const img = 'https://image.tmdb.org/t/p/w200'+data.poster_path;
               
               const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
               return(
                 <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                   <Link className="box" to={"/search/"+data.id}>
                     <div className="cont">
-                      <div className="pics"><img src={`https://image.tmdb.org/t/p/w200${img}`} alt="" className='img'/></div>
+                      <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
                       <div className="desc">
                         <div className="tits">{data.title}</div>
                         <div className="text">{data.overview}</div>

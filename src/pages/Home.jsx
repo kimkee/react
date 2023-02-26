@@ -1,14 +1,21 @@
 // import React, { useState, useEffect } from 'react';
 
+import ProjectTop from "../components/HomeTop.jsx";
+import { Outlet} from 'react-router-dom';  // useParams,Link,  useSearchParams, useLocation 
 
-export default function Home() {
+export default function HomeTop() {
 
 
   return (
-	<div className="container home">
-		<main className="contents">
-      홈
-		</main>
-	</div>
+	<>
+		<Outlet />
+	
+		<div className="container page home">
+			<main className="contents">
+			<ProjectTop />
+				
+			</main>
+		</div>
+	</>
   )
 }

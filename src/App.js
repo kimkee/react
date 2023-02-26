@@ -26,7 +26,9 @@ function App() {
           <CSSTransition in={true} classNames={"right"} timeout={5000}> */}
             
             <Routes>
-              <Route path="/" element={<Home />}  />
+              <Route path="/" element={<Home />} >
+              <Route path=":id" element={<View />} />
+              </Route>
            
               <Route path="movie" element={<List />}>
                 <Route path=":id" element={<View />} />

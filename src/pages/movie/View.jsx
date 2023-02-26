@@ -90,7 +90,7 @@ export default function View() {
             </ul>
           </div>
           <div className="thum">
-            <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+data.poster_path} alt={data.title} className="img" /></div>
+            <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+data.poster_path} alt={data.title} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
           </div>
         </div>
         <div className="vinf">{data.overview}</div>
@@ -99,7 +99,7 @@ export default function View() {
             casts?.cast.filter( (item, i) => i < 5 ).map( b => {
               return (
                 <div key={b.id} className='profile'>
-                  <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img" /></div>
+                  <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
                   <div className="name">{b.name}</div>
                 </div>
               )
