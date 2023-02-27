@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useParams, useNavigate  } from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  
 import ui from '../../ui';
 export default function View() {
 
@@ -8,6 +8,21 @@ export default function View() {
   let navigate = useNavigate();
 
   
+  const [cate, setCate] = useState({});
+  const getCate = async ()=>{
+    let cate = {
+      genr:{}
+    }
+    await axios.get('https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=f76021076e8162ea929bd2cea62c6646').then(res =>{
+      res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
+      // setCate(cate); 
+    }).then( res =>{
+      setCate(cate);
+      console.log(cate);
+    });
+  };
+
+
   const postID = params.id;
   const popResize = ()=>{
     let $pop =  document.querySelector(".pop-layer");
@@ -48,6 +63,7 @@ export default function View() {
 
 
   useEffect(() => {
+    getCate();
     fetchDatas();
     fetchCast();
     popResize();
@@ -64,11 +80,12 @@ export default function View() {
   // console.log(datas);
   // if(!datas)  return ;
   
-  const MovieInfo =({data},{cast},id)=>{
+  const MovieInfo =({data,cate})=>{
     console.log( data);
+    console.log( cate.genr);
     
-    if(!data)  return ;
     console.log( casts);
+    if(!data)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
     
     return (
       <>
@@ -81,6 +98,15 @@ export default function View() {
               <li className="star">
                 <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
                 
+              </li>
+              <li className="cate">
+              
+                
+                  {/* {cate?.genr} */}
+                  {data.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
+                
+                
+              
               </li>
               <li className="vot">
                 <i className="fa-regular fa-thumbs-up"></i>
@@ -130,7 +156,8 @@ export default function View() {
         <div className="pct">
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">
-            <MovieInfo data={datas} id={params.id} cast={casts}/>
+            
+            <MovieInfo data={datas} cast={casts}  cate={cate}/>
           </main>
         </div>
       </div>

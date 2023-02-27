@@ -1,7 +1,28 @@
-import React from 'react'
-import {Link} from 'react-router-dom'; // 
+
+import React, {  useEffect } from 'react'; //useState,
+import {Link} from 'react-router-dom'; // ,useParams,useLocation
 import ui from '../ui';
-export default function Header() {
+export default function Header({cls}) {
+  console.log(cls + "===================================");
+  // let params = useParams();
+  // const location = useLocation();
+  // console.log(params);
+  // location.pathname
+  // console.log(location);
+  
+  
+  useEffect(() => {
+    
+    // let cls = location.pathname === '/' ? "trans" : "";
+    // document.querySelector(".header")?.classList.add(cls)
+    
+    return ()=>{
+      
+    }
+    
+  },[]);
+
+
   const test =()=>{
     ui.confirm("리액션 쩐다",{
       ycb:function(){
@@ -13,7 +34,7 @@ export default function Header() {
     });
   }
   return (
-	  <header className="header">
+	  <header className={"header " + cls}>
       <div className="inr">
         <div className="ldt">
           <h1 className="logo"> <Link to={`${process.env.PUBLIC_URL}/movie`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1>

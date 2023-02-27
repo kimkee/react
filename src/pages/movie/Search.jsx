@@ -146,7 +146,7 @@ export default function Search() {
   return (
   <>
     <Outlet />
-    <div className="container move search">
+    <div className="container page movie search">
       <main className="contents">
         <div className="schs-form">
           <div className="inr">
@@ -154,7 +154,7 @@ export default function Search() {
               <span className="input">
                 <input type="text" placeholder="영화 제목을 입력하세요." onChange={onChange} id="input_kwd"/>
               </span>
-              <button type="submit" className="btn bt-sch"><i className="fa-regular fa-search"></i></button>
+              <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
             </form>
           </div>
         </div>

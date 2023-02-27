@@ -21,16 +21,18 @@ function App() {
   return (
     <>
       <Router>
-        <Header/>
+        
         {/* <TransitionGroup className="transition-group">
           <CSSTransition in={true} classNames={"right"} timeout={5000}> */}
             
             <Routes>
               <Route path="/" element={<Home />} >
-              <Route path=":id" element={<View />} />
+                <Route path="/" element={<Header cls='trans' />} /> 
+                <Route path=":id" element={<View />} />
               </Route>
            
               <Route path="movie" element={<List />}>
+              <Route path="" element={<Header cls='' />} /> 
                 <Route path=":id" element={<View />} />
                 <Route path="pop" element={<SchPop />} />
                 {/* <Route path=":keyword" element={<List />} /> */}

@@ -123,7 +123,7 @@ export default function List() {
   return (
   <>
     <Outlet />
-    <div className="container movie page">
+    <div className="container page movie list">
       <main className="contents">
         <div className='poster-list'>
             

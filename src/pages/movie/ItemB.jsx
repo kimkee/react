@@ -9,7 +9,7 @@ export default function ItemA({data,cate}) {
   // console.log(cate.genr);
   
   const img = 'https://image.tmdb.org/t/p/w200'+data.poster_path;
-  const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
+  // const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
   return (
   <>
     <Link className="box" to={"/movie/"+data.id}>
