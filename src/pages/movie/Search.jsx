@@ -94,6 +94,10 @@ export default function Search() {
       document.querySelector(".ui-loadmore")?.classList.add("active");
       callStat = false;
       // console.log(callStat);
+      if(ui.lock.stat) {
+        callStat = true;
+        return
+      };
       setTimeout( ()=> {
         // setPage( page + 1 );
         page = page + 1;

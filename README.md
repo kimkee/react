@@ -11,7 +11,27 @@
 	- [영화 API 사용법](https://velog.io/@letgodchan0/TIL-%EC%98%81%ED%99%94-API-%EC%82%AC%EC%9A%A9%EB%B2%95)
 	- [React에서 Axios 사용하기](https://velog.io/@mgk8609/React%EC%97%90%EC%84%9C-Axios-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
 
+## TMDB API
 
+- 상영작
+https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=1&sort_by=release_date.desc&api_key=[API_KEY]
+
+- Discover
+https://api.themoviedb.org/3/discover/movie?language=ko&region=kr&page=1&sort_by=release_date.desc&api_key=[API_KEY]
+
+- 인기작
+https://api.themoviedb.org/3/movie/popular?language=ko&region=kr&api_key=[API_KEY]
+
+- 장르
+https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=[API_KEY]
+
+- 영화상세
+https://api.themoviedb.org/3/movie/496243/credits?&region=kr&language=ko&api_key=[API_KEY]
+
+- 검색
+https://api.themoviedb.org/3/search/movie?language=ko&region=kr&query=기생충&api_key=[API_KEY]
+- 이미지
+https://image.tmdb.org/t/p/w200/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg
 <br><br><br><br>
 
 # Getting Started with Create React App
