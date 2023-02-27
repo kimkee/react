@@ -503,7 +503,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .swiper .swiper-pagination-bullets.swiper-pagination.swiper-pagination-lock{display: none;}
 .swiper [class^='swiper-button']{color: #ffffff; display: none;}
 .swiper .swiper-pagination-bullet{transform: scale(0.5);opacity: 0.5;margin: 0rem 0rem !important;background-color: #dddddd;transition: all 0.3s;}
-.swiper .swiper-pagination-bullet-active{background-color: #41b883;opacity: 1.7;transform: scale(0.8);margin: 0rem 1.5rem !important;}
+.swiper .swiper-pagination-bullet-active{background-color: #61dafb;opacity: 1.7;transform: scale(0.8);margin: 0rem 1.5rem !important;}
 
 .ui-star{display: inline-flex;}
 .ui-star i{color: #61dafb}
