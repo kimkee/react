@@ -25,7 +25,7 @@ export default  function HomeTop({cate , renderTech}){
 
     console.log( "로드 " + page );
 
-    const fetchURL = 'https://api.themoviedb.org/3/movie/popular?api_key=f76021076e8162ea929bd2cea62c6646&language=ko&region=kr&page=1&sort_by=release_date.desc';
+    const fetchURL = 'https://api.themoviedb.org/3/movie/now_playing?api_key=f76021076e8162ea929bd2cea62c6646&language=ko&region=kr&page=1&sort_by=release_date.desc';
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -49,7 +49,6 @@ export default  function HomeTop({cate , renderTech}){
   }
 
   useEffect(() => {
-    ui.viewport.scrollTop();
     fetchMoive(page);
     
     
