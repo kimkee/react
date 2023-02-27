@@ -11,92 +11,96 @@ const ui = {
     },
     star:{
         point:{
-            "0": `  <i class="fa-duotone fa-star-sharp"></i>
+            0: `  <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "0.5":` <i class="fa-duotone fa-star-sharp-half"></i>
+            0.5:` <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "1":`   <i class="fa-solid fa-star-sharp"></i>
+            1:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "1.5":` <i class="fa-solid fa-star-sharp"></i>
+            1.5:` <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "2":`   <i class="fa-solid fa-star-sharp"></i>
+            2:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "2.5":` <i class="fa-solid fa-star-sharp"></i>
+            2.5:` <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "3":`   <i class="fa-solid fa-star-sharp"></i>
+            3:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "3.5":` <i class="fa-solid fa-star-sharp"></i>
+            3.5:` <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "4":`   <i class="fa-solid fa-star-sharp"></i>
+            4:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            "4.5":` <i class="fa-solid fa-star-sharp"></i>
+            4.5:` <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>`,
 
-            "5":`   <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
+            5:`   <i class="fa-solid fa-star-sharp"></i>
+                    <i class="fa-solid fa-star-sharp"></i>
+                    <i class="fa-solid fa-star-sharp"></i>
+                    <i class="fa-solid fa-star-sharp"></i>
+                    <i class="fa-solid fa-star-sharp"></i>`,
         },
         set:function(num){
             let n = Number( (Math.round( num  * 100)  / 100).toFixed(1) )  / 2 ;
-            if( n <= 0)  return this.point['0'];
-            if( n < 0.5)  return this.point['0.5'];
-            if( n < 1)  return this.point['1'];
-            if( n < 1.5)  return this.point['1.5'];
-            if( n < 2)  return this.point['2'];
-            if( n < 2.5)  return this.point['2.5'];
-            if( n < 3)  return this.point['3'];
-            if( n < 3.5)  return this.point['3.5'];
-            if( n < 4)  return this.point['4'];
-            if( n < 4.5)  return this.point['4.5'];
-            if( n < 5)  return this.point['5 '];
+            // let _this = this;
+            let r = 0;
+            // console.log(Object.keys(this.point).sort() );
+            Object.keys(this.point).sort().reverse().forEach( p => {
+                if( n <= Number(p)) r = Number(p)  ;
+            });
             
-            // if( n < 1.5) n = 1.5;
+            // console.log(n , r);
+            return this.point[ Number(r) ]
+            // return this.point[ Number(r) ]
 
-
-            if( n < 1) n = 1;
-            if( n < 0.5) n = 0.5;
-            
+            // if( n <= 0)  return this.point[0];
+            // if( n <= 0.5)  return this.point[0.5];
+            // if( n <= 1)  return this.point[1];
+            // if( n <= 1.5)  return this.point[1.5];
+            // if( n <= 2)  return this.point[2];
+            // if( n <= 2.5)  return this.point[2.5];
+            // if( n <= 3)  return this.point[3];
+            // if( n <= 3.5)  return this.point[3.5];
+            // if( n <= 4)  return this.point[4];
+            // if( n <= 4.5)  return this.point[4.5];
+            // if( n <= 5)  return this.point[5];
         }
     },
     alert: function (msg, params) { // 커스텀 알럿
