@@ -181,11 +181,9 @@ export default function Search() {
                       </div>
                       <div className="dd">
                         <div className="hits">
-                           <em>
-                              
-                              <b>{data.id} </b>
-                            </em>
-                          <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
+                          {/* <em> <b>{data.id} </b> </em> */}
+                          <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em>
+                          {/* <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em> */}
                         </div>
                         <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
                       </div>

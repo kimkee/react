@@ -6,7 +6,7 @@ import axios from 'axios';
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
 
 // Import Swiper styles
 import 'swiper/css';
@@ -48,9 +48,16 @@ export default  function HomeTop({cate , renderTech}){
     }); 
   }
 
+  
+  const [swiper, setSwiper] = useState(null);
+  const nexto = () => {
+    
+    swiper.slideTo( Math.floor( Math.random() *10 ) , 0 );
+  };
+
   useEffect(() => {
     fetchMoive(page);
-    
+    // swiper.slideTo(2);
     
     return ()=>{
       
@@ -64,7 +71,7 @@ export default  function HomeTop({cate , renderTech}){
     <>
       
       <section className="sect mnTop">
-
+      
 
         <div className="inr" id="slide">
           
@@ -78,9 +85,13 @@ export default  function HomeTop({cate , renderTech}){
             wrapperTag="ul"
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
-            initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
+            // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
             autoHeight={true}
-            onSwiper={(swiper) => console.log()}
+            onSwiper={(swiper) => {
+              console.log("initialize swiper", swiper);
+              setSwiper(swiper);
+              swiper.slideTo( Math.floor( Math.random() *10 ) );
+            }}
             onSlideChange={() => console.log('slide change')}   >
               {
                 
@@ -91,7 +102,10 @@ export default  function HomeTop({cate , renderTech}){
                         <Link className="box" to={"/"+data.id}>
                             <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div>
                             <div className="info">
-                              <div className="tit">{data.title}</div>
+                              {/* <div className="tit">{data.title}</div> */}
+                              <div className="star">
+                              <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
+                              </div>
                             </div>
                         </Link>
                       </SwiperSlide>
@@ -99,7 +113,7 @@ export default  function HomeTop({cate , renderTech}){
                 })
               }
           </Swiper>
-          
+          <button onClick={nexto}>Slide to the next slide</button>
           {/* <div className="navi">
             <button type="button" className="nav prev">이전</button><button type="button" className="nav next">다음</button>
           </div> */}

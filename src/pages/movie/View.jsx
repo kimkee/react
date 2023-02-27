@@ -78,9 +78,14 @@ export default function View() {
             <p className="sit">{data.tagline}</p>
             <p className="tio">{data.original_title}</p>
             <ul className="lst">
+              <li className="star">
+                <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
+                
+              </li>
               <li className="vot">
                 <i className="fa-regular fa-thumbs-up"></i>
-                <b>평점</b> : {data.vote_average}</li>
+                <b>평점</b> : {data.vote_average} / 10
+              </li>
               <li className="opn">
                 <i className=" fa-regular fa-camera-movie"></i>
                 <b>개봉</b> : {data.release_date}</li>

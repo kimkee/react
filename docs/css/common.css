@@ -148,6 +148,8 @@ body.is-gnb .btn-gnb{}
 .popup.movie.view .info .desc .lst{}
 .popup.movie.view .info .desc .lst>li{font-size:12rem;}
 .popup.movie.view .info .desc .lst>li+li{margin-top: 4rem;}
+.popup.movie.view .info .desc .lst>li.star{margin-top:5rem; font-size:20rem;}
+.popup.movie.view .info .desc .lst>li.star .ui-star{margin-left: -2rem}
 .popup.movie.view .info .desc .lst>li.vot{margin-top:10rem;}
 .popup.movie.view .info .desc .lst>li.opn{}
 .popup.movie.view .info .desc .lst>li.tim{}
@@ -503,7 +505,11 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .swiper .swiper-pagination-bullet{transform: scale(0.5);opacity: 0.5;margin: 0rem 0rem !important;background-color: #dddddd;transition: all 0.3s;}
 .swiper .swiper-pagination-bullet-active{background-color: #41b883;opacity: 1.7;transform: scale(0.8);margin: 0rem 1.5rem !important;}
 
-
+.ui-star{display: inline-flex;}
+.ui-star i{color: #61dafb}
+.ui-star i::before{}
+.ui-star i::after{color:#888; opacity: 1;}
+.ui-star i.fa-star-sharp-half:after::before{}
 
 
 .movie-list {/* min-height:calc(100vh - 100rem); */}
@@ -783,8 +789,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnTop .slide ul>li .box{}
 .page.home .sect.mnTop .slide ul>li .box .pics{display:block;position:relative;padding-bottom: calc(1200% / 780 * 100); width: 100%; overflow: hidden;width: 100%; border-radius: 0rem; background:#000000;}
 .page.home .sect.mnTop .slide ul>li .box .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #000000;}
-.page.home .sect.mnTop .slide ul>li .box .info{position: absolute; right:10rem;  bottom:10rem;}
+.page.home .sect.mnTop .slide ul>li .box .info{position: absolute; left:10rem;  bottom:10rem;}
 .page.home .sect.mnTop .slide ul>li .box .info .tit{font-size:11rem;}
+.page.home .sect.mnTop .slide ul>li .box .info .star{font-size:21rem;}
 .page.home .sect.mnTop .swiper-pagination{bottom:0; top: auto; left: 0; right: 0;}
 
 
