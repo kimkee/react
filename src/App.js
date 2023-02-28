@@ -30,7 +30,8 @@ function App() {
                 <Route path=":id" element={<View />} />
               </Route>
            
-              <Route path="movie" element={<List /> }>
+              <Route path="movie" element={<List /> } />
+              <Route path="movie/:cate" element={<List /> }>
                 <Route path=":id" element={<View />} />
                 
                 {/* <Route path="pop" element={<SchPop />} /> */}

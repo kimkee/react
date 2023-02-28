@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Link, Outlet, useSearchParams, useLocation } from 'react-router-dom';  // Link,useParams
+import { Outlet, useSearchParams, useLocation,useParams } from 'react-router-dom';  // Link,useParams,useNavigate
 import axios from 'axios';
 import ui from '../../ui';
 import ItemB from './ItemB.jsx';
@@ -7,12 +7,21 @@ import CateMenu from './CateMenu.jsx';
 
 
 export default function List() {
+
+
+  let params = useParams()
+  // let navigate = useNavigate();
+
+  const cateID = params.cate || '';
+  const cateList = `&with_genres=${cateID}`
+
   const [searchParams] = useSearchParams();
-  // console.log(searchParams.get('search'));
+  console.log(searchParams.get('search'));
 
 
   // const [keyword, keywordSet ] = useState('');
 
+  // let cateID = searchParams.get('cate');
   let keyword = searchParams.get('search') 
   let {state} = useLocation();
   // console.log(state);
@@ -52,7 +61,7 @@ export default function List() {
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
-    let fetchURL = `https://api.themoviedb.org/3/movie/popular?page=${page}&with_genres=${''}&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/movie/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/discover/movie?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
 
@@ -83,6 +92,7 @@ export default function List() {
   }
 
   useEffect( () => {
+    setMlist([])
     window.scrollTo(0,0);
     ui.loading.show();
     fetchMoive(page);
@@ -93,7 +103,7 @@ export default function List() {
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[]);
+  },[cateID]);
 
 
   // const [callStat, callStatSet] = useState(true);
