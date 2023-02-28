@@ -12,9 +12,11 @@ export default function List() {
   let params = useParams()
   // let navigate = useNavigate();
 
-  const cateID = params.cate || '';
-  const cateList = `&with_genres=${cateID}`
-
+  const cateID = params.cate || 0;
+  console.log(cateID )
+  let cateList;
+  cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
+  console.log(cateList);
   const [searchParams] = useSearchParams();
   console.log(searchParams.get('search'));
 
@@ -27,11 +29,11 @@ export default function List() {
   // console.log(state);
 
   
-  
   const [mlist, setMlist] = useState([]);
   const [genrMenu, genrMenuSet] = useState([]);
   // const [page, setPage] = useState(1);
   let page = 1;
+  
   
   
   const [cate, setCate] = useState({});
@@ -80,8 +82,11 @@ export default function List() {
       if( res.data.total_pages <= page ) {
         callStat = false;
         document.querySelector(".ui-loadmore").classList.add("hide");
+      }else{
+        document.querySelector(".ui-loadmore").classList.remove("hide");
+
       };
-      document.querySelector(".ui-loadmore")?.classList.remove("active");
+      document.querySelector(".ui-loadmore").classList.remove("active");
 
 
     }).catch(e=>{
@@ -91,7 +96,9 @@ export default function List() {
     }); 
   }
 
+  
   useEffect( () => {
+
     setMlist([])
     window.scrollTo(0,0);
     ui.loading.show();
@@ -116,7 +123,7 @@ export default function List() {
     if (docH <= scr && callStat === true) {
       console.log("바닥도착");
       // console.log( page);
-      document.querySelector(".ui-loadmore")?.classList.add("active");
+      document.querySelector(".ui-loadmore").classList.add("active");
       callStat = false;
       console.log(callStat);
       if(ui.lock.stat) {
