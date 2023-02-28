@@ -16,16 +16,17 @@ import 'swiper/css/scrollbar';
 import ui from '../ui';
 
 
-export default  function HomeTop({cate , renderTech}){
+export default  function ListSet({opts}){
   let page = Math.floor( Math.random() *4 )+1;
   const [mlist, setMlist] = useState([]);
+  console.log(opts);
   const fetchMoive = (page)=>{
     ui.loading.show();
     
 
     console.log( "로드 " + page );
     
-    const fetchURL = `https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/movie/${opts}?page=1&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -69,43 +70,47 @@ export default  function HomeTop({cate , renderTech}){
   return(
     <>
       
-      <section className="sect mnTop">
-      
+      <section className="sect mnList">
 
-        <div className="inr" id="slide">
+        { opts === 'popular' ?        <h3 className="sectit">인기영화</h3> : null }
+        { opts === 'now_playing' ?        <h3 className="sectit">상영중</h3> : null }
+
+        <div className="inr">
           
           <Swiper className="swiper-wrapper swiper slide" 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={0}
-            slidesPerView={1}
-            navigation
-            loop={{loop:true}}
+            slidesPerView={5}
+            slidesPerGroup={5}
+            slidesPerGroupAuto={true}
+            // navigation
+            loop={false }
             wrapperTag="ul"
-            pagination={{ clickable: true }}
+            // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
             // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
             autoHeight={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               // setSwiper(swiper);
-              swiper.slideTo( Math.floor( Math.random() *10 ) );
+              // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={() => console.log('slide change')}   >
               {
-                mlist?.filter( (item, i) => i < 10 ).map( (data, idx) => {
-                  const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;
+                mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
+                  const img = 'https://image.tmdb.org/t/p/w200'+data.poster_path ;
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <Link className="box" to={"/"+data.id}>
                           <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div>
                           <div className="info">
-                            <div className="star">
+                            {/* <div className="star">
                               <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
-                            </div>
-                            <div className="tit">{data.title}</div>
+                            </div> */}
+                            {/* <div className="tit">{data.title}</div> */}
                           </div>
-                          <div className="screen"></div>
+                          {/* <div className="screen"></div> */}
                       </Link>
                     </SwiperSlide>
                   )

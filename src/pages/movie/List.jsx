@@ -39,7 +39,6 @@ export default function List() {
     });
   };
   // const keyword = "미녀";
-  let fetchURL;
   
   
   const fetchMoive = (page)=>{
@@ -47,7 +46,7 @@ export default function List() {
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
     
-    fetchURL = `https://api.themoviedb.org/3/movie/popular?page=${page}&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/movie/popular?page=${page}&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
@@ -65,6 +64,7 @@ export default function List() {
         callStat = false;
         document.querySelector(".ui-loadmore").classList.add("hide");
       };
+      document.querySelector(".ui-loadmore")?.classList.remove("active");
 
 
     }).catch(e=>{
