@@ -22,7 +22,7 @@ export default function Search() {
     let cate = {
       genr:{}
     }
-    await axios.get('https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=f76021076e8162ea929bd2cea62c6646').then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{
@@ -35,14 +35,14 @@ export default function Search() {
 
   const fetchMoive = (page , kwd )=>{
     
-    ui.loading.show();
+    
     
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
 
     kwd = keyword
     
-    fetchURL = 'https://api.themoviedb.org/3/search/movie?language=ko&region=kr&page='+page+'&query='+kwd+'&api_key=f76021076e8162ea929bd2cea62c6646';
+    fetchURL = `https://api.themoviedb.org/3/search/movie?language=ko&region=kr&page=${page}&query=${kwd}&api_key=${process.env.REACT_APP_KEY}`;
     if(keyword == null) {
       fetchURL = ''
       ui.loading.hide();
@@ -78,6 +78,7 @@ export default function Search() {
 
   useEffect(() => {
     getCate();
+    ui.loading.show();
     fetchMoive(page);
     document.querySelector('.header').classList.add("trans");
     document.querySelector("#input_kwd").focus();

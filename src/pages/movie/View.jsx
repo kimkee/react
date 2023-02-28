@@ -13,7 +13,7 @@ export default function View() {
     let cate = {
       genr:{}
     }
-    await axios.get('https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=f76021076e8162ea929bd2cea62c6646').then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{
@@ -38,7 +38,7 @@ export default function View() {
   const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = 'https://api.themoviedb.org/3/movie/'+postID+'?language=ko&region=kr&moive_id=505642&api_key=f76021076e8162ea929bd2cea62c6646';
+  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       setDatas(response.data);
@@ -47,7 +47,7 @@ export default function View() {
       console.log(e);
     });
   };
-  const castURL = 'https://api.themoviedb.org/3/movie/'+postID+'/credits?&region=kr&language=ko&api_key=f76021076e8162ea929bd2cea62c6646';
+  const castURL = `https://api.themoviedb.org/3/movie/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
       console.log("배우");

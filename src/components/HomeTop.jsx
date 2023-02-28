@@ -17,15 +17,15 @@ import ui from '../ui';
 
 
 export default  function HomeTop({cate , renderTech}){
-  let page = 1;
+  let page = Math.floor( Math.random() *4 )+1;
   const [mlist, setMlist] = useState([]);
   const fetchMoive = (page)=>{
     ui.loading.show();
     
 
     console.log( "로드 " + page );
-
-    const fetchURL = 'https://api.themoviedb.org/3/movie/now_playing?api_key=f76021076e8162ea929bd2cea62c6646&language=ko&region=kr&page=1&sort_by=release_date.desc';
+    
+    const fetchURL = `https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -37,14 +37,14 @@ export default  function HomeTop({cate , renderTech}){
       ui.loading.hide();
       if( res.data.total_pages <= page ) {
       
-        document.querySelector(".ui-loadmore").classList.add("hide");
+        document.querySelector(".ui-loadmore")?.classList.add("hide");
       };
 
 
     }).catch(e=>{
       console.log(e);
       ui.loading.hide();
-      document.querySelector(".ui-loadmore").classList.add("error");
+      document.querySelector(".ui-loadmore")?.classList.add("error");
     }); 
   }
 

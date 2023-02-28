@@ -1,9 +1,9 @@
 import React, {useEffect }from 'react'; // useState, , {useEffect }
-
-import ProjectTop from "../components/HomeTop.jsx";
 import { Outlet} from 'react-router-dom';  // useParams,Link,  useSearchParams, useLocation 
 
-export default function HomeTop() {
+import HomeTop from "../components/HomeTop.jsx";
+
+export default function Home() {
 
   useEffect(() => {
     
@@ -21,7 +21,7 @@ export default function HomeTop() {
   
     <div className="container page home">
       <main className="contents">
-      <ProjectTop />
+      <HomeTop />
         
       </main>
     </div>
