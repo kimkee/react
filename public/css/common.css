@@ -815,7 +815,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnTop .slide ul>li .box{position: relative; display: block; z-index: 10;}
 .page.home .sect.mnTop .slide ul>li .box .pics{display:block;position:relative;padding-bottom: calc(800% / 780 * 100);width: 100%;overflow: hidden;width: 100%;border-radius: 0rem;background:#000000;}
 .page.home .sect.mnTop .slide ul>li .box .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #000000;}
-.page.home .sect.mnTop .slide ul>li .box .info{z-index: 10; position: absolute; left:10rem;  bottom:10rem;display: flex; justify-content: space-between; align-items: center; right: 10rem;}
+.page.home .sect.mnTop .slide ul>li .box .info{z-index: 10; position: absolute; left:20rem; right: 20rem;  bottom:10rem;display: flex; justify-content: space-between; align-items: center;}
 .page.home .sect.mnTop .slide ul>li .box .info .tit{font-size:16rem;}
 .page.home .sect.mnTop .slide ul>li .box .info .star{font-size:18rem;line-height: 1; padding-bottom: 2rem; }
 .page.home .sect.mnTop .swiper-pagination{bottom:0; top: auto; left: 0; right: 0;}

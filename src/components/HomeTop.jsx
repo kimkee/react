@@ -49,15 +49,15 @@ export default  function HomeTop({cate , renderTech}){
   }
 
   
-  // const [swiper, setSwiper] = useState(null);
-  // const nexto = () => {
-  //   swiper.slideTo( Math.floor( Math.random() *10 ) , 0 );
-  // };
+  const [swiper, setSwiper] = useState(null);
+  const nexto = () => {
+    swiper.slideTo( Math.floor( Math.random() *10 ) , 0 );
+  };
 
   useEffect(() => {
     fetchMoive(page);
     // swiper.slideTo(2);
-    
+    nexto()
     return ()=>{
       
     }
@@ -88,7 +88,7 @@ export default  function HomeTop({cate , renderTech}){
             autoHeight={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
-              // setSwiper(swiper);
+              setSwiper(swiper);
               swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={() => console.log('slide change')}   >
