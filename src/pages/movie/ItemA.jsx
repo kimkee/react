@@ -7,14 +7,14 @@ import ui from '../../ui';
 export default function ItemA({data,cate}) {
   // console.log(data);
   // console.log(cate.genr);
-  
-  const img = 'https://image.tmdb.org/t/p/w200'+data.poster_path;
-  const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
+  const imgpath = 'https://image.tmdb.org/t/p/w200';
+  const img = data.poster_path ? imgpath + data.poster_path : '/img/common/non_poster.png';
+  const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + (data.poster_path || '/img/common/non_poster.png');
   return (
   <>
     <Link className="box" to={"/search/"+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' /></div>
         <div className="desc">
           <div className="tits">{data.title}</div>
           <div className="text">{data.overview}</div>
@@ -38,7 +38,7 @@ export default function ItemA({data,cate}) {
           <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
         </div>
       </div>
-      <div className="bgs" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500${bgs})`}}></div>
+      <div className="bgs" style={{backgroundImage: `url(${bgs})`}}></div>
     </Link>
   </>  
   )

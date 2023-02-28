@@ -30,7 +30,7 @@ function App() {
                 <Route path=":id" element={<View />} />
               </Route>
            
-              <Route path="movie" element={<Lists /> } />
+              <Route path="movie/*" element={<Lists /> } />
               <Route path="movie/:cate" element={<Lists /> }>
                 <Route path=":id" element={<View />} />
                 

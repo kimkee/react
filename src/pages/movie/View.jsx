@@ -127,16 +127,34 @@ export default function View() {
         </div>
         <div className="vinf">{data.overview}</div>
         <div className="cast">
-          {
-            casts?.cast.filter( (item, i) => i < 5 ).map( b => {
-              return (
-                <div key={b.id} className='profile'>
-                  <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
-                  <div className="name">{b.name}</div>
-                </div>
-              )
-            })
-          }
+          <h4 className="tts">출연</h4>
+          <div className="lst">
+            {
+              casts?.cast.filter( (item, i) => i < 5 ).map( b => {
+                return (
+                  <div key={b.cast_id} className='profile'>
+                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
+                    <div className="name">{b.name}</div>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+        <div className="cast">
+          <h4 className="tts">스텝</h4>
+          <div className="lst">
+            {
+              casts?.crew.filter( (item, i) => i < 5 ).map( b => {
+                return (
+                  <div key={b.credit_id} className='profile'>
+                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
+                    <div className="name">{b.name}</div>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       </>
     )
