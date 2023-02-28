@@ -24,9 +24,13 @@ export default function Home() {
       <main className="contents">
       <HomeTop />
 
-      <ListSet opts={'popular'} />
+      <ListSet opts={{list:'now_playing',title:'상영중'}} />
+      {/* <ListSet opts={{list:'popular',title:'인기영화'}} /> */}
 
-      <ListSet opts={'now_playing'} />
+      <ListSet opts={{list:'popular',cate:16,title:'애니메이션'}} />
+
+      <ListSet opts={{list:'popular',cate:99,title:'다큐멘터리'}} />
+
 
       </main>
     </div>

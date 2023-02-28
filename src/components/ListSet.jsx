@@ -25,8 +25,9 @@ export default  function ListSet({opts}){
     
 
     console.log( "로드 " + page );
-    
-    const fetchURL = `https://api.themoviedb.org/3/movie/${opts}?page=1&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    //  vote_count.desc  추천순
+    //  with_genres=16  장르별
+    const fetchURL = `https://api.themoviedb.org/3/movie/${opts.list}?page=1&with_genres=${opts.cate}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -72,8 +73,8 @@ export default  function ListSet({opts}){
       
       <section className="sect mnList">
 
-        { opts === 'popular' ?        <h3 className="sectit">인기영화</h3> : null }
-        { opts === 'now_playing' ?        <h3 className="sectit">상영중</h3> : null }
+        <h3 className="sectit">{opts.title}</h3>
+        
 
         <div className="inr">
           
@@ -99,7 +100,7 @@ export default  function ListSet({opts}){
             onSlideChange={() => console.log('slide change')}   >
               {
                 mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
-                  const img = 'https://image.tmdb.org/t/p/w200'+data.poster_path ;
+                  const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <Link className="box" to={"/"+data.id}>
