@@ -10,7 +10,7 @@ import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
 import List from './pages/movie/List.jsx';
 import View from './pages/movie/View.jsx';
-import SchPop from './pages/movie/SchPop.jsx';
+// import SchPop from './pages/movie/SchPop.jsx';
 import Search from './pages/movie/Search.jsx';
 function App() {
   // const location = window.location;
@@ -21,20 +21,19 @@ function App() {
   return (
     <>
       <Router>
-        
+        <Header />
         {/* <TransitionGroup className="transition-group">
           <CSSTransition in={true} classNames={"right"} timeout={5000}> */}
             
             <Routes>
               <Route path="/" element={<Home />} >
-                <Route path="/" element={<Header cls='trans' />} /> 
                 <Route path=":id" element={<View />} />
               </Route>
            
-              <Route path="movie" element={<List />}>
-              <Route path="" element={<Header cls='' />} /> 
+              <Route path="movie" element={<List /> }>
                 <Route path=":id" element={<View />} />
-                <Route path="pop" element={<SchPop />} />
+                
+                {/* <Route path="pop" element={<SchPop />} /> */}
                 {/* <Route path=":keyword" element={<List />} /> */}
                 {/* <Route path="search:keyword" element={<List />} /> */}
               </Route>

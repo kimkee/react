@@ -34,7 +34,7 @@ export default function Header({cls}) {
     });
   }
   return (
-	  <header className={"header " + cls}>
+	  <header className={"header "}>
       <div className="inr">
         <div className="ldt">
           <h1 className="logo"> <Link to={`${process.env.PUBLIC_URL}/movie`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1>

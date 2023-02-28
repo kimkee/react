@@ -121,8 +121,8 @@ export default function List() {
   // console.log(dlist);
 
   return (
-  <>
-    <Outlet />
+    <>
+    <Outlet></Outlet>
     <div className="container page movie list">
       <main className="contents">
         <div className='poster-list'>
