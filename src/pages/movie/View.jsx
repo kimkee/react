@@ -42,7 +42,8 @@ export default function View() {
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       setDatas(response.data);
-      setBgImg('https://image.tmdb.org/t/p/w500'+response.data.backdrop_path);
+      let bgDm = response.data.backdrop_path ? response.data.backdrop_path : response.data.poster_path;
+      setBgImg('https://image.tmdb.org/t/p/w500'+bgDm);
     }).catch( e => {
       console.log(e);
     });
