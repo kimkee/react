@@ -51,12 +51,12 @@ export default  function HomeTop({cate , renderTech}){
   
   const [swiper, setSwiper] = useState(null);
   const nexto = () => {
-    swiper.slideTo( Math.floor( Math.random() *10 ) , 0 );
+    swiper?.slideTo( Math.floor( Math.random() *10 ) , 0 );
   };
 
   useEffect(() => {
     fetchMoive(page);
-    // swiper.slideTo(2);
+    // swiper?.slideTo(2);
     nexto()
     return ()=>{
       
