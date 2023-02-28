@@ -583,6 +583,13 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .btn{text-align: center; width: 50rem; justify-content: center;}
 .schs-form .btn i{margin: 0;}
 
+ 
+
+.cate-box{display: block; display:none; padding: 0rem 10rem;margin: 0rem -10rem;margin-top: 11rem;padding-right: 21rem;}
+.cate-box .swiper{padding: 2rem 0rem;/* padding-right: 20rem; */}
+.cate-box ul{display:flex;padding: 0rem 5rem;/* margin-right: 20rem; */}
+.cate-box ul>li{width: auto;margin: 0rem 5rem;padding: 2rem 0rem;}
+.cate-box ul>li .bt{white-space: nowrap;border: #5b6a6e solid 1rem;border-radius: 30rem;padding: 4rem 8rem;font-size: 12rem;background: #1d2736;}
 
 .page.board.list{}
 .page.board.list .contents{padding: 0rem 0rem  0rem 0rem;margin: 0rem;}

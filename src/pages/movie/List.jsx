@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useSearchParams, useLocation } from 'react-router-dom';  // Link,useParams
+import {Link, Outlet, useSearchParams, useLocation } from 'react-router-dom';  // Link,useParams
 import axios from 'axios';
 import ui from '../../ui';
 import ItemB from './ItemB.jsx';
+import CateMenu from './CateMenu.jsx';
 
 
 export default function List() {
@@ -19,6 +20,7 @@ export default function List() {
   
   
   const [mlist, setMlist] = useState([]);
+  const [genrMenu, genrMenuSet] = useState([]);
   // const [page, setPage] = useState(1);
   let page = 1;
   
@@ -30,8 +32,10 @@ export default function List() {
     let cate = {
       genr:{}
     }
-    await axios.get('https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=f76021076e8162ea929bd2cea62c6646').then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
+      console.log(res.data.genres);
+      genrMenuSet(res.data.genres);
       // setCate(cate); 
     }).then( res =>{
       setCate(cate);
@@ -47,8 +51,10 @@ export default function List() {
     console.log( "로드 " + page );
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
-    let fetchURL = `https://api.themoviedb.org/3/movie/popular?page=${page}&&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    // /trending/movie/day
+    let fetchURL = `https://api.themoviedb.org/3/movie/popular?page=${page}&with_genres=${''}&language=ko&region=kr&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/discover/movie?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
+    // let fetchURL = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
@@ -125,9 +131,12 @@ export default function List() {
 
   return (
     <>
-    <Outlet></Outlet>
+    <Outlet />
     <div className="container page movie list">
       <main className="contents">
+
+        <CateMenu menu={genrMenu}/>
+
         <div className='poster-list'>
             
           <ul className='list'>            

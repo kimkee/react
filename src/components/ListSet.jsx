@@ -27,6 +27,7 @@ export default  function ListSet({opts}){
     console.log( "로드 " + page );
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
+    // /trending/movie/day
     const fetchURL = `https://api.themoviedb.org/3/movie/${opts.list}?page=1&with_genres=${opts.cate}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
