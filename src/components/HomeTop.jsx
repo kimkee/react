@@ -4,7 +4,7 @@ import { Link  } from 'react-router-dom';  // useParams , Outlet, useSearchParam
 import axios from 'axios';
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, Autoplay,EffectFade , A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
 
@@ -13,6 +13,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
 import ui from '../ui';
 
 
@@ -76,11 +78,14 @@ export default  function HomeTop({cate , renderTech}){
           
           <Swiper className="swiper-wrapper swiper slide" 
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
             spaceBetween={0}
             slidesPerView={1}
-            navigation
-            loop={{loop:true}}
+            // navigation
+            loop={true}
+            effect={"fade"}
+            // autoplay={false}
+            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
             wrapperTag="ul"
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
