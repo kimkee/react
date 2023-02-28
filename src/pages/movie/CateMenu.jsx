@@ -14,9 +14,7 @@ export default function ItemA({menu}) {
   let params = useParams()
   // let navigate = useNavigate();
   const [swiper, setSwiper] = useState(null);
-  const nexto = () => {
-    swiper.slideTo( 3 , 0 );
-  };
+  // const nexto = () => { swiper.slideTo( 3 , 0 ); };
   const cateID = params.cate;
 
   useEffect(() => {

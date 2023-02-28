@@ -6,7 +6,7 @@ import ItemB from './ItemB.jsx';
 import CateMenu from './CateMenu.jsx';
 
 
-export default function List() {
+export default function Lists() {
 
 
   let params = useParams()

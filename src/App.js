@@ -8,7 +8,7 @@ import {  } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
-import List from './pages/movie/List.jsx';
+import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
 // import SchPop from './pages/movie/SchPop.jsx';
 import Search from './pages/movie/Search.jsx';
@@ -30,13 +30,13 @@ function App() {
                 <Route path=":id" element={<View />} />
               </Route>
            
-              <Route path="movie" element={<List /> } />
-              <Route path="movie/:cate" element={<List /> }>
+              <Route path="movie" element={<Lists /> } />
+              <Route path="movie/:cate" element={<Lists /> }>
                 <Route path=":id" element={<View />} />
                 
                 {/* <Route path="pop" element={<SchPop />} /> */}
-                {/* <Route path=":keyword" element={<List />} /> */}
-                {/* <Route path="search:keyword" element={<List />} /> */}
+                {/* <Route path=":keyword" element={<Lists />} /> */}
+                {/* <Route path="search:keyword" element={<Lists />} /> */}
               </Route>
               <Route path="search" element={<Search />} >
                 <Route path=":id" element={<View />} />
