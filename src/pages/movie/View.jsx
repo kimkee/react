@@ -125,37 +125,47 @@ export default function View() {
             <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+data.poster_path} alt={data.title} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
           </div>
         </div>
+        {data.overview ? 
         <div className="vinf">{data.overview}</div>
+        : null}
+
+        {casts?.cast.length ?
         <div className="cast">
           <h4 className="tts">출연</h4>
           <div className="lst">
             {
-              casts?.cast.filter( (item, i) => i < 5 ).map( b => {
+              casts?.cast.filter( (item, i) => i < 4 ).map( b => {
                 return (
                   <div key={b.cast_id} className='profile'>
                     <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
                     <div className="name">{b.name}</div>
+                    <div className="carc">{b.character}</div>
                   </div>
                 )
               })
             }
           </div>
         </div>
+        :null}
+        
+        {casts?.crew.length ?
         <div className="cast">
           <h4 className="tts">스텝</h4>
           <div className="lst">
             {
-              casts?.crew.filter( (item, i) => i < 5 ).map( b => {
+              casts?.crew.filter( (item, i) => i < 4 ).map( b => {
                 return (
                   <div key={b.credit_id} className='profile'>
                     <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
                     <div className="name">{b.name}</div>
+                    <div className="carc">{b.known_for_department}</div>
                   </div>
                 )
               })
             }
           </div>
         </div>
+        :null}
       </>
     )
   }
