@@ -55,6 +55,10 @@ export default function Lists() {
   };
   // const keyword = "미녀";
   
+  const [nowPage, nowPageSet] = useState({
+    "pge":0,
+    "tot":0
+  })
   
   const fetchMoive = (page)=>{
     if (state) { setMlist([])} 
@@ -79,6 +83,10 @@ export default function Lists() {
       callStat = true;
       console.log(callStat);
       ui.loading.hide();
+      nowPageSet({
+        "pge":res.data.page,
+        "tot":res.data.total_pages
+      });
       if( res.data.total_pages <= page ) {
         callStat = false;
         document.querySelector(".ui-loadmore").classList.add("hide");
@@ -178,6 +186,11 @@ export default function Lists() {
           </div>
 
         </div>
+        
+        <div className="page-set">
+          <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
+        </div>
+
       </main>
     </div>
   </>  

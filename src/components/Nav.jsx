@@ -1,5 +1,7 @@
-import React, {   } from 'react'; //useState, useEffect
+import React, {  useEffect } from 'react'; //useState, useEffect
 import {NavLink , useLocation } from 'react-router-dom'; // Link  , useLocation, useSearchParams,useParams, useSearchParams
+
+import ui from '../ui';
 
 export default function Nav() {
   // let params = useParams()
@@ -13,15 +15,38 @@ export default function Nav() {
     let isMove = location.pathname.includes('/movie/') ? "bt active" : "bt";
     return isMove;
   }
+  const scrollEvent = ()=> {
+    const scr = ui.viewport.scrollTop();   
+    if ( scr > 50 ) {
+     document.querySelector(".floatnav .bt.top")?.classList.add("on");
+    }else{
+      document.querySelector(".floatnav .bt.top")?.classList.remove("on");
+    }
+  };
+  const goTop = ()=>{
+    window.scrollTo(0,0);
+  }
+  useEffect( () => {
+    window.addEventListener("scroll", scrollEvent);
+    return ()=>{
+      window.removeEventListener("scroll", scrollEvent);
+    }
+  },[]);
+
   return (
-	  <nav id="menubar" className="menubar">
-      <div className="inr">
-        <ul className="menu">
-          <li><NavLink to={`${process.env.PUBLIC_URL}/`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
-          <li><NavLink to={`${process.env.PUBLIC_URL}/movie/0`} className={ movieAct }><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
-          <li><NavLink to={`${process.env.PUBLIC_URL}/search`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
-        </ul>
+    <>
+      <div className="floatnav">
+        <button type="button" className="bt top" onClick={goTop}><i class="fa-solid fa-arrow-up-from-bracket"></i><em>위로</em></button>
       </div>
-    </nav>
+      <nav id="menubar" className="menubar">
+        <div className="inr">
+          <ul className="menu">
+            <li><NavLink to={`${process.env.PUBLIC_URL}/`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
+            <li><NavLink to={`${process.env.PUBLIC_URL}/movie/0`} className={ movieAct }><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+            <li><NavLink to={`${process.env.PUBLIC_URL}/search`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
+          </ul>
+        </div>
+      </nav>
+    </>
   )
 }
