@@ -8,10 +8,10 @@ export default function Home() {
 
   useEffect(() => {
     
-    document.querySelector('.header').classList.add("trans");
+    document.querySelector('.header')?.classList.add("trans");
     
     return ()=>{
-      document.querySelector('.header').classList.remove("trans");
+      document.querySelector('.header')?.classList.remove("trans");
     }
     
   },[]);
@@ -30,6 +30,8 @@ export default function Home() {
       <ListSet opts={{list:'popular',cate:16,title:'애니메이션'}} />
 
       <ListSet opts={{list:'popular',cate:99,title:'다큐멘터리'}} />
+
+      <ListSet opts={{list:'popular',cate:10770,title:'TV드라마'}} />
 
 
       </main>

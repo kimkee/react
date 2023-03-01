@@ -44,7 +44,7 @@ export default function Search() {
 
     kwd = keyword
     
-    let fetchURL = `https://api.themoviedb.org/3/search/movie?language=ko&region=kr&page=${page}&query=${kwd}&api_key=${process.env.REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/search/movie?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
     if(keyword == null) {
       fetchURL = ''
       ui.loading.hide();
@@ -155,6 +155,7 @@ export default function Search() {
         <div className="schs-form">
           <div className="inr">
             <form className="form" onSubmit={ goSearch }>
+              <h2 className="tts">검색</h2>
               <span className="input">
                 <input type="text" placeholder="영화 제목을 입력하세요." onChange={onChange} id="input_kwd"/>
               </span>

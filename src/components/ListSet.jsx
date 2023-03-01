@@ -74,8 +74,10 @@ export default  function ListSet({opts}){
       
       <section className="sect mnList">
 
-        <h3 className="sectit">{opts.title}</h3>
-        
+        <Link  to={`/movie/${opts.cate || 0}`} className="hbox">
+          <h3 className="stit">{opts.title}</h3>
+          <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
+        </Link>
 
         <div className="inr">
           

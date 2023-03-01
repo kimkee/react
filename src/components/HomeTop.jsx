@@ -23,26 +23,18 @@ export default  function HomeTop({cate , renderTech}){
   const [mlist, setMlist] = useState([]);
   const fetchMoive = (page)=>{
     ui.loading.show();
-    
-
-    console.log( "로드 " + page );
-    
+   
     const fetchURL = `https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
-
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
       console.log( mlist );
       console.log(page + "=== " + res.data.total_pages );
       
-      
       ui.loading.hide();
       if( res.data.total_pages <= page ) {
-      
         document.querySelector(".ui-loadmore")?.classList.add("hide");
       };
-
-
     }).catch(e=>{
       console.log(e);
       ui.loading.hide();
@@ -58,13 +50,27 @@ export default  function HomeTop({cate , renderTech}){
 
   useEffect(() => {
     fetchMoive(page);
-    // swiper?.slideTo(2);
-    nexto()
+    nexto();
+    
+    window.addEventListener("scroll", scrollHome);
     return ()=>{
-      
+      window.removeEventListener("scroll", scrollHome);
     }
-    // eslint-disable-next-line
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
+
+
+  const scrollHome = ()=> {
+    const val = parseInt( ui.viewport.scrollTop()/1.8 );
+    document.querySelectorAll(".page.home .sect.mnTop .slide ul>li .box .pics").forEach(element => {
+      element.style.transform = 'translate3D(0rem , 0'+val+'rem , 0rem)';
+      // element.style.transform = parseInt(scr/1.5)+"rem";
+    });
+    // console.log(scr );
+  };
+
+
 
 
 
