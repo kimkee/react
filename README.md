@@ -4,12 +4,36 @@
 ## React : <a href="https://kimkee.github.io/react/" target="_blank">https://kimkee.github.io/react/</a>
 
 <br>
+
+## 기능구현
+- 인기영화,추천영화, 장르별 리스트
+- 10점만점의 추천정보 점수를 5점 만점의 별점UI로 추가구현
+- 영화 검색 기능 구현
+
+|  홈 | 상세 | 리스트 | 검색 |
+| :-: | :-: | :-: | :-: |
+| <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_01.jpg" width="200px" align="top"> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_02.jpg" width="200px" align="top"> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_03.jpg" width="200px" align="top"> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_04.jpg" width="200px" align="top"> |
+
 <br>
 
-> Reference
-- Post
-	- [영화 API 사용법](https://velog.io/@letgodchan0/TIL-%EC%98%81%ED%99%94-API-%EC%82%AC%EC%9A%A9%EB%B2%95)
-	- [React에서 Axios 사용하기](https://velog.io/@mgk8609/React%EC%97%90%EC%84%9C-Axios-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+## React Version
+- "react": "^18.2.0",
+- "react-router-dom": "^6.8.1",
+- "axios": "^1.3.3",
+- "swiper": "^9.0.3", (https://swiperjs.com/react)
+## Tools
+
+- JSON View  https://chrome.google.com/webstore/detail/jsonview/gmegofmjomhknnokphhckolhcffdaihd<br>
+크롬에서 JSON API 미리보기기능
+- 
+
+
+## Reference
+
+- [영화 API 사용법](https://velog.io/@letgodchan0/TIL-%EC%98%81%ED%99%94-API-%EC%82%AC%EC%9A%A9%EB%B2%95)
+- [React에서 Axios 사용하기](https://velog.io/@mgk8609/React%EC%97%90%EC%84%9C-Axios-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+
+<br>
 
 ## TMDB API
 
