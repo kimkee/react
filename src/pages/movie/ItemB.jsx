@@ -12,9 +12,10 @@ export default function ItemA({data,cate}) {
   // const bgs = data.backdrop_path ? data.backdrop_path : data.poster_path;
   return (
   <>
-    <Link className="box" to={""+data.id}>
+    
+    <Link className={`box s ${process.env.PUBLIC_URL}`} to={""+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}./img/common/non_poster.png`}}/></div>
         <div className="desc">
           <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em>
           {/* <div className="cate">
