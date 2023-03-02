@@ -60,7 +60,7 @@ export default function View() {
     });
   };
 
-
+  
 
 
   useEffect(() => {
@@ -86,7 +86,7 @@ export default function View() {
     console.log( cate.genr);
     
     console.log( casts);
-    if(!data)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
+    if(!data || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
     
     return (
       <>
@@ -125,16 +125,16 @@ export default function View() {
             <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+data.poster_path} alt={data.title} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
           </div>
         </div>
-        {data.overview ? 
+        {data.overview ?
         <div className="vinf">{data.overview}</div>
         : null}
 
-        {casts?.cast.length ?
+        {casts.cast.length ?
         <div className="cast">
           <h4 className="tts">출연진</h4>
           <div className="lst">
             {
-              casts?.cast.filter( (item, i) => i < 999 ).map( b => {
+              casts.cast.filter( (item, i) => i < 999 ).map( b => {
                 return (
                   <div key={b.cast_id} className='profile'>
                     <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
@@ -146,14 +146,14 @@ export default function View() {
             }
           </div>
         </div>
-        :null}
+        : null}
         
-        {casts?.crew.length ?
+        {casts.crew.length ?
         <div className="cast">
           <h4 className="tts">제작진</h4>
           <div className="lst">
             {
-              casts?.crew.filter( (item, i) => i < 999 ).map( b => {
+              casts.crew.filter( (item, i) => i < 999 ).map( b => {
                 return (
                   <div key={b.credit_id} className='profile'>
                     <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>

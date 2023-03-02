@@ -14,26 +14,30 @@ export default function ItemA({menu}) {
   let params = useParams()
   // let navigate = useNavigate();
   const [swiper, setSwiper] = useState(null);
-  // const nexto = () => { swiper.slideTo( 3 , 0 ); };
+  const [slideActive, slideActiveSet] = useState(null);
+  const goSlide = (num) => { 
+    document.querySelectorAll(".cate-box ul>li .bt.active").forEach( bt => {
+      num = parseInt( bt.closest("li").getAttribute("data-index") );
+    })
+    slideActiveSet(  num  )
+    console.log(num);
+    swiper?.slideTo( slideActive , 10 );
+    console.log("goSlide");
+  };
   const cateID = params.cate;
-
+  console.log(slideActive);
   useEffect(() => {
-    swiper?.slideTo(  swiper?.activeIndex  );
-    console.log(  swiper?.activeIndex  );
-    if( swiper?.activeIndex ){
-      swiper?.slideTo(  swiper?.activeIndex  );
-    }
+    goSlide(slideActive)
     return ()=>{
-      
     }
     // eslint-disable-next-line
-  },[swiper,cateID]);
-
+  },[swiper,cateID,slideActive,menu]);
 
   return (
   <>
     <div className="cate-box">
       <div className="inr">
+        {/* <button onClick={goSlide}>SSSSS</button> */}
         <Swiper className="swiper-wrapper" 
           // install Swiper modules
           modules={[Navigation, Pagination,FreeMode, A11y]}
@@ -52,14 +56,13 @@ export default function ItemA({menu}) {
           onSwiper={(swiper) => {
             console.log("initialize swiper", swiper);
             setSwiper(swiper);
-            // swiper.slideTo( Math.floor( Math.random() *10 ) );
           }}
         >
 
           {
-            menu.map( item => {
+            menu.map( (item,idx) => {
               return (
-                <SwiperSlide tag="li" key={item.id}  className="swiper-slide pbox">
+                <SwiperSlide tag="li" data-index={idx} key={item.id}  className="swiper-slide pbox">
                   <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={'/movie/'+item.id}> { [item.name]  }</NavLink>
                 </SwiperSlide>
               )

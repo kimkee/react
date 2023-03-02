@@ -31,7 +31,7 @@ export default function Home() {
 
       <ListSet opts={{list:'popular',cate:99,title:'다큐멘터리'}} />
 
-      <ListSet opts={{list:'popular',cate:10770,title:'TV드라마'}} />
+      <ListSet opts={{list:'popular',cate:10770,title:'TV영화'}} />
 
 
       </main>
