@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export default function ItemA({menu}) {
+export default function CateMenu({menu}) {
   let params = useParams()
   // let navigate = useNavigate();
   const [swiper, setSwiper] = useState(null);

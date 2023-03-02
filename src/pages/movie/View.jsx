@@ -85,12 +85,15 @@ export default function View() {
     console.log( data);
     console.log( cate.genr);
     
-    console.log( casts);
     if(!data || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
+    // console.log( casts);
+    console.log( data.production_companies);
     
     return (
       <>
+
         <div className="info">
+          
           <div className="desc">
             <p className="tit">{data.title}</p>
             <p className="sit">{data.tagline}</p>
@@ -165,7 +168,22 @@ export default function View() {
             }
           </div>
         </div>
-        :null}
+        : null}
+
+        {data.production_companies.length ? 
+        <div className="comp">
+          {
+            data.production_companies.map(comp => {
+              return comp.logo_path 
+              ? 
+              <span className='logo'><img src={'https://image.tmdb.org/t/p/w92'+comp.logo_path} alt={comp.name} className="img" /></span> 
+              : 
+              <span className='logo'>{comp.name}</span> 
+            })
+          }
+        </div>
+        : null}
+
       </>
     )
   }
