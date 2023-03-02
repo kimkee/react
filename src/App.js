@@ -2,12 +2,13 @@ import React from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
-import {  } from 'react-router-dom';
+
 
 
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
+// import NotFound from './pages/NotFound.jsx';
 import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
 // import SchPop from './pages/movie/SchPop.jsx';
@@ -26,11 +27,14 @@ function App() {
           <CSSTransition in={true} classNames={"right"} timeout={5000}> */}
             
             <Routes>
+
+              {/* <Route path='/*' element={<NotFound />} /> */}
+
               <Route path="/" element={<Home />} >
                 <Route path=":id" element={<View />} />
               </Route>
            
-              <Route path="movie/*" element={<Lists /> } />
+              <Route path="movie/" element={<Lists /> } />
               <Route path="movie/:cate" element={<Lists /> }>
                 <Route path=":id" element={<View />} />
                 

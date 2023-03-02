@@ -576,7 +576,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .poster-list>.list>li .box .desc em{text-shadow: 0rem 0rem 6rem #0000007d;font-size: 3.3vw;margin-left: 7rem;display: inline-flex;line-height: 1.2;text-shadow: 0rem 1rem 2rem rgb(0 0 0 / 70%);opacity: 0.9;}
 .poster-list>.list>li .box .desc .cate .ico{display: inline-flex;justify-content: center;border-radius: 10rem;padding: 3rem 5rem 3rem 5rem;margin: 1rem 3rem 1rem 0rem;font-size: 10rem;line-height: 1;font-family: 'Tahoma';color: #aaa;background: #333;cursor: default;}
 .poster-list>.list>li .box .cont .pics{display:block;position:relative;padding-bottom: calc(1200% / 780 * 100);overflow: hidden;/* border-radius: 6rem; */}
-.poster-list>.list>li .box .cont .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #3b516c;}
+.poster-list>.list>li .box .cont .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #333333;}
 
 
 .page.movie{/* background-color: #0d1117; */}

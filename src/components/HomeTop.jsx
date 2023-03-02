@@ -102,7 +102,7 @@ export default  function HomeTop({cate , renderTech}){
               setSwiper(swiper);
               swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
-            onSlideChange={() => console.log('slide change')}   >
+            onSlideChange={() => {/* console.log('slide change') */}}   >
               {
                 mlist?.filter( (item, i) => i < 10 ).map( (data, idx) => {
                   const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;

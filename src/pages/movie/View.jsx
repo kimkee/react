@@ -43,7 +43,7 @@ export default function View() {
     axios.get( fetchURL ).then(response => {
       setDatas(response.data);
       let bgDm = response.data.backdrop_path ? response.data.backdrop_path : response.data.poster_path;
-      setBgImg('https://image.tmdb.org/t/p/w500'+bgDm);
+      setBgImg('https://image.tmdb.org/t/p/w780'+bgDm);
     }).catch( e => {
       console.log(e);
     });
@@ -140,7 +140,7 @@ export default function View() {
               casts.cast.filter( (item, i) => i < 999 ).map( b => {
                 return (
                   <div key={b.cast_id} className='profile'>
-                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
+                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
                     <div className="name">{b.name}</div>
                     <div className="carc">{b.character}</div>
                   </div>
@@ -159,7 +159,7 @@ export default function View() {
               casts.crew.filter( (item, i) => i < 999 ).map( b => {
                 return (
                   <div key={b.credit_id} className='profile'>
-                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w200'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
+                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
                     <div className="name">{b.name}</div>
                     <div className="carc">{b.known_for_department}</div>
                   </div>

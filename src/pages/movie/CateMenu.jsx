@@ -21,7 +21,7 @@ export default function CateMenu({menu}) {
     })
     slideActiveSet(  num  )
     console.log(num);
-    swiper?.slideTo( slideActive , 10 );
+    swiper?.slideTo( slideActive , 100 );
     console.log("goSlide");
   };
   const cateID = params.cate;
@@ -59,15 +59,16 @@ export default function CateMenu({menu}) {
           }}
         >
 
-          {
-            menu.map( (item,idx) => {
-              return (
-                <SwiperSlide tag="li" data-index={idx} key={item.id}  className="swiper-slide pbox">
-                  <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={'/movie/'+item.id}> { [item.name]  }</NavLink>
-                </SwiperSlide>
-              )
-            })
-          }
+            <SwiperSlide tag="li" data-index="0" className="swiper-slide pbox">
+              <NavLink type="button" className={ "bt" } to={'/movie/0'}>전체</NavLink>
+            </SwiperSlide>
+          { menu.map( (item,idx) => {
+            return (
+            <SwiperSlide tag="li" data-index={idx+1} key={item.id}  className="swiper-slide pbox">
+              <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={'/movie/'+item.id}> { [item.name]  }</NavLink>
+            </SwiperSlide>
+            )
+          })}
               
         </Swiper>
       </div>

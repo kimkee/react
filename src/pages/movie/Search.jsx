@@ -55,7 +55,6 @@ export default function Search() {
       
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
-      console.log( mlist );
       console.log(page + "=== " + res.data.total_pages );
       callStat = true;
       console.log(callStat);
