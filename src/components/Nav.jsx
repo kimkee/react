@@ -17,6 +17,7 @@ export default function Nav() {
   }
   const scrollEvent = ()=> {
     const scr = ui.viewport.scrollTop();   
+    if ( ui.lock.stat) return;
     if ( scr > 50 ) {
      document.querySelector(".floatnav .bt.top")?.classList.add("on");
     }else{

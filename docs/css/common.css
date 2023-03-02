@@ -607,7 +607,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .cate-box .swiper{padding: 0rem 0rem;padding-right: 20rem;align-items: center;}
 .cate-box ul{display:flex;padding: 0rem 5rem;/* margin-right: 20rem; */}
 .cate-box ul>li{width: auto;margin: 0rem 5rem;padding: 8rem 0rem;}
-.cate-box ul>li .bt{white-space: nowrap;border: #4d5c74 solid 1rem;display:inline-flex;border-radius: 30rem;padding: 6rem 10rem;font-size: 13rem;background: #1d2736;opacity: 0.8;color: #708199;}
+.cate-box ul>li .bt{white-space: nowrap;border: #4d5c74 solid 1rem;display:inline-flex;border-radius: 30rem;padding: 6rem 10rem;font-size: 13rem;background: #1d2736;opacity: 0.8;color: #8ea2bf;}
 .cate-box ul>li .bt.active{background: #38badd;border-color: #38badd;color: #fff;text-shadow: 0 0rem 2rem black;}
 .page.board.list{}
 .page.board.list .contents{padding: 0rem 0rem  0rem 0rem;margin: 0rem;}
