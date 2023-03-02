@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
-import ui from '../../ui';
 
+import StarPoint from "../../components/StarPoint.jsx";
 
 
 export default function ItemA({data,cate}) {
@@ -17,7 +17,11 @@ export default function ItemA({data,cate}) {
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}./img/common/non_poster.png`}}/></div>
         <div className="desc">
-          <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em>
+          
+          <StarPoint point={data.vote_average}/>
+          {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em> */}
+
+
           {/* <div className="cate">
               {data.genre_ids.map( item => <em className="ico" key={item}> {  cate.genr ? cate.genr[item] : null  } </em> )}
             </div> */}

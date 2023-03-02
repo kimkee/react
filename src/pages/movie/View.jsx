@@ -88,7 +88,6 @@ export default function View() {
     if(!data || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
     // console.log( casts);
     console.log( data.production_companies);
-    
     return (
       <>
 
@@ -101,16 +100,9 @@ export default function View() {
             <ul className="lst">
               <li className="star">
                 <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
-                
               </li>
               <li className="cate">
-              
-                
-                  {/* {cate?.genr} */}
-                  {data.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
-                
-                
-              
+                {data.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
               </li>
               <li className="vot">
                 <i className="fa-regular fa-thumbs-up"></i>
@@ -128,9 +120,8 @@ export default function View() {
             <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+data.poster_path} alt={data.title} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
           </div>
         </div>
-        {data.overview ?
-        <div className="vinf">{data.overview}</div>
-        : null}
+        
+        {data.overview ? <div className="vinf">{data.overview}</div> : null}
 
         {casts.cast.length ?
         <div className="cast">
