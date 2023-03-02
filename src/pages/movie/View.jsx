@@ -176,9 +176,9 @@ export default function View() {
             data.production_companies.map(comp => {
               return comp.logo_path 
               ? 
-              <span className='logo'><img src={'https://image.tmdb.org/t/p/w92'+comp.logo_path} alt={comp.name} className="img" /></span> 
+              <span key={comp.id} className='logo'><img src={'https://image.tmdb.org/t/p/w92'+comp.logo_path} alt={comp.name} className="img" /></span> 
               : 
-              <span className='logo'>{comp.name}</span> 
+              <span key={comp.id} className='logo'>{comp.name}</span> 
             })
           }
         </div>

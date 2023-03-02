@@ -20,6 +20,10 @@ export default  function ListSet({opts}){
   let page = Math.floor( Math.random() *4 )+1;
   const [mlist, setMlist] = useState([]);
   console.log(opts);
+  let cateList;
+  cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
+  
+
   const fetchMoive = (page)=>{
     ui.loading.show();
     
@@ -28,7 +32,7 @@ export default  function ListSet({opts}){
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
-    const fetchURL = `https://api.themoviedb.org/3/movie/${opts.list}?page=1&with_genres=${opts.cate}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/movie/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
