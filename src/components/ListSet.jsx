@@ -90,7 +90,7 @@ export default  function ListSet({opts}){
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, FreeMode, A11y]}
             spaceBetween={0}
-            slidesPerView={5}
+            slidesPerView={"auto"}
             // slidesPerGroup={5}
             slidesPerGroupAuto={true}
             // navigation
