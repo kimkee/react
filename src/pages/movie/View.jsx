@@ -61,10 +61,9 @@ export default function View() {
     });
   };
 
-  
-
-
+ 
   useEffect(() => {
+  
     getCate();
     fetchDatas();
     fetchCast();
@@ -86,9 +85,35 @@ export default function View() {
     console.log( data);
     console.log( cate.genr);
     
+
+    
+    const togView = {
+      evt:(e)=>{
+        console.log(e.target);
+        const btn = e.target;
+        const box = btn.closest("[data-ui='elips']");
+        
+        if( box.classList.contains("open")) {
+          btn.innerText = "더보기";
+          box.classList.remove("open");
+        }else{
+          btn.innerText = "숨기기";
+          box.classList.add("open");
+        }
+      },
+      set:()=>{
+        const txt = document.querySelector("[data-ui='elips'] .txt");
+        
+        
+        console.log( ".txt   ==============================  " + txt);
+      }
+    }
+
     if(!data || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
     // console.log( casts);
     console.log( data.production_companies);
+
+
     return (
       <>
 
@@ -123,7 +148,12 @@ export default function View() {
           </div>
         </div>
         
-        {data.overview ? <div className="vinf">{data.overview}</div> : null}
+        {data.overview ? 
+          <div className="vinf" data-ui='elips' >
+            <div className="txt">{data.overview}</div>
+            <button className="btn-tog" type="button" onClick={togView.evt}>더보기</button>
+          </div> 
+        : null}
 
         {casts.cast.length ?
         <div className="cast">

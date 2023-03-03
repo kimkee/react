@@ -103,6 +103,34 @@ const ui = {
             // if( n <= 5)  return this.point[5];
         }
     },
+    // elip:{ // 5줄이상 내용더보기 
+	// 	init:function(){
+	// 		this.evt();
+	// 		this.set();
+	// 	},
+	// 	evt:function(){
+	// 		$(document).on("click", "[data-ui='elips'] .btn-tog", function() {
+	// 			if ($(this).closest("[data-ui='elips']").hasClass("open")) {
+	// 				$(this).closest("[data-ui='elips']").removeClass("open");
+	// 				$(this).text("내용더보기");
+	// 			} else {
+	// 				$(this).closest("[data-ui='elips']").addClass("open");
+	// 				$(this).text("내용닫기");
+	// 			}
+	// 		});
+	// 	},
+	// 	set:function(){
+	// 		$("[data-ui='elips']").each(function(){
+	// 			var txtH = $(this).find(".txt");
+				
+	// 			if(txtH.height()>105){
+	// 				txtH.closest("[data-ui='elips']").addClass("elips");
+	// 			}else{
+	// 				txtH.closest("[data-ui='elips']").removeClass("elips");
+	// 			}
+	// 		});
+	// 	}
+	// },
     alert: function (msg, params) { // 커스텀 알럿
 
         let opt = Object.assign({
