@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useSearchParams, useLocation, useParams, useNavigate } from 'react-router-dom';  // Link,useParams
+import { Outlet, useParams, useNavigate } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 import axios from 'axios';
 import ui from '../../ui';
 import ItemB from './ItemB.jsx';
@@ -19,19 +19,10 @@ export default function Lists() {
   let cateList;
   cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
   console.log(cateList);
-  const [searchParams] = useSearchParams();
-  console.log(searchParams.get('search'));
-
-
-  // const [keyword, keywordSet ] = useState('');
-
-  // let cateID = searchParams.get('cate');
-  let keyword = searchParams.get('search') 
-  
-  
+ 
   const [mlist, setMlist] = useState([]);
   const [genrMenu, genrMenuSet] = useState([]);
-  // const [page, setPage] = useState(1);
+
   let page = 1;
   
   
@@ -61,8 +52,7 @@ export default function Lists() {
   })
   
   const fetchMoive = (page)=>{
-    // if (state) { setMlist([])} 
-    console.log( "검색어 " +keyword);
+    
     console.log( "로드 " + page );
     //  vote_count.desc  추천순
     //  with_genres=16  장르별

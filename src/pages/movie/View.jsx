@@ -64,6 +64,16 @@ export default function View() {
     });
   };
 
+  
+  const scrollEvent = ()=> {
+    const scr = parseInt( document.querySelector(".popup .pct").scrollTop );
+    if( scr > 50){
+      document.querySelector(".popup .phd").classList.add("trans");
+    }else{
+      document.querySelector(".popup .phd").classList.remove("trans");
+    }
+    console.log(scr );
+  };
 
   useEffect(() => {
     getCate();
@@ -71,10 +81,12 @@ export default function View() {
     fetchCast();
     popResize();
     window.addEventListener("resize",popResize);
+    document.querySelector(".popup .pct").addEventListener("scroll",scrollEvent);
     
     ui.lock.using(true);
     return () => {
       window.removeEventListener("resize",popResize);
+      // document.querySelector(".popup .pct").removeEventListener("scroll",scrollEvent);
       console.log('컴포넌트가 화면에서 사라짐');
       ui.lock.using(false);
     };
@@ -111,12 +123,14 @@ export default function View() {
   <>
     <article className="pop-layer a on bottom popup movie view">
       <div className="pbd">
-        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
-        {/* {<div className="phd">
+        <div className="phd">
           <div className="inr">
-            <div className="ptit">{datas?.title}</div>
+            {/* <div className="ptit">{datas?.title}</div> */}
           </div>
-        </div>} */}
+        </div>
+
+        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
+        
         <div className="pct">
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">

@@ -132,8 +132,11 @@ body.is-gnb .btn-gnb{}
 
 .popup.movie.view.on{ background-color: rgba(0,0,0,0.7); }
 .popup.movie.view>.pbd{box-shadow: 0px 0px 5px rgb(114 114 114 / 56%);}
-.popup.movie.view>.pbd>.pct{padding: 90rem 20rem 50rem 20rem;}
-.popup.movie.view>.pbd>.phd{z-index: 10;}
+.popup.movie.view>.pbd>.phd{height: 0rem; z-index: 20;}
+.popup.movie.view>.pbd>.phd>.inr{background-color: transparent; transition: background-color 0.3s;}
+.popup.movie.view>.pbd>.phd.trans>.inr{background-color: rgb(0 0 0 / 50%);}
+.popup.movie.view>.pbd>.pct{padding: 65rem 20rem 50rem 20rem;}
+.popup.movie.view>.pbd>.phd{z-index: 20;}
 .popup.movie.view>.pbd>.pct .poptents{padding: 0rem 0rem 0rem 0rem;z-index: 10;position: relative;}
 .popup.movie.view .bgs{position: absolute;top: 0;left: 0;right: 0;height: 100vw;background: center top no-repeat;background-size: auto;opacity:0.3;overflow: hidden;}
 .popup.movie.view .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 300rem;background-image: linear-gradient(180deg, transparent, #111111);}
@@ -144,7 +147,7 @@ body.is-gnb .btn-gnb{}
 .popup.movie.view .info .thum{display:block;position:relative; width: 100%; overflow: hidden;width: 45%;}
 .popup.movie.view .info .thum .pics{display:block;position:relative;padding-bottom: 150%; width: 100%; overflow: hidden;width: 100%; border-radius: 6rem; background:#000000;}
 .popup.movie.view .info .thum .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #000000;}
-.popup.movie.view .info .desc{width: calc(55% - 20rem);line-height:1.4;text-shadow: 0 0 3rem #000000;color: #ffffff;margin-top: -20rem;}
+.popup.movie.view .info .desc{width: calc(55% - 20rem);line-height:1.4;text-shadow: 0 0 3rem #000000;color: #ffffff;margin-top: -5rem;}
 .popup.movie.view .info .desc .tit{color: #ffffff;font-size: 22rem;text-shadow: 0 0 3rem #000000;margin-bottom: 10rem;line-height: 1.2;}
 .popup.movie.view .info .desc .sit{font-size:14rem;margin-top:5rem; color: #cccccc;}
 .popup.movie.view .info .desc .tio{font-size:11rem; margin-top:5rem; color: #cccccc;}
@@ -201,10 +204,10 @@ img[src*="noimage.png"]{opacity: 0.25;}
 
 .pop-layer.a>.pbd{position:relative;overflow: hidden;transition: transform 0.2s ease-in-out;}
 .pop-layer.a>.pbd>.phd{height: 50rem;position: relative;}
-.pop-layer.a>.pbd>.phd>.inr{position: absolute;left:0rem;right:0rem;top:0rem;z-index:10;height: 50rem;text-align:center;background: #26384e;box-sizing:border-box;display: flex;align-items: center;justify-content: center;}
+.pop-layer.a>.pbd>.phd>.inr{position: absolute;left:0rem;right:0rem;top:0rem;z-index:10;height: 54rem;text-align:center;background: #26384e;box-sizing:border-box;display: flex;align-items: center;justify-content: center;}
 .pop-layer.a>.pbd>.phd .ptit{font-size: 17rem;color:#ffffff;width: calc(100% - 90rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight: 700;}
 .pop-layer.a>.pbd .bt.hback{width:24rem;height:24rem;background: url(../img/cm/btn_top_back_B@2x.png) no-repeat;background-size:24rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';font-size:0rem;position: absolute;left: 20rem;top: 13rem;}
-.pop-layer.a>.pbd .btn-pop-close{position: absolute;right: 17rem;top: 17rem;font-size: 28rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;}
+.pop-layer.a>.pbd .btn-pop-close{position: absolute;right: 17rem;top: 13rem;font-size: 28rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;}
 .pop-layer.a>.pbd .btn-pop-close.back{left: 20rem; right: auto;}
 .pop-layer.a>.pbd>.pct{position: relative;}
 .pop-layer.a>.pbd>.pct::-webkit-scrollbar{display: none;}
@@ -325,7 +328,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar .menu>li .bt.router-link-active i{font-weight:900;}
 
 /* 플로팅 탑버튼 글쓰기버튼 */
-.floatnav{position:fixed;right: 20rem;z-index: 500;transition: all 0.3s;min-width: 55rem;bottom: calc(78rem + var(--safe-bottom));}
+.floatnav{position:fixed;right: 20rem;z-index: 500;transition: all 0.3s;/* min-width: 55rem; */bottom: calc(78rem + var(--safe-bottom));}
 .floatnav.is-top{bottom: 20rem;bottom: calc(20rem + var(--safe-bottom));transition: none;}
 .floatnav .bt{font-size: 0rem;width: 52rem;height: 52rem;display:block;background: no-repeat #555555;background-size: 100% auto;margin: 10rem auto 0 auto;border-radius: 35rem;box-shadow: 0rem 0rem 6rem rgb(0 0 0 / 49%);}
 .floatnav .bt i{font-size: 17rem;}
