@@ -103,6 +103,22 @@ const ui = {
             // if( n <= 5)  return this.point[5];
         }
     },
+    popup:{
+        evt:function(){
+            
+        },
+        resize:function(){
+            
+            let $pop =  document.querySelector(".pop-layer");
+            let pctnH =  $pop.offsetHeight || 0;
+            let pbtnH =  $pop.querySelector(".pbt")?.offsetHeight || 0 ;
+            let phtnH =  $pop.querySelector(".phd")?.offsetHeight || 0 ;
+            pctnH = (pctnH - phtnH) || 0 ;
+            console.log(pctnH  );
+            $pop.querySelector(".pct").style.maxHeight = pctnH - pbtnH+"px" ; 
+        
+        }
+    },
     // elip:{ // 5줄이상 내용더보기 
 	// 	init:function(){
 	// 		this.evt();
