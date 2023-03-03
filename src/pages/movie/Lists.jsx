@@ -27,9 +27,7 @@ export default function Lists() {
 
   // let cateID = searchParams.get('cate');
   let keyword = searchParams.get('search') 
-  let {state} = useLocation();
-  // console.log(state);
-
+  
   
   const [mlist, setMlist] = useState([]);
   const [genrMenu, genrMenuSet] = useState([]);
@@ -63,7 +61,7 @@ export default function Lists() {
   })
   
   const fetchMoive = (page)=>{
-    if (state) { setMlist([])} 
+    // if (state) { setMlist([])} 
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
     //  vote_count.desc  추천순
@@ -76,32 +74,32 @@ export default function Lists() {
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
-
+    // setMlist([])
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
       console.log(page + "=== " + res.data.total_pages );
       callStat = true;
       console.log(callStat);
-      ui.loading.hide();
+      // ui.loading.hide();
       nowPageSet({
         "pge":res.data.page,
         "tot":res.data.total_pages
       });
       if( res.data.total_pages <= page ) {
         callStat = false;
-        document.querySelector(".ui-loadmore").classList.add("hide");
+        document.querySelector(".ui-loadmore")?.classList.add("hide");
       }else{
-        document.querySelector(".ui-loadmore").classList.remove("hide");
+        document.querySelector(".ui-loadmore")?.classList.remove("hide");
 
       };
-      document.querySelector(".ui-loadmore").classList.remove("active");
+      document.querySelector(".ui-loadmore")?.classList.remove("active");
 
 
     }).catch(e=>{
       console.log(e);
-      ui.loading.hide();
-      document.querySelector(".ui-loadmore").classList.add("error");
+      // ui.loading.hide();
+      document.querySelector(".ui-loadmore")?.classList.add("error");
     }); 
   }
 
@@ -110,7 +108,7 @@ export default function Lists() {
 
     setMlist([])
     window.scrollTo(0,0);
-    ui.loading.show();
+    // ui.loading.show();
     fetchMoive(page);
     getCate();
     
@@ -132,7 +130,7 @@ export default function Lists() {
     if (docH <= scr && callStat === true) {
       console.log("바닥도착");
       // console.log( page);
-      document.querySelector(".ui-loadmore").classList.add("active");
+      document.querySelector(".ui-loadmore")?.classList.add("active");
       callStat = false;
       console.log(callStat);
       if(ui.lock.stat) {
@@ -163,35 +161,39 @@ export default function Lists() {
 
         <CateMenu menu={genrMenu}/>
 
+
         <div className='poster-list'>
             
+          { !mlist.length 
+          ?
+            <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div>
+          :
+          <>
           <ul className='list'>            
           {
             mlist.map((data,num) =>{
-              return(
-                <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                  <ItemB data={data} cate={cate} />
-                </li>
-              )
+                return(
+                  <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
+                    <ItemB data={data} cate={cate} />
+                  </li>
+                )
             })
           }
           </ul>
-
           <div className="ui-loadmore">
             <em><i className="fa-duotone fa-spinner"></i></em>
-            <button onClick={ (e)=>{
-              // setPage(page + 1)
-              
-              fetchMoive( page + 1 , e)
-            }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
+            <button onClick={ (e)=>{ fetchMoive( page + 1 , e) /* setPage(page + 1) */ } } type="button" className="btn-load">
+              <i className="fa-regular fa-rotate-right"></i>
+            </button>
           </div>
-
+          </>
+          }
+        
         </div>
         
         <div className="page-set">
           <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
         </div>
-
       </main>
     </div>
   </>  
