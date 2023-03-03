@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams
 import StarPoint from "./StarPoint.jsx";
 
 
-export default function ItemA({data,cate}) {
+export default function ItemB({data,cate}) {
   // console.log(data);
   // console.log(cate.genr);
   
@@ -15,12 +15,10 @@ export default function ItemA({data,cate}) {
     
     <Link className={`box s ${process.env.PUBLIC_URL}`} to={""+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}./img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
         <div className="desc">
           
           <StarPoint point={data.vote_average} />
-          {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em> */}
-
 
           {/* <div className="cate">
               {data.genre_ids.map( item => <em className="ico" key={item}> {  cate.genr ? cate.genr[item] : null  } </em> )}

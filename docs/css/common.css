@@ -893,6 +893,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList.topic .slide ul{counter-reset: section;}
 .page.home .sect.mnList.topic .slide ul>li{width: calc(30% - 10rem) !important;}
 .page.home .sect.mnList.topic .slide ul>li .box{padding: 7rem 0rem 0rem 7rem;}
+.page.home .sect.mnList.topic .slide ul>li .box .info{ left: 15rem;}
+.page.home .sect.mnList.topic .slide ul>li .box .info .ui-star{font-size: 3vw;}
 .page.home .sect.mnList.topic .slide ul>li .box .pics .img{}
 .page.home .sect.mnList.topic .slide ul>li .box .pics::after{counter-increment: section;content:  counter(section);position: absolute;left: -6rem;top: -9rem;line-height: 1;font-size:28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;}
 

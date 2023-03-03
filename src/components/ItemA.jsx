@@ -15,7 +15,7 @@ export default function ItemA({data,cate}) {
   <>
     <Link className="box" to={"/search/"+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}./img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
         <div className="desc">
           <div className="tits">{data.title}</div>
           <div className="text">{data.overview}</div>
@@ -33,7 +33,6 @@ export default function ItemA({data,cate}) {
         <div className="dd">
           <div className="hits">
             <StarPoint point={data.vote_average} />
-            {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em> */}
             <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
           </div>
           <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
