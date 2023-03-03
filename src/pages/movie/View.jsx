@@ -39,7 +39,7 @@ export default function View() {
   const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
+  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       setDatas(response.data);
