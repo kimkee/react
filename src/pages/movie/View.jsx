@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  
 import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
+import ViewElips from './ViewElips';
 export default function View() {
 
   let params = useParams()
@@ -17,10 +18,7 @@ export default function View() {
     await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
-    }).then( res =>{
-      setCate(cate);
-      console.log(cate);
-    });
+    }).then( res =>{ setCate(cate); console.log(cate); });
   };
 
 
@@ -43,8 +41,6 @@ export default function View() {
   const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
-      console.log("영화");
-      console.log(response.data);
       setDatas(response.data);
       let bgDm = response.data.backdrop_path ? response.data.backdrop_path : response.data.poster_path;
       setBgImg('https://image.tmdb.org/t/p/w780'+bgDm);
@@ -55,13 +51,9 @@ export default function View() {
   const castURL = `https://api.themoviedb.org/3/movie/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
-      console.log("배우");
-      console.log(response.data);
+      console.log("배우" , response.data);
       setCasts( response.data);
-      
-    }).catch( e => {
-      console.log(e);
-    });
+    }).catch( e => { console.log(e); });
   };
 
   
@@ -72,21 +64,20 @@ export default function View() {
     }else{
       document.querySelector(".popup .phd").classList.remove("trans");
     }
-    console.log(scr );
   };
 
   useEffect(() => {
+    console.log(  document.querySelector(".pct").offsetHeight );
     getCate();
     fetchDatas();
     fetchCast();
     popResize();
     window.addEventListener("resize",popResize);
     document.querySelector(".popup .pct").addEventListener("scroll",scrollEvent);
-    
+    // togView.set();
     ui.lock.using(true);
     return () => {
       window.removeEventListener("resize",popResize);
-      // document.querySelector(".popup .pct").removeEventListener("scroll",scrollEvent);
       console.log('컴포넌트가 화면에서 사라짐');
       ui.lock.using(false);
     };
@@ -95,28 +86,7 @@ export default function View() {
   
   // console.log(datas);
   // if(!datas)  return ;
-  const togView = {
-    evt:(e)=>{
-      console.log(e.target);
-      const btn = e.target;
-      const box = btn.closest("[data-ui='elips']");
-      
-      if( box.classList.contains("open")) {
-        btn.innerText = "더보기";
-        box.classList.remove("open");
-      }else{
-        btn.innerText = "숨기기";
-        box.classList.add("open");
-      }
-    },
-    set:()=>{
-      const txt = document.querySelector("[data-ui='elips'] .txt");
-      
-      
-      console.log( ".txt   ==============================  " + txt);
-    }
-  }
-
+  // console.log( txtHt );
   // if(!datas || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
 
   return (
@@ -169,14 +139,8 @@ export default function View() {
                     <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
                   </div>
                 </div>
+                {datas.overview ? <ViewElips overview={datas.overview}/> : null}
                 
-                {datas.overview ? 
-                  <div className="vinf" data-ui='elips' >
-                    <div className="txt">{datas.overview}</div>
-                    <button className="btn-tog" type="button" onClick={togView.evt}>더보기</button>
-                  </div> 
-                : null}
-
                 {casts.cast.length ?
                 <div className="cast">
                   <h4 className="tts">출연진</h4>
