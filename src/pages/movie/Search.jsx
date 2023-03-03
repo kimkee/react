@@ -3,7 +3,7 @@ import { Outlet, useNavigate, useSearchParams  } from 'react-router-dom';  // us
 
 import axios from 'axios';
 import ui from '../../ui';
-import ItemA from './ItemA.jsx';
+import ItemA from '../../components/ItemA.jsx';
 // import View from 'View.jsx';
 
 

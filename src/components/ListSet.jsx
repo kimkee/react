@@ -4,7 +4,7 @@ import { Link  } from 'react-router-dom';  // useParams , Outlet, useSearchParam
 import axios from 'axios';
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, FreeMode, A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
 
@@ -88,10 +88,10 @@ export default  function ListSet({opts}){
           
           <Swiper className="swiper-wrapper swiper slide" 
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Navigation, Pagination, Scrollbar, FreeMode, A11y]}
             spaceBetween={0}
             slidesPerView={5}
-            slidesPerGroup={5}
+            // slidesPerGroup={5}
             slidesPerGroupAuto={true}
             // navigation
             loop={false }
@@ -99,6 +99,7 @@ export default  function ListSet({opts}){
             // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
             // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
+            freeMode={true}
             autoHeight={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
