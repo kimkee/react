@@ -40,9 +40,11 @@ export default function View() {
   const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
+  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
+      console.log("영화");
+      console.log(response.data);
       setDatas(response.data);
       let bgDm = response.data.backdrop_path ? response.data.backdrop_path : response.data.poster_path;
       setBgImg('https://image.tmdb.org/t/p/w780'+bgDm);
@@ -55,7 +57,7 @@ export default function View() {
     axios.get( castURL ).then(response => {
       console.log("배우");
       console.log(response.data);
-      setCasts( () => response.data);
+      setCasts( response.data);
       
     }).catch( e => {
       console.log(e);
@@ -119,19 +121,20 @@ export default function View() {
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
           <main className="poptents">
             
-            { datas && casts ?
+            { !datas && !casts &&
+              <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
+            }
+            { datas && casts &&
               <div className="m-info">
-
+                
                 <div className="info">
-              
                   <div className="desc">
                     <p className="tit">{datas.title}</p>
                     <p className="sit">{datas.tagline}</p>
                     <p className="tio">{datas.original_title}</p>
                     <ul className="lst">
                       <li className="star">
-                      <StarPoint point={datas.vote_average} />
-                        {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(datas.vote_average)} } ></em> */}
+                        <StarPoint point={datas.vote_average} />
                       </li>
                       <li className="cate">
                         {datas.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
@@ -213,7 +216,6 @@ export default function View() {
                 : null}
 
               </div> 
-              : <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div> 
             }
 
           </main>
