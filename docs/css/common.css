@@ -876,8 +876,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList .slide{padding: 0rem  19rem;}
 .page.home .sect.mnList .slide ul{}
 .page.home .sect.mnList .slide ul>li{margin: 0 10rem 0 0rem;width: calc(20% - 10rem) !important;}
-.page.home .sect.mnList .slide ul>li .box{position: relative; display: block; z-index: 10;}
-.page.home .sect.mnList .slide ul>li .box .pics{display:block;position:relative;padding-bottom: calc(1200% / 780 * 100);width: 100%;overflow: hidden;width: 100%;border-radius: 0rem;background:#000000;}
+.page.home .sect.mnList .slide ul>li .box{position: relative;display: block;z-index: 10;padding: 5rem 0rem 0rem 5rem;}
+.page.home .sect.mnList .slide ul>li .box .pics{display:block;position:relative;padding-bottom: calc(1200% / 780 * 100);width: 100%;/* overflow: hidden; */width: 100%;border-radius: 0rem;background:#000000;}
 .page.home .sect.mnList .slide ul>li .box .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #000000;}
 .page.home .sect.mnList .slide ul>li .box .info{z-index: 10; position: absolute; left:10rem;  bottom:10rem;display: flex; justify-content: space-between; align-items: center; right: 10rem;}
 .page.home .sect.mnList .slide ul>li .box .info .tit{font-size:11rem;}
@@ -885,8 +885,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList .swiper-pagination{bottom:0; top: auto; left: 0; right: 0;}
 .page.home .sect.mnList .screen{position: absolute; height: 200rem; z-index: 9; left: 0; right: 0; bottom: 0; background-image: linear-gradient(360deg, rgb(17 17 17), transparent); padding: 4% 0;}
 
-
-
+.page.home .sect.mnList.topic .hbox .stit{font-size:20rem; font-style: italic;}
+.page.home .sect.mnList.topic .slide{ padding: 0rem 18rem; }
+.page.home .sect.mnList.topic .slide ul{counter-reset: section;}
+.page.home .sect.mnList.topic .slide ul>li{width: calc(30% - 10rem) !important;}
+.page.home .sect.mnList.topic .slide ul>li .box .pics .img{}
+.page.home .sect.mnList.topic .slide ul>li .box .pics::after{counter-increment: section;content:  counter(section);position: absolute;left: -5rem;top: -8rem;line-height: 1;font-size:28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;}
 
 @keyframes loading-rotate {
     from { transform: rotate(0deg); }

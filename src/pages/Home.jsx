@@ -3,6 +3,7 @@ import { Outlet} from 'react-router-dom';  // useParams,Link,  useSearchParams, 
 
 import HomeTop from "../components/HomeTop.jsx";
 import ListSet from "../components/ListSet.jsx";
+import ListTop10 from "../components/ListTop10.jsx";
 
 export default function Home() {
 
@@ -24,15 +25,15 @@ export default function Home() {
       <main className="contents">
       <HomeTop />
 
-      <ListSet opts={{list:'now_playing', cate: "0", title:'상영중'}} />
+      <ListTop10 opts={{list:"/trending/movie/week", cate: "0", title:'Weekly TOP 20'}} />
 
-      <ListSet opts={{list: "popular", cate: "0", title: "인기영화"}} />
+      <ListSet opts={{list: "movie/popular", cate: "0", title: "인기영화"}} />
 
-      <ListSet opts={{list: "popular", cate: "16", title: "애니메이션"}} />
+      <ListSet opts={{list: "movie/popular", cate: "16", title: "애니메이션"}} />
 
-      <ListSet opts={{list: "popular", cate: "99", title: "다큐멘터리"}} />
+      <ListSet opts={{list: "movie/popular", cate: "99", title: "다큐멘터리"}} />
 
-      <ListSet opts={{list: "popular", cate: "10770", title: "TV영화"}} />
+      <ListSet opts={{list: "movie/popular", cate: "10770", title: "TV영화"}} />
 
 
       </main>

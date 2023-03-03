@@ -77,12 +77,11 @@ export default  function ListSet({opts}){
   return(
     <>
       
-      <section className="sect mnList">
+      <section className="sect mnList topic">
 
-        <Link  to={`/movie/${opts.cate || 0}`} className="hbox">
+        <div className="hbox">
           <h3 className="stit">{opts.title}</h3>
-          <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
-        </Link>
+        </div>
 
         <div className="inr">
           
@@ -90,7 +89,7 @@ export default  function ListSet({opts}){
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, FreeMode, A11y]}
             spaceBetween={0}
-            slidesPerView={5}
+            slidesPerView={"auto"}
             // slidesPerGroup={5}
             slidesPerGroupAuto={true}
             // navigation
