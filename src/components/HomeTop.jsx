@@ -16,6 +16,7 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import ui from '../ui';
+import StarPoint from './StarPoint';
 
 
 export default  function HomeTop({cate , renderTech}){
@@ -112,7 +113,7 @@ export default  function HomeTop({cate , renderTech}){
                           <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div>
                           <div className="info">
                             <div className="star">
-                              <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
+                              <StarPoint point={data.vote_average} />
                             </div>
                             <div className="tit">{data.title}</div>
                           </div>

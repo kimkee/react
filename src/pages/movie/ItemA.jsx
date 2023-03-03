@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
-import ui from '../../ui';
+import StarPoint from '../../components/StarPoint';
+// import ui from '../../ui';
 
 
 
@@ -31,8 +32,8 @@ export default function ItemA({data,cate}) {
         </div>
         <div className="dd">
           <div className="hits">
-            
-            <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em>
+            <StarPoint point={data.vote_average} />
+            {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em> */}
             <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
           </div>
           <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>

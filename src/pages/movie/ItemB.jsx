@@ -18,7 +18,7 @@ export default function ItemA({data,cate}) {
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}./img/common/non_poster.png`}}/></div>
         <div className="desc">
           
-          <StarPoint point={data.vote_average}/>
+          <StarPoint point={data.vote_average} />
           {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html: ui.star.set(data.vote_average)} }></em> */}
 
 

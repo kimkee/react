@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  
 import ui from '../../ui';
+import StarPoint from '../../components/StarPoint';
 export default function View() {
 
   let params = useParams()
@@ -99,7 +100,8 @@ export default function View() {
             <p className="tio">{data.original_title}</p>
             <ul className="lst">
               <li className="star">
-                <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
+              <StarPoint point={data.vote_average} />
+                {/* <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em> */}
               </li>
               <li className="cate">
                 {data.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}

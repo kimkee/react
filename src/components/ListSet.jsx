@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import ui from '../ui';
+// import StarPoint from './StarPoint';
 
 
 export default  function ListSet({opts}){
@@ -113,9 +114,7 @@ export default  function ListSet({opts}){
                       <Link className="box" to={"/"+data.id}>
                           <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div>
                           <div className="info">
-                            {/* <div className="star">
-                              <em className="ui-star" dangerouslySetInnerHTML={ {__html:  ui.star.set(data.vote_average)} } ></em>
-                            </div> */}
+                            {/* <StarPoint point={data.vote_average} /> */}
                             {/* <div className="tit">{data.title}</div> */}
                           </div>
                           {/* <div className="screen"></div> */}

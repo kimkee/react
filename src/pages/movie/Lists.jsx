@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useSearchParams, useLocation,useParams } from 'react-router-dom';  // Link,useParams,useNavigate
+import { Outlet, useSearchParams, useLocation, useParams, useNavigate } from 'react-router-dom';  // Link,useParams
 import axios from 'axios';
 import ui from '../../ui';
 import ItemB from './ItemB.jsx';
@@ -10,9 +10,11 @@ export default function Lists() {
 
 
   let params = useParams()
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
+  const cateID = params.cate;
+  console.log(params.cate);
+  cateID === undefined && navigate('/movie/0') ;
 
-  const cateID = params.cate || 0;
   console.log(cateID )
   let cateList;
   cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
