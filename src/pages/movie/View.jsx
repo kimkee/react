@@ -4,6 +4,7 @@ import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext
 import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
+import ViewRev from './ViewRev';
 export default function View() {
 
   let params = useParams()
@@ -35,7 +36,6 @@ export default function View() {
 
 
   const [datas, setDatas] = useState(null);
-  const [review, setReview] = useState(null);
   const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
@@ -48,13 +48,7 @@ export default function View() {
       setBgImg('https://image.tmdb.org/t/p/w780'+bgDm);
     }).catch( e => { console.log(e); });
   };
-  const fetchRev = `https://api.themoviedb.org/3/movie/${postID}/reviews?api_key=${process.env.REACT_APP_KEY}`;
-  const fetchReview = () => {
-    axios.get( fetchRev ).then(response => {
-      console.log("리뷰들" , response.data);
-      setReview(response.data);
-    }).catch( e => { console.log(e); });
-  };
+
   const castURL = `https://api.themoviedb.org/3/movie/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
@@ -81,7 +75,6 @@ export default function View() {
     console.log(  document.querySelector(".pct").offsetHeight );
     getCate();
     fetchDatas();
-    fetchReview();
     fetchCast();
     popResize();
     window.addEventListener("resize",popResize);
@@ -117,10 +110,10 @@ export default function View() {
         <div className="pct">
           <main className="poptents">
             
-            { !datas && !casts && !review  &&
+            { !datas && !casts &&
               <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
             }
-            { datas && casts && review && 
+            { datas && casts && 
               <div className="m-info">
                 
                 <div className="info">
@@ -209,66 +202,10 @@ export default function View() {
                 </div>
                 : null}
 
-
-
-                {review.results.length ?
-                <>
-                <div className="sect revw">
-                  <h4 className="tts">리뷰</h4>
-                  <div className="ut-reply">
-                    <div className="rplist">
-                      
-                      <ul className="rlist a">
-                      {
-                        review.results.map((rev,idx) => {
-                          let avatar = rev.author_details.avatar_path || "";
-                          // console.log(avatar);
-                          let nImg = avatar.replace(/^\/+/g, '');
-                          // console.log(nImg);
-                          return(
-                          <li key={idx}>
-                            <div className="rpset">
-                              <div className="user">
-                                <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></span>
-                              </div>
-                              <div className="infs">
-                                <div className="name">
-                                  <em className="nm">{rev.author_details.name || rev.author_details.username}</em>
-                                </div>
-                                <div className="desc">
-                                  
-                                  <em className="time">{rev.created_at}</em>
-                                </div>
-                                <div className="ment">{rev.content}</div>
-                                
-                              </div>
-                            </div>
-                          </li>
-                    
-                          )
-                        })
-                      }
-                      </ul>
-                      
-                    </div>
-                  </div>
-                </div>
-                </> 
-
-
-
-                : null}
-
-
-
+                <ViewRev postID={postID}/>
 
                 {datas.production_companies.length ? 
-
                 <>
-                
-
-
-
                 <div className="comp">
                   {
                     datas.production_companies.map(comp => {
@@ -281,9 +218,7 @@ export default function View() {
                   }
                 </div>
                 </>
-                : null
-                
-                }
+                : null}
 
               </div> 
               
@@ -292,8 +227,8 @@ export default function View() {
           </main>
         </div>
       
-        <div class="floatpop">
-          <button type="button" class="bt top" onClick={goTop}><i class="fa-solid fa-arrow-up-from-bracket"></i><em>위로</em></button>
+        <div className="floatpop">
+          <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up-from-bracket"></i><em>위로</em></button>
         </div>
       </div>
     </article>
