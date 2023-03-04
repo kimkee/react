@@ -77,10 +77,11 @@ export default function View() {
     fetchDatas();
     fetchCast();
     popResize();
-    window.addEventListener("resize",popResize);
     document.querySelector(".popup .pct").addEventListener("scroll",scrollEvent);
-    // togView.set();
-    ui.lock.using(true);
+    window.addEventListener("resize",popResize);
+    document.querySelector(".pop-layer").classList.add("ani","on");
+    ui.lock.using(true); 
+
     return () => {
       window.removeEventListener("resize",popResize);
       console.log('컴포넌트가 화면에서 사라짐');
@@ -96,7 +97,7 @@ export default function View() {
 
   return (
   <>
-    <article className="pop-layer a on bottom popup movie view">
+    <article className="pop-layer a bottom popup movie view">
       <div className="pbd">
         <div className="phd">
           <div className="inr">
