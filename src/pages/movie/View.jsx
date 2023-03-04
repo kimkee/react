@@ -68,11 +68,15 @@ export default function View() {
     const scr = parseInt( document.querySelector(".popup .pct").scrollTop );
     if( scr > 50){
       document.querySelector(".popup .phd").classList.add("trans");
+      document.querySelector(".floatpop")?.classList.add("on-top");
     }else{
       document.querySelector(".popup .phd").classList.remove("trans");
+      document.querySelector(".floatpop")?.classList.remove("on-top");
     }
   };
-
+  const goTop = ()=>{
+    document.querySelector(".popup .pct").scrollTo(0,0);
+  }
   useEffect(() => {
     console.log(  document.querySelector(".pct").offsetHeight );
     getCate();
@@ -286,6 +290,10 @@ export default function View() {
             }
 
           </main>
+        </div>
+      
+        <div class="floatpop">
+          <button type="button" class="bt top" onClick={goTop}><i class="fa-solid fa-arrow-up-from-bracket"></i><em>위로</em></button>
         </div>
       </div>
     </article>

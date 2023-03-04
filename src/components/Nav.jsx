@@ -19,9 +19,9 @@ export default function Nav() {
     const scr = ui.viewport.scrollTop();   
     if ( ui.lock.stat) return;
     if ( scr > 50 ) {
-     document.querySelector(".floatnav .bt.top")?.classList.add("on");
+     document.querySelector(".floatnav")?.classList.add("on-top");
     }else{
-      document.querySelector(".floatnav .bt.top")?.classList.remove("on");
+      document.querySelector(".floatnav")?.classList.remove("on-top");
     }
   };
   const goTop = ()=>{

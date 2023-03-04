@@ -22,6 +22,7 @@ export default function Home() {
     header.classList.add("home");
     window.addEventListener("scroll",scrollEvent);    
     return ()=>{
+      header.classList.remove("home");
       window.removeEventListener("scroll",scrollEvent);
     }
     
