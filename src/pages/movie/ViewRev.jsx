@@ -5,15 +5,43 @@ export default function ViewRev({postID}) {
   console.log(postID);
   const [review, setReview] = useState(null);
   const fetchRev = `https://api.themoviedb.org/3/movie/${postID}/reviews?api_key=${process.env.REACT_APP_KEY}`;
-
   const fetchReview = () => {
     axios.get( fetchRev ).then(response => {
       console.log("리뷰들" , response.data);
       setReview(response.data);
     }).catch( e => { console.log(e); });
   };
+
+  const togView = {
+    evt:(e)=>{
+      console.log(e.currentTarget);
+      const btn = e.currentTarget;
+      const box = btn.closest("[data-ui='elips']");
+      if( box.classList.contains("open")) {
+        box.classList.remove("open");
+      }else{
+        box.classList.add("open");
+      }
+    },
+    set:(e)=>{
+      const ments = document.querySelectorAll(".ut-reply ul.rlist>li .rpset .ment");
+
+      ments.forEach( ment =>{
+        const txt = ment.offsetHeight ;
+        const scHt = ment.scrollHeight;
+        console.log(txt + "  ===============================================  " + scHt);
+        if (txt < scHt) {
+          ment.closest("[data-ui='elips']").classList.add("elips");
+        }else{
+          ment.closest("[data-ui='elips']").classList.remove("elips");
+        }
+      });
+    }
+  }
+
   useEffect(() => {
-    fetchReview()
+    fetchReview();
+    
     return () => {
     
     };
@@ -23,7 +51,7 @@ export default function ViewRev({postID}) {
   console.log(review);
 
   if(!review) return <div>Loading...</div>
-
+  togView.set();
   return (
     <>
       {review.results.length ?
@@ -51,18 +79,18 @@ export default function ViewRev({postID}) {
                         <em className="nm">{rev.author_details.name || rev.author_details.username}</em>
                       </div>
                       <div className="desc">
-                        
                         <em className="time">{rev.created_at}</em>
                       </div>
-                      <div className="ment">{rev.content}</div>
-                      
+                      <div data-ui="elips" className=' '>
+                        <div className="ment txt" onClick={togView.evt}>{rev.content}</div>
+                      </div>
                     </div>
                   </div>
                 </li>
-          
                 )
               })
             }
+            
             </ul>
             
           </div>
