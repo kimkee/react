@@ -207,7 +207,7 @@ export default function View() {
 
                 {datas.production_companies.length ? 
                 <>
-                <div className="comp">
+                <div className="sect comp">
                   {
                     datas.production_companies.map(comp => {
                       return comp.logo_path 

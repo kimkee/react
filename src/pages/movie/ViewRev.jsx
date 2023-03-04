@@ -81,7 +81,7 @@ export default function ViewRev({postID}) {
                       <div className="desc">
                         <em className="time">{rev.created_at}</em>
                       </div>
-                      <div data-ui="elips" className=' '>
+                      <div data-ui="elips" className="mbox">
                         <div className="ment txt" onClick={togView.evt}>{rev.content}</div>
                       </div>
                     </div>
