@@ -107,7 +107,7 @@ export default function View() {
       <div className="pbd">
         <div className="phd">
           <div className="inr">
-            {/* <div className="ptit">{datas?.title}</div> */}
+            <div className="ptit">{datas?.title}</div>
           </div>
         </div>
 
