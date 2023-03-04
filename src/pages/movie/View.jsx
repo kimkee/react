@@ -35,23 +35,30 @@ export default function View() {
 
 
   const [datas, setDatas] = useState(null);
+  const [review, setReview] = useState(null);
   const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
+  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
+      console.log("영화정보" , response.data);
       setDatas(response.data);
       let bgDm = response.data.backdrop_path ? response.data.backdrop_path : response.data.poster_path;
       setBgImg('https://image.tmdb.org/t/p/w780'+bgDm);
-    }).catch( e => {
-      console.log(e);
-    });
+    }).catch( e => { console.log(e); });
+  };
+  const fetchRev = `https://api.themoviedb.org/3/movie/${postID}/reviews?api_key=${process.env.REACT_APP_KEY}`;
+  const fetchReview = () => {
+    axios.get( fetchRev ).then(response => {
+      console.log("리뷰들" , response.data);
+      setReview(response.data);
+    }).catch( e => { console.log(e); });
   };
   const castURL = `https://api.themoviedb.org/3/movie/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
-      console.log("배우" , response.data);
+      console.log("출연,제작" , response.data);
       setCasts( response.data);
     }).catch( e => { console.log(e); });
   };
@@ -70,6 +77,7 @@ export default function View() {
     console.log(  document.querySelector(".pct").offsetHeight );
     getCate();
     fetchDatas();
+    fetchReview();
     fetchCast();
     popResize();
     window.addEventListener("resize",popResize);
@@ -101,14 +109,14 @@ export default function View() {
 
         <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
         
-        <div className="pct">
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
+        <div className="pct">
           <main className="poptents">
             
-            { !datas && !casts &&
+            { !datas && !casts && !review  &&
               <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
             }
-            { datas && casts &&
+            { datas && casts && review && 
               <div className="m-info">
                 
                 <div className="info">
@@ -142,7 +150,7 @@ export default function View() {
                 {datas.overview ? <ViewElips overview={datas.overview}/> : null}
                 
                 {casts.cast.length ?
-                <div className="cast">
+                <div className="sect cast">
                   <h4 className="tts">출연진</h4>
                   <div className="lst">
                     {
@@ -161,7 +169,7 @@ export default function View() {
                 : null}
                 
                 {casts.crew.length ?
-                <div className="cast">
+                <div className="sect cast">
                   <h4 className="tts">제작진</h4>
                   <div className="lst">
                     {
@@ -179,7 +187,84 @@ export default function View() {
                 </div>
                 : null}
 
+
+                {datas.images.posters.length ? 
+                <div className="sect post">
+                  <h4 className="tts">포스터</h4>
+                  <div className="lst">
+                  {
+                    datas.images.posters.map((img,idx) => {
+                      return(
+                      <div key={idx} className='box'>
+                        <div  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div> 
+                      </div>
+                      )
+                    })
+                  }
+                  </div>
+                </div>
+                : null}
+
+
+
+                {review.results.length ?
+                <>
+                <div className="sect revw">
+                  <h4 className="tts">리뷰</h4>
+                  <div className="ut-reply">
+                    <div className="rplist">
+                      
+                      <ul className="rlist a">
+                      {
+                        review.results.map((rev,idx) => {
+                          let avatar = rev.author_details.avatar_path || "";
+                          // console.log(avatar);
+                          let nImg = avatar.replace(/^\/+/g, '');
+                          // console.log(nImg);
+                          return(
+                          <li key={idx}>
+                            <div className="rpset">
+                              <div className="user">
+                                <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></span>
+                              </div>
+                              <div className="infs">
+                                <div className="name">
+                                  <em className="nm">{rev.author_details.name || rev.author_details.username}</em>
+                                </div>
+                                <div className="desc">
+                                  
+                                  <em className="time">{rev.created_at}</em>
+                                </div>
+                                <div className="ment">{rev.content}</div>
+                                
+                              </div>
+                            </div>
+                          </li>
+                    
+                          )
+                        })
+                      }
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+                </> 
+
+
+
+                : null}
+
+
+
+
                 {datas.production_companies.length ? 
+
+                <>
+                
+
+
+
                 <div className="comp">
                   {
                     datas.production_companies.map(comp => {
@@ -191,9 +276,13 @@ export default function View() {
                     })
                   }
                 </div>
-                : null}
+                </>
+                : null
+                
+                }
 
               </div> 
+              
             }
 
           </main>

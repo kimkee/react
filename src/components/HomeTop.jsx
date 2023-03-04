@@ -20,7 +20,7 @@ import StarPoint from './StarPoint';
 
 
 export default  function HomeTop({cate , renderTech}){
-  let page = Math.floor( Math.random() *4 )+1;
+  let page = Math.floor( Math.random() *3 )+1;
   const [mlist, setMlist] = useState([]);
   const fetchMoive = (page)=>{
     ui.loading.show();

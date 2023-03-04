@@ -1,18 +1,28 @@
 import React, {useEffect }from 'react'; // useState, , {useEffect }
 import { Outlet} from 'react-router-dom';  // useParams,Link,  useSearchParams, useLocation 
-
+import ui from '../ui';
 import HomeTop from "../components/HomeTop.jsx";
 import ListSet from "../components/ListSet.jsx";
 import ListTop10 from "../components/ListTop10.jsx";
 
 export default function Home() {
-
+  
+  const scrollEvent = ()=> {
+    const header = document.querySelector('.header');
+    const scr = parseInt( ui.viewport.scrollTop() );
+    if( scr > 100){
+      header.classList.add("trans");
+    }else{
+      header.classList.remove("trans");
+    }
+  };
+  
   useEffect(() => {
-    
-    document.querySelector('.header')?.classList.add("trans");
-    
+    const header = document.querySelector('.header');
+    header.classList.add("home");
+    window.addEventListener("scroll",scrollEvent);    
     return ()=>{
-      document.querySelector('.header')?.classList.remove("trans");
+      window.removeEventListener("scroll",scrollEvent);
     }
     
   },[]);

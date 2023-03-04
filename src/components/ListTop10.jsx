@@ -105,7 +105,7 @@ export default  function ListSet({opts}){
               // setSwiper(swiper);
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
-            onSlideChange={() => console.log('slide change')}   >
+            onSlideChange={() => {/* console.log('slide change') */}}   >
               {
                 mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
                   const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
