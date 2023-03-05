@@ -1,6 +1,6 @@
 {
-  "short_name": "React+TMDB",
-  "name": "React+TMDB",
+  "short_name": "React TMDB",
+  "name": "React TMDB",
   "icons": [
     {
       "src": "./img/favicon.ico",
