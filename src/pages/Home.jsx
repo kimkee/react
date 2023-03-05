@@ -10,6 +10,7 @@ export default function Home() {
   const scrollEvent = ()=> {
     const header = document.querySelector('.header');
     const scr = parseInt( ui.viewport.scrollTop() );
+    if ( ui.lock.stat) return;
     if( scr > 100){
       header.classList.add("trans");
     }else{

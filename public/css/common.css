@@ -937,7 +937,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .swiper .swiper-pagination-bullet{margin: 0rem 1rem; transition: all 0.2s;}
 
 .page.home .sect.mnTop{position: relative;}
-.page.home .sect.mnTop>.inr{position: relative;}
+.page.home .sect.mnTop>.inr{position: relative;min-height: 133.9vw;}
 .page.home .sect.mnTop .slide{padding-bottom: 20rem;overflow: visible;}
 .page.home .sect.mnTop .slide ul{}
 .page.home .sect.mnTop .slide ul>li{ }
