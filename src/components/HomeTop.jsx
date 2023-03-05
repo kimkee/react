@@ -64,6 +64,7 @@ export default  function HomeTop({cate , renderTech}){
 
   const scrollHome = ()=> {
     const val = parseInt( ui.viewport.scrollTop()/1.8 );
+    if ( ui.lock.stat) return;
     document.querySelectorAll(".page.home .sect.mnTop .slide ul>li .box .pics").forEach(element => {
       element.style.transform = 'translate3D(0rem , 0'+val+'rem , 0rem)';
       // element.style.transform = parseInt(scr/1.5)+"rem";
