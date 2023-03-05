@@ -80,11 +80,12 @@ export default function Search() {
     getCate();
     ui.loading.show();
     fetchMoive(page);
-    document.querySelector('.header').classList.add("trans");
+    document.querySelector('.header').classList.add("hide");
+    
     document.querySelector("#input_kwd").focus();
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
-      document.querySelector('.header').classList.remove("trans");
+      document.querySelector('.header').classList.remove("hide");
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
