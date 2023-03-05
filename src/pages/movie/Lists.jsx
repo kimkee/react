@@ -101,7 +101,7 @@ export default function Lists() {
     // ui.loading.show();
     fetchMoive(page);
     getCate();
-    
+    document.querySelector(".header").classList.remove("trans");
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
       window.removeEventListener("scroll", scrollEvent);
