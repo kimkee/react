@@ -72,7 +72,7 @@ export default function ViewRev({postID}) {
                 <li key={idx}>
                   <div className="rpset">
                     <div className="user">
-                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></span>
+                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}}/></span>
                     </div>
                     <div className="infs">
                       <div className="name">

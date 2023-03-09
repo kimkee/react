@@ -142,7 +142,7 @@ export default function View() {
                     </ul>
                   </div>
                   <div className="thum">
-                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
+                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
                   </div>
                 </div>
                 {datas.overview ? <ViewElips overview={datas.overview}/> : null}
@@ -155,7 +155,7 @@ export default function View() {
                       casts.cast.filter( (item, i) => i < 999 ).map( b => {
                         return (
                           <div key={b.cast_id} className='profile'>
-                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
+                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}}/></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.character}</div>
                           </div>
@@ -174,7 +174,7 @@ export default function View() {
                       casts.crew.filter( (item, i) => i < 999 ).map( b => {
                         return (
                           <div key={b.credit_id} className='profile'>
-                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/user.png`}}/></div>
+                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}}/></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.known_for_department}</div>
                           </div>
@@ -194,7 +194,7 @@ export default function View() {
                     datas.images.posters.map((img,idx) => {
                       return(
                       <div key={idx} className='box'>
-                        <div  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div> 
+                        <div  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div> 
                       </div>
                       )
                     })

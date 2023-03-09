@@ -13,7 +13,7 @@ export default function ItemB({data,cate}) {
   return (
   <>
     
-    <Link className={`box s ${process.env.PUBLIC_URL}`} to={""+data.id}>
+    <Link className={`box`} to={""+data.id}>
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">

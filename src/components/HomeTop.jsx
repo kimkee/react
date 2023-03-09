@@ -111,7 +111,7 @@ export default  function HomeTop({cate , renderTech}){
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <Link className="box" to={"/"+data.id}>
-                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}} /></div>
+                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                           <div className="info">
                             <div className="star">
                               <StarPoint point={data.vote_average} />
