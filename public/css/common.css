@@ -271,7 +271,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .pop-layer.a>.pbd>.phd>.inr{position: relative;left:0rem;right:0rem;top:0rem;z-index:10;height: 54rem;text-align:center;background: #26384e;box-sizing:border-box;display: flex;align-items: center;justify-content: center;}
 .pop-layer.a>.pbd>.phd .ptit{font-size: 17rem;color:#ffffff;width: calc(100% - 110rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight: 400;padding: 1rem 0 rem 0rem;}
 .pop-layer.a>.pbd .bt.hback{width:24rem;height:24rem;background: url(../img/cm/btn_top_back_B@2x.png) no-repeat;background-size:24rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';font-size:0rem;position: absolute;left: 20rem;top: 13rem;}
-.pop-layer.a>.pbd .btn-pop-close{position: absolute;right: 17rem;top: 13rem;font-size: 28rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;}
+.pop-layer.a>.pbd .btn-pop-close{position: absolute;right: 17rem;top: 13rem;font-size: 28rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;text-shadow: 0rem 0rem 2rem rgb(0 0 0 / 50%);}
 .pop-layer.a>.pbd .btn-pop-close.back{left: 20rem; right: auto;}
 .pop-layer.a>.pbd>.pct{position: relative;}
 .pop-layer.a>.pbd>.pct::-webkit-scrollbar{display: none;}
@@ -408,7 +408,9 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar .menu>li .bt i{font-size:18rem;}
 .menubar .menu>li .bt.router-link-active,
 .menubar .menu>li .bt.active{color: #61dafb;}
+.menubar .menu>li .bt.active i,
 .menubar .menu>li .bt.router-link-active i{font-weight:900;}
+
 
 /* 플로팅 탑버튼 글쓰기버튼 */
 .floatnav{position:fixed;right: 20rem;z-index: 500;transition: all 0.3s;bottom: calc(78rem + var(--safe-bottom));transform: translateY(90rem);transition: transform 0.2s;}
