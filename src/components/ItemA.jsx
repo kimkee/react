@@ -9,13 +9,13 @@ export default function ItemA({data,cate}) {
   // console.log(data);
   // console.log(cate.genr);
   const imgpath = 'https://image.tmdb.org/t/p/w200';
-  const img = data.poster_path ? imgpath + data.poster_path : './img/common/non_poster.png';
+  const img = data.poster_path ? imgpath + data.poster_path : `${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`;
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
   return (
   <>
     <Link className="box" to={"/search/"+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.PUBLIC_URL}/img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
           <div className="tits">{data.title}</div>
           <div className="text">{data.overview}</div>
