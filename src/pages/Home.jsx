@@ -35,18 +35,20 @@ export default function Home() {
   
     <div className="container page home">
       <main className="contents">
-      <HomeTop />
 
-      <ListTop10 opts={{list:"/trending/movie/week", cate: "0", title:'Weekly TOP 20'}} />
+        <HomeTop />
 
-      <ListSet opts={{list: "movie/popular", cate: "0", title: "인기영화"}} />
+        <ListTop10 opts={{list:"/trending/movie/week", cate: "0", title:'Weekly TOP 20'}} />
 
-      <ListSet opts={{list: "movie/popular", cate: "16", title: "애니메이션"}} />
+        <ListSet opts={{list: "movie/popular", cate: "0", title: "인기영화"}} />
 
-      <ListSet opts={{list: "movie/popular", cate: "99", title: "다큐멘터리"}} />
+        <ListSet opts={{list: "movie/popular", cate: "16", title: "애니메이션"}} />
 
-      <ListSet opts={{list: "movie/popular", cate: "10770", title: "TV영화"}} />
+        <ListSet opts={{list: "movie/popular", cate: "10402", title: "음악"}} />
 
+        <ListSet opts={{list: "movie/popular", cate: "99", title: "다큐멘터리"}} />
+
+        <ListSet opts={{list: "movie/popular", cate: "10770", title: "TV영화"}} />
 
       </main>
     </div>

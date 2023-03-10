@@ -37,7 +37,7 @@ export default function Nav() {
   return (
     <>
       <div className="floatnav">
-        <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up-from-bracket"></i><em>위로</em></button>
+        <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up"></i><em>위로</em></button>
       </div>
       <nav id="menubar" className="menubar">
         <div className="inr">
