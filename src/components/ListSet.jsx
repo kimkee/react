@@ -20,7 +20,7 @@ import ui from '../ui';
 export default  function ListSet({opts}){
   
   const [mlist, setMlist] = useState([]);
-  // console.log(opts);
+  console.log(opts);
   let cateList;
   cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
   
@@ -79,7 +79,7 @@ export default  function ListSet({opts}){
       
       <section className="sect mnList">
 
-        <Link  to={`/movie/${opts.cate || 0}`} className="hbox">
+        <Link  to={`/list/${opts.opts}/${opts.cate || 0}`} className="hbox">
           <h3 className="stit">{opts.title}</h3>
           <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
         </Link>
@@ -112,7 +112,7 @@ export default  function ListSet({opts}){
                   const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
-                      <Link className="box" to={"/"+data.id}>
+                      <Link className="box" to={`/${opts.opts}/${data.id}`}>
                           <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                           <div className="info">
                             {/* <StarPoint point={data.vote_average} /> */}

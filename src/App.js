@@ -8,7 +8,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
-// import NotFound from './pages/NotFound.jsx';
+import NotFound from './pages/NotFound.jsx';
 import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
 // import SchPop from './pages/movie/SchPop.jsx';
@@ -28,20 +28,22 @@ function App() {
             
             <Routes>
 
-              {/* <Route path='/*' element={<NotFound />} /> */}
+              <Route path='/*' element={<NotFound />} />
 
               <Route path="/" element={<Home />} >
-                <Route path=":id" element={<View />} />
+              </Route>
+              <Route path="/:opts" element={<Home /> }>
+                  <Route path="/:opts:id" element={<View  />} />
               </Route>
            
-              <Route path="movie" element={<Lists opts="movie" /> } />
-              <Route path="movie/:cate" element={<Lists opts="movie" /> }>
-                <Route path=":id" element={<View  opts="movie" />} />
+              <Route path="list">
+                <Route path=":opts" >
+                  <Route path=":cate"  element={<Lists/> }>
+                    <Route path=":id" element={<View  />} />
+                  </Route>
+                </Route>
               </Route>
-              <Route path="tv" element={<Lists opts="tv" /> } />
-              <Route path="tv/:cate" element={<Lists opts="tv" /> }>
-                <Route path=":id" element={<View  opts="tv" />} />
-              </Route>
+
               <Route path="search" element={<Search />} >
                 <Route path=":id" element={<View />} />
                 <Route path=":keyword"  element={<Search />} />

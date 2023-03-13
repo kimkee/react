@@ -58,12 +58,12 @@ export default function CateMenu({menu, opts}) {
         >
 
             <SwiperSlide tag="li" data-index="0" className="swiper-slide pbox">
-              <NavLink type="button" className={ "bt" } to={`/${opts}/0`}>전체</NavLink>
+              <NavLink type="button" className={ "bt" } to={`/list/${opts}/0`}>전체</NavLink>
             </SwiperSlide>
           { menu.map( (item,idx) => {
             return (
             <SwiperSlide tag="li" data-index={idx+1} key={item.id}  className="swiper-slide pbox">
-              <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={`/${opts}/${item.id}`}> { [item.name]  }</NavLink>
+              <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={`/list/${opts}/${item.id}`}> { [item.name]  }</NavLink>
             </SwiperSlide>
             )
           })}

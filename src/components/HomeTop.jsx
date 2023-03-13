@@ -19,13 +19,14 @@ import ui from '../ui';
 import StarPoint from './StarPoint';
 
 
-export default  function HomeTop({cate , renderTech}){
+export default  function HomeTop({opts}){
+  console.log(opts);
   let page = Math.floor( Math.random() *3 )+1;
   const [mlist, setMlist] = useState([]);
   const fetchMoive = (page)=>{
     ui.loading.show();
    
-    const fetchURL = `https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/${opts.opts}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
@@ -110,7 +111,7 @@ export default  function HomeTop({cate , renderTech}){
                   const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
-                      <Link className="box" to={"/"+data.id}>
+                      <Link className="box" to={`/${opts.opts}/${data.id}`}>
                           <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                           <div className="info">
                             <div className="star">

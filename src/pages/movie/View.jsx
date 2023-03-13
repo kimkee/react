@@ -5,12 +5,12 @@ import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
-export default function View({opts}) {
-  console.log(opts);
-  opts = opts || 'movie';
+export default function View() {
   let params = useParams()
   let navigate = useNavigate();
+  const opts = params.opts;
   
+  console.log(params);
   const [cate, setCate] = useState({});
   const getCate = async ()=>{
     let cate = {
@@ -222,7 +222,7 @@ export default function View({opts}) {
                 </div>
                 : null}
 
-                <ViewRev postID={postID}/>
+                <ViewRev postID={postID} opts={opts}/>
 
                 {datas.production_companies.length ? 
                 <>

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-export default function ViewRev({postID}) {
+export default function ViewRev({postID, opts}) {
 
   console.log(postID);
   const [review, setReview] = useState(null);
-  const fetchRev = `https://api.themoviedb.org/3/movie/${postID}/reviews?api_key=${process.env.REACT_APP_KEY}`;
+  const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${process.env.REACT_APP_KEY}`;
   const fetchReview = () => {
     axios.get( fetchRev ).then(response => {
       console.log("리뷰들" , response.data);

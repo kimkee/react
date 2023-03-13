@@ -6,13 +6,14 @@ import ItemB from '../../components/ItemB.jsx';
 import CateMenu from '../../components/CateMenu.jsx';
 
 
-export default function Lists({opts}) {
+export default function Lists() {
 
-  console.log(opts);
+  // console.log(opts);
 
   let params = useParams()
   let location = useLocation()
   let navigate = useNavigate();
+  const opts = params.opts;
   const cateID = params.cate;
   cateID === undefined && navigate(`/${opts}/0`) ;
   console.log(cateID);
@@ -147,7 +148,8 @@ export default function Lists({opts}) {
 
   return (
     <>
-    <Outlet opts={opts} />
+    <Outlet/>
+
     <div className="container page movie list">
       <main className="contents">
 
