@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useParams, useNavigate } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
+import { Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 import axios from 'axios';
 import ui from '../../ui';
 import ItemB from '../../components/ItemB.jsx';
 import CateMenu from '../../components/CateMenu.jsx';
 
 
-export default function Lists() {
+export default function Lists({opts}) {
 
+  console.log(opts);
 
   let params = useParams()
+  let location = useLocation()
   let navigate = useNavigate();
   const cateID = params.cate;
-  cateID === undefined && navigate('/movie/0') ;
+  cateID === undefined && navigate(`/${opts}/0`) ;
+  console.log(cateID);
 
-  // console.log(cateID )
+  console.log( params , location.pathname)
   let cateList;
   cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
   console.log(cateList);
@@ -33,7 +36,7 @@ export default function Lists() {
     let cate = {
       genr:{}
     }
-    await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       console.log(res.data.genres);
       genrMenuSet(res.data.genres);
@@ -56,7 +59,7 @@ export default function Lists() {
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
-    let fetchURL = `https://api.themoviedb.org/3/movie/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/${opts}/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/discover/movie?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
     // top_rated
@@ -106,7 +109,7 @@ export default function Lists() {
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[cateID]);
+  },[cateID, opts]);
 
 
   // const [callStat, callStatSet] = useState(true);
@@ -144,11 +147,11 @@ export default function Lists() {
 
   return (
     <>
-    <Outlet />
+    <Outlet opts={opts} />
     <div className="container page movie list">
       <main className="contents">
 
-        <CateMenu menu={genrMenu}/>
+        <CateMenu menu={genrMenu} opts={opts} />
 
 
         <div className='poster-list'>
@@ -163,7 +166,7 @@ export default function Lists() {
             mlist.map((data,num) =>{
                 return(
                   <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                    <ItemB data={data} cate={cate} />
+                    <ItemB data={data} cate={cate} opts={opts} />
                   </li>
                 )
             })

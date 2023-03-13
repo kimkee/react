@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-export default function CateMenu({menu}) {
+export default function CateMenu({menu, opts}) {
   let params = useParams()
   // let navigate = useNavigate();
   const [swiper, setSwiper] = useState(null);
@@ -29,7 +29,7 @@ export default function CateMenu({menu}) {
     return ()=>{
     }
     // eslint-disable-next-line
-  },[swiper,cateID,slideActive,menu]);
+  },[swiper,cateID,slideActive,menu,opts]);
 
   return (
   <>
@@ -58,12 +58,12 @@ export default function CateMenu({menu}) {
         >
 
             <SwiperSlide tag="li" data-index="0" className="swiper-slide pbox">
-              <NavLink type="button" className={ "bt" } to={'/movie/0'}>전체</NavLink>
+              <NavLink type="button" className={ "bt" } to={`/${opts}/0`}>전체</NavLink>
             </SwiperSlide>
           { menu.map( (item,idx) => {
             return (
             <SwiperSlide tag="li" data-index={idx+1} key={item.id}  className="swiper-slide pbox">
-              <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={'/movie/'+item.id}> { [item.name]  }</NavLink>
+              <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={`/${opts}/${item.id}`}> { [item.name]  }</NavLink>
             </SwiperSlide>
             )
           })}

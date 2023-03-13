@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  
+import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
-export default function View() {
-
+export default function View({opts}) {
+  console.log(opts);
+  opts = opts || 'movie';
   let params = useParams()
   let navigate = useNavigate();
-
   
   const [cate, setCate] = useState({});
   const getCate = async ()=>{
     let cate = {
       genr:{}
     }
-    await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{ setCate(cate); console.log(cate); });
@@ -39,7 +39,7 @@ export default function View() {
   const [casts, setCasts] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/movie/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
+  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       console.log("영화정보" , response.data);
@@ -49,7 +49,7 @@ export default function View() {
     }).catch( e => { console.log(e); });
   };
 
-  const castURL = `https://api.themoviedb.org/3/movie/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
+  const castURL = `https://api.themoviedb.org/3/${opts}/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
       console.log("출연,제작" , response.data);
@@ -154,7 +154,7 @@ export default function View() {
                     {
                       casts.cast.filter( (item, i) => i < 999 ).map( b => {
                         return (
-                          <div key={b.cast_id} className='profile'>
+                          <div key={b.credit_id} className='profile'>
                             <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}}/></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.character}</div>

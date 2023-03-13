@@ -34,13 +34,13 @@ function App() {
                 <Route path=":id" element={<View />} />
               </Route>
            
-              <Route path="movie" element={<Lists /> } />
-              <Route path="movie/:cate" element={<Lists /> }>
-                <Route path=":id" element={<View />} />
-                
-                {/* <Route path="pop" element={<SchPop />} /> */}
-                {/* <Route path=":keyword" element={<Lists />} /> */}
-                {/* <Route path="search:keyword" element={<Lists />} /> */}
+              <Route path="movie" element={<Lists opts="movie" /> } />
+              <Route path="movie/:cate" element={<Lists opts="movie" /> }>
+                <Route path=":id" element={<View  opts="movie" />} />
+              </Route>
+              <Route path="tv" element={<Lists opts="tv" /> } />
+              <Route path="tv/:cate" element={<Lists opts="tv" /> }>
+                <Route path=":id" element={<View  opts="tv" />} />
               </Route>
               <Route path="search" element={<Search />} >
                 <Route path=":id" element={<View />} />
