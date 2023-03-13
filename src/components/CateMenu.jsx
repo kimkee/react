@@ -20,12 +20,10 @@ export default function CateMenu({menu}) {
       num = parseInt( bt.closest("li").getAttribute("data-index") );
     })
     slideActiveSet(  num  )
-    console.log(num);
     swiper?.slideTo( slideActive , 100 );
-    console.log("goSlide");
   };
   const cateID = params.cate;
-  console.log(slideActive);
+  // console.log(slideActive);
   useEffect(() => {
     goSlide(slideActive)
     return ()=>{

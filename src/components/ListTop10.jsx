@@ -20,7 +20,7 @@ import StarPoint from './StarPoint';
 export default  function ListSet({opts}){
   
   const [mlist, setMlist] = useState([]);
-  console.log(opts);
+  // console.log(opts);
   let cateList;
   cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
   
@@ -38,7 +38,7 @@ export default  function ListSet({opts}){
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
-      console.log( mlist );
+      // console.log( mlist );
       console.log(page + "=== " + res.data.total_pages );
       
       

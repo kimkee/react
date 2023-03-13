@@ -20,7 +20,7 @@ import ui from '../ui';
 export default  function ListSet({opts}){
   
   const [mlist, setMlist] = useState([]);
-  console.log(opts);
+  // console.log(opts);
   let cateList;
   cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
   
@@ -38,7 +38,7 @@ export default  function ListSet({opts}){
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
-      console.log( mlist );
+      // console.log( mlist );
       console.log(page + "=== " + res.data.total_pages );
       
       
@@ -102,7 +102,7 @@ export default  function ListSet({opts}){
             freeMode={true}
             autoHeight={true}
             onSwiper={(swiper) => {
-              console.log("initialize swiper", swiper);
+              // console.log("initialize swiper", swiper);
               // setSwiper(swiper);
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}

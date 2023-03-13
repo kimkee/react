@@ -29,7 +29,7 @@ export default  function HomeTop({cate , renderTech}){
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
-      console.log( mlist );
+      // console.log( mlist );
       console.log(page + "=== " + res.data.total_pages );
       
       ui.loading.hide();

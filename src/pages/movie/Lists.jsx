@@ -12,10 +12,9 @@ export default function Lists() {
   let params = useParams()
   let navigate = useNavigate();
   const cateID = params.cate;
-  console.log(params.cate);
   cateID === undefined && navigate('/movie/0') ;
 
-  console.log(cateID )
+  // console.log(cateID )
   let cateList;
   cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
   console.log(cateList);
