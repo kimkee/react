@@ -119,26 +119,45 @@ export default function View({opts}) {
                 
                 <div className="info">
                   <div className="desc">
-                    <p className="tit">{datas.title}</p>
-                    <p className="sit">{datas.tagline}</p>
-                    <p className="tio">{datas.original_title}</p>
+                    
+                    {datas.title && <p className="tit">{datas.title}</p>}
+                    {datas.tagline && <p className="sit">{datas.tagline}</p>}
+                    {datas.original_title && <p className="tio">{datas.original_title}</p>}
+
+                    {datas.name && <p className="tit">{datas.name}</p>}
+                    {datas.original_name && <p className="tio">{datas.original_name}</p>}
+
+                    <div className="star">
+                      <StarPoint point={datas.vote_average} />
+                    </div>
+                    <div className="cate">
+                      {datas.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
+                    </div>
                     <ul className="lst">
-                      <li className="star">
-                        <StarPoint point={datas.vote_average} />
+                      <li className="vot"> 
+                        <i className="fa-regular fa-thumbs-up"></i> <b>평점</b> : {datas.vote_average} / 10 
                       </li>
-                      <li className="cate">
-                        {datas.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
-                      </li>
-                      <li className="vot">
-                        <i className="fa-regular fa-thumbs-up"></i>
-                        <b>평점</b> : {datas.vote_average} / 10
-                      </li>
+                      {datas.release_date &&
                       <li className="opn">
-                        <i className=" fa-regular fa-camera-movie"></i>
-                        <b>개봉</b> : {datas.release_date}</li>
+                        <i className=" fa-regular fa-camera-movie"></i>  <b>개봉</b> : {datas.release_date}
+                      </li>}
+                      {datas.first_air_date &&
+                      <li className="opn">
+                        <i className=" fa-regular fa-camera-movie"></i>  {datas.first_air_date} ~ {datas.last_air_date}
+                      </li>}
+                      
+                      {datas.runtime && 
                       <li className="tim">
-                        <i className="fa-regular fa-timer"></i>
-                        <b>시간</b> : {datas.runtime} 분 </li> 
+                        <i className="fa-regular fa-timer"></i> <b>시간</b> : {datas.runtime} 분
+                      </li>} 
+                      {datas.number_of_seasons && 
+                      <li className="tim">
+                        <i className="fa-regular fa-timer"></i> <b>시즌</b> : {datas.number_of_seasons}개  - <b>에피소드</b> : {datas.number_of_episodes}개
+                      </li>} 
+                      {datas.homepage && 
+                      <li className="web">
+                        <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
+                      </li>} 
                     </ul>
                   </div>
                   <div className="thum">

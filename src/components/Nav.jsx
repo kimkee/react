@@ -48,7 +48,7 @@ export default function Nav() {
           <ul className="menu">
             <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
             <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}movie/0`} className={ movieAct }><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}tv/0`} className={ tvAct }><i class="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
+            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}tv/0`} className={ tvAct }><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
             <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}search`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
           </ul>
         </div>
