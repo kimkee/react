@@ -25,7 +25,7 @@ export default function ItemB({data,cate}) {
             </div> */}
         </div>
       </div>
-            <div className="tits">{data.title}</div>
+            <div className="tits">{data.title || data.name}</div>
       
     </Link>
   </>  
