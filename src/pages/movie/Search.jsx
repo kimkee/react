@@ -11,7 +11,7 @@ export default function Search() {
   const [searchParams] = useSearchParams();
   let params = useParams();
   // let {state} = useLocation();
-  // console.log(state);
+  console.log(params);
   const opts = params.opts;
   let [keyword,keywordSet] = useState(searchParams.get('search'));
   const [mlist, setMlist] = useState([]);
@@ -23,7 +23,7 @@ export default function Search() {
     let cate = {
       genr:{}
     }
-    await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{
@@ -45,7 +45,7 @@ export default function Search() {
 
     kwd = keyword
     
-    let fetchURL = `https://api.themoviedb.org/3/search/movie?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
     if(keyword == null) {
       fetchURL = ''
       ui.loading.hide();
@@ -129,7 +129,7 @@ export default function Search() {
   const [stext ,stextSet]  = useState('');
   const goSearch = (e) => {
     keywordSet( document.querySelector("#input_kwd")?.value );
-    navigate('/search/?search='+stext);
+    navigate(`/search/${opts}?search=${stext}`);
     setMlist([]);
     fetchMoive( 1 );
     e.preventDefault();
@@ -164,12 +164,14 @@ export default function Search() {
             </form>
           </div>
         </div>
+         
+        <div className='movie-list' tabIndex="-1">
         { 
         
         mlist.length <= 0 || !keyword ? (
-        <div className="nodata"><p>검색 결과가 없습니다.</p></div>)
-         : 
-        <div className='movie-list' tabIndex="-1">
+          <div className="nodata"><p>검색 결과가 없습니다.</p></div>)
+          :
+          <>
           <ul className='list'>
           {
             mlist.map((data,num) =>{
@@ -190,10 +192,10 @@ export default function Search() {
               fetchMoive( page , e)
             }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
           </div>
-
+          </>
+        }     
         </div>
         
-        }
                 
         <div className="page-set">
           <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
