@@ -83,7 +83,7 @@ export default function Search() {
     fetchMoive(page);
     document.querySelector('.header').classList.add("hide");
     setMlist([]);
-    document.querySelector("#input_kwd").focus();
+    !keyword &&  document.querySelector("#input_kwd").focus();
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
       document.querySelector('.header').classList.remove("hide");

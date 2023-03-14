@@ -31,6 +31,7 @@ button{cursor:pointer;background: none;border: none;padding: 0; color: #aaaaaa;}
 select::-ms-expand {display:none;}
 caption{display:none;}
 
+[tabindex]{outline: transparent;}
 
 input::-webkit-input-placeholder {color: #444444; font-weight: normal;}
 input:-ms-input-placeholder {color: #444444; font-weight: normal;}
