@@ -42,7 +42,7 @@ export default function Search() {
 
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
-
+    document.querySelector("#input_kwd").value = keyword;
     kwd = keyword
     
     let fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
