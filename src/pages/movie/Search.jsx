@@ -157,7 +157,7 @@ export default function Search() {
           <div className="inr">
             <form className="form" onSubmit={ goSearch }>
               <div className="bts">
-                <NavLink className="bt" to={`/search/movie`}>영화</NavLink>
+                <NavLink className="bt" to={`/search/movie`}>Movie</NavLink>
                 <NavLink className="bt" to={`/search/tv`}>TV</NavLink>
               </div>
               <span className="input">

@@ -35,7 +35,7 @@ export default function ItemA({data,cate,opts}) {
             <StarPoint point={data.vote_average} />
             <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
           </div>
-          <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>
+          {data.release_date && <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>}
         </div>
       </div>
       <div className="bgs" style={{backgroundImage: `url(${bgs})`}}></div>
