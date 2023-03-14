@@ -157,8 +157,8 @@ export default function Search() {
           <div className="inr">
             <form className="form" onSubmit={ goSearch }>
               <div className="bts">
-                <NavLink className="bt" to={`/search/movie`}>Movie</NavLink>
-                <NavLink className="bt" to={`/search/tv`}>TV</NavLink>
+                <NavLink className="bt" to={`/search/movie?search=${keyword}`}>Movie</NavLink>
+                <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
                 <input type="text" placeholder="검색어를 입력하세요." onChange={onChange} id="input_kwd"/>
