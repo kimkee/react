@@ -53,7 +53,6 @@ export default function Search() {
     };
 
     axios.get( fetchURL ).then(res =>{
-      
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
       console.log(page + "=== " + res.data.total_pages );
@@ -78,6 +77,7 @@ export default function Search() {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getCate();
     ui.loading.show();
     fetchMoive(page);

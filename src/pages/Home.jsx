@@ -19,6 +19,7 @@ export default function Home() {
   };
   
   useEffect(() => {
+    window.scrollTo(0, 0);
     const header = document.querySelector('.header');
     header.classList.add("home");
     window.addEventListener("scroll",scrollEvent);    
