@@ -699,8 +699,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form{display: flex;height: 64rem;justify-content: space-between;}
 .schs-form>.inr{display: flex;height: 64rem;background: #1c1c1c;padding: 0rem 12rem 0rem 18rem;align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;border-bottom: 1rem solid #3a3a3a38;}
 .schs-form .form{display: flex; align-items: center;justify-content: space-between;align-items: center;width:100%;position: relative;}
+.schs-form .bts{display: flex; position: absolute; left: 5rem; top: 5rem; z-index: 10;}
+.schs-form .bts .bt{padding: 0rem 4rem 0rem; height: 30rem; border-radius: 4rem; background-color: #aaaaaa; color: #000; white-space: nowrap; min-width:30rem;  font-size:12rem; display:flex; align-items:center;justify-content: center; }
+.schs-form .bts .bt+.bt{margin-left: 4rem;}
+.schs-form .bts .bt.active{background-color: #61dafb;}
 .schs-form .form .input{border-width: 0;background-color: #121212;}
-.schs-form .form .input input{padding-left: 53rem;color: #dddddd;}
+.schs-form .form .input input{padding-left: 83rem;color: #dddddd;}
 .schs-form .form .input input::-webkit-input-placeholder{ color: #666;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}

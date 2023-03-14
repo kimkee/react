@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation
+import {Outlet,useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
@@ -97,6 +97,7 @@ export default function View() {
 
   return (
   <>
+    <Outlet/>
     <article className="pop-layer a bottom popup movie view">
       <div className="pbd">
         <div className="phd">

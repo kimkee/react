@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useNavigate, useSearchParams,useParams  } from 'react-router-dom';  // useParams ,useLocation , Link,
+import { Outlet, NavLink, useNavigate, useSearchParams,useParams  } from 'react-router-dom';  // useParams ,useLocation , Link,
 
 import axios from 'axios';
 import ui from '../../ui';
@@ -82,7 +82,7 @@ export default function Search() {
     ui.loading.show();
     fetchMoive(page);
     document.querySelector('.header').classList.add("hide");
-    
+    setMlist([]);
     document.querySelector("#input_kwd").focus();
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
@@ -156,9 +156,12 @@ export default function Search() {
         <div className="schs-form">
           <div className="inr">
             <form className="form" onSubmit={ goSearch }>
-              <h2 className="tts">검색</h2>
+              <div className="bts">
+                <NavLink className="bt" to={`/search/movie`}>영화</NavLink>
+                <NavLink className="bt" to={`/search/tv`}>TV</NavLink>
+              </div>
               <span className="input">
-                <input type="text" placeholder="영화 제목을 입력하세요." onChange={onChange} id="input_kwd"/>
+                <input type="text" placeholder="검색어를 입력하세요." onChange={onChange} id="input_kwd"/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
             </form>
@@ -197,9 +200,11 @@ export default function Search() {
         </div>
         
                 
+        { mlist.length > 0 &&
         <div className="page-set">
-          <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
+            <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
         </div>
+        }
 
       </main>
     </div>

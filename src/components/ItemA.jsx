@@ -5,7 +5,7 @@ import StarPoint from './StarPoint';
 
 
 
-export default function ItemA({data,cate}) {
+export default function ItemA({data,cate,opts}) {
   // console.log(data);
   // console.log(cate.genr);
   const imgpath = 'https://image.tmdb.org/t/p/w200';
@@ -13,7 +13,7 @@ export default function ItemA({data,cate}) {
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
   return (
   <>
-    <Link className="box" to={"/search/movie/"+data.id}>
+    <Link className="box" to={`/search/${opts}/${data.id}`}>
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
