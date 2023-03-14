@@ -17,7 +17,7 @@ export default function ItemA({data,cate,opts}) {
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
-          <div className="tits">{data.title}</div>
+          <div className="tits">{data.title || data.name}</div>
           <div className="text">{data.overview}</div>
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function ItemA({data,cate,opts}) {
             <StarPoint point={data.vote_average} />
             <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
           </div>
-          {data.release_date && <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date}</b></div>}
+          <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date || data.first_air_date}</b></div>
         </div>
       </div>
       <div className="bgs" style={{backgroundImage: `url(${bgs})`}}></div>
