@@ -696,6 +696,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .page.movie.search{}
 .page.movie.search .nodata{padding: 10vh 10rem;}
+.page.movie.search .nodata i{font-size:43rem; margin: 0rem 0rem 10rem 0rem; opacity: 0.6;}
 
 .schs-form{display: flex;height: 64rem;justify-content: space-between;}
 .schs-form>.inr{display: flex;height: 64rem;background: #1c1c1c;padding: 0rem 12rem 0rem 18rem;align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;border-bottom: 1rem solid #3a3a3a38;}

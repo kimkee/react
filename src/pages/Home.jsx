@@ -45,11 +45,15 @@ export default function Home() {
 
         <ListSet opts={{opts:"movie", list: "movie/popular", cate: "10402", title: "영화/음악"}} />
 
+        <ListSet opts={{opts:"movie", list: "movie/popular", cate: "99", title: "영화/다큐멘터리"}} />
+
 
 
         <ListTop10 opts={{opts:"tv",list:"/trending/tv/week", cate: "0", title:'Weekly TV TOP 20'}} />
         
         <ListSet opts={{opts:"tv", list: "tv/popular", cate: "16", title: "TV/애니메이션"}} />
+        
+        <ListSet opts={{opts:"tv", list: "tv/popular", cate: "10764", title: "TV/Reality"}} />
         
         <ListSet opts={{opts:"tv", list: "tv/popular", cate: "80", title: "TV/범죄"}} />
 

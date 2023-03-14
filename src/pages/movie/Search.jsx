@@ -171,8 +171,8 @@ export default function Search() {
         <div className='movie-list' tabIndex="-1">
         { 
         
-        mlist.length <= 0 || !keyword ? (
-          <div className="nodata"><p>검색 결과가 없습니다.</p></div>)
+        mlist.length <= 0 && keyword ? 
+          <div className="nodata"><i class="fa-solid fa-file-magnifying-glass"></i><p>검색 결과가 없습니다.</p></div> 
           :
           <>
           <ul className='list'>
