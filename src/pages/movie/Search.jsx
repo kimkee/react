@@ -90,7 +90,7 @@ export default function Search() {
       window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[keyword]);
+  },[keyword,opts]);
 
 
   // const [callStat, callStatSet] = useState(true);
