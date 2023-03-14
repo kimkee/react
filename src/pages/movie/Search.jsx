@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useNavigate, useSearchParams  } from 'react-router-dom';  // useParams ,useLocation ,useParams, Link,
+import { Outlet, useNavigate, useSearchParams,useParams  } from 'react-router-dom';  // useParams ,useLocation , Link,
 
 import axios from 'axios';
 import ui from '../../ui';
@@ -9,9 +9,10 @@ import ItemA from '../../components/ItemA.jsx';
 
 export default function Search() {
   const [searchParams] = useSearchParams();
-  // let params = useParams();
+  let params = useParams();
   // let {state} = useLocation();
   // console.log(state);
+  const opts = params.opts;
   let [keyword,keywordSet] = useState(searchParams.get('search'));
   const [mlist, setMlist] = useState([]);
   // const [page, setPage] = useState(1);
@@ -174,7 +175,7 @@ export default function Search() {
             mlist.map((data,num) =>{
               return(
                 <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                  <ItemA data={data} cate={cate} />
+                  <ItemA data={data} cate={cate} opts={opts} />
                 </li>
               )
             })

@@ -45,8 +45,10 @@ function App() {
               </Route>
 
               <Route path="search" element={<Search />} >
-                <Route path=":id" element={<View />} />
-                <Route path=":keyword"  element={<Search />} />
+                <Route path=":opts" >
+                  <Route path=":id" element={<View />} />
+                  <Route path=":keyword"  element={<Search />} />
+                </Route>
               </Route>
 
             </Routes>

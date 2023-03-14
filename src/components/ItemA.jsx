@@ -13,7 +13,7 @@ export default function ItemA({data,cate}) {
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
   return (
   <>
-    <Link className="box" to={"/search/"+data.id}>
+    <Link className="box" to={"/search/movie/"+data.id}>
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
