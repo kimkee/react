@@ -92,7 +92,7 @@ export default  function ListSet({opts}){
             spaceBetween={0}
             slidesPerView={"auto"}
             // slidesPerGroup={5}
-            slidesPerGroupAuto={true}
+            slidesPerGroupAuto={false}
             // navigation
             loop={false }
             wrapperTag="ul"
