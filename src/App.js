@@ -30,10 +30,9 @@ function App() {
 
               <Route path='/*' element={<NotFound />} />
 
-              <Route path="/" element={<Home />} >
-              </Route>
+              <Route path="/" element={<Home />} />
               <Route path="/:opts" element={<Home /> }>
-                  <Route path="/:opts:id" element={<View  />} />
+                  <Route path=":id" element={<View  />} />
               </Route>
            
               <Route path="list">
