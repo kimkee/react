@@ -24,13 +24,16 @@ export default function Header({cls}) {
 
 
   const test =()=>{
-    ui.confirm("리액션 쩐다",{
+    ui.confirm("리액트 보다 쀼가 짱입니까?",{
       ycb:function(){
         console.log("컴펌 예");
+        window.location.href = "https://kimkee.github.io/vue"
       },
       ncb:function(){
         console.log("컴펌 아뇨");
       },
+      ybt:"마자요!",
+      nbt:"아니오!",
     });
   }
   return (
