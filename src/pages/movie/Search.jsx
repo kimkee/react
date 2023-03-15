@@ -77,7 +77,6 @@ export default function Search() {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     getCate();
     ui.loading.show();
     fetchMoive(page);
@@ -85,6 +84,7 @@ export default function Search() {
     setMlist([]);
     !keyword &&  document.querySelector("#input_kwd").focus();
     window.addEventListener("scroll", scrollEvent);
+    window.scrollTo(0, 0);
     return ()=>{
       document.querySelector('.header').classList.remove("hide");
       window.removeEventListener("scroll", scrollEvent);
@@ -187,7 +187,9 @@ export default function Search() {
           }
           </ul>
 
-          <div className="ui-loadmore">
+
+          { mlist.length > 0 &&
+          <div className={`ui-loadmore`}>
             <em><i className="fa-duotone fa-spinner"></i></em>
             <button onClick={ (e)=>{
               // setPage(page + 1)
@@ -195,6 +197,7 @@ export default function Search() {
               fetchMoive( page , e)
             }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
           </div>
+          }
           </>
         }     
         </div>
