@@ -249,7 +249,7 @@ export default function View() {
         </div>
       
         <div className="floatpop">
-          <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up-from-bracket"></i><em>위로</em></button>
+          <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up"></i><em>위로</em></button>
         </div>
       </div>
     </article>
