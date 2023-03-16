@@ -11,14 +11,4 @@ const hexString = buffer.toString('hex');
 const shortenedHash = hexString.slice(0, 16);
 
 // .env 파일에 변수를 설정합니다.
-fs.writeFileSync('.env', 
-`PUBLIC_URL='./'
-BUILD_PATH='./docs'
-PORT='9007'
-GENERATE_SOURCEMAP=false
-BROWSER=none
-REACT_APP_PUBLIC_URL='./'
-REACT_APP_VERSION=$npm_package_version
-REACT_APP_KEY='f76021076e8162ea929bd2cea62c6646'
-REACT_APP_VER='v_${shortenedHash}'
-`);
+fs.writeFileSync('.env.production', `REACT_APP_VER=VER.${shortenedHash}`);
