@@ -145,7 +145,7 @@ body.is-gnb .btn-gnb{}
 .popup.movie.view>.pbd>.phd .ptit{opacity: 0;height: 28rem;word-break: break-all;white-space: normal;width: 100%;padding: 0rem 20rem 0rem 60rem;text-align: right;}
 .popup.movie.view>.pbd>.phd.trans .ptit{opacity: 1;}
 .popup.movie.view>.pbd>.pct .poptents{margin: 65rem 20rem 40rem 20rem;padding: 0rem;z-index: 10;position: relative;}
-.popup.movie.view .bgs{position: absolute;top: 0;left: 0;right: 0;height: 100vw;background: center top no-repeat;background-size: auto;opacity:0.3;overflow: hidden;}
+.popup.movie.view .bgs{position: absolute;top: 0;left: 0;right: 0;height: 100vw;background: center top no-repeat;background-size: auto;opacity:0.3;overflow: hidden; filter:blur(2px)}
 .popup.movie.view .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 300rem;background-image: linear-gradient(180deg, transparent, #111111);}
 .popup.movie.view .info{display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: row;}
 .popup.movie.view .info .thum{display:block;position:relative; width: 100%; overflow: hidden;width: 45%;}
@@ -673,8 +673,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .list>li .box .info .cate .ico{display: inline-flex;justify-content: center;border-radius: 10rem;padding: 3rem 5rem 3rem 5rem;margin: 1rem 3rem 1rem 0rem;font-size: 10rem;line-height: 1;font-family: 'Tahoma';color: #aaa;background: #333;cursor: default;}
 .movie-list .list>li .box .info .keys{font-size: 10rem;color: #707887;margin-left: 6rem;display: none;}
 
-
-
+ 
+ 
 .poster-list{ overflow: hidden;padding: 5rem calc(15rem - 1.5%); position: relative; }
 .poster-list>.list{display:flex; flex-wrap: wrap;}
 .poster-list>.list>li{width: calc(25% - 3%);margin: 8rem 1.5%;}
