@@ -147,7 +147,7 @@ export default function View() {
                         <i className=" fa-regular fa-camera-movie"></i>  {datas.first_air_date} ~ {datas.last_air_date}
                       </li>}
                       
-                      {datas.runtime && 
+                      {/* datas.runtime &&  */
                       <li className="tim">
                         <i className="fa-regular fa-timer"></i> <b>시간</b> : {datas.runtime} 분
                       </li>} 

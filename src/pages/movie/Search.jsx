@@ -172,7 +172,7 @@ export default function Search() {
         { 
         
         mlist.length <= 0 && keyword ? 
-          <div className="nodata"><i class="fa-solid fa-file-magnifying-glass"></i><p>검색 결과가 없습니다.</p></div> 
+          <div className="nodata"><i className="fa-solid fa-file-magnifying-glass"></i><p>검색 결과가 없습니다.</p></div> 
           :
           <>
           <ul className='list'>
