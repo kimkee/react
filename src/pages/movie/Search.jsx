@@ -140,6 +140,12 @@ export default function Search() {
     keywordSet(event.target.value )
     setMlist([]);
     // fetchMoive( 1 );
+    const url = new URL(window.location);
+    url.searchParams.set("search", event.target.value);
+    console.log(url);
+    // window.history.pushState({}, "", `#/search/${opts}?search=${event.target.value}`);
+    // window.location.hash = `/search/${opts}?search=${event.target.value}`;
+    window.history.replaceState(null, null, `#/search/${opts}?search=${event.target.value}`);
   } 
   
   console.log(  document.querySelector("#input_kwd")?.value );
