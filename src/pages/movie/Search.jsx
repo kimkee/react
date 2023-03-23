@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Outlet, NavLink, useNavigate, useSearchParams,useParams  } from 'react-router-dom';  // useParams ,useLocation , Link,
+import React, { useState, useEffect, useRef } from 'react';
+import { Outlet, NavLink, useSearchParams,useParams  } from 'react-router-dom';  // useParams ,useLocation , Link,useNavigate,
 
 import axios from 'axios';
 import ui from '../../ui';
@@ -37,12 +37,12 @@ export default function Search() {
     "pge":0,
     "tot":0
   })
-  
+  const inputRef = useRef();
   const fetchMoive = (page , kwd )=>{
 
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
-    document.querySelector("#input_kwd").value = keyword;
+    inputRef.current.value = keyword;
     kwd = keyword
     
     let fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
@@ -82,7 +82,7 @@ export default function Search() {
     fetchMoive(page);
     document.querySelector('.header').classList.add("hide");
     setMlist([]);
-    !keyword &&  document.querySelector("#input_kwd").focus();
+    !keyword &&  inputRef.current.focus();
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
     return ()=>{
@@ -125,18 +125,21 @@ export default function Search() {
   // console.log(cate);
   // if (!cate) return null;
   // console.log(dlist);
-  let navigate = useNavigate();
-  const [stext ,stextSet]  = useState('');
+
+
+  // let navigate = useNavigate();
+  // const [stext ,stextSet]  = useState('');
   const goSearch = (e) => {
-    keywordSet( document.querySelector("#input_kwd")?.value );
-    navigate(`/search/${opts}?search=${stext}`);
+    keywordSet( inputRef.current?.value );
+    // navigate(`/search/${opts}?search=${stext}`);
+    window.history.replaceState(null, null, `#/search/${opts}?search=${inputRef.current?.value}`);
     setMlist([]);
     fetchMoive( 1 );
     e.preventDefault();
     document.querySelector(".movie-list").focus();
   }
   const onChange = (event) => {
-    stextSet(event.target.value )
+    // stextSet(event.target.value )
     keywordSet(event.target.value )
     setMlist([]);
     // fetchMoive( 1 );
@@ -148,12 +151,11 @@ export default function Search() {
     window.history.replaceState(null, null, `#/search/${opts}?search=${event.target.value}`);
   } 
   
-  console.log(  document.querySelector("#input_kwd")?.value );
-
-
   console.log(mlist);
- 
 
+  
+  console.log(  inputRef.current?.value );
+  
   return (
   <>
     <Outlet />
@@ -167,7 +169,7 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." onChange={onChange} id="input_kwd"/>
+                <input type="text" placeholder="검색어를 입력하세요." onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
             </form>
