@@ -2,8 +2,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Outlet,useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui';
-import ViewElips from './ViewElips';
-import ViewRev from './ViewRev';
+
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, Autoplay,EffectFade , A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
+
+
+
 export default function View() {
   let params = useParams()
   let navigate = useNavigate();
@@ -71,13 +86,66 @@ export default function View() {
 
         <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
         
-                {/* {pstImg &&
-                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} />
-                } */}        
+       
         <div className="pct">
           <main className="poptents">
             <div className="poster-box">
-              {datas && datas.images.posters.length ? 
+            {datas && datas.images.posters.length ? 
+            <Swiper className="swiper-wrapper swiper slide" 
+            // install Swiper modules
+            modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
+            spaceBetween={20}
+            slidesPerView={1}
+            // navigation
+            loop={true}
+            lazy={ true }
+            // effect={"fade"}
+            // autoplay={false}
+            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
+            wrapperTag="ul"
+            pagination={{ clickable: true ,type:'fraction'}}
+            // scrollbar={{ draggable: true }}
+            // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
+            autoHeight={true}
+            onSwiper={(swiper) => {
+              console.log("initialize swiper", swiper);
+            }}
+            onSlideChange={() => {/* console.log('slide change') */}}   >
+            
+            <SwiperSlide tag="li">
+              <div className='box'>
+                <div  className='pics'><img src={pstImg} className="img" alt={datas?.title || datas?.name} /></div> 
+              </div>
+            </SwiperSlide>
+            
+            {
+              datas.images.posters.filter( (item, i) => i < 10 ).map( (data, idx) => {
+                const img = 'https://image.tmdb.org/t/p/w780'+data.file_path ;
+                return (
+                  <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
+                    <div className="box">
+                        <div className="pics">
+                          <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
+                        </div>
+                        
+                    </div>
+                  </SwiperSlide>
+                )
+              })
+            }
+          </Swiper>
+
+
+
+            :null}
+
+
+
+
+
+
+
+              {/* {datas && datas.images.posters.length ? 
               <>
                 <div className='pics'>
                   <div  className='pic'><img src={pstImg} className="img" alt={datas?.title || datas?.name} /></div> 
@@ -92,11 +160,9 @@ export default function View() {
                   })
                 }
               </>
-              :null}
+              :null} */}
             </div>
-            {/* <p>{params?.id}</p>
-            <p>{params?.cate}</p>
-            <p>{params?.opts}</p> */}
+
 
           </main>
         </div>
