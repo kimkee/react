@@ -33,7 +33,9 @@ function App() {
 
               <Route path="/" element={<Home />} />
               <Route path="/:opts" element={<Home /> }>
-                  <Route path=":id" element={<View  />} />
+                <Route path=":id" element={<View  />} >
+                  <Route path="poster" element={<Poster  />} />
+                </Route>
               </Route>
            
               <Route path="list">
