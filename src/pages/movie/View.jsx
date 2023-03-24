@@ -208,9 +208,12 @@ export default function View() {
 
                 {datas.images.posters.length ? 
                 <div className="sect post">
-                  <h4 className="tts">포스터 : {datas.images.posters.length}</h4>
+                  <h4 className="tts">포스터 : {datas.images.posters.length+1}</h4>
                   <div className="lst">
-                  {
+                    <div className='box' data-index={0}>
+                      <Link to={`./poster/0`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                    </div>
+                    {
                     datas.images.posters.map((img,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
@@ -218,7 +221,7 @@ export default function View() {
                       </div>
                       )
                     })
-                  }
+                    }
                   </div>
                 </div>
                 : null}
