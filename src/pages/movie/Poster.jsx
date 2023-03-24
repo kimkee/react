@@ -90,7 +90,7 @@ export default function View() {
         <div className="pct">
           <main className="poptents">
             <div className="poster-box">
-            {datas && datas.images.posters.length ? 
+            {datas && datas.images.posters ? 
             <Swiper className="swiper-wrapper swiper slide" 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
@@ -115,8 +115,8 @@ export default function View() {
             <SwiperSlide tag="li">
               <div className='box'>
                 <div  className='pics'>
-                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} />
-                  <div class="lazy-preloader"><i class="fa-duotone fa-spinner"></i></div>
+                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} loading="lazy"/>
+                  <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                 </div>
               </div>
             </SwiperSlide>
@@ -129,7 +129,7 @@ export default function View() {
                     <div className="box">
                         <div className="pics">
                           <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
-                          <div class="lazy-preloader"><i class="fa-duotone fa-spinner"></i></div>
+                          <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                         </div>
                         
                     </div>
