@@ -208,7 +208,7 @@ export default function View() {
 
                 {datas.images.posters.length ? 
                 <div className="sect post">
-                  <h4 className="tts">포스터</h4>
+                  <h4 className="tts">포스터 : {datas.images.posters.length}</h4>
                   <div className="lst">
                   {
                     datas.images.posters.map((img,idx) => {
