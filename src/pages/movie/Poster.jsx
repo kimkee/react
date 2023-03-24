@@ -101,7 +101,7 @@ export default function View() {
             lazy={ true }
             // effect={"fade"}
             // autoplay={false}
-            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
+            // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
             wrapperTag="ul"
             pagination={{ clickable: true ,type:'fraction'}}
             // scrollbar={{ draggable: true }}

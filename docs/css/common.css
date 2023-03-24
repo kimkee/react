@@ -272,7 +272,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .pop-layer.c .pbd{transform: translateY(110%);transition: transform 0.3s cubic-bezier(0, 0.7, 0.4, 1) 0s;background:#111111;font-size: 14rem;bottom: 10rem;display:inline-block;vertical-align: bottom;text-align:left;white-space:normal;/* max-width: 630rem; */width: calc(100% - 0rem);margin-bottom: 0rem;overflow: hidden;border-radius: 30rem 30rem 0rem 0rem;position: initial;}
 .pop-layer.c .phd{position: relative;height: 60rem;}
 .pop-layer.c .phd>.inr{position:relative;background-color: transparent;height: 60rem;display: flex;justify-content: center;align-items: center;}
-.pop-layer.c .phd .ptit{font-size: 18rem;text-align: center;padding: 0rem 0rem 0rem 0rem;font-weight: 700;max-width: calc(100vw - 90rem);white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color: #eeeeee;}
+.pop-layer.c .phd .ptit{font-size: 16rem;/* text-align: center; */padding: 0rem 0rem 0rem 0rem;font-weight: 700;max-width: calc(100vw - 90rem);white-space: nowrap;overflow: hidden;text-overflow: ellipsis;color: #eeeeee;}
 .pop-layer.c .phd button.close{ background: url(../img/cm/pop-layerClose.png)}
 .pop-layer.c .pct{overflow-y: auto;  -webkit-overflow-scrolling: touch;}
 .pop-layer.c .pct::-webkit-scrollbar{display: none;}
@@ -728,6 +728,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 /* 포스터 */
 .popup.poster{ z-index: 1100; }
+.popup.poster .phd>.inr {justify-content: left; padding-left: 20rem;}
 .popup.poster .pct .poptents{padding-top: 0;}
 .popup.poster .poster-box{} 
 .popup.poster .poster-box .pics+.pics{margin-top: 20rem;}
@@ -736,6 +737,10 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .popup.poster .poster-box .lazy-preloader{width: 40rem;height: 40rem;display: flex;justify-content: center;align-items: center;z-index: 5;animation: loading-rotate 1s infinite steps(8);font-size:0rem;position: absolute;left: 50%;top: 50%; margin: -20rem 0 0 -20rem;}
 .popup.poster .poster-box .lazy-preloader i{font-size:28rem;}
+.popup.poster .poster-box .swiper .swiper-wrapper{padding-bottom: 45rem;}
+.popup.poster .poster-box .swiper-pagination-fraction{}
+
+
 @keyframes loading-rotate {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
