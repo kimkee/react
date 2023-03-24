@@ -114,18 +114,22 @@ export default function View() {
             
             <SwiperSlide tag="li">
               <div className='box'>
-                <div  className='pics'><img src={pstImg} className="img" alt={datas?.title || datas?.name} /></div> 
+                <div  className='pics'>
+                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} />
+                  <div class="lazy-preloader"><i class="fa-duotone fa-spinner"></i></div>
+                </div>
               </div>
             </SwiperSlide>
             
             {
-              datas.images.posters.filter( (item, i) => i < 10 ).map( (data, idx) => {
+              datas.images.posters.map( (data, idx) => {  // .filter( (item, i) => i < 10 )
                 const img = 'https://image.tmdb.org/t/p/w780'+data.file_path ;
                 return (
                   <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                     <div className="box">
                         <div className="pics">
                           <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
+                          <div class="lazy-preloader"><i class="fa-duotone fa-spinner"></i></div>
                         </div>
                         
                     </div>
