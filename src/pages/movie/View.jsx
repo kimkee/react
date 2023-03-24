@@ -162,7 +162,7 @@ export default function View() {
                     </ul>
                   </div>
                   <div className="thum">
-                    <Link to={`./poster`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
+                    <Link to={`./poster/0`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
                   </div>
                 </div>
                 {datas.overview ? <ViewElips overview={datas.overview}/> : null}
@@ -213,8 +213,8 @@ export default function View() {
                   {
                     datas.images.posters.map((img,idx) => {
                       return(
-                      <div key={idx} className='box'>
-                        <Link to={`./poster`} className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                      <div key={idx} className='box' data-index={idx+1}>
+                        <Link to={`./poster/${idx+1}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })

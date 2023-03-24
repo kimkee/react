@@ -98,7 +98,7 @@ export default function View() {
             slidesPerView={1}
             // navigation
             loop={true}
-            lazy={ true }
+            lazy={ {enabled: false, loadPrevNext: true, loadPrevNextAmount: 3} } // 지금 loadPrevNext 옵션이 동작 안됨 ㅡㅡ; 
             // effect={"fade"}
             // autoplay={false}
             // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
@@ -109,6 +109,7 @@ export default function View() {
             autoHeight={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
+              swiper.slideTo(params.nums , 0);
             }}
             onSlideChange={() => {/* console.log('slide change') */}}   >
             
