@@ -71,15 +71,28 @@ export default function View() {
 
         <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
         
-        
+                {/* {pstImg &&
+                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} />
+                } */}        
         <div className="pct">
           <main className="poptents">
             <div className="poster-box">
-              <div className="pics">
-                {pstImg &&
-                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} />
+              {datas && datas.images.posters.length ? 
+              <>
+                <div className='pics'>
+                  <div  className='pic'><img src={pstImg} className="img" alt={datas?.title || datas?.name} /></div> 
+                </div>
+                {
+                  datas.images.posters.map((img,idx) => {
+                    return(
+                    <div key={idx} className='pics'>
+                      <div  className='pic'><img src={'https://image.tmdb.org/t/p/w780'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div> 
+                    </div>
+                    )
+                  })
                 }
-              </div>
+              </>
+              :null}
             </div>
             {/* <p>{params?.id}</p>
             <p>{params?.cate}</p>
