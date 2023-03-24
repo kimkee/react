@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Outlet,useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation
+import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation, Outlet,
 import ui from '../../ui';
 
 

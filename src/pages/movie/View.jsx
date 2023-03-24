@@ -214,7 +214,7 @@ export default function View() {
                     datas.images.posters.map((img,idx) => {
                       return(
                       <div key={idx} className='box'>
-                        <div  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                        <Link to={`./poster`} className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })
