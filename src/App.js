@@ -11,6 +11,7 @@ import Home from './pages/Home.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
+import Poster from './pages/movie/Poster.jsx';
 // import SchPop from './pages/movie/SchPop.jsx';
 import Search from './pages/movie/Search.jsx';
 function App() {
@@ -38,7 +39,9 @@ function App() {
               <Route path="list">
                 <Route path=":opts" >
                   <Route path=":cate"  element={<Lists/> }>
-                    <Route path=":id" element={<View  />} />
+                    <Route path=":id" element={<View  />} >
+                      <Route path="poster" element={<Poster  />} />
+                    </Route>
                   </Route>
                 </Route>
               </Route>

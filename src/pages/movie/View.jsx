@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {Outlet,useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation
+import {Outlet,useParams, useNavigate, Link} from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
@@ -25,7 +25,7 @@ export default function View() {
 
   const postID = params.id;
   const popResize = ()=>{
-    let $pop =  document.querySelector(".pop-layer");
+    let $pop =  document.querySelector(".popup.movie");
     let pctnH =  $pop.offsetHeight || 0;
     let pbtnH =  $pop.querySelector(".pbt")?.offsetHeight || 0 ;
     let phtnH =  $pop.querySelector(".phd")?.offsetHeight || 0 ;
@@ -59,17 +59,17 @@ export default function View() {
 
   
   const scrollEvent = ()=> {
-    const scr = parseInt( document.querySelector(".popup .pct").scrollTop );
+    const scr = parseInt( document.querySelector(".popup.movie .pct").scrollTop );
     if( scr > 50){
-      document.querySelector(".popup .phd").classList.add("trans");
+      document.querySelector(".popup.movie .phd").classList.add("trans");
       document.querySelector(".floatpop")?.classList.add("on-top");
     }else{
-      document.querySelector(".popup .phd").classList.remove("trans");
+      document.querySelector(".popup.movie .phd").classList.remove("trans");
       document.querySelector(".floatpop")?.classList.remove("on-top");
     }
   };
   const goTop = ()=>{
-    document.querySelector(".popup .pct").scrollTo(0,0);
+    document.querySelector(".popup.movie .pct").scrollTo(0,0);
   }
   useEffect(() => {
     console.log(  document.querySelector(".pct").offsetHeight );
@@ -77,9 +77,9 @@ export default function View() {
     fetchDatas();
     fetchCast();
     popResize();
-    document.querySelector(".popup .pct").addEventListener("scroll",scrollEvent);
+    document.querySelector(".popup.movie .pct").addEventListener("scroll",scrollEvent);
     window.addEventListener("resize",popResize);
-    document.querySelector(".pop-layer").classList.add("ani","on");
+    document.querySelector(".popup.movie").classList.add("ani","on");
     ui.lock.using(true); 
 
     return () => {
@@ -162,7 +162,7 @@ export default function View() {
                     </ul>
                   </div>
                   <div className="thum">
-                    <div className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+                    <Link to={`./poster`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
                   </div>
                 </div>
                 {datas.overview ? <ViewElips overview={datas.overview}/> : null}
