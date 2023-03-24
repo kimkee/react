@@ -29,6 +29,9 @@ export default function Search() {
     }).then( res =>{
       setCate(cate);
       console.log(cate);
+    }).catch( error =>{
+      console.log(error);
+      setCate(null);
     });
   };
   // const keyword = "미녀";
