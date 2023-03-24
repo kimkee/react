@@ -33,16 +33,16 @@ function App() {
 
               <Route path="/" element={<Home />} />
               <Route path="/:opts" element={<Home /> }>
-                <Route path=":id" element={<View  />} >
-                  <Route path="poster" element={<Poster  />} />
+                <Route path=":id" element={<View />} >
+                  <Route path="poster" element={<Poster />} />
                 </Route>
               </Route>
            
               <Route path="list">
                 <Route path=":opts" >
-                  <Route path=":cate"  element={<Lists/> }>
-                    <Route path=":id" element={<View  />} >
-                      <Route path="poster" element={<Poster  />} />
+                  <Route path=":cate" element={<Lists/> }>
+                    <Route path=":id" element={<View />} >
+                      <Route path="poster" element={<Poster />} />
                     </Route>
                   </Route>
                 </Route>
@@ -50,10 +50,10 @@ function App() {
 
               <Route path="search" >
                 <Route path=":opts" element={<Search />} >
-                  <Route path=":id" element={<View  />} >
-                    <Route path="poster" element={<Poster  />} />
+                  <Route path=":id" element={<View />} >
+                    <Route path="poster" element={<Poster />} />
                   </Route>
-                  <Route path=":keyword"  element={<Search />} />
+                  <Route path=":keyword" element={<Search />} />
                 </Route>
               </Route>
 
