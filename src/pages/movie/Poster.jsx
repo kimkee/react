@@ -19,12 +19,15 @@ import 'swiper/css/effect-fade';
 
 
 
-export default function Poster() {
+export default function Poster({prop}) {
+
+  let opts = prop.opts
   let params = useParams()
   let navigate = useNavigate();
-  const opts = params.opts;
+  opts = params.opts || prop.opts;
   
   console.log(params);
+  console.log(opts);
 
   const postID = params.id;
   const popResize = ()=>{

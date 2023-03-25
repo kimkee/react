@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation, Outlet, Link
+import { useParams, useNavigate, Link} from 'react-router-dom'; //,useOutletContext  , useLocation, Outlet, Link
 import ui from '../../ui';
 
 
@@ -172,7 +172,7 @@ export default function Person() {
                     casts.cast.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })
@@ -189,7 +189,7 @@ export default function Person() {
                     casts.crew.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })

@@ -5,10 +5,14 @@ import ui from '../../ui';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
-export default function View() {
+export default function View({prop}) {
+  console.log(prop.opts);
+
+  let opts = prop.opts
+
   let params = useParams()
   let navigate = useNavigate();
-  const opts = params.opts;
+  opts = params.opts || prop.opts;
   
   console.log(params);
   const [cate, setCate] = useState({});
@@ -105,8 +109,12 @@ export default function View() {
               <div className="ptit">{datas?.title || datas?.name}</div>
           </div>
         </div>
-
-        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
+        {
+           prop.opts === "list" || prop.opts === "search" ?
+          <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
+        :
+          <button type="button" className="btn-pop-close back" onClick={ () => { navigate("/home") } } ><i className="fa-solid fa-house"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
+        }
         
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
         <div className="pct">

@@ -92,7 +92,7 @@ export default  function ListSet({opts}){
                     const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
                     return (
                       <li key={idx}  className="pbox">
-                        <Link className="box" to={`/${opts.opts}/${data.id}`}>
+                        <Link className="box" to={`${opts.opts}/${data.id}`}>
                             <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                             <div className="info">
                               {/* <StarPoint point={data.vote_average} /> */}
