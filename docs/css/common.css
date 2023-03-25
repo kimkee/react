@@ -738,8 +738,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.poster .poster-box .lazy-preloader{width: 40rem;height: 40rem;display: flex;justify-content: center;align-items: center;z-index: 5;animation: loading-rotate 1s infinite steps(8);font-size:0rem;position: absolute;left: 50%;top: 50%; margin: -20rem 0 0 -20rem;}
 .popup.poster .poster-box .lazy-preloader i{font-size:28rem;}
 .popup.poster .poster-box .swiper .swiper-wrapper{padding-bottom: 45rem;}
-.popup.poster .poster-box .swiper-pagination-fraction{}
-
+.popup.poster .poster-box .swiper-pagination-fraction{position: absolute;height: 32rem;display: inline-flex;align-items: center;left: 50%;transform: translateX(-50%);width: auto; bottom: calc(0rem + env(safe-area-inset-bottom));background: rgb(80 80 80 / 50%);border-radius: 30rem;font-size: 11rem;min-width: 33rem; padding: 4rem 11rem;letter-spacing: 0rem;color: #eeeeee;}
+.popup.poster .poster-box .swiper-pagination-current,
+.popup.poster .poster-box .swiper-pagination-total{padding: 0rem 3rem; font-size:12rem;}
 
 @keyframes loading-rotate {
     from { transform: rotate(0deg); }

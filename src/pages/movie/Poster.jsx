@@ -90,84 +90,55 @@ export default function View() {
         <div className="pct">
           <main className="poptents">
             <div className="poster-box">
-            {datas && datas.images.posters ? 
-            <Swiper className="swiper-wrapper swiper slide" 
-            // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
-            spaceBetween={20}
-            slidesPerView={1}
-            // navigation
-            loop={true}
-            lazy={ {enabled: false, loadPrevNext: true, loadPrevNextAmount: 3} } // 지금 loadPrevNext 옵션이 동작 안됨 ㅡㅡ; 
-            // effect={"fade"}
-            // autoplay={false}
-            // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
-            wrapperTag="ul"
-            pagination={{ clickable: true ,type:'fraction'}}
-            // scrollbar={{ draggable: true }}
-            // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
-            autoHeight={true}
-            onSwiper={(swiper) => {
-              console.log("initialize swiper", swiper);
-              swiper.slideTo(params.nums , 0);
-            }}
-            onSlideChange={() => {/* console.log('slide change') */}}   >
-            
-            <SwiperSlide tag="li">
-              <div className='box'>
-                <div  className='pics'>
-                  <img src={pstImg} className="img" alt={datas?.title || datas?.name} onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy"/>
-                  <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
-                </div>
-              </div>
-            </SwiperSlide>
-            
-            {
-              datas.images.posters.map( (data, idx) => {  // .filter( (item, i) => i < 10 )
-                const img = 'https://image.tmdb.org/t/p/w780'+data.file_path ;
-                return (
-                  <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
-                    <div className="box">
-                        <div className="pics">
-                          <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
-                          <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
-                        </div>
-                        
+              {datas && datas.images.posters ? 
+              <Swiper className="swiper-wrapper swiper slide" 
+              // install Swiper modules
+              modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
+              spaceBetween={20}
+              slidesPerView={1}
+              // navigation
+              loop={true}
+              lazy={ {enabled: true, loadPrevNext: true, loadPrevNextAmount: 3} } // 지금 loadPrevNext 옵션이 동작 안됨 ㅡㅡ; 
+              // effect={"fade"}
+              // autoplay={false}
+              // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
+              wrapperTag="ul"
+              pagination={{ clickable: true ,type:'fraction'}}
+              // scrollbar={{ draggable: true }}
+              // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
+              autoHeight={true}
+              onSwiper={(swiper) => {
+                console.log("initialize swiper", swiper);
+                swiper.slideTo(params.nums , 0);
+              }}
+              onSlideChange={() => {/* console.log('slide change') */}} >
+                <SwiperSlide tag="li">
+                  <div className='box'>
+                    <div  className='pics'>
+                      <img src={pstImg} className="img" alt={datas?.title || datas?.name} onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy"/>
+                      <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                     </div>
-                  </SwiperSlide>
-                )
-              })
-            }
-          </Swiper>
-
-
-
-            :null}
-
-
-
-
-
-
-
-              {/* {datas && datas.images.posters.length ? 
-              <>
-                <div className='pics'>
-                  <div  className='pic'><img src={pstImg} className="img" alt={datas?.title || datas?.name} /></div> 
-                </div>
+                  </div>
+                </SwiperSlide>
                 {
-                  datas.images.posters.map((img,idx) => {
-                    return(
-                    <div key={idx} className='pics'>
-                      <div  className='pic'><img src={'https://image.tmdb.org/t/p/w780'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div> 
-                    </div>
-                    )
-                  })
+                datas.images.posters.map( (data, idx) => {  // .filter( (item, i) => i < 10 )
+                  const img = 'https://image.tmdb.org/t/p/w780'+data.file_path ;
+                  return (
+                    <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
+                      <div className="box">
+                          <div className="pics">
+                            <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
+                            <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
+                          </div>
+                      </div>
+                    </SwiperSlide>
+                  )
+                })
                 }
-              </>
-              :null} */}
-            </div>
+              </Swiper>
+              :null}
 
+            </div>
 
           </main>
         </div>
