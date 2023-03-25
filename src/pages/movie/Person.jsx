@@ -113,16 +113,13 @@ export default function Person() {
             </>
             } */}
 
-            { !datas && !casts &&
+            { !datas && !casts && !photos &&
                 <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
               }
-              { datas && casts && 
+              { datas && casts && photos &&
                 <div className="m-info">
                   
                   <div className="info">
-                    <div className="thum">
-                      <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
-                    </div>
                     <div className="desc">
                       
                       {datas.title && <p className="tit">{datas.title}</p>}
@@ -130,7 +127,6 @@ export default function Person() {
 
                       {datas.name && <p className="tit">{datas.name}</p>}
                       {datas.known_for_department && <p className="tio">{datas.known_for_department}</p>}
-                      {datas.birthday && <p className="sit">{datas.birthday}</p>}
                       {datas.original_name && <p className="tio">{datas.original_name}</p>}
 
                       <div className="star">
@@ -140,18 +136,27 @@ export default function Person() {
                         
                       </div>
                       <ul className="lst">
-                        {/* <li className="vot"> 
-                          <i className="fa-regular fa-thumbs-up"></i> <b>평점</b> : {datas.vote_average} / 10 
-                        </li> */}
+                        {datas.birthday && 
+                          <li className="vot"><i className="fa-regular fa-calendar-days"></i>  {datas.birthday}</li>
+                        }
+                        {datas.place_of_birth && 
+                          <li className="vot"><i className="fa-regular fa-location-dot"></i>  {datas.place_of_birth}</li>
+                        }
+                        <li className="vot"> 
+                          <i className="fa-regular fa-star"></i> {datas.popularity} / 100
+                        </li>
                         {datas.homepage && 
                         <li className="web">
                           <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
                         </li>} 
                       </ul>
                     </div>
+                    <div className="thum">
+                      <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+                    </div>
                   </div>
                   
-                  {casts.cast.length ? 
+                  {photos.profiles.length ? 
                   <div className="sect post">
                     <h4 className="tts">사진 </h4>
                     <div className="lst">
@@ -159,7 +164,7 @@ export default function Person() {
                       photos.profiles.map((item,idx) => {
                         return(
                         <div key={idx} className='box' data-index={idx+1}>
-                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
                         </div>
                         )
                       })
@@ -176,7 +181,7 @@ export default function Person() {
                       casts.cast.map((item,idx) => {
                         return(
                         <div key={idx} className='box' data-index={idx+1}>
-                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
                         </div>
                         )
                       })
@@ -193,7 +198,7 @@ export default function Person() {
                       casts.crew.map((item,idx) => {
                         return(
                         <div key={idx} className='box' data-index={idx+1}>
-                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
                         </div>
                         )
                       })
