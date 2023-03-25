@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound.jsx';
 import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
 import Poster from './pages/movie/Poster.jsx';
+import Person from './pages/movie/Person.jsx';
 // import SchPop from './pages/movie/SchPop.jsx';
 import Search from './pages/movie/Search.jsx';
 function App() {
@@ -35,6 +36,7 @@ function App() {
               <Route path="/:opts" element={<Home /> }>
                 <Route path=":id" element={<View />} >
                   <Route path="poster/:nums" element={<Poster />} />
+                  <Route path="person/:nums" element={<Person />} />
                 </Route>
               </Route>
            
@@ -43,6 +45,7 @@ function App() {
                   <Route path=":cate" element={<Lists/> }>
                     <Route path=":id" element={<View />} >
                       <Route path="poster/:nums" element={<Poster />} />
+                      <Route path="person/:nums" element={<Person />} />
                     </Route>
                   </Route>
                 </Route>
@@ -52,6 +55,7 @@ function App() {
                 <Route path=":opts" element={<Search />} >
                   <Route path=":id" element={<View />} >
                     <Route path="poster/:nums" element={<Poster />} />
+                    <Route path="person/:nums" element={<Person />} />
                   </Route>
                   <Route path=":keyword" element={<Search />} />
                 </Route>

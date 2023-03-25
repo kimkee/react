@@ -19,7 +19,7 @@ import 'swiper/css/effect-fade';
 
 
 
-export default function View() {
+export default function Poster() {
   let params = useParams()
   let navigate = useNavigate();
   const opts = params.opts;

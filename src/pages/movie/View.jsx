@@ -174,11 +174,11 @@ export default function View() {
                     {
                       casts.cast.filter( (item, i) => i < 999 ).map( b => {
                         return (
-                          <div key={b.credit_id} className='profile'>
+                          <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
                             <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.character}</div>
-                          </div>
+                          </Link>
                         )
                       })
                     }
@@ -193,11 +193,11 @@ export default function View() {
                     {
                       casts.crew.filter( (item, i) => i < 999 ).map( b => {
                         return (
-                          <div key={b.credit_id} className='profile'>
+                          <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
                             <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.known_for_department}</div>
-                          </div>
+                          </Link>
                         )
                       })
                     }
