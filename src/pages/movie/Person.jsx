@@ -172,7 +172,7 @@ export default function Person() {
                     casts.cast.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                        <Link to={`/list/movie/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })
@@ -189,7 +189,7 @@ export default function Person() {
                     casts.crew.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                        <Link to={`/list/movie/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })

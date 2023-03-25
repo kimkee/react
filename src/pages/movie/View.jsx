@@ -76,6 +76,7 @@ export default function View({prop}) {
     document.querySelector(".popup.movie .pct").scrollTo(0,0);
   }
   useEffect(() => {
+    goTop();
     console.log(  document.querySelector(".pct").offsetHeight );
     getCate();
     fetchDatas();
@@ -92,7 +93,7 @@ export default function View({prop}) {
       ui.lock.using(false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  },[params.id]);
   
   // console.log(datas);
   // if(!datas)  return ;

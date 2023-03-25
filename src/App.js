@@ -1,6 +1,6 @@
 import React from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 
@@ -32,11 +32,12 @@ function App() {
 
               <Route path='/*' element={<NotFound />} />
 
+              <Route path="/" element={<Navigate to="/home"></Navigate>} />
               <Route path="/home" element={<Home />} />
               <Route path="/home/:opts" element={<Home /> }>
                 <Route path=":id" element={<View prop={{"opts":"list"}}/>} >
-                  <Route path="poster/:nums" element={<Poster />} />
-                  <Route path="person/:nums" element={<Person />} />
+                  <Route path="poster/:nums" element={<Poster prop={{"opts":"list"}} />} />
+                  <Route path="person/:nums" element={<Person prop={{"opts":"list"}} />} />
                 </Route>
               </Route>
            

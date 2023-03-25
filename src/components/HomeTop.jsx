@@ -111,7 +111,7 @@ export default  function HomeTop({opts}){
                   const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
-                      <Link className="box" to={`/${opts.opts}/${data.id}`}>
+                      <Link className="box" to={`${opts.opts}/${data.id}`}>
                           <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                           <div className="info">
                             <div className="star">
