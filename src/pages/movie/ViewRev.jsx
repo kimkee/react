@@ -29,7 +29,7 @@ export default function ViewRev({postID, opts}) {
       ments.forEach( ment =>{
         const txt = ment.offsetHeight ;
         const scHt = ment.scrollHeight;
-        console.log(txt + "  ===============================================  " + scHt);
+        // console.log(txt + "  ===============================================  " + scHt);
         if (txt < scHt) {
           ment.closest("[data-ui='elips']").classList.add("elips");
         }else{

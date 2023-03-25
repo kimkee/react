@@ -103,118 +103,106 @@ export default function Person() {
       
       <div className="pct">
           <main className="poptents">
-          <div className="poster-box">
-            {/* {datas &&
-            <>
-            <p>{datas.profile_path}   <img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.name} onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy"/></p>
-            <p>{datas.birthday}</p>
-            <p>{datas.homepage}</p>
-            <p>{datas.place_of_birth }</p>
-            </>
-            } */}
-
+          
             { !datas && !casts && !photos &&
-                <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
-              }
-              { datas && casts && photos &&
-                <div className="m-info">
-                  
-                  <div className="info">
-                    <div className="desc">
+              <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
+            }
+            { datas && casts && photos &&
+              <div className="m-info">
+                
+                <div className="info">
+                  <div className="desc">
+                    
+                    {datas.title && <p className="tit">{datas.title}</p>}
+                    {datas.original_title && <p className="tio">{datas.original_title}</p>}
+
+                    {datas.name && <p className="tit">{datas.name}</p>}
+                    {datas.known_for_department && <p className="tio">{datas.known_for_department}</p>}
+                    {datas.original_name && <p className="tio">{datas.original_name}</p>}
+
+                    <div className="star">
                       
-                      {datas.title && <p className="tit">{datas.title}</p>}
-                      {datas.original_title && <p className="tio">{datas.original_title}</p>}
-
-                      {datas.name && <p className="tit">{datas.name}</p>}
-                      {datas.known_for_department && <p className="tio">{datas.known_for_department}</p>}
-                      {datas.original_name && <p className="tio">{datas.original_name}</p>}
-
-                      <div className="star">
-                        
-                      </div>
-                      <div className="cate">
-                        
-                      </div>
-                      <ul className="lst">
-                        {datas.birthday && 
-                          <li className="vot"><i className="fa-regular fa-calendar-days"></i>  {datas.birthday}</li>
-                        }
-                        {datas.place_of_birth && 
-                          <li className="vot"><i className="fa-regular fa-location-dot"></i>  {datas.place_of_birth}</li>
-                        }
-                        <li className="vot"> 
-                          <i className="fa-regular fa-star"></i> {datas.popularity} / 100
-                        </li>
-                        {datas.homepage && 
-                        <li className="web">
-                          <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
-                        </li>} 
-                      </ul>
                     </div>
-                    <div className="thum">
-                      <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+                    <div className="cate">
+                      
                     </div>
-                  </div>
-                  
-                  {photos.profiles.length ? 
-                  <div className="sect post">
-                    <h4 className="tts">사진 </h4>
-                    <div className="lst">
-                      {
-                      photos.profiles.map((item,idx) => {
-                        return(
-                        <div key={idx} className='box' data-index={idx+1}>
-                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
-                        </div>
-                        )
-                      })
+                    <ul className="lst">
+                      {datas.birthday && 
+                        <li className="vot"><i className="fa-regular fa-calendar-days"></i>  {datas.birthday}</li>
                       }
-                    </div>
-                  </div>
-                  : null}
-                  
-                  {casts.cast.length ? 
-                  <div className="sect post">
-                    <h4 className="tts">출연작 </h4>
-                    <div className="lst">
-                      {
-                      casts.cast.map((item,idx) => {
-                        return(
-                        <div key={idx} className='box' data-index={idx+1}>
-                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
-                        </div>
-                        )
-                      })
+                      {datas.place_of_birth && 
+                        <li className="vot"><i className="fa-regular fa-location-dot"></i>  {datas.place_of_birth}</li>
                       }
-                    </div>
+                      <li className="vot"> 
+                        <i className="fa-regular fa-star"></i> {datas.popularity} / 100
+                      </li>
+                      {datas.homepage && 
+                      <li className="web">
+                        <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
+                      </li>} 
+                    </ul>
                   </div>
-                  : null}
-
-                  {casts.crew.length ? 
-                  <div className="sect post">
-                    <h4 className="tts">제작참여 </h4>
-                    <div className="lst">
-                      {
-                      casts.crew.map((item,idx) => {
-                        return(
-                        <div key={idx} className='box' data-index={idx+1}>
-                          <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
-                        </div>
-                        )
-                      })
-                      }
-                    </div>
+                  <div className="thum">
+                    <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
                   </div>
-                  : null}
+                </div>
                 
-
-                </div> 
+                {photos.profiles.length ? 
+                <div className="sect post">
+                  <h4 className="tts">사진 </h4>
+                  <div className="lst">
+                    {
+                    photos.profiles.map((item,idx) => {
+                      return(
+                      <div key={idx} className='box' data-index={idx+1}>
+                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                      </div>
+                      )
+                    })
+                    }
+                  </div>
+                </div>
+                : null}
                 
-              } 
+                {casts.cast.length ? 
+                <div className="sect post">
+                  <h4 className="tts">출연작 </h4>
+                  <div className="lst">
+                    {
+                    casts.cast.map((item,idx) => {
+                      return(
+                      <div key={idx} className='box' data-index={idx+1}>
+                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                      </div>
+                      )
+                    })
+                    }
+                  </div>
+                </div>
+                : null}
+
+                {casts.crew.length ? 
+                <div className="sect post">
+                  <h4 className="tts">제작참여 </h4>
+                  <div className="lst">
+                    {
+                    casts.crew.map((item,idx) => {
+                      return(
+                      <div key={idx} className='box' data-index={idx+1}>
+                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                      </div>
+                      )
+                    })
+                    }
+                  </div>
+                </div>
+                : null}
               
 
-          </div>
-
+              </div> 
+              
+            } 
+              
           </main>
       </div>
       

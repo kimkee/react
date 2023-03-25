@@ -744,6 +744,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.person{ z-index: 1100; }
 .popup.person .phd>.inr {justify-content: left; padding-left: 20rem;}
 .popup.person .pct .poptents{padding-top: 0;}
+.popup.person .m-info .ui-loading-dot{min-height: calc(125vw);} 
 .popup.person .info{display: flex;/* flex-wrap: wrap; */justify-content: space-between;flex-direction: row;gap: 20rem;}
 .popup.person .info .thum{display:block;position:relative; width: 100%; overflow: hidden;width: 45%;}
 .popup.person .info .thum .pics{display:block;position:relative;padding-bottom: 150%; width: 100%; overflow: hidden;width: 100%; border-radius: 6rem; background:#000000;}
