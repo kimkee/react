@@ -32,7 +32,7 @@ function App() {
 
               <Route path='/*' element={<NotFound />} />
 
-              <Route path="/" element={<Navigate to="/home"></Navigate>} />
+              <Route path="/" element={<Navigate to="/home/"></Navigate>} />
               <Route path="/home" element={<Home />} />
               <Route path="/home/:opts" element={<Home /> }>
                 <Route path=":id" element={<View prop={{"opts":"list"}}/>} >
