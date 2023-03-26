@@ -33,44 +33,40 @@ function App() {
               <Route path='/*' element={<NotFound />} />
 
               <Route path="/" element={<Navigate to="/home/"></Navigate>} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/home/:opts" element={<Home /> }>
-                <Route path=":id" element={<View prop={{"opts":"list"}}/>} >
-                  <Route path="poster/:nums" element={<Poster prop={{"opts":"list"}} />} />
-                  <Route path="person/:nums" element={<Person prop={{"opts":"list"}} />} />
+              <Route path="home" element={<Home />} />
+
+              <Route path="home/:menu" element={<Home /> }>
+                <Route path=":id" element={<View prop={{"page":"home"}} />} >
+                  <Route path="poster/:nums" element={<Poster  />} />
+                  <Route path="person/:nums" element={<Person  />} />
                 </Route>
               </Route>
            
               <Route path="list">
-                <Route path=":opts" >
-                  <Route path=":cate" element={<Lists/> }>
-                    <Route path=":id" element={<View prop={{"opts":"list"}}/>} >
-                      <Route path="poster/:nums" element={<Poster prop={{"opts":"list"}} />} />
-                      <Route path="person/:nums" element={<Person prop={{"opts":"list"}} />} />
+                <Route path=":menu" >
+                  <Route path=":cate" element={<Lists /> }>
+                    <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                      <Route path="poster/:nums" element={<Poster />} />
+                      <Route path="person/:nums" element={<Person />} />
                     </Route>
                   </Route>
                 </Route>
               </Route>
 
 
-              <Route path="movie">
-                <Route path=":id" element={<View prop={{"opts":"movie"}} />} >
-                  <Route path="poster/:nums" element={<Poster prop={{"opts":"movie"}} />} />
-                  <Route path="person/:nums" element={<Person prop={{"opts":"movie"}} />} />
-                </Route>
-              </Route>
-              <Route path="tv">
-                <Route path=":id" element={<View prop={{"opts":"tv"}} />} >
-                  <Route path="poster/:nums" element={<Poster prop={{"opts":"tv"}} />} />
-                  <Route path="person/:nums" element={<Person prop={{"opts":"tv"}} />} />
+              <Route path=":menu">
+                <Route path=":id" element={<View prop={{"page":"page"}}/>} >
+                  <Route path="poster/:nums" element={<Poster />} />
+                  <Route path="person/:nums" element={<Person />} />
                 </Route>
               </Route>
 
+
               <Route path="search" >
-                <Route path=":opts" element={<Search />} >
-                  <Route path=":id" element={<View prop={{"opts":"search"}} />} >
-                    <Route path="poster/:nums" element={<Poster prop={{"opts":"search"}} />} />
-                    <Route path="person/:nums" element={<Person prop={{"opts":"search"}} />} />
+                <Route path=":menu" element={<Search />} >
+                  <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                    <Route path="poster/:nums" element={<Poster prop={{"page":"search"}} />} />
+                    <Route path="person/:nums" element={<Person prop={{"page":"search"}} />} />
                   </Route>
                   <Route path=":keyword" element={<Search />} />
                 </Route>

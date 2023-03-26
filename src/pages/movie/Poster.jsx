@@ -21,14 +21,17 @@ import 'swiper/css/effect-fade';
 
 export default function Poster({prop}) {
 
-  let opts = prop.opts
-  let params = useParams()
-  let navigate = useNavigate();
-  opts = params.opts || prop.opts;
   
+  let navigate = useNavigate();
+  
+  let params = useParams()
+  console.log(params);
+  let opts = params.menu
   console.log(params);
   console.log(opts);
 
+
+  
   const postID = params.id;
   const popResize = ()=>{
     let $pop =  document.querySelector(".popup.poster");

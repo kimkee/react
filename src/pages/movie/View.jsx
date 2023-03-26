@@ -6,15 +6,15 @@ import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
 export default function View({prop}) {
-  console.log(prop.opts);
-
-  let opts = prop.opts
-
-  let params = useParams()
-  let navigate = useNavigate();
-  opts = params.opts || prop.opts;
   
+  
+  let params = useParams()
   console.log(params);
+  let opts = params.menu
+  let navigate = useNavigate();
+  prop.page = prop.page || 'page' ;
+  
+  console.log(params , opts);
   const [cate, setCate] = useState({});
   const getCate = async ()=>{
     let cate = {
@@ -111,10 +111,10 @@ export default function View({prop}) {
           </div>
         </div>
         {
-           prop.opts === "list" || prop.opts === "search" ?
+          prop.page === "list" || prop.page === "search" || prop.page === "home" ?
           <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
         :
-          <button type="button" className="btn-pop-close back" onClick={ () => { navigate("/home") } } ><i className="fa-solid fa-house"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
+          <button type="button" className="btn-pop-close back" onClick={ () => { navigate("/home/") } } ><i className="fa-solid fa-house"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
         }
         
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>

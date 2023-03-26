@@ -11,9 +11,11 @@ export default function Lists() {
   // console.log(opts);
 
   let params = useParams()
+  
+  console.log(params);
   let location = useLocation()
   let navigate = useNavigate();
-  const opts = params.opts;
+  let opts = params.menu;
   const cateID = params.cate;
   cateID === undefined && navigate(`/${opts}/0`) ;
   console.log(cateID);

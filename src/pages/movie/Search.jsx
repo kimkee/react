@@ -12,7 +12,7 @@ export default function Search() {
   let params = useParams();
   // let {state} = useLocation();
   console.log(params);
-  const opts = params.opts;
+  const opts = params.menu;
   let [keyword,keywordSet] = useState(searchParams.get('search'));
   const [mlist, setMlist] = useState([]);
   // const [page, setPage] = useState(1);
