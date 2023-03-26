@@ -88,9 +88,9 @@ export default function Person() {
   // if(!datas || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
 
   return (
-  <>
-   
-  <article className="pop-layer c bottom popup person">
+    <>
+    
+    <article className="pop-layer c bottom popup person">
       <div className="pbd">
       <div className="phd">
           <div className="inr">
@@ -99,7 +99,6 @@ export default function Person() {
       </div>
 
       <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
-      
       
       <div className="pct">
           <main className="poptents">
@@ -207,7 +206,7 @@ export default function Person() {
       </div>
       
       </div>
-  </article>
-  </>
+    </article>
+    </>
   )
 }
