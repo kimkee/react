@@ -72,6 +72,7 @@ export default function View({prop}) {
       document.querySelector(".floatpop")?.classList.remove("on-top");
     }
   };
+  const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
   const goTop = ()=>{
     document.querySelector(".popup.movie .pct").scrollTo(0,0);
   }
@@ -103,7 +104,7 @@ export default function View({prop}) {
   return (
   <>
     <Outlet/>
-    <article className="pop-layer a bottom popup movie view">
+    <article className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} `}>
       <div className="pbd">
         <div className="phd">
           <div className="inr">
@@ -111,10 +112,10 @@ export default function View({prop}) {
           </div>
         </div>
         {
-          prop.page === "list" || prop.page === "search" || prop.page === "home" ?
+          isPage() ?
           <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
         :
-          <button type="button" className="btn-pop-close back" onClick={ () => { navigate("/home/") } } ><i className="fa-solid fa-house"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
+          <button type="button" className="btn-pop-close home" onClick={ () => { navigate("/home/") } } ><i className="fa-solid fa-house"></i>{/* <i className="fa-regular fa-xmark"></i> */}</button>
         }
         
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>

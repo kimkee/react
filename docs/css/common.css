@@ -205,7 +205,6 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .pop-layer.a>.pbd>.phd .ptit{font-size: 17rem;color:#ffffff;width: calc(100% - 110rem);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight: 400;padding: 1rem 0 rem 0rem;}
 .pop-layer.a>.pbd .bt.hback{width:24rem;height:24rem;background: url(../img/cm/btn_top_back_B@2x.png) no-repeat;background-size:24rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';font-size:0rem;position: absolute;left: 20rem;top: 13rem;}
 .pop-layer.a>.pbd .btn-pop-close{position: absolute;right: 17rem;top: 13rem;font-size: 28rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;text-shadow: 0rem 0rem 2rem rgb(0 0 0 / 50%);}
-.pop-layer.a>.pbd .btn-pop-close.back{left: 20rem; right: auto;}
 .pop-layer.a>.pbd>.pct{position: relative;}
 .pop-layer.a>.pbd>.pct::-webkit-scrollbar{display: none;}
 .pop-layer.a>.pbd>.pct::-webkit-scrollbar{background-color: transparent;}
@@ -658,6 +657,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 
 
+.popup.movie.view{}
+.popup.movie.view .pbd .btn-pop-close.back{left: 20rem; right: auto;}
+.popup.movie.view .pbd .btn-pop-close.home{left: 20rem; right: auto; font-size:20rem;}
 .popup.movie.view.on{ background-color: rgba(0,0,0,0.7); }
 .popup.movie.view>.pbd{box-shadow: 0px 0px 5px rgb(114 114 114 / 56%);}
 .popup.movie.view>.pbd>.phd{height: 0rem; z-index: 20;}
