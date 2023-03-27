@@ -62,8 +62,8 @@ export default function Lists() {
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
-    let fetchURL = `https://api.themoviedb.org/3/${opts}/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
-    // let fetchURL = `https://api.themoviedb.org/3/discover/movie?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
+    // let fetchURL = `https://api.themoviedb.org/3/${opts}/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/discover/${opts}?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/trending/movie/day?page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
     // top_rated
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
