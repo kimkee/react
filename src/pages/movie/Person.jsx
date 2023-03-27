@@ -145,23 +145,7 @@ export default function Person() {
                     <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
                   </div>
                 </div>
-                
-                {photos.profiles.length ? 
-                <div className="sect post">
-                  <h4 className="tts">사진 </h4>
-                  <div className="lst">
-                    {
-                    photos.profiles.map((item,idx) => {
-                      return(
-                      <div key={idx} className='box' data-index={idx+1}>
-                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
-                      </div>
-                      )
-                    })
-                    }
-                  </div>
-                </div>
-                : null}
+
                 
                 {casts.cast.length ? 
                 <div className="sect post">
@@ -197,7 +181,23 @@ export default function Person() {
                 </div>
                 : null}
               
-
+                
+              {photos.profiles.length ? 
+                <div className="sect post">
+                  <h4 className="tts">사진 </h4>
+                  <div className="lst">
+                    {
+                    photos.profiles.map((item,idx) => {
+                      return(
+                      <div key={idx} className='box' data-index={idx+1}>
+                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                      </div>
+                      )
+                    })
+                    }
+                  </div>
+                </div>
+                : null}
               </div> 
               
             } 
