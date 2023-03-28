@@ -25,8 +25,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='*' element={<Header />} />
-          <Route path='home' element={<Header />} />
+          <Route path='*'  />
+          <Route path='home/*' element={<Header />} />
           <Route path='list/*' element={<Header />} />
           <Route path='search/*' element={<Header />} />
         </Routes>
