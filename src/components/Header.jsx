@@ -40,7 +40,7 @@ export default function Header({cls}) {
 	  <header className={"header "}>
       <div className="inr">
         <div className="ldt">
-          <h1 className="logo"> <Link to={`/`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1>
+          <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1>
         </div>
         <div className="rdt">
           <button type="button" onClick={test} className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>

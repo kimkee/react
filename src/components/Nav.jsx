@@ -10,19 +10,10 @@ export default function Nav() {
   // console.log(searchParams.get('search'))
   
   const location = useLocation();
-  console.log(location.pathname)
-  const movieAct = ()=>{
-    let isMove = location.pathname.includes('/movie/') ? "bt active" : "bt";
-    return isMove;
-  }
-  const tvAct = ()=>{
-    let isMove = location.pathname.includes('/tv/') ? "bt active" : "bt";
-    return isMove;
-  }
-  const schAct = ()=>{
-    let isMove = location.pathname.includes('/search/') ? "bt active" : "bt";
-    return isMove;
-  }
+  console.log(location);
+
+  const isActive = els => location.pathname.includes(`${els}`) ? " active" : "";
+  
   const scrollEvent = ()=> {
     const scr = ui.viewport.scrollTop();   
     if ( ui.lock.stat) return;
@@ -32,9 +23,7 @@ export default function Nav() {
       document.querySelector(".floatnav")?.classList.remove("on-top");
     }
   };
-  const goTop = ()=>{
-    window.scrollTo(0,0);
-  }
+  const goTop = ()=> window.scrollTo(0,0);
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
@@ -50,10 +39,10 @@ export default function Nav() {
       <nav id="menubar" className="menubar">
         <div className="inr">
           <ul className="menu">
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}home/`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}list/movie/0`} className={ movieAct }><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}list/tv/0`} className={ tvAct }><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}search/movie`} className={ schAct }><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
+            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}home/`} className={"bt" + isActive("home")}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
+            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}list/movie/0`} className={"bt" + isActive("list/movie")}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}list/tv/0`} className={"bt" + isActive("list/tv")}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
+            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}search/movie`} className={"bt" + isActive("search/")}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
           </ul>
         </div>
       </nav>
