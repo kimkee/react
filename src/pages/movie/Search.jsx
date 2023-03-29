@@ -85,7 +85,7 @@ export default function Search() {
     fetchMoive(page);
     document.querySelector('.header').classList.add("hide");
     setMlist([]);
-    !keyword &&  inputRef.current.focus();
+    !keyword && !document.querySelector(".pop-layer") && inputRef.current.focus();
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
     return ()=>{
