@@ -29,6 +29,7 @@ function App() {
           <Route path='home/*' element={<Header />} />
           <Route path='list/*' element={<Header />} />
           <Route path='search/*' element={<Header />} />
+          <Route path='movie/*' element={<Header />} />
         </Routes>
 
         {/* <TransitionGroup className="transition-group">
