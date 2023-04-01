@@ -12,28 +12,30 @@ export default function ViewElips({overview}) {
 
 
   const togView = {
-    evt:(e)=>{
-      console.log(e.currentTarget);
+    evt: (e) => {
       const btn = e.currentTarget;
       const box = btn.closest("[data-ui='elips']");
-
-      if( box.classList.contains("open") ) {
-        btn.querySelector(".btn-tog").innerHTML  = '<span>더보기</span> <i class="fa-solid fa-caret-down"></i>';
+      const btnTogElem = btn.querySelector(".btn-tog");
+      if (box.classList.contains("open")) {
+        btnTogElem.innerHTML = '<span>더보기</span> <i class="fa-solid fa-caret-down"></i>';
         box.classList.remove("open");
-      }else{
-        btn.querySelector(".btn-tog").innerHTML  = '<i class="fa-solid fa-caret-up"></i> <span>숨기기</span>';
+      } else {
+        btnTogElem.innerHTML = '<i class="fa-solid fa-caret-up"></i> <span>숨기기</span>';
         box.classList.add("open");
       }
     },
-    set:(e)=>{
-      const txt = document.querySelector("[data-ui='elips'] .txt").offsetHeight ;
-      const scHt = document.querySelector("[data-ui='elips'] .txt").scrollHeight;
-      console.log("scHt == " , scHt, ".txt == " , txt );
-      if (txt < scHt) {
-        document.querySelector("[data-ui='elips']").classList.add("elips");
+    set: (e) => {
+      const elipsElem = document.querySelector("[data-ui='elips']");
+      const txtElem = elipsElem.querySelector(".txt");
+      const txtHeight = txtElem.offsetHeight;
+      const scrollHeight = txtElem.scrollHeight;
+  
+      console.log("scrollHeight == ", scrollHeight, ".txtHeight == ", txtHeight);
+      if (txtHeight < scrollHeight) {
+        elipsElem.classList.add("elips");
       }
-    }
-  }
+    },
+  };
 
 
   return (
