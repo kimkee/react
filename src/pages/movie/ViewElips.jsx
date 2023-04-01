@@ -16,7 +16,8 @@ export default function ViewElips({overview}) {
       console.log(e.currentTarget);
       const btn = e.currentTarget;
       const box = btn.closest("[data-ui='elips']");
-      if( box.classList.contains("open")) {
+
+      if( box.classList.contains("open") ) {
         btn.querySelector(".btn-tog").innerHTML  = '<span>더보기</span> <i class="fa-solid fa-caret-down"></i>';
         box.classList.remove("open");
       }else{
@@ -36,7 +37,7 @@ export default function ViewElips({overview}) {
 
 
   return (
-    <div className="vinf" data-ui='elips' onClick={togView.evt} tabIndex={0}> 
+    <div className="vinf" data-ui='elips' onClick={ togView.evt } onKeyUp={ e=> e.key ==="Enter" ? togView.evt(e) : null  } tabIndex={0}> 
       <div className="txt">
         {overview}
         <span className="btn-tog"><span>더보기</span> <i className="fa-solid fa-caret-down"></i></span>
