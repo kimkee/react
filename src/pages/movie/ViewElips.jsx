@@ -36,12 +36,11 @@ export default function ViewElips({overview}) {
 
 
   return (
-    <>
-        <div className="vinf" data-ui='elips' onClick={togView.evt} tabIndex={0}> 
-        {/* <div className="txt">블랙 팬서: 와칸다 포에버블랙 팬서: 와칸다 포에버블랙 팬서: 와칸다 포에버블랙 팬서: 와칸다 포에버블랙 팬서: 와칸다 포에버블랙 팬서: 와칸다 포에버블랙 팬서: 와칸다 </div> */}
-        <div className="txt">{overview}</div>
-        <button className="btn-tog" type="button"><span>더보기</span> <i className="fa-solid fa-caret-down"></i></button>
-        </div>
-    </>
+    <div className="vinf" data-ui='elips' onClick={togView.evt} tabIndex={0}> 
+      <div className="txt">
+        {overview}
+        <span className="btn-tog"><span>더보기</span> <i className="fa-solid fa-caret-down"></i></span>
+      </div>
+    </div>
   )
 }
