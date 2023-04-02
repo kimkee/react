@@ -11,67 +11,67 @@ const ui = {
     },
     star:{
         point:{
-            0: `  <i class="fa-duotone fa-star-sharp"></i>
+            0:  `   <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            0.5:` <i class="fa-duotone fa-star-sharp-half"></i>
+            0.5:`   <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            1:`   <i class="fa-solid fa-star-sharp"></i>
+            1:  `   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            1.5:` <i class="fa-solid fa-star-sharp"></i>
+            1.5:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            2:`   <i class="fa-solid fa-star-sharp"></i>
+            2:  `   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            2.5:` <i class="fa-solid fa-star-sharp"></i>
+            2.5:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            3:`   <i class="fa-solid fa-star-sharp"></i>
+            3:  `   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            3.5:` <i class="fa-solid fa-star-sharp"></i>
+            3.5:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            4:`   <i class="fa-solid fa-star-sharp"></i>
+            4:  `   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp"></i>`,
 
-            4.5:` <i class="fa-solid fa-star-sharp"></i>
+            4.5:`   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-duotone fa-star-sharp-half"></i>`,
 
-            5:`   <i class="fa-solid fa-star-sharp"></i>
+            5:  `   <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
                     <i class="fa-solid fa-star-sharp"></i>
