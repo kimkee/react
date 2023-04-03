@@ -9,6 +9,10 @@ const ui = {
         docHeight: () => parseInt(document.documentElement.scrollHeight || document.body.clientHeight),
         scrollTop: () => parseInt(document.documentElement.scrollTop)
     },
+    dateForm: (d, opt) => {
+        // (opt === undefined) ? opt = 'medium' : opt;
+        return new Intl.DateTimeFormat('ko-KR', { dateStyle: 'medium', timeStyle: 'medium' }).format(d)
+    },
     star:{
         point:{
             0:  `   <i class="fa-duotone fa-star-sharp"></i>

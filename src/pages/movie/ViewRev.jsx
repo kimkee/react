@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
+import ui from '../../ui';
 export default function ViewRev({postID, opts}) {
 
   console.log(postID);
@@ -79,7 +81,7 @@ export default function ViewRev({postID, opts}) {
                         <em className="nm">{rev.author_details.name || rev.author_details.username}</em>
                       </div>
                       <div className="desc">
-                        <em className="time">{rev.created_at}</em>
+                        <em className="time">{ ui.dateForm( new Date( rev.created_at) ) }</em>
                       </div>
                       <div data-ui="elips" className="mbox">
                         <div className="ment txt" onClick={togView.evt}>{rev.content}</div>
@@ -99,7 +101,5 @@ export default function ViewRev({postID, opts}) {
       :null}
       </> 
 
-
-      
   )
 }
