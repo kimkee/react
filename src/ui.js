@@ -9,9 +9,9 @@ const ui = {
         docHeight: () => parseInt(document.documentElement.scrollHeight || document.body.clientHeight),
         scrollTop: () => parseInt(document.documentElement.scrollTop)
     },
-    dateForm: (d, opt)=> {
+    dateForm: (date, opt)=> {
         opt = opt === undefined ? opt = 'medium' : null;
-        return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(d)
+        return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(date);
     },
     star:{
         point:{
