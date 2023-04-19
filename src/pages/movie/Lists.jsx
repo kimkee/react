@@ -120,7 +120,7 @@ export default function Lists() {
   const scrollEvent = ()=> {
     const wHt = ui.viewport.height();
     const docH = ui.viewport.docHeight();
-    const scr = ui.viewport.scrollTop() + wHt + 10;
+    const scr = ui.viewport.scrollTop() + wHt + 300;
     console.log(callStat +" =  "+  page);
     if (docH <= scr && callStat === true) {
       console.log("바닥도착");
