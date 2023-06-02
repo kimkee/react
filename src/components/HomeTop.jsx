@@ -4,7 +4,7 @@ import { Link  } from 'react-router-dom';  // useParams , Outlet, useSearchParam
 import axios from 'axios';
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, Autoplay,EffectFade , A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper'; //,EffectFade 
 
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
 
@@ -87,7 +87,7 @@ export default  function HomeTop({opts}){
           
           <Swiper className="swiper-wrapper swiper slide" 
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
+            modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
             spaceBetween={0}
             slidesPerView={1}
             // navigation
