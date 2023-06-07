@@ -132,10 +132,10 @@ export default function View({prop}) {
         <div className="pct">
           <main className="poptents">
             
-            { !datas && !casts &&
+            { !datas && !casts && !moves &&
               <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
             }
-            { datas && casts && 
+            { datas && casts && moves &&
               <div className="m-info">
                 
                 <div className="info">
@@ -185,7 +185,8 @@ export default function View({prop}) {
                     <Link to={`./poster/0`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
                   </div>
                 </div>
-                {datas.overview ? <ViewElips overview={datas.overview}/> : null}
+                
+                {datas.overview && <ViewElips overview={datas.overview} /> }
                 
                 {moves.results.length > 0 ?
                 <div className="sect movs">
@@ -194,8 +195,8 @@ export default function View({prop}) {
                     {
                       moves.results.reverse().filter( (item, i) => i < 2 ).map( b => {
                         return (
-                          <div className="box">
-                            <iframe className='iframe' title={b.id} key={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                          <div className="box" key={b.id}>
+                            <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
                           </div>
                         )
                       })
