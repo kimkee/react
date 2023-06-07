@@ -187,7 +187,7 @@ export default function View({prop}) {
                 </div>
                 {datas.overview ? <ViewElips overview={datas.overview}/> : null}
                 
-                {moves ?
+                {moves.results.length > 0 ?
                 <div className="sect movs">
                   <h4 className="tts">영상</h4>
                   <div className="lst">
