@@ -41,6 +41,7 @@ export default function View({prop}) {
 
   const [datas, setDatas] = useState(null);
   const [casts, setCasts] = useState(null);
+  const [moves, setMovs] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
   const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
@@ -58,6 +59,14 @@ export default function View({prop}) {
     axios.get( castURL ).then(response => {
       console.log("출연,제작" , response.data);
       setCasts( response.data);
+    }).catch( e => { console.log(e); });
+  };
+
+  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
+  const fetchMov = () => {
+    axios.get( movURL ).then(response => {
+      console.log("영상" , response.data);
+      setMovs( response.data);
     }).catch( e => { console.log(e); });
   };
 
@@ -82,6 +91,7 @@ export default function View({prop}) {
     getCate();
     fetchDatas();
     fetchCast();
+    fetchMov();
     popResize();
     document.querySelector(".popup.movie .pct").addEventListener("scroll",scrollEvent);
     window.addEventListener("resize",popResize);
@@ -177,6 +187,24 @@ export default function View({prop}) {
                 </div>
                 {datas.overview ? <ViewElips overview={datas.overview}/> : null}
                 
+                {moves ?
+                <div className="sect movs">
+                  <h4 className="tts">영상</h4>
+                  <div className="lst">
+                    {
+                      moves.results.reverse().filter( (item, i) => i < 2 ).map( b => {
+                        return (
+                          <div className="box">
+                            <iframe className='iframe' title={b.id} key={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+                : null}
+
+
                 {casts.cast.length ?
                 <div className="sect cast">
                   <h4 className="tts">출연진</h4>
