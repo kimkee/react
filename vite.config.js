@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
+  define: {
+    MY_GLOBAL_VARIABLE: '111111111111111111111'
+  },
   plugins: [react()],
   publicDir: './public',
   root: './',

@@ -73,7 +73,7 @@ export default  function HomeTop({opts}){
     // console.log(scr );
   };
 
-
+  console.log(MY_GLOBAL_VARIABLE);
 
 
 

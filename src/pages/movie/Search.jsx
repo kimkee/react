@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, NavLink, useSearchParams,useParams  } from 'react-router-dom';  // useParams ,useLocation , Link,useNavigate,
 
 import axios from 'axios';
-import ui from '../../ui';
-import ItemA from '../../components/ItemA.jsx';
+import ui from '/src/ui';
+import ItemA from '/src/components/ItemA.jsx';
 // import View from 'View.jsx';
 
 

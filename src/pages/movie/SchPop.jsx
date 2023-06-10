@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate  } from 'react-router-dom';
-import ui from '../../ui';
+import ui from '/src/ui';
 export default function View() {
   
   let params = useParams()

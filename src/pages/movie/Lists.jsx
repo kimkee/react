@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 import axios from 'axios';
-import ui from '../../ui';
-import ItemB from '../../components/ItemB.jsx';
-import CateMenu from '../../components/CateMenu.jsx';
+import ui from '/src/ui';
+import ItemB from '/src/components/ItemB.jsx';
+import CateMenu from '/src/components/CateMenu.jsx';
 
 
 export default function Lists() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink ,useParams} from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
-// import ui from '../../ui';
+// import ui from '/src/ui';
 import { Navigation, Pagination,FreeMode ,A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
 

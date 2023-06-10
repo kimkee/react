@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import ui from '../../ui';
+import ui from '/src/ui';
 export default function ViewRev({postID, opts}) {
 
   console.log(postID);
