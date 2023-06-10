@@ -40,7 +40,7 @@ export default function Person() {
   const [photos, setPhotos] = useState(null);
 
 
-  const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+  const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchPerson = () => {
   axios.get( personURL ).then(response => {
       console.log("인물 정보" , response.data);
@@ -48,14 +48,14 @@ export default function Person() {
       
     }).catch( e => { console.log(e); });
   };
-  const creditsURL = `https://api.themoviedb.org/3/person/${personID}/movie_credits?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+  const creditsURL = `https://api.themoviedb.org/3/person/${personID}/movie_credits?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchCredits = () => {
   axios.get( creditsURL ).then(response => {
       console.log("인물 출연작" , response.data);
       setCasts(response.data);
     }).catch( e => { console.log(e); });
   };
-  const photoURL = `https://api.themoviedb.org/3/person/${personID}/images?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+  const photoURL = `https://api.themoviedb.org/3/person/${personID}/images?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchPhotos = () => {
   axios.get( photoURL ).then(response => {
       console.log("인물 사진" , response.data);

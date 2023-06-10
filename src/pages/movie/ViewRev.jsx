@@ -6,7 +6,7 @@ export default function ViewRev({postID, opts}) {
 
   console.log(postID);
   const [review, setReview] = useState(null);
-  const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+  const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchReview = () => {
     axios.get( fetchRev ).then(response => {
       console.log("리뷰들" , response.data);

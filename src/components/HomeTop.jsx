@@ -26,7 +26,7 @@ export default  function HomeTop({opts}){
   const fetchMoive = (page)=>{
     ui.loading.show();
    
-    const fetchURL = `https://api.themoviedb.org/3/${opts.opts}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/${opts.opts}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );

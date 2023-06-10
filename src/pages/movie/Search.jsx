@@ -23,7 +23,7 @@ export default function Search() {
     let cate = {
       genr:{}
     }
-    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`).then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{
@@ -48,7 +48,7 @@ export default function Search() {
     inputRef.current.value = keyword;
     kwd = keyword
     
-    let fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+    let fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     if(keyword == null) {
       fetchURL = ''
       ui.loading.hide();

@@ -47,7 +47,7 @@ export default function Poster({prop}) {
   const [datas, setDatas] = useState(null);
   const [pstImg, pstImgSet] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
+  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       console.log("영화정보" , response.data);

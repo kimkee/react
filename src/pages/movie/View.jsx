@@ -20,7 +20,7 @@ export default function View({prop}) {
     let cate = {
       genr:{}
     }
-    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`).then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{ setCate(cate); console.log(cate); });
@@ -44,7 +44,7 @@ export default function View({prop}) {
   const [moves, setMovs] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
+  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       console.log("영화정보" , response.data);
@@ -54,7 +54,7 @@ export default function View({prop}) {
     }).catch( e => { console.log(e); });
   };
 
-  const castURL = `https://api.themoviedb.org/3/${opts}/${postID}/credits?&region=kr&language=ko&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+  const castURL = `https://api.themoviedb.org/3/${opts}/${postID}/credits?&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
       console.log("출연,제작" , response.data);
@@ -62,7 +62,7 @@ export default function View({prop}) {
     }).catch( e => { console.log(e); });
   };
 
-  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
+  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchMov = () => {
     axios.get( movURL ).then(response => {
       console.log("영상" , response.data);
