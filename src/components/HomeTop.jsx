@@ -94,7 +94,7 @@ export default  function HomeTop({opts}){
             loop={true}
             effect={"fade"}
             // autoplay={false}
-            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
+            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
             wrapperTag="ul"
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
