@@ -12,8 +12,8 @@ import axios from 'axios';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 // import 'swiper/css/scrollbar';
-import ui from '../ui';
-// import StarPoint from './StarPoint';
+import ui from '/src/ui';
+// import StarPoint from '/src/components/StarPoint';
 
 
 export default  function ListSet({opts}){
@@ -32,7 +32,7 @@ export default  function ListSet({opts}){
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
-    const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${process.env.REACT_APP_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -93,7 +93,7 @@ export default  function ListSet({opts}){
                     return (
                       <li key={idx}  className="pbox">
                         <Link className="box" to={`${opts.opts}/${data.id}`}>
-                            <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                            <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                             <div className="info">
                               {/* <StarPoint point={data.vote_average} /> */}
                               {/* <div className="tit">{data.title}</div> */}

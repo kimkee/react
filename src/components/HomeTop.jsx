@@ -15,8 +15,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
-import ui from '../ui';
-import StarPoint from './StarPoint';
+import ui from '/src/ui';
+import StarPoint from '/src/components/StarPoint';
 
 
 export default  function HomeTop({opts}){
@@ -26,7 +26,7 @@ export default  function HomeTop({opts}){
   const fetchMoive = (page)=>{
     ui.loading.show();
    
-    const fetchURL = `https://api.themoviedb.org/3/${opts.opts}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${process.env.REACT_APP_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/${opts.opts}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
@@ -99,7 +99,7 @@ export default  function HomeTop({opts}){
             pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
             // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
-            autoHeight={true}
+            autoHeight={false}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
@@ -112,7 +112,7 @@ export default  function HomeTop({opts}){
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <Link className="box" to={`${opts.opts}/${data.id}`}>
-                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                           <div className="info">
                             <div className="star">
                               <StarPoint point={data.vote_average} />

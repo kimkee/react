@@ -5,16 +5,16 @@ import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom'
 
 
 
-import Header from './components/Header.jsx';
-import Nav from './components/Nav.jsx';
-import Home from './pages/Home.jsx';
-import NotFound from './pages/NotFound.jsx';
-import Lists from './pages/movie/Lists.jsx';
-import View from './pages/movie/View.jsx';
-import Poster from './pages/movie/Poster.jsx';
-import Person from './pages/movie/Person.jsx';
-// import SchPop from './pages/movie/SchPop.jsx';
-import Search from './pages/movie/Search.jsx';
+import Header from '/src/components/Header.jsx';
+import Nav from '/src/components/Nav.jsx';
+import Home from '/src/pages/Home.jsx';
+import NotFound from '/src/pages/NotFound.jsx';
+import Lists from '/src/pages/movie/Lists.jsx';
+import View from '/src/pages/movie/View.jsx';
+import Poster from '/src/pages/movie/Poster.jsx';
+import Person from '/src/pages/movie/Person.jsx';
+
+import Search from '/src/pages/movie/Search.jsx';
 function App() {
   // const location = window.location;
   // console.log(location);

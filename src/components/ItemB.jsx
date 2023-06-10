@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
 
-import StarPoint from "./StarPoint.jsx";
+import StarPoint from '/src/components/StarPoint';
 
 
 export default function ItemB({data,cate}) {
@@ -15,7 +15,7 @@ export default function ItemB({data,cate}) {
     
     <Link className={`box`} to={""+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
           
           <StarPoint point={data.vote_average} />
@@ -25,7 +25,7 @@ export default function ItemB({data,cate}) {
             </div> */}
         </div>
       </div>
-            <div className="tits">{data.title || data.name}</div>
+      <div className="tits">{data.title || data.name}</div>
       
     </Link>
   </>  

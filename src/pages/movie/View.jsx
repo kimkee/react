@@ -20,7 +20,7 @@ export default function View({prop}) {
     let cate = {
       genr:{}
     }
-    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`).then(res =>{
+    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // setCate(cate); 
     }).then( res =>{ setCate(cate); console.log(cate); });
@@ -44,7 +44,7 @@ export default function View({prop}) {
   const [moves, setMovs] = useState(null);
   const [bgImg, setBgImg] = useState('');
   
-  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
+  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
       console.log("영화정보" , response.data);
@@ -54,7 +54,7 @@ export default function View({prop}) {
     }).catch( e => { console.log(e); });
   };
 
-  const castURL = `https://api.themoviedb.org/3/${opts}/${postID}/credits?&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
+  const castURL = `https://api.themoviedb.org/3/${opts}/${postID}/credits?&region=kr&language=ko&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
   const fetchCast = () => {
     axios.get( castURL ).then(response => {
       console.log("출연,제작" , response.data);
@@ -62,7 +62,7 @@ export default function View({prop}) {
     }).catch( e => { console.log(e); });
   };
 
-  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${process.env.REACT_APP_KEY}`;
+  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
   const fetchMov = () => {
     axios.get( movURL ).then(response => {
       console.log("영상" , response.data);
@@ -182,7 +182,7 @@ export default function View({prop}) {
                     </ul>
                   </div>
                   <div className="thum">
-                    <Link to={`./poster/0`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
+                    <Link to={`./poster/0`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
                   </div>
                 </div>
                 
@@ -214,7 +214,7 @@ export default function View({prop}) {
                       casts.cast.filter( (item, i) => i < 999 ).map( b => {
                         return (
                           <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
-                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
+                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.character}</div>
                           </Link>
@@ -233,7 +233,7 @@ export default function View({prop}) {
                       casts.crew.filter( (item, i) => i < 999 ).map( b => {
                         return (
                           <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
-                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
+                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.known_for_department}</div>
                           </Link>
@@ -250,13 +250,13 @@ export default function View({prop}) {
                   <h4 className="tts">포스터 : {datas.images.posters.length+1}</h4>
                   <div className="lst">
                     <div className='box' data-index={0}>
-                      <Link to={`./poster/0`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                      <Link to={`./poster/0`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                     </div>
                     {
                     datas.images.posters.map((img,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <Link to={`./poster/${idx+1}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                        <Link to={`./poster/${idx+1}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })

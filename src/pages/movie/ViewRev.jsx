@@ -6,7 +6,7 @@ export default function ViewRev({postID, opts}) {
 
   console.log(postID);
   const [review, setReview] = useState(null);
-  const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${process.env.REACT_APP_KEY}`;
+  const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
   const fetchReview = () => {
     axios.get( fetchRev ).then(response => {
       console.log("리뷰들" , response.data);
@@ -74,7 +74,7 @@ export default function ViewRev({postID, opts}) {
                 <li key={idx}>
                   <div className="rpset">
                     <div className="user">
-                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}}/></span>
+                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png`}}/></span>
                     </div>
                     <div className="infs">
                       <div className="name">

@@ -40,7 +40,7 @@ export default function Person() {
   const [photos, setPhotos] = useState(null);
 
 
-  const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
+  const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
   const fetchPerson = () => {
   axios.get( personURL ).then(response => {
       console.log("인물 정보" , response.data);
@@ -48,14 +48,14 @@ export default function Person() {
       
     }).catch( e => { console.log(e); });
   };
-  const creditsURL = `https://api.themoviedb.org/3/person/${personID}/movie_credits?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
+  const creditsURL = `https://api.themoviedb.org/3/person/${personID}/movie_credits?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
   const fetchCredits = () => {
   axios.get( creditsURL ).then(response => {
       console.log("인물 출연작" , response.data);
       setCasts(response.data);
     }).catch( e => { console.log(e); });
   };
-  const photoURL = `https://api.themoviedb.org/3/person/${personID}/images?language=ko&region=kr&api_key=${process.env.REACT_APP_KEY}`;
+  const photoURL = `https://api.themoviedb.org/3/person/${personID}/images?language=ko&region=kr&api_key=${import.meta.env.VITE_REACT_APP_KEY}`;
   const fetchPhotos = () => {
   axios.get( photoURL ).then(response => {
       console.log("인물 사진" , response.data);
@@ -142,7 +142,7 @@ export default function Person() {
                     </ul>
                   </div>
                   <div className="thum">
-                    <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/user.png`}}/></div>
+                    <div className="pics"><img src={`https://image.tmdb.org/t/p/w780${datas.profile_path}`} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png`}}/></div>
                   </div>
                 </div>
 
@@ -155,7 +155,7 @@ export default function Person() {
                     casts.cast.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })
@@ -172,7 +172,7 @@ export default function Person() {
                     casts.crew.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
+                        <Link to={`/movie/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.poster_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></Link> 
                       </div>
                       )
                     })
@@ -190,7 +190,7 @@ export default function Person() {
                     photos.profiles.map((item,idx) => {
                       return(
                       <div key={idx} className='box' data-index={idx+1}>
-                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${process.env.REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
+                        <div to={`/list/${opts}/0/${item.id}`}  className='pic'><img src={'https://image.tmdb.org/t/p/w185'+item.file_path} alt={item.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" /></div> 
                       </div>
                       )
                     })

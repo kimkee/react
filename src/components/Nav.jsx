@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react'; //useState, useEffect
 import {NavLink , useLocation } from 'react-router-dom'; // Link  , useLocation, useSearchParams,useParams, useSearchParams
 
-import ui from '../ui';
+import ui from '/src/ui';
 
 export default function Nav() {
   // let params = useParams()
@@ -39,10 +39,10 @@ export default function Nav() {
       <nav id="menubar" className="menubar">
         <div className="inr">
           <ul className="menu">
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}home/`} className={"bt" + isActive("home")}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}list/movie/0/`} className={"bt" + isActive("list/movie")}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}list/tv/0/`} className={"bt" + isActive("list/tv")}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
-            <li><NavLink to={`${process.env.REACT_APP_PUBLIC_URL}search/movie/`} className={"bt" + isActive("search/")}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
+            <li><NavLink to={`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}home/`} className={"bt" + isActive("home")}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
+            <li><NavLink to={`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}list/movie/0/`} className={"bt" + isActive("list/movie")}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+            <li><NavLink to={`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}list/tv/0/`} className={"bt" + isActive("list/tv")}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
+            <li><NavLink to={`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}search/movie/`} className={"bt" + isActive("search/")}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
           </ul>
         </div>
       </nav>
