@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="%VITE_REACT_APP_PUBLIC_URL%img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1a1a1a">
+  <meta name="description" content="React+TMDB 영화정보 앱">
 
-  <head>
-    <meta charset="utf-8">
-    <link rel="icon" href="%VITE_REACT_APP_PUBLIC_URL%img/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
-    <meta name="theme-color" content="#1a1a1a">
-    <meta name="description" content="React+TMDB 영화정보 앱">
-  
-    <meta property="og:title" content="KPlex">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kimkee.github.io/react/">
-    <meta property="og:image" content="https://kimkee.github.io/react/img/ogimage.png">
-    <meta property="og:description" content="React+TMDB 영화정보 앱">
-  
-    <link rel="apple-touch-icon" href="%VITE_REACT_APP_PUBLIC_URL%img/icon_app.png">
-    <link rel="apple-touch-icon-precomposed" href="%VITE_REACT_APP_PUBLIC_URL%img/icon_app.png">
-    <link rel="apple-touch-icon" href="%VITE_REACT_APP_PUBLIC_URL%img/icon_app.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="React+TMDB">
-  
-    <link rel="stylesheet" href="%VITE_REACT_APP_PUBLIC_URL%css/style.css?v=%VITE_REACT_APP_VER%">
-    <link rel="stylesheet" href="%VITE_REACT_APP_PUBLIC_URL%css/common.css?v=%VITE_REACT_APP_VER%">
-    <link rel="manifest" href="%VITE_REACT_APP_PUBLIC_URL%manifest.json">
-    <title>랙트:[React+TMDB]</title>
-    <script>
-      // if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js")); }
-    </script>
-  </head>
+  <meta property="og:title" content="KPlex">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kimkee.github.io/react/">
+  <meta property="og:image" content="https://kimkee.github.io/react/img/ogimage.png">
+  <meta property="og:description" content="React+TMDB 영화정보 앱">
+
+  <link rel="apple-touch-icon" href="%VITE_REACT_APP_PUBLIC_URL%img/icon_app.png">
+  <link rel="apple-touch-icon-precomposed" href="%VITE_REACT_APP_PUBLIC_URL%img/icon_app.png">
+  <link rel="apple-touch-icon" href="%VITE_REACT_APP_PUBLIC_URL%img/icon_app.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="React+TMDB">
+
+  <link rel="stylesheet" href="%VITE_REACT_APP_PUBLIC_URL%css/style.css?v=%VITE_REACT_APP_VER%">
+  <link rel="stylesheet" href="%VITE_REACT_APP_PUBLIC_URL%css/common.css?v=%VITE_REACT_APP_VER%">
+  <link rel="manifest" href="%VITE_REACT_APP_PUBLIC_URL%manifest.json">
+  <title>%VITE_REACT_APP_TITLE%</title>
+  <script>
+    // if ("serviceWorker" in navigator) { window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js")); }
+  </script>
+</head>
 
 
-  <body class="body">
-    <div class="wrap" id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<body class="body">
+  <div class="wrap" id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7P0SY16WCB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7P0SY16WCB');
+  </script>
+</body>
 </html>
