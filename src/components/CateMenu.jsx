@@ -14,7 +14,7 @@ export default function CateMenu({menu, opts}) {
   let params = useParams()
   // let navigate = useNavigate();
   const [swiper, setSwiper] = useState(null);
-  const [slideActive, slideActiveSet] = useState(null);
+  const [slideActive, slideActiveSet] = useState(0);
   const goSlide = (num) => { 
     document.querySelectorAll(".cate-box ul>li .bt.active").forEach( bt => {
       num = parseInt( bt.closest("li").getAttribute("data-index") );
@@ -23,7 +23,7 @@ export default function CateMenu({menu, opts}) {
     swiper?.slideTo( slideActive , 100 );
   };
   const cateID = params.cate;
-  // console.log(slideActive);
+  console.log(slideActive);
   useEffect(() => {
     goSlide(slideActive)
     return ()=>{
