@@ -109,7 +109,7 @@ export default function Videos({prop}) {
               pagination={{ clickable: true ,type:'fraction'}}
               // scrollbar={{ draggable: true }}
               // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
-              autoHeight={true}
+              // autoHeight={true}
               onSwiper={(swiper) => {
                 console.log("initialize swiper", swiper);
                 swiper.slideTo(params.nums , 0);
