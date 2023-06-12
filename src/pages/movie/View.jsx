@@ -209,7 +209,33 @@ export default function View({prop}) {
                   </div>
                 </div>
                 : null}
-                
+
+
+                {moves.results.length > 0 ?
+                <div className="sect movs">
+                  <h4 className="tts">영상</h4>
+                  <div className="lst">
+                    {
+                      moves.results.filter( (item, i) => i < 100 ).reverse().map( (b,idx) => {
+                        return (
+                          <div className="box" key={b.id}>
+                            {/* <a className="pic" href={"//www.youtube.com/embed/"+b.key} target="_blank"> */}
+                            <Link to={`./videos/${idx+1}`} className="pic" >
+                              <span className="msg"><span className="tit">{b.name}</span></span>
+                              <i className="ico fa-solid fa-play"></i>
+                              <img className="img" src={"//i.ytimg.com/vi/"+b.key+"/hqdefault.jpg"} onError={ (e)=>{ e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png` } } alt={b.name} loading="lazy" />
+                            </Link>
+                            {/* <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe> */}
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                </div>
+                : null}
+
+
+
                 {casts.crew.length ?
                 <div className="sect cast">
                   <h4 className="tts">제작진</h4>
@@ -250,27 +276,7 @@ export default function View({prop}) {
                 </div>
                 : null}
 
-                {moves.results.length > 0 ?
-                <div className="sect movs">
-                  <h4 className="tts">영상</h4>
-                  <div className="lst">
-                    {
-                      moves.results.filter( (item, i) => i < 100 ).reverse().map( b => {
-                        return (
-                          <div className="box" key={b.id}>
-                            <a className="pic" href={"//www.youtube.com/embed/"+b.key} target="_blank">
-                              <span className="msg"><span className="tit">{b.name}</span></span>
-                              <i className="ico fa-solid fa-play"></i>
-                              <img className="img" src={"//i.ytimg.com/vi/"+b.key+"/hqdefault.jpg"} onError={ (e)=>{ e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png` } } alt={b.name} loading="lazy" />
-                            </a>
-                            {/* <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe> */}
-                          </div>
-                        )
-                      })
-                    }
-                  </div>
-                </div>
-                : null}
+
 
 
                 <ViewRev postID={postID} opts={opts}/>

@@ -13,6 +13,7 @@ import Lists from '/src/pages/movie/Lists.jsx';
 import View from '/src/pages/movie/View.jsx';
 import Poster from '/src/pages/movie/Poster.jsx';
 import Person from '/src/pages/movie/Person.jsx';
+import Videos from '/src/pages/movie/Videos.jsx';
 
 import Search from '/src/pages/movie/Search.jsx';
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route path=":id" element={<View prop={{"page":"home"}} />} >
               <Route path="poster/:nums" element={<Poster  />} />
               <Route path="person/:nums" element={<Person  />} />
+              <Route path="videos/:nums" element={<Videos  />} />
             </Route>
           </Route>
         
@@ -55,6 +57,7 @@ function App() {
                 <Route path=":id" element={<View prop={{"page":"search"}} />} >
                   <Route path="poster/:nums" element={<Poster />} />
                   <Route path="person/:nums" element={<Person />} />
+                  <Route path="videos/:nums" element={<Videos  />} />
                 </Route>
               </Route>
             </Route>
@@ -65,6 +68,7 @@ function App() {
             <Route path=":id" element={<View prop={{"page":"page"}}/>} >
               <Route path="poster/:nums" element={<Poster />} />
               <Route path="person/:nums" element={<Person />} />
+              <Route path="videos/:nums" element={<Videos  />} />
             </Route>
           </Route>
 
@@ -74,6 +78,7 @@ function App() {
               <Route path=":id" element={<View prop={{"page":"search"}} />} >
                 <Route path="poster/:nums" element={<Poster prop={{"page":"search"}} />} />
                 <Route path="person/:nums" element={<Person prop={{"page":"search"}} />} />
+                <Route path="videos/:nums" element={<Videos prop={{"page":"search"}} />} />
               </Route>
               <Route path=":keyword" element={<Search />} />
             </Route>
