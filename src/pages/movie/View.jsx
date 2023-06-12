@@ -85,6 +85,9 @@ export default function View({prop}) {
   const goTop = ()=>{
     document.querySelector(".popup.movie .pct").scrollTo(0,0);
   }
+  const imgError = (e)=> {
+    (e)=>{console( e + "썸네일 없음")} 
+  }
   useEffect(() => {
     goTop();
     console.log(  document.querySelector(".pct").offsetHeight );
@@ -252,10 +255,15 @@ export default function View({prop}) {
                   <h4 className="tts">영상</h4>
                   <div className="lst">
                     {
-                      moves.results.reverse().filter( (item, i) => i < 3 ).map( b => {
+                      moves.results.filter( (item, i) => i < 10 ).reverse().map( b => {
                         return (
                           <div className="box" key={b.id}>
-                            <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                            <a className="pic" href={"//www.youtube.com/embed/"+b.key} target="_blank">
+                              <span className="msg"><span className="tit">{b.name}</span></span>
+                              <i className="ico fa-solid fa-play"></i>
+                              <img className="img" src={"//i.ytimg.com/vi/"+b.key+"/hqdefault.jpg"} onError={ (e)=>{ e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png` } } alt={b.name} />
+                            </a>
+                            {/* <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe> */}
                           </div>
                         )
                       })
