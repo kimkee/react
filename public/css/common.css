@@ -10,8 +10,8 @@ ol, ul { list-style: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 em {font-style: normal;}
 img, a, input, select, textarea, label, button, span, em, strong {vertical-align: baseline;}
-hr { display: none; }
-
+hr { display: none; } 
+ 
 html, body {font-size: 1400%;line-height: 1.6;font-family: 'Roboto',"Noto Sans KR",Arial,"Malgun Gothic",sans-serif;}
 input , textarea{font-family: 'Roboto',"Noto Sans KR",Arial,"Malgun Gothic",sans-serif;}
 html{font-size: 1px;}
@@ -154,7 +154,7 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li .rpset .user .pic .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #424242;}
 .ut-reply .rplist ul.rlist>li .rpset .infs{ position: relative; width: 100%; }
 .ut-reply .rplist ul.rlist>li .rpset .infs .name{display: flex;align-items: center;padding: 0rem 0 0  0;min-height:22rem;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .name .nm{font-size: 15rem;font-weight: 700; line-height:1.1;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .name .nm{font-size: 12rem;font-weight: 700;line-height:1.1;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .name .mb{font-size:11rem;border: #f1344d solid 1rem;color: #f1344d;border-radius: 3rem;height: 17rem;padding: 1rem 3rem;margin: -6rem 0rem -3rem 6rem;overflow: hidden;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc{display: flex;margin: 3rem 0 0 0; position:absolute; right: 0rem; top:0rem; text-align: right;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc em{}
@@ -163,7 +163,7 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .time{font-size: 10rem;color: #999999; text-align: right}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.delt{margin: 0rem 0rem 0rem 8rem ;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox {padding-bottom: 4rem;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 13rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 12rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment::-webkit-scrollbar{background-color: transparent;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment::-webkit-scrollbar-track{background-color: transparent; box-shadow: none;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .btn-tog{font-size:12rem;position: absolute;left: auto;right: 0rem;color: #999;bottom: 0rem;padding: 0rem 0rem 0rem 10rem;transform: none;}
