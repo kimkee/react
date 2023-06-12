@@ -714,8 +714,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.movie.view .movs{}
 .popup.movie.view .movs .lst{display: flex;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden;margin: 5rem -20rem 0rem -20rem;padding: 0rem 15rem;}
 .popup.movie.view .movs .lst::-webkit-scrollbar{height: 0rem; opacity:0}
-.popup.movie.view .movs .box{position: relative;padding-bottom: calc(900% / 1600 * 100  - 20rem);background: #000;min-width: calc(100% - 20rem);width: calc(100% - 10rem);margin: 0rem 5rem;/* height: 100%; */overflow: hidden;}
-.popup.movie.view .movs .box+.box{}
+.popup.movie.view .movs .box{position: relative;padding-bottom: calc(900% / 1600 * 70  - 10rem);background: #000;min-width: calc(70% - 20rem);width: calc(70% - 10rem);margin: 0rem 5rem;/* height: 100%; */overflow: hidden;}
+.popup.movie.view .movs .box:only-child{
+    padding-bottom: calc(900% / 1600 * 100 - 10rem);
+    min-width: calc(100% - 20rem);
+    width: calc(100% - 10rem);
+}
 .popup.movie.view .movs .box .iframe{position: absolute;height: 100%;width: 100%;border: none;} 
 .popup.movie.view .movs .box .pic{position: absolute;height: 100%;width: 100%;border: none;display: block;} 
 .popup.movie.view .movs .box .pic .img{display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50% , -50%); width: 100%; object-fit: cover; max-width: inherit; min-width: 100%; height: 100%; background-color: #000000; }
@@ -724,7 +728,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.movie.view .movs .box .pic .tit{z-index: 10;font-size: 12rem;display: block;/* margin: 5rem 10rem; */color: #ffffffcc;/* background: rgb(0 0 0 / 31%); */line-height: 1.2;font-weight: 300;text-overflow: ellipsis;overflow: hidden;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;word-wrap: break-word;}
 .popup.movie.view .movs .box .pic .msg{position: absolute;left: 0;right: 0;bottom: 0;z-index: 10;padding: 10rem 12rem;background: rgb(0 0 0 / 40%);}
 .popup.movie.view .post{}
-.popup.movie.view .post .tts{}
+.popup.movie.view .post .tts{} 
 .popup.movie.view .post .lst{display: flex;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden;margin: 5rem -20rem 0rem -20rem;padding: 0rem 15rem;}
 .popup.movie.view .post .lst::-webkit-scrollbar{height: 0rem; opacity:0}
 .popup.movie.view .post .box{min-width: calc(30% - 20rem);width: calc(30% - 20rem); margin: 0rem 5rem;}
