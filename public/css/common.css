@@ -741,7 +741,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.person + .popup.movie{filter: blur(3rem);}
 .popup.videos + .popup.movie{filter: blur(3rem);}
 
-/* 포스터 */
+/* 포스터 */ 
 .popup.poster{ z-index: 1100; }
 .popup.poster .phd>.inr {justify-content: left; padding-left: 20rem;}
 .popup.poster .pct .poptents{padding-top: 0;}
@@ -800,6 +800,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.videos .phd>.inr {justify-content: left; padding-left: 20rem;}
 
 .popup.videos.pop-layer .pbd{width: calc(100% - 10rem);max-width: 500rem;}
+.popup.videos .pct{ min-height: 67vw; }
 .popup.videos .pct .poptents{padding-top: 0;}
 .popup.videos .videos-box{ min-height: 30vw; width: 100%; } 
 .popup.videos .videos-box .box{padding-bottom: 50rem;}
