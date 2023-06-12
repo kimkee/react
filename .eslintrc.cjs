@@ -11,6 +11,6 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react-refresh/only-export-components': 'warn',
-    "no-unused-vars": ["", { "varsIgnorePattern": "React" }] // 추가한거
+    "no-unused-vars": ["none", { "varsIgnorePattern": "React" }] // 추가한거
   },
 }
