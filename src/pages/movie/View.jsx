@@ -252,7 +252,7 @@ export default function View({prop}) {
                   <h4 className="tts">영상</h4>
                   <div className="lst">
                     {
-                      moves.results.reverse().filter( (item, i) => i < 2 ).map( b => {
+                      moves.results.reverse().filter( (item, i) => i < 10 ).map( b => {
                         return (
                           <div className="box" key={b.id}>
                             <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
