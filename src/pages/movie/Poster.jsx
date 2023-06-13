@@ -115,7 +115,7 @@ export default function Poster({prop}) {
               autoHeight={true}
               onSwiper={(swiper) => {
                 console.log("initialize swiper", swiper);
-                swiper.slideTo(params.nums , 0);
+                swiper.slideToLoop(params.nums , 0);
               }}
               onSlideChange={() => {/* console.log('slide change') */}} >
                 <SwiperSlide tag="li">

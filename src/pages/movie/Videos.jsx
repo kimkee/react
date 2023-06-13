@@ -45,13 +45,7 @@ export default function Videos({prop}) {
 
 
   const [movs, setMovs] = useState(null);
-  const loopSet = ()=>{
-    if( movs.results.length > 1 ) {
-      return true
-    }else{
-      return false
-    }
-  }
+  const loopSet = ()=> movs.results.length > 1 ? true : false;
   const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchMov = () => {
     axios.get( movURL ).then(response => {
