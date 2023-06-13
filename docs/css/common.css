@@ -1111,14 +1111,14 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .ui-loading-dot>.bx em{display: flex; justify-content: center;}
 .ui-loading-dot>.bx em i,
 .ui-loading-dot>.bx em::before,
-.ui-loading-dot>.bx em::after{width: 6rem;height: 6rem;display: inline-flex;background-color: #adb9c9;border-radius: 10rem;margin: 0rem 2rem;animation: bounce 0.5s alternate infinite;content: "";}
+.ui-loading-dot>.bx em::after{width: 6rem;height: 6rem;display: inline-flex;background-color: #adb9c9;border-radius: 10rem;margin: 0rem 2rem;animation: bounce-dots 0.5s alternate infinite;content: "";}
 .ui-loading-dot>.bx em::before{}
 .ui-loading-dot>.bx em i{animation-delay: 0.16s;}
 .ui-loading-dot>.bx em::after{animation-delay: 0.32s;}
 .ui-loading-dot>.bx::after{content: "LOADING...";font-size: 10rem;margin-left: 4rem;text-align: center;margin-top: 10rem;display: block;color: #adb9c9;}
 
 .ui-loading-dot.on{position: relative; height: 200rem;}
-@keyframes bounce {
+@keyframes bounce-dots {
 	from{
 		transform: scaleX(1.15);
 	}
