@@ -739,7 +739,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
  
 .popup.poster + .popup.movie{filter: blur(3rem);}
 .popup.person + .popup.movie{filter: blur(3rem);}
-.popup.videos + .popup.movie{filter: blur(7rem);}
+.popup.videos + .popup.movie{filter: blur(3rem);}
 
 /* 포스터 */ 
 .popup.poster{ z-index: 1100; }
