@@ -46,7 +46,7 @@ export default function Poster({prop}) {
 
   const [datas, setDatas] = useState(null);
   const [pstImg, pstImgSet] = useState('');
-  
+  const loopSet = ()=> datas.images.posters.length > 1 ? true : false;
   const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
@@ -103,7 +103,7 @@ export default function Poster({prop}) {
               spaceBetween={20}
               slidesPerView={1}
               // navigation
-              loop={true}
+              loop={loopSet()}
               lazy={ {enabled: true, loadPrevNext: true, loadPrevNextAmount: 3} } // 지금 loadPrevNext 옵션이 동작 안됨 ㅡㅡ; 
               // effect={"fade"}
               // autoplay={false}
