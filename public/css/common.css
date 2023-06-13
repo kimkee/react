@@ -810,13 +810,15 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.videos .videos-box .box .pics .ui-load-glx.full>.gbx{}
 .popup.videos .videos-box .swiper [class^='swiper-button']{display: flex;}
 .popup.videos .videos-box .swiper .swiper-wrapper{padding-bottom: 0rem;}
-.popup.videos .videos-box .swiper-pagination-fraction{position: absolute;height: 32rem;display: inline-flex;align-items: center;left: 50%;bottom: 0rem;transform: translateX(-50%);width: auto;/* bottom: calc(0rem + env(safe-area-inset-bottom)); */background: rgb(80 80 80 / 50%);border-radius: 30rem;font-size: 11rem;min-width: 33rem;padding: 4rem 11rem;letter-spacing: 0rem;color: #eeeeee;}
-.popup.videos .videos-box .swiper-pagination-current,
-.popup.videos .videos-box .swiper-pagination-total{padding: 0rem 3rem; font-size:12rem;}
-.popup.videos .videos-box .swiper-button-prev,
-.popup.videos .videos-box .swiper-button-next{top: auto;bottom: 3rem;width: 30rem;height: 30rem;align-items: center;display: flex;}
-.popup.videos .videos-box .swiper-button-next:after,
-.popup.videos .videos-box .swiper-button-prev:after{ font-size: 22rem; }
+.popup.videos .videos-box .swiper .swiper-pagination-fraction{position: absolute;height: 32rem;display: inline-flex;align-items: center;left: 50%;bottom: 0rem;transform: translateX(-50%);width: auto;/* bottom: calc(0rem + env(safe-area-inset-bottom)); */background: rgb(80 80 80 / 50%);border-radius: 30rem;font-size: 11rem;min-width: 33rem;padding: 4rem 11rem;letter-spacing: 0rem;color: #eeeeee;}
+.popup.videos .videos-box .swiper .swiper-pagination-current,
+.popup.videos .videos-box .swiper .swiper-pagination-total{padding: 0rem 3rem; font-size:12rem;}
+.popup.videos .videos-box .swiper .swiper-button-prev,
+.popup.videos .videos-box .swiper .swiper-button-next{top: auto;bottom: 3rem;width: 30rem;height: 30rem;align-items: center;display: flex;}
+.popup.videos .videos-box .swiper .swiper-button-next:after,
+.popup.videos .videos-box .swiper .swiper-button-prev:after{ font-size: 22rem; }
+.popup.videos .videos-box .swiper .swiper-button-lock{display: none;}
+.popup.videos .videos-box .swiper .swiper-pagination-lock{display: none;}
   
 
 

@@ -45,7 +45,13 @@ export default function Videos({prop}) {
 
 
   const [movs, setMovs] = useState(null);
-  
+  const loopSet = ()=>{
+    if( movs.results.length > 1 ) {
+      return true
+    }else{
+      return false
+    }
+  }
   const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchMov = () => {
     axios.get( movURL ).then(response => {
@@ -100,8 +106,11 @@ export default function Videos({prop}) {
               spaceBetween={20}
               slidesPerView={1}
               navigation
-              loop={true}
+              loop={loopSet()}
               lazy={ {enabled: true, loadPrevNext: true, loadPrevNextAmount: 3} } // 지금 loadPrevNext 옵션이 동작 안됨 ㅡㅡ; 
+              observeParents = {true}
+              observeSlideChildren = {true}
+              observer = {true}
               // effect={"fade"}
               // autoplay={false}
               // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: true}}
@@ -121,7 +130,7 @@ export default function Videos({prop}) {
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
-                           <span className="ui-load-glx full"> <span className="gbx"> <em className="bx"> <i></i> <i></i> <i></i> <i></i> </em> </span> </span>
+                            <span className="ui-load-glx full"> <span className="gbx"> <em className="bx"> <i></i> <i></i> <i></i> <i></i> </em> </span> </span>
                             <iframe className='iframe' title={data.name} src={"//www.youtube.com/embed/"+data.key}  allow="autoplay; encrypted-media" allowFullScreen loading='lazy'></iframe>
                           </div>
                       </div>
