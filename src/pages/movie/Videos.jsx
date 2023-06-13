@@ -121,6 +121,7 @@ export default function Videos({prop}) {
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
+                            <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div>
                             <iframe className='iframe' title={data.name} src={"//www.youtube.com/embed/"+data.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
                           </div>
                       </div>
@@ -129,7 +130,7 @@ export default function Videos({prop}) {
                 })
                 }
               </Swiper>
-              :<div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>}
+              :null}
 
             </div>
 

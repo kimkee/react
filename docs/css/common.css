@@ -736,7 +736,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.movie.view .revw{margin: 25rem 0rem 0rem 0rem;}
 .popup.movie.view .revw .tts{}
 .popup.movie.view .ui-loading-dot.on{height: calc(100dvh - 120rem);}
-
+ 
 .popup.poster + .popup.movie{filter: blur(3rem);}
 .popup.person + .popup.movie{filter: blur(3rem);}
 .popup.videos + .popup.movie{filter: blur(3rem);}
@@ -795,20 +795,18 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.person .post .box .pic .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #000000;}
 
 
-/* 포스터 */
+/* 영상팝업 */
 .popup.videos{ z-index: 1100; }
 .popup.videos .phd>.inr {justify-content: left; padding-left: 20rem;}
-
-.popup.videos.pop-layer .pbd{width: calc(100% - 10rem);max-width: 500rem;}
-.popup.videos .pct{ min-height: 67vw; }
-.popup.videos .pct .poptents{padding-top: 0;}
+.popup.videos.pop-layer .pbd{width: calc(100% - 10rem);max-width: 500rem;background-color: transparent;}
+.popup.videos .pct{min-height: 67vw;}
+.popup.videos .pct .poptents{padding-top: 0;padding: 0 10rem;}
 .popup.videos .videos-box{ min-height: 30vw; width: 100%; } 
 .popup.videos .videos-box .box{padding-bottom: 50rem;}
-.popup.videos .videos-box .pics{display: block;position: relative;padding-bottom: calc(900% / 1600 * 100  );width: 100%;overflow: hidden;width: 100%;border-radius: 0rem;background: #000000;position: relative;}  
-.popup.videos .videos-box .pics .img{z-index: 10;display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;/* background-color: #000000; */} 
-.popup.videos .videos-box .pics .iframe{position: absolute;height: 100%;width: 100%;border: none;} 
-.popup.videos .videos-box .lazy-preloader{width: 40rem;height: 40rem;display: flex;justify-content: center;align-items: center;z-index: 5;animation: loading-rotate 1s infinite steps(8);font-size:0rem;position: absolute;left: 50%;top: 50%; margin: -20rem 0 0 -20rem;}
-.popup.videos .videos-box .lazy-preloader i{font-size:28rem;}
+.popup.videos .videos-box .box .pics{display: block;position: relative;padding-bottom: calc(900% / 1600 * 100  );width: 100%;overflow: hidden;width: 100%;border-radius: 0rem;background: #000000;position: relative;}  
+.popup.videos .videos-box .box .pics .img{z-index: 10;display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;/* background-color: #000000; */} 
+.popup.videos .videos-box .box .pics .iframe{position: absolute;height: 100%;width: 100%;border: none;z-index: 10;} 
+.popup.videos .videos-box .box .pics .ui-loading-dot{ position: absolute; z-index: 5; height: auto; top: 30rem; }
 .popup.videos .videos-box .swiper [class^='swiper-button']{display: flex;}
 .popup.videos .videos-box .swiper .swiper-wrapper{padding-bottom: 0rem;}
 .popup.videos .videos-box .swiper-pagination-fraction{position: absolute;height: 32rem;display: inline-flex;align-items: center;left: 50%;bottom: 0rem;transform: translateX(-50%);width: auto;/* bottom: calc(0rem + env(safe-area-inset-bottom)); */background: rgb(80 80 80 / 50%);border-radius: 30rem;font-size: 11rem;min-width: 33rem;padding: 4rem 11rem;letter-spacing: 0rem;color: #eeeeee;}
