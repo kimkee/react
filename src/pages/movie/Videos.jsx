@@ -121,8 +121,8 @@ export default function Videos({prop}) {
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
-                            <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div>
-                            <iframe className='iframe' title={data.name} src={"//www.youtube.com/embed/"+data.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe>
+                           <span className="ui-load-glx full"> <span className="gbx"> <em className="bx"> <i></i> <i></i> <i></i> <i></i> </em> </span> </span>
+                            <iframe className='iframe' title={data.name} src={"//www.youtube.com/embed/"+data.key}  allow="autoplay; encrypted-media" allowFullScreen loading='lazy'></iframe>
                           </div>
                       </div>
                     </SwiperSlide>

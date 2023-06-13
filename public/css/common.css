@@ -724,7 +724,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.movie.view .movs .box .pic .tit{z-index: 10;font-size: 12rem;display: block;/* margin: 5rem 10rem; */color: #ffffffcc;/* background: rgb(0 0 0 / 31%); */line-height: 1.2;font-weight: 300;text-overflow: ellipsis;overflow: hidden;-webkit-line-clamp: 2;-webkit-box-orient: vertical;display: -webkit-box;word-wrap: break-word;}
 .popup.movie.view .movs .box .pic .msg{position: absolute;left: 0;right: 0;bottom: 0;z-index: 10;padding: 10rem 12rem;background: rgb(0 0 0 / 40%);}
 .popup.movie.view .post{}
-.popup.movie.view .post .tts{} 
+.popup.movie.view .post .tts{}
 .popup.movie.view .post .lst{display: flex;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden;margin: 5rem -20rem 0rem -20rem;padding: 0rem 15rem;}
 .popup.movie.view .post .lst::-webkit-scrollbar{height: 0rem; opacity:0}
 .popup.movie.view .post .box{min-width: calc(30% - 20rem);width: calc(30% - 20rem); margin: 0rem 5rem;}
@@ -806,7 +806,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.videos .videos-box .box .pics{display: block;position: relative;padding-bottom: calc(900% / 1600 * 100  );width: 100%;overflow: hidden;width: 100%;border-radius: 0rem;background: #000000;position: relative;}  
 .popup.videos .videos-box .box .pics .img{z-index: 10;display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;/* background-color: #000000; */} 
 .popup.videos .videos-box .box .pics .iframe{position: absolute;height: 100%;width: 100%;border: none;z-index: 10;} 
-.popup.videos .videos-box .box .pics .ui-loading-dot{ position: absolute; z-index: 5; height: auto; top: 30rem; }
+.popup.videos .videos-box .box .pics .ui-load-glx{position: absolute;z-index: 5;height: auto;top: 0rem;}
+.popup.videos .videos-box .box .pics .ui-load-glx.full>.gbx{}
 .popup.videos .videos-box .swiper [class^='swiper-button']{display: flex;}
 .popup.videos .videos-box .swiper .swiper-wrapper{padding-bottom: 0rem;}
 .popup.videos .videos-box .swiper-pagination-fraction{position: absolute;height: 32rem;display: inline-flex;align-items: center;left: 50%;bottom: 0rem;transform: translateX(-50%);width: auto;/* bottom: calc(0rem + env(safe-area-inset-bottom)); */background: rgb(80 80 80 / 50%);border-radius: 30rem;font-size: 11rem;min-width: 33rem;padding: 4rem 11rem;letter-spacing: 0rem;color: #eeeeee;}
@@ -1140,8 +1141,34 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .ui-loadmore.hide{opacity: 0; display:none;}
 
 
-.wow-enter { opacity: 0; }
 
+/* 로딩 갤럭시 */
+.ui-load-glx{display: inline-block;position: relative;width: 18px;height: 18px;vertical-align: middle;} 
+.ui-load-glx>.gbx{width: 18px;height: 18px;display: inline-block;}
+.ui-load-glx>.gbx .bx{animation: rotate 1.2s linear infinite;display: flex;position: relative;width: 100%;height: 100%;top: 50%;left: 50%;margin-top: -9px;margin-left: -9px;}
+.ui-load-glx>.gbx .bx i{width: 100%;height: 100%;position: absolute;left: 0;top: 0;}
+.ui-load-glx>.gbx .bx i::before{animation: bounce 0.5s alternate infinite;position: absolute;left: 50%;top: 50%;width: 20%;height: 20%;background: #0481ff;border-radius: 10px;display: inline-flex;content:"";}
+.ui-load-glx>.gbx .bx i:first-child::before {background: #00d593;}
+.ui-load-glx>.gbx .bx i:nth-child(1){transform: rotate(0deg);}
+.ui-load-glx>.gbx .bx i:nth-child(2){transform: rotate(90deg);}
+.ui-load-glx>.gbx .bx i:nth-child(3){transform: rotate(180deg);}
+.ui-load-glx>.gbx .bx i:nth-child(4){transform: rotate(270deg);}
+
+.ui-load-glx.full{position: fixed;left: 0;right: 0;top: 0;bottom: 0;z-index: 2000;background: transparent;width: auto;height: auto;}
+.ui-load-glx.full>.gbx{transform: scale(2.5);position: absolute;left: 50%;top: 50%;margin: -9px 0px 0px -9px;}
+.ui-load-glx.full>.gbx .bx{}
+@keyframes bounce {
+    0%{   transform: translateY(20%) ; }
+    30%{  transform: translateY(30%) ; }
+    100%{ transform: translateY(100%); }
+}
+@keyframes rotate {
+    0%{ transform: rotate(-360deg); }
+}
+
+
+
+.wow-enter { opacity: 0; }
 .wow-enter-active { opacity: 1; transition: all 500ms; }
 
 
