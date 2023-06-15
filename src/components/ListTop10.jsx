@@ -12,8 +12,8 @@ import axios from 'axios';
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 // import 'swiper/css/scrollbar';
-import ui from '/src/ui';
-import StarPoint from '/src/components/StarPoint';
+import ui from '../ui.js';
+import StarPoint from '../components/StarPoint';
 
 
 export default  function ListSet({opts}){

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Outlet,useParams, useNavigate, Link} from 'react-router-dom'; //,useOutletContext  , useLocation
-import ui from '/src/ui';
-import StarPoint from '/src/components/StarPoint';
+import ui from '../../ui.js';
+import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
 export default function View({prop}) {

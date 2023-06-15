@@ -1,7 +1,7 @@
 
 import React, {  useEffect } from 'react'; //useState,
 import {Link} from 'react-router-dom'; // ,useParams,useLocation
-import ui from '/src/ui';
+import ui from '/src/ui.js';
 export default function Header({cls}) {
   console.log(cls + "===================================");
   // let params = useParams();

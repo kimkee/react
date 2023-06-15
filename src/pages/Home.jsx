@@ -1,9 +1,9 @@
 import React, {useEffect }from 'react'; // useState, , {useEffect }
 import { Outlet} from 'react-router-dom';  // useParams,Link,  useSearchParams, useLocation 
-import ui from '/src/ui';
-import HomeTop from "/src/components/HomeTop.jsx";
-import ListSet from "/src/components/ListSet.jsx";
-import ListTop10 from "/src/components/ListTop10.jsx";
+import ui from '../ui.js';
+import HomeTop from "../components/HomeTop.jsx";
+import ListSet from "../components/ListSet.jsx";
+import ListTop10 from "../components/ListTop10.jsx";
 
 export default function Home() {
   

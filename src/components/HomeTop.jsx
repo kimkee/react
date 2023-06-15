@@ -15,8 +15,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
-import ui from '/src/ui';
-import StarPoint from '/src/components/StarPoint';
+import ui from '../ui.js';
+import StarPoint from '../components/StarPoint';
 
 
 export default  function HomeTop({opts}){

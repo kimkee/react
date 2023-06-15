@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react'; //useState, useEffect
 import {NavLink , useLocation } from 'react-router-dom'; // Link  , useLocation, useSearchParams,useParams, useSearchParams
 
-import ui from '/src/ui';
+import ui from '../ui.js';
 
 export default function Nav() {
   // let params = useParams()

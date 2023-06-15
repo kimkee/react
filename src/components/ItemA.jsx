@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
-import StarPoint from '/src/components/StarPoint';
-// import ui from '/src/ui';
+import StarPoint from '../components/StarPoint';
+// import ui from '/src/ui.js';
 
 
 

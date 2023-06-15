@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom'; //,useOutletContext  , useLocation, Outlet,
-import ui from '/src/ui';
+import ui from '../../ui.js';
 
 
 // import Swiper core and required modules

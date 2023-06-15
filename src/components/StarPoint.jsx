@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; //useState, useEffect
 import {} from 'react-router-dom'; // Link  , useLocation, useSearchParams,useParams, useSearchParams
 
-// import ui from '/src/ui';
+// import ui from '/src/ui.js';
 
 export default function StarPoint({point}) {
   const [res, resSet] = useState(null) ;

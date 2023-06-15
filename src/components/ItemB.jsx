@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
 
-import StarPoint from '/src/components/StarPoint';
+import StarPoint from '../components/StarPoint';
 
 
 export default function ItemB({data,cate}) {
