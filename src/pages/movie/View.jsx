@@ -223,7 +223,7 @@ export default function View({prop}) {
                             <Link to={`./videos/${idx+1}`} className="pic" >
                               <span className="msg"><span className="tit">{b.name}</span></span>
                               <i className="ico fa-solid fa-play"></i>
-                              <img className="img" src={"//i.ytimg.com/vi/"+b.key+"/hqdefault.jpg"} onError={ (e)=>{ e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png` } } alt={b.name} loading="lazy" />
+                              <img className="img" src={"//i.ytimg.com/vi/"+b.key+"/sddefault.jpg"} onError={ (e)=>{ e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png` } } alt={b.name} loading="lazy" />
                             </Link>
                             {/* <iframe className='iframe' title={b.id} src={"//www.youtube.com/embed/"+b.key}   allow="autoplay; encrypted-media" allowFullScreen></iframe> */}
                           </div>
