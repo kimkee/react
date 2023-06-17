@@ -3,7 +3,8 @@
 
 ## React : <a href="https://kimkee.github.io/react/" target="_blank">https://kimkee.github.io/react/</a>
 
-## https://kplex.netlify.app/
+## <a href="https://kplex.netlify.app/" target="_blank">https://kplex.netlify.app/</a>
+
 
 <br>
 
