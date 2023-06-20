@@ -30,8 +30,6 @@ export default function Lists() {
 
   let page = 1;
   
-  
-  
   const [cate, setCate] = useState({});
   // let cate = {};
   // const total;
@@ -155,7 +153,7 @@ export default function Lists() {
     <div className="container page movie list">
       <main className="contents">
 
-        <CateMenu menu={genrMenu} opts={opts} />
+        
 
 
         <div className='poster-list'>
@@ -190,8 +188,10 @@ export default function Lists() {
         <div className="page-set">
           <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
         </div>
+
       </main>
     </div>
-  </>  
+    <CateMenu menu={genrMenu} opts={opts} />
+  </>
   )
 }
