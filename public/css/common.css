@@ -651,7 +651,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
  
 
 .cate-box{overflow:hidden;display: block;height: calc(60rem + var(--safe-bottom) );}
-.cate-box>.inr{display: flex;flex-wrap: nowrap;height: 60rem;padding: 0rem 10rem;margin: 0rem -10rem;/* padding-right: 30rem; */align-items: center;border-top: rgb(107 107 107 / 10%) solid 1rem;background-color: rgb(30 30 30 / 92%);position: fixed;bottom: calc(60rem + var(--safe-bottom) );left: 0rem;right: 0rem;z-index: 600;overflow-x: auto;}
+.cate-box>.inr{display: flex;flex-wrap: nowrap;height: 60rem;padding: 0rem 10rem;margin: 0rem -10rem;/* padding-right: 30rem; */align-items: center;border-top: rgb(107 107 107 / 10%) solid 1rem;background-color: rgb(30 30 30 / 92%);position: fixed;bottom: calc(60rem + var(--safe-bottom) );left: 0rem;right: 0rem;z-index: 600;overflow-x: auto; scroll-behavior:smooth;}
 .cate-box>.inr::-webkit-scrollbar {display: none;}
 .cate-box .swiper{padding: 0rem 0rem;padding-right: 20rem;align-items: center;}
 .cate-box .list{display:flex;padding: 0rem 10rem;flex-wrap: nowrap;}
