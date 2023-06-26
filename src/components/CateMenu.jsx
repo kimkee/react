@@ -42,7 +42,7 @@ export default function CateMenu({menu, opts}) {
 
   return (
   <>
-    <div className="cate-box">
+    <div className={"cate-box " + cateID}>
       <div className="inr">
         {/* <button onClick={goSlide}>SSSSS</button> */}
         
@@ -50,13 +50,13 @@ export default function CateMenu({menu, opts}) {
             <li data-index="0" className="pbox">
               <NavLink type="button" className={ "bt" } to={`/list/${opts}/0`}>전체</NavLink>
             </li>
-          { menu.map( (item,idx) => {
+            { menu.map( (item,idx) => {
             return (
             <li data-index={idx+1} key={item.id}  className="pbox">
               <NavLink type="button" className={ item.id === cateID ? "bt active" : "bt " } to={`/list/${opts}/${item.id}`}> { [item.name]  }</NavLink>
             </li>
             )
-          })}
+            })}
           </ul>
               
         
