@@ -46,19 +46,18 @@ export default function CateMenu({menu, opts}) {
       <div className="inr">
         {/* <button onClick={goSlide}>SSSSS</button> */}
         
-          <ul className="list">
-            <li data-index="0" className={ "0" === cateID ? "active" : null }>
-              <NavLink type="button" className={ "bt" } to={`/list/${opts}/0`}>전체</NavLink>
-            </li>
-            { menu.map( (item,idx) => {
-            return (
-            <li data-index={idx+1} key={item.id} cate={item.id} className={ item.id.toString() === cateID ? "active" : null }>
-              <NavLink type="button" className="bt" to={`/list/${opts}/${item.id}`}> { item.name } </NavLink>
-            </li>
-            )
-            })}
-          </ul>
-              
+        <ul className="list">
+          <li data-index="0" className={ "0" === cateID ? "active" : null }>
+            <NavLink type="button" className={ "bt" } to={`/list/${opts}/0`}>전체</NavLink>
+          </li>
+          { menu.map( (item,idx) => {
+          return (
+          <li data-index={idx+1} key={item.id} cate={item.id} className={ item.id.toString() === cateID ? "active" : null }>
+            <NavLink type="button" className="bt" to={`/list/${opts}/${item.id}`}> { item.name } </NavLink>
+          </li>
+          )
+          })}
+        </ul>
         
       </div>
     </div>
