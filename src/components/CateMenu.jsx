@@ -47,7 +47,7 @@ export default function CateMenu({menu, opts}) {
         {/* <button onClick={goSlide}>SSSSS</button> */}
         
           <ul className="list">
-            <li data-index="0" className={ "0" === cateID ? "active" : "" }>
+            <li data-index="0" className={ "0" === cateID ? "active" : null }>
               <NavLink type="button" className={ "bt" } to={`/list/${opts}/0`}>전체</NavLink>
             </li>
             { menu.map( (item,idx) => {
