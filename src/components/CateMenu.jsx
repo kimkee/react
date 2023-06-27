@@ -26,15 +26,15 @@ export default function CateMenu({menu, opts}) {
     const btnActWid = btnAct?.offsetWidth * 0.5;
 
     const scr = btnActLeft - cateboxWid + btnActWid;
-    catebox.scrollTo( scr , 0)
+    catebox.scrollTo( scr , 0);
 
-    slideActiveSet(  num  )
+    slideActiveSet(  num  );
     // swiper?.slideTo( slideActive , 100 );
     console.log("slideActive == " + slideActive + "  " + btnActLeft);
   };
   const cateID = params.cate;
   useEffect(() => {
-    goSlide(slideActive)
+    goSlide(slideActive);
     return ()=>{
     }
     // eslint-disable-next-line
@@ -50,13 +50,11 @@ export default function CateMenu({menu, opts}) {
           <li data-index="0" className={ "0" === cateID ? "active" : null }>
             <NavLink type="button" className={ "bt" } to={`/list/${opts}/0`}>전체</NavLink>
           </li>
-          { menu.map( (item,idx) => {
-          return (
+          { menu.map( (item,idx) => { return (
           <li data-index={idx+1} key={item.id} cate={item.id} className={ item.id.toString() === cateID ? "active" : null }>
             <NavLink type="button" className="bt" to={`/list/${opts}/${item.id}`}> { item.name } </NavLink>
           </li>
-          )
-          })}
+          ) })}
         </ul>
         
       </div>

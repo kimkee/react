@@ -41,6 +41,7 @@ function App() {
           <Route path='/*' element={<NotFound />} />
 
           <Route path="/" element={<Navigate to="/home/"></Navigate>} />
+
           <Route path="home" element={<Home />} />
 
           <Route path="home/:menu" element={<Home /> }>
@@ -50,7 +51,7 @@ function App() {
               <Route path="videos/:nums" element={<Videos  />} />
             </Route>
           </Route>
-        
+
           <Route path="list">
             <Route path=":menu" >
               <Route path=":cate" element={<Lists /> }>
@@ -63,7 +64,6 @@ function App() {
             </Route>
           </Route>
 
-
           <Route path=":menu">
             <Route path=":id" element={<View prop={{"page":"page"}}/>} >
               <Route path="poster/:nums" element={<Poster />} />
@@ -71,7 +71,6 @@ function App() {
               <Route path="videos/:nums" element={<Videos  />} />
             </Route>
           </Route>
-
 
           <Route path="search" >
             <Route path=":menu" element={<Search />} >
@@ -88,6 +87,7 @@ function App() {
             
           {/* </CSSTransition>
         </TransitionGroup> */}
+
         <Nav/>
       </Router>
     </>
