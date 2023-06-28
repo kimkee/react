@@ -12,4 +12,4 @@ const digt = n=> n < 10 ? "0"+n : n ;
 const ver = yy + digt(mm) + digt(dd) + digt(hh) + digt(min) + digt(sec);
 console.log(ver);
 // .env 파일에 변수를 설정합니다.
-fs.writeFileSync('.env.production', `VITE_REACT_APP_VER=V${ver}`);
+fs.writeFileSync('.env.production', `VITE_REACT_APP_VER=${ver}`);
