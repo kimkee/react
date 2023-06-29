@@ -121,7 +121,7 @@ export default function Poster({prop}) {
                 <SwiperSlide tag="li">
                   <div className='box'>
                     <div  className='pics'>
-                      <img src={pstImg} className="img" alt={datas?.title || datas?.name} onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy"/>
+                      <img src={pstImg} className="img" alt={datas?.title || datas?.name} onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy"/>
                       <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                     </div>
                   </div>
@@ -133,7 +133,7 @@ export default function Poster({prop}) {
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
-                            <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
+                            <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
                             <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                           </div>
                       </div>

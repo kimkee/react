@@ -15,7 +15,7 @@ export default function ItemB({data,cate}) {
     
     <Link className={`box`} to={""+data.id}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
           
           <StarPoint point={data.vote_average} />

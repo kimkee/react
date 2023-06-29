@@ -74,7 +74,7 @@ export default function ViewRev({postID, opts}) {
                 <li key={idx}>
                   <div className="rpset">
                     <div className="user">
-                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/user.png`}}/></span>
+                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png`}}/></span>
                     </div>
                     <div className="infs">
                       <div className="name">

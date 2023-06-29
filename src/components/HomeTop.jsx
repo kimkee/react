@@ -112,7 +112,7 @@ export default  function HomeTop({opts}){
                   return (
                     <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                       <Link className="box" to={`${opts.opts}/${data.id}`}>
-                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_REACT_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                           <div className="info">
                             <div className="star">
                               <StarPoint point={data.vote_average} />
