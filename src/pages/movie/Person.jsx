@@ -68,7 +68,6 @@ export default function Person() {
   fetchPerson();
   fetchCredits();
   fetchPhotos();
-
   popResize();
 
   window.addEventListener("resize",popResize);

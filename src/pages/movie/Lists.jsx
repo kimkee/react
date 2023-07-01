@@ -153,9 +153,6 @@ export default function Lists() {
     <div className="container page movie list">
       <main className="contents">
 
-        
-
-
         <div className='poster-list'>
             
           { !mlist.length 
