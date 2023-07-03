@@ -3,19 +3,6 @@ import axios from 'axios';
 import { useParams, useNavigate, Link} from 'react-router-dom'; //,useOutletContext  , useLocation, Outlet, Link
 import ui from '../../ui.js';
 
-
-/* 
-import { Navigation, Pagination, Scrollbar, Autoplay,EffectFade , A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/autoplay';
-import 'swiper/css/effect-fade';
- */
-
-
 export default function Person() {
   let params = useParams()
   let navigate = useNavigate();
@@ -34,11 +21,9 @@ export default function Person() {
     $pop.querySelector(".pct").style.maxHeight = pctnH - pbtnH+"px" ; 
   }
 
-
   const [datas, setDatas] = useState(null);
   const [casts, setCasts] = useState(null);
   const [photos, setPhotos] = useState(null);
-
 
   const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchPerson = () => {
@@ -91,15 +76,15 @@ export default function Person() {
     
     <article className="pop-layer c bottom popup person">
       <div className="pbd">
-      <div className="phd">
-          <div className="inr">
-              <div className="ptit">{/* datas?.name */}</div>
-          </div>
-      </div>
+        <div className="phd">
+            <div className="inr">
+                <div className="ptit">{/* datas?.name */}</div>
+            </div>
+        </div>
 
-      <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
-      
-      <div className="pct">
+        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
+        
+        <div className="pct">
           <main className="poptents">
           
             { !datas && !casts && !photos &&
@@ -118,26 +103,19 @@ export default function Person() {
                     {datas.known_for_department && <p className="tio">{datas.known_for_department}</p>}
                     {datas.original_name && <p className="tio">{datas.original_name}</p>}
 
-                    <div className="star">
-                      
-                    </div>
-                    <div className="cate">
-                      
-                    </div>
                     <ul className="lst">
                       {datas.birthday && 
-                        <li className="vot"><i className="fa-regular fa-calendar-days"></i>  {datas.birthday}</li>
+                      <li className="vot"><i className="fa-regular fa-calendar-days"></i>  {datas.birthday}</li>
                       }
                       {datas.place_of_birth && 
-                        <li className="vot"><i className="fa-regular fa-location-dot"></i>  {datas.place_of_birth}</li>
+                      <li className="vot"><i className="fa-regular fa-location-dot"></i>  {datas.place_of_birth}</li>
                       }
-                      <li className="vot"> 
-                        <i className="fa-regular fa-star"></i> {datas.popularity} / 100
-                      </li>
+                      <li className="vot"> <i className="fa-regular fa-star"></i> {datas.popularity} / 100 </li>
                       {datas.homepage && 
                       <li className="web">
                         <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
-                      </li>} 
+                      </li>
+                      } 
                     </ul>
                   </div>
                   <div className="thum">
@@ -202,7 +180,7 @@ export default function Person() {
             } 
               
           </main>
-      </div>
+        </div>
       
       </div>
     </article>

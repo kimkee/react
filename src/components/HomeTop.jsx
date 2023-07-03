@@ -75,8 +75,6 @@ export default  function HomeTop({opts}){
 
   console.log(MY_GLOBAL_VARIABLE);
 
-
-
   return(
     <>
       

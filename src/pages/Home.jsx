@@ -47,8 +47,6 @@ export default function Home() {
 
         <ListSet opts={{opts:"movie", list: "discover/movie", cate: "99", title: "영화/다큐멘터리"}} />
 
-
-
         <ListTop10 opts={{opts:"tv",list:"/trending/tv/week", cate: "0", title:'Weekly TV TOP 20'}} />
         
         <ListSet opts={{opts:"tv", list: "discover/tv", cate: "16", title: "TV/애니메이션"}} />

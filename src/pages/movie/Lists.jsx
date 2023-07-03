@@ -7,7 +7,6 @@ import CateMenu from '../../components/CateMenu.jsx';
 
 
 export default function Lists() {
-
   // console.log(opts);
 
   let params = useParams()
@@ -154,7 +153,7 @@ export default function Lists() {
       <main className="contents">
 
         <div className='poster-list'>
-            
+
           { !mlist.length 
           ?
             <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div>

@@ -198,7 +198,6 @@ export default function Search() {
           }
           </ul>
 
-
           { mlist.length > 0 &&
           <div className={`ui-loadmore`}>
             <em><i className="fa-duotone fa-spinner"></i></em>
@@ -212,7 +211,6 @@ export default function Search() {
           </>
         }     
         </div>
-        
                 
         { mlist.length > 0 &&
         <div className="page-set">

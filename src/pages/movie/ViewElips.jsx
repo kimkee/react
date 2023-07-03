@@ -10,7 +10,6 @@ export default function ViewElips({overview}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-
   const togView = {
     evt: (e) => {
       const btn = e.currentTarget;
@@ -36,7 +35,6 @@ export default function ViewElips({overview}) {
       }
     },
   };
-
 
   return (
     <div className="vinf" data-ui='elips' onClick={ togView.evt } onKeyUp={ e=> e.key ==="Enter" ? togView.evt(e) : null  } tabIndex={0}> 

@@ -17,11 +17,8 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 
-
-
 export default function Poster({prop}) {
 
-  
   let navigate = useNavigate();
   
   let params = useParams()
@@ -30,8 +27,6 @@ export default function Poster({prop}) {
   console.log(params);
   console.log(opts);
 
-
-  
   const postID = params.id;
   const popResize = ()=>{
     let $pop =  document.querySelector(".popup.poster");
@@ -81,7 +76,6 @@ export default function Poster({prop}) {
 
   return (
   <>
-    
     <article className="pop-layer c bottom popup poster">
       <div className="pbd">
         <div className="phd">
@@ -92,7 +86,6 @@ export default function Poster({prop}) {
 
         <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
         
-       
         <div className="pct">
           <main className="poptents">
             <div className="poster-box">
