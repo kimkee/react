@@ -71,39 +71,27 @@ export default  function ListSet({opts}){
     // eslint-disable-next-line
   },[]);
 
-
-
   return(
     <>
-      
       <section className="sect mnList topic">
-
         <div className="hbox">
           <h3 className="stit">{opts.title}</h3>
         </div>
-
         <div className="inr">
-          
           <div className="slide">
             <ul>
-              {
-                mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
-                  const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
-                  return (
-                    <li key={idx}  className="pbox">
-                      <Link className="box" to={`${opts.opts}/${data.id}`}>
-                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
-                          <div className="info">
-                            <StarPoint point={data.vote_average} />
-                            {/* <div className="tit">{data.title}</div> */}
-                          </div>
-                          {/* <div className="screen"></div> */}
-                      </Link>
-                    </li>
-                  )
-                })
-              }
-              </ul>
+              { mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
+                const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
+                return (
+                  <li key={idx}  className="pbox">
+                    <Link className="box" to={`${opts.opts}/${data.id}`}>
+                      <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                      <div className="info"><StarPoint point={data.vote_average} /></div>
+                    </Link>
+                  </li>
+                )
+              })}
+            </ul>
           </div>
         </div>
       </section>
