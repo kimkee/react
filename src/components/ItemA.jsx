@@ -4,7 +4,7 @@ import StarPoint from '../components/StarPoint';
 // import ui from '/src/ui.js';
 
 
-
+// 검색 결과 유닛
 export default function ItemA({data,cate,opts}) {
   // console.log(data);
   // console.log(cate.genr);
@@ -27,7 +27,6 @@ export default function ItemA({data,cate,opts}) {
             <span className="txt">
               {data.genre_ids.map( item => <em className="ico" key={item}> {  cate.genr ? cate.genr[item] : null  } </em> )}
             </span>
-            
           </div>
         </div>
         <div className="dd">

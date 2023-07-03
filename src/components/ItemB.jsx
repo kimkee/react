@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams
 
 import StarPoint from '../components/StarPoint';
 
-
+// Movie, TV 리스트 유닛
 export default function ItemB({data,cate}) {
   // console.log(data);
   // console.log(cate.genr);
@@ -17,12 +17,7 @@ export default function ItemB({data,cate}) {
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
-          
           <StarPoint point={data.vote_average} />
-
-          {/* <div className="cate">
-              {data.genre_ids.map( item => <em className="ico" key={item}> {  cate.genr ? cate.genr[item] : null  } </em> )}
-            </div> */}
         </div>
       </div>
       <div className="tits">{data.title || data.name}</div>
