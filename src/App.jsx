@@ -3,7 +3,7 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-
+import ui from './ui.js';
 
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
@@ -16,6 +16,8 @@ import Person from './pages/movie/Person.jsx';
 import Videos from './pages/movie/Videos.jsx';
 
 import Search from './pages/movie/Search.jsx';
+
+ui.init();
 function App() {
   // const location = window.location;
   // console.log(location);

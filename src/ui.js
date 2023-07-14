@@ -1,4 +1,7 @@
 const ui = {
+    init: function(){
+      this.dpmode.init();  
+    },
     e:1,
     aaa:function(){
         console.log("dsfafsafdsffsafasfdfas");
@@ -12,6 +15,23 @@ const ui = {
     dateForm: (date, opt)=> {
         opt = opt === undefined ? opt = 'medium' : null;
         return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(date);
+    },
+    dpmode:{
+        init: function(){
+            const isPwaFull = window.matchMedia('(display-mode: fullscreen)').matches;
+            const isPwaStad = window.matchMedia('(display-mode: standalone)').matches;
+            console.log(`isPwaFull ${isPwaFull}`);
+            isPwaFull 
+                ? document.documentElement.classList.add("is-pwa-fullscreen")
+                : document.documentElement.classList.remove("is-pwa-fullscreen");
+            isPwaFull 
+                ? document.documentElement.style.setProperty("--safe-watch","20px")
+                : document.documentElement.style.setProperty("--safe-watch","0px");
+            
+            isPwaStad
+                ? document.documentElement.classList.add("is-pwa-standalone")
+                : document.documentElement.classList.remove("is-pwa-standalone");
+        }
     },
     star:{
         point:{
