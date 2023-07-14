@@ -16,21 +16,31 @@ const ui = {
         opt = opt === undefined ? opt = 'medium' : null;
         return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(date);
     },
+    getSafe:{
+        top: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-top")  ) || 0 ,
+        bottom: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom")  ) || 0,
+        watch: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-watch")  ) || 0
+    },
     dpmode:{
         init: function(){
+            setInterval( this.set , 500)
+        },
+        set: function(){
+            // console.log("dpmode");
             const isPwaFull = window.matchMedia('(display-mode: fullscreen)').matches;
             const isPwaStad = window.matchMedia('(display-mode: standalone)').matches;
-            console.log(`isPwaFull ${isPwaFull}`);
+            // console.log(`isPwaFull ${isPwaFull}`);
             isPwaFull 
                 ? document.documentElement.classList.add("is-pwa-fullscreen")
                 : document.documentElement.classList.remove("is-pwa-fullscreen");
             isPwaFull 
-                ? document.documentElement.style.setProperty("--safe-watch","20px")
+                ? document.documentElement.style.setProperty("--safe-watch","24px")
                 : document.documentElement.style.setProperty("--safe-watch","0px");
             
             isPwaStad
                 ? document.documentElement.classList.add("is-pwa-standalone")
                 : document.documentElement.classList.remove("is-pwa-standalone");
+            
         }
     },
     star:{

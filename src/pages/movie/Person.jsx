@@ -17,9 +17,8 @@ export default function Person() {
     let pbtnH =  $pop.querySelector(".pbt")?.offsetHeight || 0 ;
     let phtnH =  $pop.querySelector(".phd")?.offsetHeight || 0 ;
     pctnH = (pctnH - phtnH) || 0 ;
-    console.log(pctnH  );
-    const safeTop = parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-top")  ) || 0
-    $pop.querySelector(".pct").style.maxHeight = pctnH - safeTop - pbtnH -10 +"px" ; 
+    $pop.querySelector(".pct").style.maxHeight = pctnH - ui.getSafe.top() - ui.getSafe.watch() - pbtnH -10 +"px" ; 
+    console.log(pctnH );
   }
 
   const [datas, setDatas] = useState(null);
