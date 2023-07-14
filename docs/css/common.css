@@ -47,8 +47,8 @@ textarea:-ms-input-placeholder {color: #444444; font-weight: normal;}
 a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 
 /* 헤더 */
-.header{height: 54rem;text-align:center;display:block;z-index: 500;position: relative;}
-.header>.inr{display:flex;height: 54rem;align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;background: #1a1a1a;border-bottom: #3a3a3a17 solid 1rem;padding: 0rem 20rem;touch-action: none;transition: background-color 0.3s;}
+.header{height: calc( 54rem + var(--safe-top) );text-align:center;display:block;z-index: 500;position: relative;}
+.header>.inr{display:flex;height: calc( 54rem + var(--safe-top) );align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;background: #1a1a1a;border-bottom: #3a3a3a17 solid 1rem;padding: 0rem 20rem;padding-top: calc(  var(--safe-top) );touch-action: none;transition: background-color 0.3s;}
 .header.home{height: 0rem;}
 .header.home>.inr{ background-color: transparent;border-color: transparent;}
 .header.trans{height: 0rem; }
@@ -633,8 +633,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.movie.search .nodata{padding: 10vh 10rem;}
 .page.movie.search .nodata i{font-size:43rem; margin: 0rem 0rem 10rem 0rem; opacity: 0.6;}
 
-.schs-form{display: flex;height: 64rem;justify-content: space-between;}
-.schs-form>.inr{display: flex;height: 64rem;background: #1c1c1c;padding: 0rem 12rem 0rem 18rem;align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;border-bottom: 1rem solid #3a3a3a38;}
+.schs-form{display: flex;height: 64rem;height: calc( 64rem + var(--safe-top) );justify-content: space-between;}
+.schs-form>.inr{display: flex;height: 64rem;height: calc( 64rem + var(--safe-top) );background: #1c1c1c;padding: 0rem 12rem 0rem 18rem;padding-top: calc( 0rem + var(--safe-top) );align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;border-bottom: 1rem solid #3a3a3a38;}
 .schs-form .form{display: flex; align-items: center;justify-content: space-between;align-items: center;width:100%;position: relative;}
 .schs-form .bts{display: flex; position: absolute; left: 5rem; top: 5rem; z-index: 10;}
 .schs-form .bts .bt{padding: 0rem 9rem 0rem; height: 30rem; border-radius: 4rem; background-color: #1c1c1c; border: #3c3c3c solid 1rem; color: #b7b7b7; white-space: nowrap; min-width:30rem;  font-size:12rem; display:flex; align-items:center;justify-content: center; }
