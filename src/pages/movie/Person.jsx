@@ -18,7 +18,8 @@ export default function Person() {
     let phtnH =  $pop.querySelector(".phd")?.offsetHeight || 0 ;
     pctnH = (pctnH - phtnH) || 0 ;
     console.log(pctnH  );
-    $pop.querySelector(".pct").style.maxHeight = pctnH - pbtnH+"px" ; 
+    const safeTop = parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-top")  ) || 0
+    $pop.querySelector(".pct").style.maxHeight = pctnH - safeTop - pbtnH -10 +"px" ; 
   }
 
   const [datas, setDatas] = useState(null);
