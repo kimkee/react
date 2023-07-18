@@ -1,6 +1,7 @@
 const ui = {
     init: function(){
-      this.dpmode.init();  
+      this.dpmode.init();
+      console.log("ui.init");
     },
     e:1,
     aaa:function(){
@@ -23,7 +24,7 @@ const ui = {
     },
     dpmode:{
         init: function(){
-            setInterval( this.set , 500)
+            setInterval( this.set , 500);
         },
         set: function(){
             // console.log("dpmode");
