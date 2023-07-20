@@ -103,26 +103,27 @@ export default  function HomeTop({opts}){
               setSwiper(swiper);
               swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
-            onSlideChange={() => {/* console.log('slide change') */}}   >
-              {
-                mlist?.filter( (item, i) => i < 10 ).map( (data, idx) => {
-                  const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;
-                  return (
-                    <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
-                      <Link className="box" to={`${opts.opts}/${data.id}`}>
-                          <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
-                          <div className="info">
-                            <div className="star">
-                              <StarPoint point={data.vote_average} />
-                            </div>
-                            <div className="tit">{data.title}</div>
+            onSlideChange={() => {/* console.log('slide change') */}}
+          >
+            {
+              mlist?.filter( (item, i) => i < 10 ).map( (data, idx) => {
+                const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;
+                return (
+                  <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
+                    <Link className="box" to={`${opts.opts}/${data.id}`}>
+                        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                        <div className="info">
+                          <div className="star">
+                            <StarPoint point={data.vote_average} />
                           </div>
-                          <div className="screen"></div>
-                      </Link>
-                    </SwiperSlide>
-                  )
-                })
-              }
+                          <div className="tit">{data.title}</div>
+                        </div>
+                        <div className="screen"></div>
+                    </Link>
+                  </SwiperSlide>
+                )
+              })
+            }
           </Swiper>
         </div>
       </section>
