@@ -19,7 +19,7 @@ export default function StarPoint({point}) {
   useEffect( () => {
     setPoint();
     // eslint-disable-next-line
-  },[]);
+  },[res]);
   
   return (
     <em className="ui-star"> 
