@@ -236,7 +236,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 
 
 /* 플로팅 탑버튼 글쓰기버튼 */
-.floatpop{position:fixed;right: 20rem;z-index: 500;transition: all 0.3s;bottom: calc(30rem + var(--safe-bottom));transform: translateY(90rem);transition: transform 0.2s;}
+.floatpop{position:fixed;right: 20rem;z-index: 500;transition: all 0.3s;bottom: calc(30rem + var(--safe-bottom));transform: translateY(  calc(90rem + var(--safe-bottom)) );transition: transform 0.2s;}
 .floatpop.is-top{bottom: 20rem;bottom: calc(20rem + var(--safe-bottom));transition: none;}
 .floatpop .bt{font-size: 0rem;width: 52rem;height: 52rem;display:block;background: no-repeat #555555;background-size: 100% auto;margin: 10rem auto 0 auto;border-radius: 35rem;box-shadow: 0rem 0rem 6rem rgb(0 0 0 / 49%);}
 .floatpop .bt i{font-size: 17rem;}
