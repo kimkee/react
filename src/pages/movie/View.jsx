@@ -84,7 +84,8 @@ export default function View({prop}) {
   console.log(prop.page+"  d");
   const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
   const goTop = ()=>{
-    document.querySelector(".popup.movie .pct").scrollTo(0,0);
+    // document.querySelector(".popup.movie .pct").scrollTo(0,0);
+    ui.scrollTo(".popup.movie .pct", 0, 200 );
   }
   const imgError = (e)=> {
     (e)=>{console( e + "썸네일 없음")} 

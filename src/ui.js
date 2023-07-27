@@ -43,100 +43,40 @@ const ui = {
                 : document.documentElement.classList.remove("is-pwa-standalone");
             
         }
-    },
-    star:{
-        point:{
-            0:  `   <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
+    }, 
+    scrollTo: (selector, position, duration, callback) => {
+        // ui.scrollTo(boxElement, 100, 200, () => {
+        //     console.log(".box 도착");
+        // });
+        const element = document.querySelector(selector);
+        if (!element) return;
+        console.log(element);
+        const startingYOffset = element.scrollTop || document.documentElement.scrollTop;
+        const targetYOffset = position;
+        const startTime = performance.now();
 
-            0.5:`   <i class="fa-duotone fa-star-sharp-half"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
+        const animateScroll = (timestamp) => {
+            const currentTime = timestamp - startTime;
+            const progress = Math.min(currentTime / duration, 1);
+            const easeInOutCubic = progress < 0.5 ? 4 * progress * progress * progress : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+            const yOffset = startingYOffset + (targetYOffset - startingYOffset) * easeInOutCubic;
 
-            1:  `   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
+            if (element === document.body) {
+                window.scrollTo(0, yOffset);
+            }else{
+                element.scrollTop = yOffset;
+            }
 
-            1.5:`   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp-half"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
+            if (currentTime < duration) {
+                requestAnimationFrame(animateScroll);
+            }else{
+                if (typeof callback === 'function') {
+                    callback();
+                }
+            }
+        };
 
-            2:  `   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
-
-            2.5:`   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp-half"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
-
-            3:  `   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
-
-            3.5:`   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp-half"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
-
-            4:  `   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp"></i>`,
-
-            4.5:`   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-duotone fa-star-sharp-half"></i>`,
-
-            5:  `   <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>
-                    <i class="fa-solid fa-star-sharp"></i>`,
-        },
-        set:function(num){
-            let n = Number( (Math.round( num  * 100)  / 100).toFixed(1) )  / 2 ;
-            // let _this = this;
-            let r = 0;
-            // console.log(Object.keys(this.point).sort() );
-            Object.keys(this.point).sort().reverse().forEach( p => {
-                if( n <= Number(p)) r = Number(p)  ;
-            });
-            
-            // console.log(n , r);
-            return this.point[ Number(r) ]
-            // return this.point[ Number(r) ]
-
-            // if( n <= 0)  return this.point[0];
-            // if( n <= 0.5)  return this.point[0.5];
-            // if( n <= 1)  return this.point[1];
-            // if( n <= 1.5)  return this.point[1.5];
-            // if( n <= 2)  return this.point[2];
-            // if( n <= 2.5)  return this.point[2.5];
-            // if( n <= 3)  return this.point[3];
-            // if( n <= 3.5)  return this.point[3.5];
-            // if( n <= 4)  return this.point[4];
-            // if( n <= 4.5)  return this.point[4.5];
-            // if( n <= 5)  return this.point[5];
-        }
+        requestAnimationFrame(animateScroll);
     },
     popup:{
         evt:function(){

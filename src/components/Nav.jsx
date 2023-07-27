@@ -23,7 +23,9 @@ export default function Nav() {
       document.querySelector(".floatnav")?.classList.remove("on-top");
     }
   };
-  const goTop = ()=> window.scrollTo(0,0);
+  const goTop = ()=> {
+    ui.scrollTo("body", 0 , 200 );
+  };
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
     return ()=>{
