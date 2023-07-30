@@ -7,6 +7,10 @@ const ui = {
     aaa:function(){
         console.log("dsfafsafdsffsafasfdfas");
     },
+    iosx:{ // 아이폰X 여백값
+        top: ()=>    parseInt(getComputedStyle(document.documentElement).getPropertyValue("--safe-top").replace(/[^0-9]/g, "")) || 0 ,
+        bottom: ()=> parseInt(getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom").replace(/[^0-9]/g, "")) || 0
+    },
     viewport: {
         height: () => parseInt(window.visualViewport ? visualViewport.height : window.innerHeight),
         width: () => parseInt(window.visualViewport ? visualViewport.width : window.innerWidth),
