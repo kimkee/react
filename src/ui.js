@@ -1,8 +1,8 @@
 const ui = {
     init: function(){
-      this.dpmode.init();
-      this.viewport.init.evt();
-      console.log("ui.init");
+        this.dpmode.init();
+        this.viewport.init.evt();
+        console.log("ui.init");
     },
     e:1,
     aaa:function(){
