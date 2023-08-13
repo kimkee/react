@@ -176,6 +176,12 @@ export default function Search() {
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
             </form>
+            <div className="keywords">
+              <ul className="lst">
+                <li><button className='kwd' tye="button">콘크리트</button> <button className="del" tye="button"><i className="fa-regular fa-xmark"></i></button></li>
+                <li><button className='kwd' tye="button">콘크리트</button> <button className="del" tye="button"><i className="fa-regular fa-xmark"></i></button></li>
+              </ul>
+            </div>
           </div>
         </div>
          

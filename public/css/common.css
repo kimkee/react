@@ -648,8 +648,29 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}
-
-
+.schs-form .keywords{position: fixed;top: calc( 64rem + var(--safe-top) + var(--safe-watch) );left: 0;right: 0;background: #222;padding: 15rem 24rem;}
+.schs-form .keywords .lst{}
+.schs-form .keywords .lst>li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.schs-form .keywords .lst>li+li{
+    margin-top: 8px;
+}
+.schs-form .keywords .lst>li .kwd{
+    padding: 5px 0px;
+    white-space: nowrap;
+    width: calc(100% - 30rem);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}
+.schs-form .keywords .lst>li .del{
+    width: 24rem;
+    height: 24rem;
+    margin-right: -10rem;
+}
  
 
 .cate-box{overflow:hidden;display: block;height: calc(60rem + var(--safe-bottom) );}
@@ -1047,7 +1068,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 
 .page.home .contents{overflow:hidden;margin: 0;padding-top: 0; padding-bottom: 20rem;}
-.page.home .slide{}
+.page.home .slide{} 
 .page.home .swiper img{  width: 100%;}
 .page.home .swiper [class^='swiper-button']{transition: all 0.2s; color: #ffffff66; transform: scale(0.6); display: block; margin-top: -40rem;}
 .page.home .swiper .swiper-slide{ text-align: center; }
