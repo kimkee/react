@@ -195,6 +195,8 @@ export default function Search() {
     let nkeyArr = [...new Set(newArray)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
     setKeywords(nkeyArr);
+    schsForm.current.classList.add("open");
+    setTimeout(() => inputRef.current.focus(), 100);
     return false;
   }
   
