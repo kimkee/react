@@ -218,6 +218,7 @@ export default function Search() {
               <span className="input">
                 <input type="text" placeholder="검색어를 입력하세요." onFocus={keyListShow} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
+              <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               <div className="kwds" ref={keyWordBox}>
                 {
                   kwdLists.length < 1 
@@ -235,7 +236,6 @@ export default function Search() {
                   </ul>
                 }
               </div>
-              <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
             </form>
           </div>
         </div>
