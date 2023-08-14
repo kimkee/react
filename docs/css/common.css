@@ -572,7 +572,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .ui-star i.e::after{content: "\e28b\e28b"; font-family: "Font Awesome 6 Duotone";}
 
 
-.movie-list {/* min-height:calc(100vh - 100rem); */}
+.movie-list {/* min-height:calc(100vh - 100rem); */outline: none;}
 .movie-list .ui-loading-dot{padding-top: calc(40vh - 60rem);}
 .movie-list .bbs-opt{display: flex;align-items: center;justify-content: space-between;padding: 10rem 20rem;border-bottom: 1rem solid #242b36;}
 .movie-list .bbs-opt .tots{font-size:12rem;color: #afafaf;}
