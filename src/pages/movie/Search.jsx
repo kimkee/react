@@ -187,17 +187,18 @@ export default function Search() {
     let nkeyArr = [...new Set(keyArr)];
     setKeywords(nkeyArr)
     schsForm.current.classList.add("open");
-
+    kwdLists.current.classList.add("open");
 
 
   }
-  const delRecentKwd =(txt) =>{
+  const delRecentKwd =(e,txt) =>{
     const newArray = kwdLists.filter(item => item !== txt);
     let nkeyArr = [...new Set(newArray)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
     setKeywords(nkeyArr);
     schsForm.current.classList.add("open");
-    setTimeout(() => inputRef.current.focus(), 100);
+    setTimeout(() => inputRef.current.focus());
+    e.preventDefault()
     return false;
   }
   
@@ -219,7 +220,7 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." onFocus={keyListShow} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocusCapture={keyListShow} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               <div className="kwds" ref={keyWordBox}>
@@ -232,7 +233,7 @@ export default function Search() {
                         return (
                           <li key={kwd}>
                             <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                            <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
+                            <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
                           </li>)
                       })
                     }
@@ -247,7 +248,7 @@ export default function Search() {
         { 
         
         mlist.length <= 0 && keyword ? 
-          <div className="nodata"><i className="fa-solid fa-file-magnifying-glass"></i><p>검색 결과가 없습니다.</p></div> 
+          <div className="nodata"><i className="fa-solid fa-file-magnifying-glass"></i><p>"{keyword}" 검색 결과가 없습니다.</p></div> 
           :
           <>
           <ul className='list'>

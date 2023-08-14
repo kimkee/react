@@ -650,6 +650,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}
 .schs-form .kwds{position: fixed;top: calc( 64rem + var(--safe-top) + var(--safe-watch) );left: 0rem;right: 0rem;background: #222;padding: 10rem 24rem;display: none;}
 .schs-form.open .kwds{display: block;}
+.schs-form .kwds.open{display: block;}
 .schs-form .kwds .lst{}
 .schs-form .kwds .lst>li{ display: flex; justify-content: space-between; align-items: center; padding: 5rem 0rem; }
 .schs-form .kwds .lst>li+li{ border-top: #000000 solid 1rem; }
