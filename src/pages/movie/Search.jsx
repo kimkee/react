@@ -167,6 +167,7 @@ export default function Search() {
     url.searchParams.set("search", event.target.value);
     console.log(url);
     window.history.replaceState(null, null, `#/search/${opts}?search=${event.target.value}`);
+    schsForm.current.classList.remove("open");
   }
 
   const keyWordBox = useRef();
