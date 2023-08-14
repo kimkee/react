@@ -653,7 +653,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .kwds .lst{}
 .schs-form .kwds .lst>li{ display: flex; justify-content: space-between; align-items: center; padding: 5rem 0rem; }
 .schs-form .kwds .lst>li+li{ border-top: #000000 solid 1rem; }
-.schs-form .kwds .lst>li .kwd{padding: 7px 0px;white-space: nowrap;/* width: calc(100% - 30rem); */text-overflow: ellipsis;overflow: hidden;text-align: left;font-size: 13rem;}
+.schs-form .kwds .lst>li .kwd{padding: 7px 0px;white-space: nowrap;width: calc(100% - 30rem);text-overflow: ellipsis;overflow: hidden;text-align: left;font-size: 13rem;}
 .schs-form .kwds .lst>li .del{ width: 24rem; height: 24rem; margin-right: -7rem; }
  
 
