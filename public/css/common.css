@@ -650,28 +650,10 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}
 .schs-form .keywords{position: fixed;top: calc( 64rem + var(--safe-top) + var(--safe-watch) );left: 0rem;right: 0rem;background: #222;padding: 10rem 24rem;}
 .schs-form .keywords .lst{}
-.schs-form .keywords .lst>li{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5rem 0rem;
-}
-.schs-form .keywords .lst>li+li{
-    border-top: #000000 solid 1rem;
-}
-.schs-form .keywords .lst>li .kwd{
-    padding: 5px 0px;
-    white-space: nowrap;
-    width: calc(100% - 30rem);
-    text-overflow: ellipsis;
-    overflow: hidden;
-    text-align: left;
-}
-.schs-form .keywords .lst>li .del{
-    width: 24rem;
-    height: 24rem;
-    margin-right: -7rem;
-}
+.schs-form .keywords .lst>li{ display: flex; justify-content: space-between; align-items: center; padding: 5rem 0rem; }
+.schs-form .keywords .lst>li+li{ border-top: #000000 solid 1rem; }
+.schs-form .keywords .lst>li .kwd{ padding: 5px 0px; white-space: nowrap; width: calc(100% - 30rem); text-overflow: ellipsis; overflow: hidden; text-align: left; }
+.schs-form .keywords .lst>li .del{ width: 24rem; height: 24rem; margin-right: -7rem; }
  
 
 .cate-box{overflow:hidden;display: block;height: calc(60rem + var(--safe-bottom) );}
