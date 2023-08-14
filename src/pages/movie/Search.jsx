@@ -141,7 +141,7 @@ export default function Search() {
     e.preventDefault();
     document.querySelector(".movie-list").focus();
     setKwdStorage(inputRef.current?.value);
-    keyWordBox.current.classList.remove("open");
+    schsForm.current.classList.remove("open");
   }
   const goRecentSearch = (txt)=>{
     keywordSet( txt )
@@ -149,7 +149,7 @@ export default function Search() {
     const url = new URL(window.location);
     url.searchParams.set("search", txt);
     window.history.replaceState(null, null, `#/search/${opts}?search=${txt}`);
-    keyWordBox.current.classList.remove("open");
+    schsForm.current.classList.remove("open");
   }
   const onChange = (event) => {
     keywordSet(event.target.value )
@@ -161,6 +161,7 @@ export default function Search() {
   }
 
   const keyWordBox = useRef();
+  const schsForm = useRef();
   const [kwdLists, setKeywords] = useState([]);
   const setKwdStorage =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || "[]" );
@@ -171,11 +172,14 @@ export default function Search() {
   }
 
 
-  const keyListView =(k) =>{
+  const keyListShow =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || "[]" );
     let nkeyArr = [...new Set(keyArr)];
     setKeywords(nkeyArr)
-    keyWordBox.current.classList.add("open");
+    schsForm.current.classList.add("open");
+
+
+
   }
   const delRecentKwd =(txt) =>{
     const newArray = kwdLists.filter(item => item !== txt);
@@ -194,7 +198,7 @@ export default function Search() {
     <Outlet />
     <div className="container page movie search">
       <main className="contents">
-        <div className="schs-form">
+        <div className="schs-form" ref={schsForm}>
           <div className="inr">
             <form className="form" onSubmit={ goSearch }>
               <div className="bts">
@@ -202,27 +206,27 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." onFocus={keyListView} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." onFocus={keyListShow} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
+              <div className="kwds" ref={keyWordBox}>
+                {
+                  kwdLists.length < 1 
+                  ? <div className="nodata"><p>최근검색어가 없습니다.</p></div>
+                  : <ul className="lst">
+                    {
+                      kwdLists.map( kwd => {
+                        return (
+                          <li key={kwd}>
+                            <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
+                            <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
+                          </li>)
+                      })
+                    }
+                  </ul>
+                }
+              </div>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
             </form>
-            <div className="kwds" ref={keyWordBox}>
-              {
-                kwdLists.length < 1 
-                ? <div className="nodata"><p>최근검색어가 없습니다.</p></div>
-                : <ul className="lst">
-                  {
-                    kwdLists.map( kwd => {
-                      return (
-                        <li>
-                          <button className='kwd' type='buton' onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                          <button className="del" tye="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
-                        </li>)
-                    })
-                  }
-                </ul>
-              }
-            </div>
           </div>
         </div>
          
