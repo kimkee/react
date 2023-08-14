@@ -89,6 +89,15 @@ export default function Search() {
     !keyword && !document.querySelector(".pop-layer") && inputRef.current.focus();
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
+
+    document.addEventListener("click", (e) => {
+      if ( e.target.closest(".schs-form") ) {
+        return
+      }else{
+        schsForm.current.classList.remove("open");
+      }
+    });
+
     return ()=>{
       document.querySelector('.header').classList.remove("hide");
       window.removeEventListener("scroll", scrollEvent);
