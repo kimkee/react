@@ -149,7 +149,7 @@ export default function Search() {
     fetchMoive( 1 );
     e.preventDefault();
     document.querySelector(".movie-list").focus();
-    setKwdStorage(inputRef.current?.value);
+    kwdStorage(inputRef.current?.value);
     schsForm.current.classList.remove("open");
   }
   const goRecentSearch = (txt)=>{
@@ -172,8 +172,8 @@ export default function Search() {
   const keyWordBox = useRef();
   const schsForm = useRef();
   const [kwdLists, setKeywords] = useState([]);
-  const setKwdStorage =(k) =>{
-    let keyArr = JSON.parse( localStorage.getItem("keyword") || "[]" );
+  const kwdStorage =(k) =>{
+    let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     k.trim() !== '' ? keyArr.push(k) : null;
     let nkeyArr = [...new Set(keyArr)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
@@ -182,7 +182,7 @@ export default function Search() {
 
 
   const keyListShow =(k) =>{
-    let keyArr = JSON.parse( localStorage.getItem("keyword") || "[]" );
+    let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     let nkeyArr = [...new Set(keyArr)];
     setKeywords(nkeyArr)
     schsForm.current.classList.add("open");
@@ -194,7 +194,8 @@ export default function Search() {
     const newArray = kwdLists.filter(item => item !== txt);
     let nkeyArr = [...new Set(newArray)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
-    setKeywords(nkeyArr)
+    setKeywords(nkeyArr);
+    return false;
   }
   
   console.log(mlist);
