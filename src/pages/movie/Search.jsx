@@ -90,20 +90,24 @@ export default function Search() {
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
 
-    document.addEventListener("click", (e) => {
-      if ( e.target.closest(".schs-form") ) {
-        return
-      }else{
-        schsForm.current.classList.remove("open");
-      }
-    });
+    document.addEventListener("click", openClick);
 
     return ()=>{
       document.querySelector('.header').classList.remove("hide");
       window.removeEventListener("scroll", scrollEvent);
+      document.removeEventListener("click", openClick);
     }
     // eslint-disable-next-line
   },[keyword,opts]);
+
+  const openClick = (e)=>{
+    console.log(e.target);
+    if ( e.target.closest(".schs-form") ) {
+        return
+      }else{
+        schsForm.current.classList.remove("open");
+      }
+  }
 
 
   // const [callStat, callStatSet] = useState(true);
@@ -153,11 +157,13 @@ export default function Search() {
     schsForm.current.classList.remove("open");
   }
   const goRecentSearch = (txt)=>{
+    inputRef.current.value = txt;
     keywordSet( txt )
-    setMlist([]);
+    window.history.replaceState(null, null, `#/search/${opts}?search=${txt}`);
+    // setMlist([]);
+    // fetchMoive( 1,txt );
     const url = new URL(window.location);
     url.searchParams.set("search", txt);
-    window.history.replaceState(null, null, `#/search/${opts}?search=${txt}`);
     schsForm.current.classList.remove("open");
   }
   const onChange = (event) => {
@@ -186,8 +192,8 @@ export default function Search() {
     let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     let nkeyArr = [...new Set(keyArr)];
     setKeywords(nkeyArr)
-    schsForm.current.classList.add("open");
-    kwdLists.current.classList.add("open");
+    schsForm.current?.classList.add("open");
+    kwdLists.current?.classList.add("open");
 
 
   }
