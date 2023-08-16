@@ -188,7 +188,7 @@ export default function Search() {
   }
 
 
-  const keyListShow =(k) =>{
+  const showKwdList =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     let nkeyArr = [...new Set(keyArr)];
     setKeywords(nkeyArr)
@@ -226,7 +226,7 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocusCapture={keyListShow} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocusCapture={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               <div className="kwds" ref={keyWordBox}>
