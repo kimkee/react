@@ -240,7 +240,8 @@ export default function Search() {
                           <li key={kwd}>
                             <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
                             <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
-                          </li>)
+                          </li>
+                        )
                       })
                     }
                   </ul>
