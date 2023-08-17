@@ -182,7 +182,7 @@ export default function Search() {
   const kwdStorage =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     k.trim() !== '' ? keyArr.unshift(k) : null;
-    let nkeyArr = [...new Set(keyArr)];
+    let nkeyArr = [...new Set(keyArr)].slice(0, 10);
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
     setKeywords(nkeyArr)
   }
