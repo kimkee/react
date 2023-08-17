@@ -187,20 +187,18 @@ export default function Search() {
     setKeywords(nkeyArr)
   }
 
-
   const showKwdList =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
-    let nkeyArr = [...new Set(keyArr)];
+    let nkeyArr = [...new Set(keyArr)].reverse();
     setKeywords(nkeyArr)
     schsForm.current?.classList.add("open");
     kwdLists.current?.classList.add("open");
-
-
   }
+
   const delRecentKwd =(e,txt) =>{
     const newArray = kwdLists.filter(item => item !== txt);
-    let nkeyArr = [...new Set(newArray)];
-    localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
+    let nkeyArr = [...new Set(newArray)].reverse();
+    localStorage.setItem("keyword", JSON.stringify( nkeyArr ) );
     setKeywords(nkeyArr);
     schsForm.current.classList.add("open");
     setTimeout(() => inputRef.current.focus());
