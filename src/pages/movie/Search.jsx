@@ -226,7 +226,7 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocusCapture={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocus={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               <div className="kwds" ref={keyWordBox}>
@@ -234,16 +234,14 @@ export default function Search() {
                   kwdLists.length < 1 
                   ? <div className="nodata"><p>최근검색어가 없습니다.</p></div>
                   : <ul className="lst">
-                    {
-                      kwdLists.map( kwd => {
-                        return (
-                          <li key={kwd}>
-                            <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                            <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
-                          </li>
-                        )
-                      })
-                    }
+                    { kwdLists.map( kwd => {
+                      return (
+                        <li key={kwd}>
+                          <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
+                          <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
+                        </li>
+                      )
+                    }) }
                   </ul>
                 }
               </div>
