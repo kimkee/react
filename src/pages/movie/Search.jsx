@@ -181,7 +181,7 @@ export default function Search() {
   const [kwdLists, setKeywords] = useState([]);
   const kwdStorage =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
-    k.trim() !== '' ? keyArr.push(k) : null;
+    k.trim() !== '' ? keyArr.unshift(k) : null;
     let nkeyArr = [...new Set(keyArr)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
     setKeywords(nkeyArr)
@@ -189,7 +189,7 @@ export default function Search() {
 
   const showKwdList =(k) =>{
     let keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
-    let nkeyArr = [...new Set(keyArr)].reverse();
+    let nkeyArr = [...new Set(keyArr)];
     setKeywords(nkeyArr)
     schsForm.current?.classList.add("open");
     kwdLists.current?.classList.add("open");
@@ -197,7 +197,7 @@ export default function Search() {
 
   const delRecentKwd =(e,txt) =>{
     const newArray = kwdLists.filter(item => item !== txt);
-    let nkeyArr = [...new Set(newArray)].reverse();
+    let nkeyArr = [...new Set(newArray)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) );
     setKeywords(nkeyArr);
     schsForm.current.classList.add("open");
