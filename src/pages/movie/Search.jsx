@@ -90,12 +90,15 @@ export default function Search() {
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
 
-    document.addEventListener("click", openClick);
+    // document.addEventListener("focus", openClick);
+    document.querySelectorAll("*").forEach( (element)=> element.addEventListener("focus", openClick) );
+    document.addEventListener("touchstart", openClick);
 
     return ()=>{
       document.querySelector('.header').classList.remove("hide");
       window.removeEventListener("scroll", scrollEvent);
-      document.removeEventListener("click", openClick);
+      document.querySelectorAll("*").forEach( (element)=> element.removeEventListener("focus", openClick) );
+      document.removeEventListener("touchstart", openClick);
     }
     // eslint-disable-next-line
   },[keyword,opts]);
@@ -105,7 +108,7 @@ export default function Search() {
     if ( e.target.closest(".schs-form") ) {
         return
       }else{
-        schsForm.current.classList.remove("open");
+        schsForm?.current.classList.remove("open");
       }
   }
 
@@ -224,7 +227,7 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocus={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocus={showKwdList} onMouseDown={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               <div className="kwds" ref={keyWordBox}>
