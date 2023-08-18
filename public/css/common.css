@@ -643,12 +643,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .bts .bt+.bt{margin-left: 4rem;}
 .schs-form .bts .bt.active{background: #273c5a; border-color: #2c3a58; color: #fff; text-shadow: 0 0rem 2rem black;}
 .schs-form .form .input{border-width: 0;background-color: #121212;}
-.schs-form .form .input input{padding-left: 110rem;color: #dddddd;}
+.schs-form .form .input input{padding-left: 114rem;color: #dddddd;}
 .schs-form .form .input input::-webkit-input-placeholder{ color: #666;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}
-.schs-form .kwds{position: fixed;top: calc( 64rem + var(--safe-top) + var(--safe-watch) );left: 0rem;right: 0rem;background: #222;padding: 10rem 24rem;display: none;}
+.schs-form .kwds{position: fixed;top: calc( 54rem + var(--safe-top) + var(--safe-watch) );left: 113rem;right: 65rem;background: #222;padding: 10rem 20rem;display: none;border-radius: 8rem;}
 .schs-form.open .kwds{display: block;}
 .schs-form .kwds.open{display: block;}
 .schs-form .kwds .lst{}
@@ -656,7 +656,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .kwds .lst>li+li{ border-top: #000000 solid 1rem; }
 .schs-form .kwds .lst>li .kwd{padding: 7px 0px;white-space: nowrap;width: calc(100% - 30rem);text-overflow: ellipsis;overflow: hidden;text-align: left;font-size: 13rem;}
 .schs-form .kwds .lst>li .del{ width: 24rem; height: 24rem; margin-right: -7rem; }
- 
+.schs-form .kwds .nodata{padding: 30rem 0rem !important;}
 
 .cate-box{overflow:hidden;display: block;height: calc(60rem + var(--safe-bottom) );}
 .cate-box>.inr{display: flex;flex-wrap: nowrap;height: 60rem;padding: 0rem 10rem;margin: 0rem -10rem;/* padding-right: 30rem; */align-items: center;border-top: rgb(107 107 107 / 10%) solid 1rem;background-color: rgb(30 30 30 / 92%);position: fixed;bottom: calc(60rem + var(--safe-bottom) );left: 0rem;right: 0rem;z-index: 600;overflow-x: auto; scroll-behavior:smooth;}
