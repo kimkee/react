@@ -648,8 +648,10 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}
-.recent-kwds{background: #171717;padding: 10rem 14rem;display: none;border-radius: 0rem;overflow-x: auto;scroll-behavior: auto;}
+/* 최근 검색어 UI */
+.recent-kwds{background: #171717;padding: 10rem 14rem;display: none;border-radius: 0rem;overflow-x: auto;scroll-behavior: auto; position: relative;}
 .recent-kwds::-webkit-scrollbar{display: none;}
+.recent-kwds::before{position: absolute;left: 0rem;top: 0rem;width: 30rem;bottom: -1rem;background: linear-gradient(93deg, #171717, black);/* content:""; */z-index: 10;}
 .recent-kwds.open{display: flex;}
 .recent-kwds .lst{display: flex;flex-wrap: nowrap;margin: 0px 0rem;}
 .recent-kwds .lst>li{display: inline-block; margin: 2rem 3rem;position: relative;width: auto;margin: 0rem 3rem;}
