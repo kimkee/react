@@ -89,7 +89,7 @@ export default function Search() {
     !keyword && !document.querySelector(".pop-layer") && inputRef.current.focus();
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
-
+    showKwdList()
     // document.addEventListener("focus", openClick);
     document.querySelectorAll("*").forEach( (element)=> element.addEventListener("focus", openClick) );
     document.addEventListener("touchstart", openClick);
@@ -108,7 +108,7 @@ export default function Search() {
     if ( e.target.closest(".schs-form") ) {
         return
       }else{
-        schsForm?.current.classList.remove("open");
+        // schsForm?.current.classList.remove("open");
       }
   }
 
@@ -157,7 +157,7 @@ export default function Search() {
     e.preventDefault();
     document.querySelector(".movie-list").focus();
     kwdStorage(inputRef.current?.value);
-    schsForm.current.classList.remove("open");
+    // keyWordBox.current.classList.remove("open");
   }
   const goRecentSearch = (txt)=>{
     inputRef.current.value = txt;
@@ -167,7 +167,7 @@ export default function Search() {
     // fetchMoive( 1,txt );
     const url = new URL(window.location);
     url.searchParams.set("search", txt);
-    schsForm.current.classList.remove("open");
+    // keyWordBox.current.classList.remove("open");
   }
   const onChange = (event) => {
     keywordSet(event.target.value )
@@ -176,7 +176,7 @@ export default function Search() {
     url.searchParams.set("search", event.target.value);
     console.log(url);
     window.history.replaceState(null, null, `#/search/${opts}?search=${event.target.value}`);
-    schsForm.current.classList.remove("open");
+    // keyWordBox.current.classList.remove("open");
   }
 
   const keyWordBox = useRef();
@@ -203,7 +203,7 @@ export default function Search() {
     let nkeyArr = [...new Set(newArray)];
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) );
     setKeywords(nkeyArr);
-    schsForm.current.classList.add("open");
+    keyWordBox.current.classList.add("open");
     setTimeout(() => inputRef.current.focus());
     e.preventDefault()
     return false;
@@ -227,33 +227,33 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." maxLength={12} onFocus={showKwdList} onMouseDown={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." maxLength={12}  onMouseDown={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
-              <div className="kwds" ref={keyWordBox}>
-                {
-                  kwdLists.length < 1 
-                  ? <div className="nodata"><p>최근검색어가 없습니다.</p></div>
-                  : <ul className="lst">
-                    { kwdLists.map( kwd => {
-                      return (
-                        <li key={kwd}>
-                          <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                          <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
-                        </li>
-                      )
-                    }) }
-                  </ul>
-                }
-              </div>
+              
             </form>
           </div>
         </div>
-         
+        <div className={  kwdLists.length > 0 ? `recent-kwds open` : `recent-kwds` } ref={keyWordBox}>
+          {
+            kwdLists.length < 1 
+            ? ``
+            : <ul className="lst">
+              { kwdLists.map( kwd => {
+                return (
+                  <li key={kwd}>
+                    <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
+                    <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
+                  </li>
+                )
+              }) }
+            </ul>
+          }
+        </div>
         <div className='movie-list' tabIndex="-1">
         { 
         
-        mlist.length <= 0 && keyword ? 
+        mlist.length <= 0  ? 
           <div className="nodata"><i className="fa-solid fa-file-magnifying-glass"></i><p>"{keyword}" 검색 결과가 없습니다.</p></div> 
           :
           <>

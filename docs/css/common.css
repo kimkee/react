@@ -648,15 +648,15 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}
-.schs-form .kwds{position: fixed;top: calc( 54rem + var(--safe-top) + var(--safe-watch) );left: 113rem;right: 65rem;background: #222;padding: 10rem 20rem;display: none;border-radius: 8rem;}
-.schs-form.open .kwds{display: block;}
-.schs-form .kwds.open{display: block;}
-.schs-form .kwds .lst{}
-.schs-form .kwds .lst>li{ display: flex; justify-content: space-between; align-items: center; padding: 5rem 0rem; }
-.schs-form .kwds .lst>li+li{ border-top: #000000 solid 1rem; }
-.schs-form .kwds .lst>li .kwd{padding: 7px 0px;white-space: nowrap;width: calc(100% - 30rem);text-overflow: ellipsis;overflow: hidden;text-align: left;font-size: 13rem;}
-.schs-form .kwds .lst>li .del{ width: 24rem; height: 24rem; margin-right: -7rem; }
-.schs-form .kwds .nodata{padding: 30rem 0rem !important;}
+.recent-kwds{background: #171717;padding: 10rem 14rem;display: none;border-radius: 0rem;overflow-x: auto;scroll-behavior: auto;}
+.recent-kwds::-webkit-scrollbar{display: none;}
+.recent-kwds.open{display: flex;}
+.recent-kwds .lst{display: flex;flex-wrap: nowrap;margin: 0px 0rem;}
+.recent-kwds .lst>li{display: inline-block;/* justify-content: space-between; *//* align-items: center; */margin: 2rem 3rem;position: relative;width: auto;margin: 0rem 3rem;}
+.recent-kwds .lst>li+li{/* border-top: #000000 solid 1rem; */}
+.recent-kwds .lst>li .kwd{padding: 7rem 24rem 7rem 11rem;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;text-align: left;font-size: 13rem;border-radius: 4rem;border: #111111 solid 1rem;background: #262626;}
+.recent-kwds .lst>li .del{width: 24rem;height: 24rem;position: absolute;right: 0rem;top: 50%;margin-top: -12rem;}
+.recent-kwds .nodata{padding: 30rem 0rem !important;}
 
 .cate-box{overflow:hidden;display: block;height: calc(60rem + var(--safe-bottom) );}
 .cate-box>.inr{display: flex;flex-wrap: nowrap;height: 60rem;padding: 0rem 10rem;margin: 0rem -10rem;/* padding-right: 30rem; */align-items: center;border-top: rgb(107 107 107 / 10%) solid 1rem;background-color: rgb(30 30 30 / 92%);position: fixed;bottom: calc(60rem + var(--safe-bottom) );left: 0rem;right: 0rem;z-index: 600;overflow-x: auto; scroll-behavior:smooth;}
