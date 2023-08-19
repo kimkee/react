@@ -645,6 +645,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .input{border-width: 0;background-color: #121212;}
 .schs-form .form .input input{padding-left: 114rem;color: #dddddd;}
 .schs-form .form .input input::-webkit-input-placeholder{ color: #666;}
+.schs-form .form .input input:valid + .btdel{display: block;}
+.schs-form .form .input .btdel{position: absolute;right: 8rem;top: 8rem;width: 24rem;height: 24rem;display: none;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}
 .schs-form .form .bt-sch{font-size:20rem;width: 41rem;height: 40rem;background: #121212;color: #61dafb;border-radius: 6rem;}

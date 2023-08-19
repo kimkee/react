@@ -104,7 +104,7 @@ export default function Search() {
   },[keyword,opts]);
 
   const openClick = (e)=>{
-    console.log(e.target);
+    // console.log(e.target);
     if ( e.target.closest(".schs-form") ) {
         return
       }else{
@@ -208,6 +208,11 @@ export default function Search() {
     e.preventDefault()
     return false;
   }
+  const delFormText =(e,txt) =>{
+    console.log(e);
+    inputRef.current.value = "";
+    inputRef.current.focus();
+  }
   
   console.log(mlist);
   console.log(kwdLists);
@@ -227,7 +232,8 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." maxLength={12}  onMouseDown={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <input type="text" placeholder="검색어를 입력하세요." required maxLength={12} onMouseDown={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
+                <button type="button" className="btdel" title='삭제' onClick={delFormText}><i className="fa-regular fa-xmark"></i></button>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               
