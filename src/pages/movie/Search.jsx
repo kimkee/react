@@ -266,14 +266,14 @@ export default function Search() {
             </ul>
           }
         </div>
-        
+
         <div className='movie-list' tabIndex="-1">
         { 
         
         mlist.length <= 0  ? 
           <div className="nodata">
             <i className="fa-solid fa-file-magnifying-glass"></i>
-            { keyword ? <p> "{keyword}" 검색 결과가 없습니다.</p> : null} 
+            { keyword ? <p> ‟{keyword}” 검색 결과가 없습니다.</p> : null} 
           </div>
           :
           <>
