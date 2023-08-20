@@ -232,8 +232,18 @@ export default function Search() {
                 <NavLink className="bt" to={`/search/tv?search=${keyword}`}>TV</NavLink>
               </div>
               <span className="input">
-                <input type="text" placeholder="검색어를 입력하세요." required maxLength={12} onMouseDown={showKwdList} onChange={onChange} id="input_kwd" ref={inputRef}/>
-                <button type="button" className="btdel" title='삭제' onClick={delFormText}><i className="fa-regular fa-xmark"></i></button>
+                <input type="text" placeholder="검색어를 입력하세요." 
+                  ref={inputRef}
+                  required maxLength={12} 
+                  onMouseDown={showKwdList}
+                  onChange={onChange}
+                  onInvalid={ (e)=> e.preventDefault() }
+                />
+                <button type="button" className="btdel" title='삭제'
+                  onClick={delFormText}
+                >
+                  <i className="fa-regular fa-xmark"></i>
+                </button>
               </span>
               <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
               
@@ -256,11 +266,15 @@ export default function Search() {
             </ul>
           }
         </div>
+        
         <div className='movie-list' tabIndex="-1">
         { 
         
         mlist.length <= 0  ? 
-          <div className="nodata"><i className="fa-solid fa-file-magnifying-glass"></i><p>"{keyword}" 검색 결과가 없습니다.</p></div> 
+          <div className="nodata">
+            <i className="fa-solid fa-file-magnifying-glass"></i>
+            { keyword ? <p> "{keyword}" 검색 결과가 없습니다.</p> : null} 
+          </div>
           :
           <>
           <ul className='list'>
