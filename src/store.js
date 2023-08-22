@@ -65,4 +65,5 @@ const store = {
   }
 };
 store.authState();
+window.store = store
 export default store;

@@ -2,6 +2,7 @@ import React, {  useEffect } from 'react'; //useState, useEffect
 import {NavLink , useLocation } from 'react-router-dom'; // Link  , useLocation, useSearchParams,useParams, useSearchParams
 
 import ui from '../ui.js';
+import store from '../store.js';
 
 export default function Nav() {
   // let params = useParams()
@@ -28,10 +29,11 @@ export default function Nav() {
   };
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
+    console.log(store);
     return ()=>{
       window.removeEventListener("scroll", scrollEvent);
     }
-  },[]);
+  },[store]);
 
   return (
     <>
@@ -45,7 +47,12 @@ export default function Nav() {
             <li className={isActive("list/movie/0")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/movie/0/`} className={"bt"}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
             <li className={isActive("list/tv/0")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/tv/0/`} className={"bt"}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
             <li className={isActive("search/movie")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
-            {/* <li className={isActive("user/")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/signin`} className={"bt"}><i class="fa-regular fa-user"></i><em>Login</em></NavLink></li> */}
+            {
+              store.state.userInfo.stat 
+              ? <li className={isActive("user/")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/signout`} className={"bt"}><i className="fa-regular fa-user"></i><em>Logout</em></NavLink></li>
+              : <li className={isActive("user/")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink></li>
+            }
+            
           </ul>
         </div>
       </nav>
