@@ -7,7 +7,7 @@ import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPers
 import ui from '../../ui.js';
 
 
-export default function Signin() {
+export default function SignIn() {
   // console.log(opts);
 
   let params = useParams()
