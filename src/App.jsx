@@ -28,7 +28,7 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path='*'  />
+          <Route path='*' element={<NotFound />} />
           <Route path='home/*' element={<Header />} />
           <Route path='list/*' element={<Header />} />
           <Route path='search/*' element={<Header />} />
@@ -41,7 +41,7 @@ function App() {
             
         <Routes>
 
-          <Route path='/*' element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />
 
           <Route path="/" element={<Navigate to="/home/"></Navigate>} />
 
@@ -68,6 +68,7 @@ function App() {
           </Route>
 
           <Route path=":menu">
+            <Route path='*' element={<NotFound />} />
             <Route path=":id" element={<View prop={{"page":"page"}}/>} >
               <Route path="poster/:nums" element={<Poster />} />
               <Route path="person/:nums" element={<Person />} />
@@ -87,9 +88,8 @@ function App() {
           </Route>
 
           <Route path="user">
-            
-              <Route path="signin" element={<SignIn /> } />
-            
+            <Route path="*" element={<NotFound /> } />
+            <Route path="signin" element={<SignIn /> } />
           </Route>
 
 
