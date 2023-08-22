@@ -36,6 +36,7 @@ export default function Signin() {
       <main className="contents">
         
         <div className="sign-form">
+          <div className="hdt">로그인</div>
           <ul className="list">
             <li>
               <label className="dt">이메일 (user@test.com) </label>
