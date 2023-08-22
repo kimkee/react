@@ -12,7 +12,7 @@ export default function Nav() {
   const location = useLocation();
   console.log(location);
 
-  const isActive = els => location.pathname.includes(`${els}`) ? " active" : "";
+  const isActive = els => location.pathname.includes(`${els}`) ? "active" : "";
   
   const scrollEvent = ()=> {
     const scr = ui.viewport.scrollTop();   
@@ -41,10 +41,11 @@ export default function Nav() {
       <nav id="menubar" className="menubar">
         <div className="inr">
           <ul className="menu">
-            <li><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}home/`} className={"bt" + isActive("home")}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
-            <li><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/movie/0/`} className={"bt" + isActive("list/movie")}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
-            <li><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/tv/0/`} className={"bt" + isActive("list/tv")}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
-            <li><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}search/movie/`} className={"bt" + isActive("search/")}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
+            <li className={isActive("home")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}home/`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
+            <li className={isActive("list/movie/0")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/movie/0/`} className={"bt"}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+            <li className={isActive("list/tv/0")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/tv/0/`} className={"bt"}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
+            <li className={isActive("search/movie")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
+            {/* <li className={isActive("user/")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/signin`} className={"bt"}><i class="fa-regular fa-user"></i><em>Login</em></NavLink></li> */}
           </ul>
         </div>
       </nav>
