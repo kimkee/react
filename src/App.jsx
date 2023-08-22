@@ -14,8 +14,8 @@ import View from './pages/movie/View.jsx';
 import Poster from './pages/movie/Poster.jsx';
 import Person from './pages/movie/Person.jsx';
 import Videos from './pages/movie/Videos.jsx';
-
 import Search from './pages/movie/Search.jsx';
+import SignIn from './pages/user/SignIn.jsx';
 
 ui.init();
 function App() {
@@ -33,6 +33,7 @@ function App() {
           <Route path='list/*' element={<Header />} />
           <Route path='search/*' element={<Header />} />
           <Route path='movie/*' element={<Header />} />
+          <Route path='user/*' element={<Header />} />
         </Routes>
 
         {/* <TransitionGroup className="transition-group">
@@ -84,6 +85,15 @@ function App() {
               <Route path=":keyword" element={<Search />} />
             </Route>
           </Route>
+
+          <Route path="user">
+            
+              <Route path="signin" element={<SignIn /> } />
+            
+          </Route>
+
+
+
 
         </Routes>
             
