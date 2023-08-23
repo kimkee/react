@@ -1110,6 +1110,66 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList.topic .slide ul>li .box .pics .img{}
 .page.home .sect.mnList.topic .slide ul>li .box .pics::after{counter-increment: section;content:  counter(section);position: absolute;left: -6rem;top: -9rem;line-height: 1;font-size:28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;}
 
+
+
+
+.page.user.view{}
+.page.user.view .contents{display:none;padding: 0rem 0rem  30rem 0rem;margin: 0;}
+.page.user.view.load .contents{display:block;}
+.page.user.view .profile{padding: 20rem 0rem 0rem 0rem;}
+.page.user.view .profile .user{display: flex;align-items: center;margin: 0rem 20rem 20rem 20rem;}
+.page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
+.page.user.view .profile .user .pic .img{position: absolute; width: 100%; left: 0; top: 0;}
+.page.user.view .profile .user .info{display: flex; width:100%;}
+.page.user.view .profile .user .info .num{text-align: center; width: 100%;}
+.page.user.view .profile .user .info .num .n{}
+.page.user.view .profile .user .info .num .t{}
+.page.user.view .profile .user .txt{color: #e1e1e1;margin-left: 4rem;margin-top: 4rem;line-height: 1.2;}
+.page.user.view .profile .desc{display: flex;margin: 0rem 20rem;flex-direction: column;}
+.page.user.view .profile .desc .txt{font-size:12rem;}
+.page.user.view .profile .desc .txt+.txt{margin-top: 2rem;}
+.page.user.view .profile .desc .txt i{font-weight:normal;}
+.page.user.view .post{margin: 10rem 0rem 0rem 0rem;}
+.page.user.view .post .menu{position: sticky;top: 54rem;height: 50rem;text-align: center; display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #0d1117;}
+.page.user.view .post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}
+.page.user.view .post .menu>li{position:relative;width: 100%;}
+.page.user.view .post .menu>li+li{margin-left: 0rem;}
+.page.user.view .post .menu>li>.bt{font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center; height: 50rem;position: relative; font-weight:normal;}
+.page.user.view .post .menu>li>.bt>span i{font-weight: normal;}
+.page.user.view .post .menu>li:last-child>.bt{ border-right-width:1rem; }
+.page.user.view .post .menu>li.active>.bt{color: #41b883;}
+.page.user.view .post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #41b883;border-radius: 0rem;display:block;content:"";}
+.page.user.view .post .menu>li.active>.bt>span i{font-weight: 900;}
+.page.user.view .post .pctn{}
+.page.user.view .post .pctn .ctn{min-height: calc(100vh - 370rem);}
+.page.user.view .post .pctn .ctn.b{padding: 0rem;}
+.page.user.view .post .pctn .board-list .list>li{}
+.page.user.view .post .pctn .board-list .list>li .box .info{}
+.page.user.view .post .pctn .board-list .list>li .box{}
+.page.user.view .post .pctn .ctn.p{padding-top: 0rem;}
+.page.user.view .post .pctn .ctn.l{padding: 20rem;}
+.page.user.view .post .pctn .ctn .nodata{padding:20vh 10rem;}
+.page.user.view .swiper-wrapper{padding-bottom: 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @keyframes loading-rotate {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }

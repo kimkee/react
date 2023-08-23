@@ -47,7 +47,7 @@ export default function SignIn() {
         ui.loading.hide();
         ui.alert("" + user.email + "<br> 로그인 성공!", {
           ycb: () => {
-            // this.$router.push(gourl);
+            navigate(`/`)
           }
         });
       })

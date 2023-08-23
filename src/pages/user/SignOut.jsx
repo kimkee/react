@@ -10,7 +10,7 @@ import ui from '../../ui.js';
 export default function SignOut() {
   // console.log(opts);
 
-
+  let navigate = useNavigate();
 
   const userEmail = useRef();
   const userPassword = useRef();
@@ -21,9 +21,9 @@ export default function SignOut() {
       const auth = getAuth();
       signOut(auth).then(() => {
         // Sign-out successful.
-        ui.alert("로그아웃 성공!!");
+        // ui.alert("로그아웃 성공!!");
         // const gourl = localStorage.getItem("preurl").replace("#", "");
-        // this.$router.push(gourl);
+        navigate(`/`)
       }).catch((error) => {
         console.log(error);
         // An error happened.
