@@ -1,6 +1,6 @@
 
 import React, {  useEffect } from 'react'; //useState,
-import {Link, useParams, useLocation} from 'react-router-dom'; // ,useParams,useLocation
+import {Link, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
 import ui from '/src/ui.js';
 import store from '../store.js';
 
@@ -8,6 +8,7 @@ export default function Header({prop}) {
   console.log(prop.headerType + "===================================");
   let params = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   // console.log(params);
   location.pathname
   console.log(params , location);
@@ -45,7 +46,7 @@ export default function Header({prop}) {
           
           { prop.headerType == "main" 
             ? <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1> 
-            : <button type="button" className="bt back"><i className="fa-regular fa-arrow-left"></i>뒤로</button>
+            : <button type="button" className="bt back" onClick={()=>navigate(-1)}><i className="fa-regular fa-arrow-left"></i>뒤로</button>
           }
           
           { params.id
