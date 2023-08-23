@@ -18,24 +18,33 @@ import Search from './pages/movie/Search.jsx';
 import SignIn from './pages/user/SignIn.jsx';
 import SignOut from './pages/user/SignOut.jsx';
 import User from './pages/user/User.jsx';
-
-ui.init();
-function App() {
+// ui.init();
+export default function App() {
   // const location = window.location;
   // console.log(location);
   // const { location,pathname, hash, key } = useLocation();
-  
+
+  /* 로그인 상태 알아보기 */
+  const info = JSON.parse(  sessionStorage.getItem("user") );
+  if(info){
+    store.state.userInfo.stat = true;
+    store.state.userInfo.uid = info?.uid;
+    store.state.userInfo.email = info?.email;
+    store.state.userInfo.join = new Date( parseInt(info?.createdAt) );
+  }
   
   return (
     <>
       <Router>
         <Routes>
           <Route path='*' element={<NotFound />} />
-          <Route path='home/*' element={<Header />} />
-          <Route path='list/*' element={<Header />} />
-          <Route path='search/*' element={<Header />} />
-          <Route path='movie/*' element={<Header />} />
-          <Route path='user/*' element={<Header />} />
+          <Route path='home/*' element={<Header  prop={{"headerType":"main"}} />} />
+          <Route path='list/*' element={<Header  prop={{"headerType":"main"}} />} />
+          <Route path='search/*' element={<Header  prop={{"headerType":"main"}} />} />
+          <Route path='movie/*' element={<Header  prop={{"headerType":"main"}} />} />
+          <Route path='user'>
+            <Route path=":id" element={<Header prop={{"headerType":"sub"}} />} />
+          </Route>
         </Routes>
 
         {/* <TransitionGroup className="transition-group">
@@ -111,5 +120,3 @@ function App() {
     </>
   );
 }
-
-export default App;
