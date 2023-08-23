@@ -49,10 +49,7 @@ export default function Header({prop}) {
             : <button type="button" className="bt back" onClick={()=>navigate(-1)}><i className="fa-regular fa-arrow-left"></i>뒤로</button>
           }
           
-          { params.id
-            ? <h3 className="htit">{store.state.userInfo.nick}</h3>
-            : null
-          }
+          { params.id ? <h3 className="htit">{store.state.userInfo.nick}</h3> : null }
 
         </div>
         <div className="rdt">
