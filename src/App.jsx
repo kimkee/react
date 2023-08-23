@@ -17,6 +17,7 @@ import Videos from './pages/movie/Videos.jsx';
 import Search from './pages/movie/Search.jsx';
 import SignIn from './pages/user/SignIn.jsx';
 import SignOut from './pages/user/SignOut.jsx';
+import SignUp from './pages/user/SignUp.jsx';
 import User from './pages/user/User.jsx';
 // ui.init();
 export default function App() {
@@ -102,6 +103,7 @@ export default function App() {
             <Route path="*" element={<NotFound /> } />
             <Route path="signin" element={<SignIn /> } />
             <Route path="signout" element={<SignOut /> } />
+            <Route path="signup" element={<SignUp /> } />
             
             <Route path=":id" element={<User />} />
             

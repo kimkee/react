@@ -1044,7 +1044,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .page.sign{}
 .page.sign .contents{/* padding-top: calc(50vh - 230rem); */}
-.sign-form{max-width: 350rem;margin: 10rem auto 0;}
+.sign-form{max-width: 350rem;margin: 10rem auto 70rem;}
 .sign-form .hdt{text-align: center;font-size: 20rem;color:#eeeeee;padding: 10rem 0;margin-bottom: 15rem;}
 .sign-form .list{}
 .sign-form .list>li{}
@@ -1117,7 +1117,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view{}
 .page.user.view .contents{display:none;padding: 0rem 0rem  30rem 0rem;margin: 0;}
 .page.user.view.load .contents{display:block;}
-.page.user.view .profile{padding: 20rem 0rem 0rem 0rem;}
+.page.user.view .profile{padding: 30rem 0rem 0rem 0rem;}
 .page.user.view .profile .user{display: flex;align-items: center;margin: 0rem 20rem 20rem 20rem;}
 .page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
 .page.user.view .profile .user .pic .img{position: absolute; width: 100%; left: 0; top: 0;}
@@ -1153,6 +1153,13 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .post .pctn .ctn.l{padding: 20rem;}
 .page.user.view .post .pctn .ctn .nodata{padding:20vh 10rem;}
 .page.user.view .swiper-wrapper{padding-bottom: 0;}
+
+.ut-avata{display: flex;gap: 10rem 15rem;flex-wrap: wrap;}
+.ut-avata label{display: inline-flex;position: relative;}
+.ut-avata label input{position: absolute;width: 34rem;height: 34rem;}
+.ut-avata label input:checked + .txt{border-color: #41b883;}
+.ut-avata label .txt{display: inline-flex;width: 36rem;height: 36rem;border: solid 3rem transparent;border-radius: 20rem;overflow: hidden;}
+.ut-avata label .txt .img{ width: 30rem; height: 30rem; }
 
 
 
