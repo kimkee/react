@@ -31,12 +31,14 @@ export default function User() {
         date : ui.dateForm( docSnap.data().date.toDate() ),
         liked : docSnap.data().liked.length ,
       })
+      
     } else {
       console.log("No such document!");
     }
 
     // this.gotoSlide(0,0);
     document.querySelector(".page.user").classList.add("load");
+    document.querySelector(".header .htit").innerText = uInfo.nick || ``;
     ui.loading.hide();
   }
 
@@ -52,9 +54,9 @@ export default function User() {
       // window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[]);
+  },[uInfo.nick]);
 
-  // console.log(store);
+  console.log(store);
   return (
     <>
     <Outlet/>
@@ -67,15 +69,17 @@ export default function User() {
           <div className="user">
             <span className="pic"><img src={store.state.avatar[uInfo.avatar]} className="img" /></span>
             <div className="info">
-              {/* <div className="num b"><b className="n">{{uInfo.bbsNum}}</b><p className="t">게시글</p></div>    
-              <div className="num p"><b className="n">{{uInfo.photoNum}}</b><p className="t">사진</p></div>    
-              <div className="num l"><b className="n">{{uInfo.liked}}</b><p className="t">좋아요</p></div>     */}
+              <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
+              <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
+              <div className="num l"><b className="n">{uInfo.liked||0}</b><p className="t">Liked</p></div>    
             </div>
           </div>
           <div className="desc">
-            <span className="txt">{uInfo.nick}</span>
-            <span className="txt"><i className="fa-regular fa-calendar-days"></i> 가입 : {uInfo.date}</span>
+            <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {uInfo.date}</span>
             <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>
+          </div>
+          <div className="bts bot">
+            <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
           </div>
         </div>
         :null}

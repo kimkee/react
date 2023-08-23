@@ -343,8 +343,8 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar .menu>li .bt em{display:block;font-size: 11rem;margin-top: 4rem;}
 .menubar .menu>li .bt i{font-size:18rem;}
 .menubar .menu>li .bt.router-link-active,
-.menubar .menu>li .bt.active{color: #61dafb;}
-.menubar .menu>li .bt.active i,
+.menubar .menu>li.active .bt{color: #61dafb;}
+.menubar .menu>li.active .bt i,
 .menubar .menu>li .bt.router-link-active i{font-weight:900;}
 
 
@@ -391,7 +391,7 @@ a.btn.disabled{ pointer-events: none; }
 .btn.d.disabled{border-color: #dddddd;background-color: #ffffff;color: #dddddd;}
 
 .btn.e{border-color:#646464; background-color:#646464; color:#ffffff;}
-.btn>i{margin: 0rem 5rem 0rem -8rem;}
+.btn>i{margin: 0rem 5rem 0rem 0rem;}
 
 .btn-set{position:relative;display:flex;margin-left: -5rem;margin-right: -5rem;}
 .btn-set .btn{width:100%;margin: 0 5rem;}
@@ -1112,7 +1112,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 
 
-
+/* User  회원정보 */
 .page.user.view{}
 .page.user.view .contents{display:none;padding: 0rem 0rem  30rem 0rem;margin: 0;}
 .page.user.view.load .contents{display:block;}
@@ -1129,6 +1129,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile .desc .txt{font-size:12rem;}
 .page.user.view .profile .desc .txt+.txt{margin-top: 2rem;}
 .page.user.view .profile .desc .txt i{font-weight:normal;}
+.page.user.view .profile .bts{ margin: 20rem 20rem; text-align: right; }
+.page.user.view .profile .bts .btn{ min-width: 104rem; }
 .page.user.view .post{margin: 10rem 0rem 0rem 0rem;}
 .page.user.view .post .menu{position: sticky;top: 54rem;height: 50rem;text-align: center; display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #0d1117;}
 .page.user.view .post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}
