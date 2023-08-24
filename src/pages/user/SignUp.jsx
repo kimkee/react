@@ -41,27 +41,19 @@ export default function SignUp() {
   const [isPwdValid, setIsPwdValid] = useState(false);
   const [isNickValid, setIsNickValid] = useState(false);
   const validate = (input) => {
-    // console.log(input.name);
-    // const email = userEmail.current.value;
-    // const password = userPassword.current.value;
-    // const nickname = userNick.current.value;
     const pattern = {
-      email : /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-      password : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-      nickname : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
+      mail : /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+      pass : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+      nick : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
     }
     switch (input.name) {
-      case 'email': setIsEmailValid( pattern.email.test(input.value) ); break;
-      case 'password': setIsPwdValid( pattern.password.test(input.value) ); break;
-      case 'nickname': setIsNickValid( pattern.nickname.test(input.value) ); break;
+      case 'email': setIsEmailValid( pattern.mail.test(input.value) ); break;
+      case 'password': setIsPwdValid( pattern.pass.test(input.value) ); break;
+      case 'nickname': setIsNickValid( pattern.nick.test(input.value) ); break;
       default: break;
     }
-
-    
-    // ref.name == 'email' && pattern.test(ref.value) ? setIsEmailValid(true) : setIsEmailValid(false);
-    // ref.name == 'password' && ref.value.length >= 6 ? setIsPwdValid(true) : setIsPwdValid(false);
-    // ref.name == 'nickname' && ref.value.length >= 6 ? setIsNickValid(true) : setIsNickValid(false);
   };
+  
   console.log( isEmailValid , isPwdValid , isNickValid , isEmailValid && isPwdValid && isNickValid );
   useEffect( () => {
     window.scrollTo(0,0);
