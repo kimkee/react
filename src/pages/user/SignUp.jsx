@@ -40,20 +40,28 @@ export default function SignUp() {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPwdValid, setIsPwdValid] = useState(false);
   const [isNickValid, setIsNickValid] = useState(false);
+
+  const [inputState, setInputState] = useState({
+    isEmailValid: false,
+    isPwdValid: false,
+    isNickValid: false,
+  });
+  console.log(inputState);
   const validate = (input) => {
     const pattern = {
-      mail : /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
-      pass : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
-      nick : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
+      mail : /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,  // 이메일 형식
+      pass : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/, // 문자,숫자 포함6자리 이상
+      nick : /^[A-Za-z0-9]{1,15}$/ // 특수문자 제외하고 , 문자 또는 숫자 1자리 이상 15자 이하
     }
     switch (input.name) {
-      case 'email': setIsEmailValid( pattern.mail.test(input.value) ); break;
-      case 'password': setIsPwdValid( pattern.pass.test(input.value) ); break;
-      case 'nickname': setIsNickValid( pattern.nick.test(input.value) ); break;
+      case 'email':    setInputState( inputState => ({ ...inputState, isEmailValid: pattern.mail.test(input.value), })); break;
+      case 'password': setInputState( inputState => ({ ...inputState, isPwdValid: pattern.pass.test(input.value), })); break;
+      case 'nickname': setInputState( inputState => ({ ...inputState, isNickValid: pattern.nick.test(input.value), })); break;
+      // case 'nickname': setIsNickValid( pattern.nick.test(input.value) ); break;
       default: break;
     }
   };
-  
+
   console.log( isEmailValid , isPwdValid , isNickValid , isEmailValid && isPwdValid && isNickValid );
   useEffect( () => {
     window.scrollTo(0,0);
@@ -95,26 +103,26 @@ export default function SignUp() {
               <label className="dt">이메일</label>
               <div className="dd">
                 <span className="input"><input ref={userEmail} name="email" type="email" placeholder="예) test@naver.com" onInput={(e)=>validate(e.currentTarget)} data-webkit-autofill /></span>
-                {!isEmailValid ? <p className={`msg-valid`}>이메일 형식에 맞게 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+                {!inputState.isEmailValid ? <p className={`msg-valid`}>이메일 형식에 맞게 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
             <li>
               <label className="dt">비밀번호</label>
               <div className="dd">
                 <span className="input"><input ref={userPassword} name="password" type="password" placeholder="예) abc123" onInput={(e)=>validate(e.currentTarget)} /></span>
-                {!isPwdValid ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+                {!inputState.isPwdValid ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
             <li>
               <label className="dt">닉네임</label>
               <div className="dd">
                 <span className="input"><input ref={userNick} name="nickname" type="text" placeholder="입력하세요" onInput={(e)=>validate(e.currentTarget)} /></span>
-                {!isNickValid ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+                {!inputState.isNickValid ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
           </ul>
           <div className="btsbox btn-set">
-            <button type="button" className="btn" disabled={!(isEmailValid && isPwdValid && isNickValid)} onClick={join}><i className="fa-regular fa-right-to-bracket"></i><em>회원가입</em></button>
+            <button type="button" className="btn" disabled={!(inputState.isEmailValid && inputState.isPwdValid && inputState.isNickValid)} onClick={join}><i className="fa-regular fa-right-to-bracket"></i><em>회원가입</em></button>
           </div>
           <div className="link">
             이미 회원이신가요? <Link className="bt" to="/user/signin">로그인 하러가기 <i className="fa-regular fa-chevron-right"></i></Link>
