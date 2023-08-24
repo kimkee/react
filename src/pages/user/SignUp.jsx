@@ -40,22 +40,21 @@ export default function SignUp() {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPwdValid, setIsPwdValid] = useState(false);
   const [isNickValid, setIsNickValid] = useState(false);
-  const validate = (ref) => {
-    // console.log(ref.name);
+  const validate = (input) => {
+    // console.log(input.name);
     // const email = userEmail.current.value;
     // const password = userPassword.current.value;
     // const nickname = userNick.current.value;
-    
-    const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    switch (ref.name) {
-      case 'email': pattern.test(ref.value) ? setIsEmailValid(true) : setIsEmailValid(false);
-        break;
-      case 'password': ref.value.length >= 6 ? setIsPwdValid(true) : setIsPwdValid(false);
-        break;
-      case 'nickname': ref.value.length >= 6 ? setIsNickValid(true) : setIsNickValid(false);
-        break;
-      default:
-        break;
+    const pattern = {
+      email : /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+      password : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
+      nickname : /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/
+    }
+    switch (input.name) {
+      case 'email': setIsEmailValid( pattern.email.test(input.value) ); break;
+      case 'password': setIsPwdValid( pattern.password.test(input.value) ); break;
+      case 'nickname': setIsNickValid( pattern.nickname.test(input.value) ); break;
+      default: break;
     }
 
     
@@ -72,7 +71,7 @@ export default function SignUp() {
       // window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[isEmailValid , isPwdValid , isNickValid]);
+  });
 
 
   return (
@@ -86,27 +85,6 @@ export default function SignUp() {
           <div className="hdt">회원가입</div>
           <ul className="list">
             <li>
-              <label className="dt">이메일</label>
-              <div className="dd">
-                <span className="input"><input ref={userEmail} name="email" type="email" placeholder="예) test@naver.com" onInput={(e)=>validate(e.currentTarget)} /></span>
-                {!isEmailValid ? <p className={`msg-valid`}>올바른 이메일을 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
-              </div>
-            </li>
-            <li>
-              <label className="dt">비밀번호</label>
-              <div className="dd">
-                <span className="input"><input ref={userPassword} name="password" type="password" placeholder="6자리 이상 예) 111111" onInput={(e)=>validate(e.currentTarget)} /></span>
-                {!isPwdValid ? <p className={`msg-valid`}>6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
-              </div>
-            </li>
-            <li>
-              <label className="dt">닉네임</label>
-              <div className="dd">
-                <span className="input"><input ref={userNick} name="nickname" type="text" placeholder="입력하세요" onInput={(e)=>validate(e.currentTarget)} /></span>
-                {!isNickValid ? <p className={`msg-valid`}>6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
-              </div>
-            </li>
-            <li>
               <label className="dt">아바타</label>
               <div className="dd">
                 <div className="ut-avata">
@@ -119,6 +97,27 @@ export default function SignUp() {
                       )
                     }) }
                 </div>
+              </div>
+            </li>
+            <li>
+              <label className="dt">이메일</label>
+              <div className="dd">
+                <span className="input"><input ref={userEmail} name="email" type="email" placeholder="예) test@naver.com" onInput={(e)=>validate(e.currentTarget)} data-webkit-autofill /></span>
+                {!isEmailValid ? <p className={`msg-valid`}>이메일 형식에 맞게 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+              </div>
+            </li>
+            <li>
+              <label className="dt">비밀번호</label>
+              <div className="dd">
+                <span className="input"><input ref={userPassword} name="password" type="password" placeholder="예) abc123" onInput={(e)=>validate(e.currentTarget)} /></span>
+                {!isPwdValid ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+              </div>
+            </li>
+            <li>
+              <label className="dt">닉네임</label>
+              <div className="dd">
+                <span className="input"><input ref={userNick} name="nickname" type="text" placeholder="입력하세요" onInput={(e)=>validate(e.currentTarget)} /></span>
+                {!isNickValid ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
           </ul>
