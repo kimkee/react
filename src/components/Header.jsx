@@ -40,7 +40,7 @@ export default function Header({prop}) {
     });
   }
   return (
-	  <header className={"header "}>
+	  <header className={`header ${prop.headerType}`}>
       <div className="inr">
         <div className="ldt">
           

@@ -7,12 +7,12 @@ import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPers
 import ui from '../../ui.js';
 
 
-export default function SignIn() {
+export default function SignUp() {
   // console.log(opts);
 
   let params = useParams()
   
-  console.log(params);
+   
   let location = useLocation()
   let navigate = useNavigate();
   let opts = params.menu;
@@ -28,7 +28,7 @@ export default function SignIn() {
     "auth/internal-error": "비밀번호를 입력하세요.",
   }
 
-  const userEmail = useRef();
+  const userEmail = useRef(null);
   const userPassword = useRef();
   const userNick = useRef();
   const avatarVal = useRef();
@@ -37,8 +37,33 @@ export default function SignIn() {
     
   }
   
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isPwdValid, setIsPwdValid] = useState(false);
+  const [isNickValid, setIsNickValid] = useState(false);
+  const validate = (ref) => {
+    // console.log(ref.name);
+    // const email = userEmail.current.value;
+    // const password = userPassword.current.value;
+    // const nickname = userNick.current.value;
+    
+    const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    switch (ref.name) {
+      case 'email': pattern.test(ref.value) ? setIsEmailValid(true) : setIsEmailValid(false);
+        break;
+      case 'password': ref.value.length >= 6 ? setIsPwdValid(true) : setIsPwdValid(false);
+        break;
+      case 'nickname': ref.value.length >= 6 ? setIsNickValid(true) : setIsNickValid(false);
+        break;
+      default:
+        break;
+    }
 
-
+    
+    // ref.name == 'email' && pattern.test(ref.value) ? setIsEmailValid(true) : setIsEmailValid(false);
+    // ref.name == 'password' && ref.value.length >= 6 ? setIsPwdValid(true) : setIsPwdValid(false);
+    // ref.name == 'nickname' && ref.value.length >= 6 ? setIsNickValid(true) : setIsNickValid(false);
+  };
+  console.log( isEmailValid , isPwdValid , isNickValid , isEmailValid && isPwdValid && isNickValid );
   useEffect( () => {
     window.scrollTo(0,0);
     // document.querySelector(".header").classList.remove("trans");
@@ -47,7 +72,7 @@ export default function SignIn() {
       // window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  });
+  },[isEmailValid , isPwdValid , isNickValid]);
 
 
   return (
@@ -63,19 +88,22 @@ export default function SignIn() {
             <li>
               <label className="dt">이메일</label>
               <div className="dd">
-                <span className="input"><input ref={userEmail} type="email" placeholder="예) test@naver.com" /></span>
+                <span className="input"><input ref={userEmail} name="email" type="email" placeholder="예) test@naver.com" onInput={(e)=>validate(e.currentTarget)} /></span>
+                {!isEmailValid ? <p className={`msg-valid`}>올바른 이메일을 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
             <li>
               <label className="dt">비밀번호</label>
               <div className="dd">
-                <span className="input"><input ref={userPassword} type="password" placeholder="6자리 이상 예) 111111 " /></span>
+                <span className="input"><input ref={userPassword} name="password" type="password" placeholder="6자리 이상 예) 111111" onInput={(e)=>validate(e.currentTarget)} /></span>
+                {!isPwdValid ? <p className={`msg-valid`}>6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
             <li>
               <label className="dt">닉네임</label>
               <div className="dd">
-                <span className="input"><input ref={userNick} type="text" placeholder="입력하세요" /></span>
+                <span className="input"><input ref={userNick} name="nickname" type="text" placeholder="입력하세요" onInput={(e)=>validate(e.currentTarget)} /></span>
+                {!isNickValid ? <p className={`msg-valid`}>6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
               </div>
             </li>
             <li>
@@ -95,7 +123,7 @@ export default function SignIn() {
             </li>
           </ul>
           <div className="btsbox btn-set">
-            <button type="button" className="btn" disabled={false} onClick={join}><i className="fa-regular fa-right-to-bracket"></i><em>회원가입</em></button>
+            <button type="button" className="btn" disabled={!(isEmailValid && isPwdValid && isNickValid)} onClick={join}><i className="fa-regular fa-right-to-bracket"></i><em>회원가입</em></button>
           </div>
           <div className="link">
             이미 회원이신가요? <Link className="bt" to="/user/signin">로그인 하러가기 <i className="fa-regular fa-chevron-right"></i></Link>
