@@ -78,7 +78,7 @@ export default function SignUp() {
 
         })
         .catch((error) => {
-          ui.loading.show();
+          ui.loading.hide();
           console.log(error.code);
           const emsg = erMsg[error.code]
           ui.alert(emsg);
