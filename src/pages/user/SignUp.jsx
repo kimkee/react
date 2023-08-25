@@ -5,7 +5,7 @@ import store from '../../store.js';
 import ui from '../../ui.js';
 
 import { db } from '../..//firebaseConfig.js';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
 
@@ -83,6 +83,15 @@ export default function SignUp() {
           ui.alert(emsg);
       });
 
+      // 인증 메일을 전송합니다.
+      await  sendEmailVerification(user)
+        .then(() => {
+          // 인증 이메일이 성공적으로 전송됨.
+          ui.alert(`[${email}] 으로 인증 이메일이 전송되었습니다. `);
+        })
+        .catch((error) => {
+          // 인증 이메일 전송 중 오류 발생.
+      });
 
     },
     addMember : async (user, gourl)=> {
