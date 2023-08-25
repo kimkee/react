@@ -78,6 +78,7 @@ export default function SignUp() {
 
         })
         .catch((error) => {
+          ui.loading.show();
           console.log(error.code);
           const emsg = erMsg[error.code]
           ui.alert(emsg);
@@ -103,6 +104,7 @@ export default function SignUp() {
         liked: [],
         date: new Date(),
       }).then(() => {
+        ui.loading.show();
         console.log("멤버 생성: ");
         ui.alert("가입되었습니다.", {
           ycb: () => { navigate(gourl); }
