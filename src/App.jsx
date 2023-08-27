@@ -3,6 +3,9 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+
+
 import ui from './ui.js';
 
 import Header from './components/Header.jsx';
@@ -36,89 +39,91 @@ export default function App() {
   
   return (
     <>
-      <Router>
-        <Routes>
-          <Route path='*' element={<NotFound />} />
-          <Route path='home/*' element={<Header  prop={{"headerType":"main"}} />} />
-          <Route path='list/*' element={<Header  prop={{"headerType":"main"}} />} />
-          <Route path='search/*' element={<Header  prop={{"headerType":"main"}} />} />
-          <Route path='movie/*' element={<Header  prop={{"headerType":"main"}} />} />
-          <Route path='user'>
-            <Route path=":id" element={<Header prop={{"headerType":"sub"}} />} />
-          </Route>
-        </Routes>
-
-        {/* <TransitionGroup className="transition-group">
-          <CSSTransition in={true} classNames={"right"} timeout={5000}> */}
-            
-        <Routes>
-
-          <Route path='*' element={<NotFound />} />
-
-          <Route path="/" element={<Navigate to="/home/"></Navigate>} />
-
-          <Route path="home" element={<Home />} />
-
-          <Route path="home/:menu" element={<Home /> }>
-            <Route path=":id" element={<View prop={{"page":"home"}} />} >
-              <Route path="poster/:nums" element={<Poster  />} />
-              <Route path="person/:nums" element={<Person  />} />
-              <Route path="videos/:nums" element={<Videos  />} />
+      <RecoilRoot>
+        <Router>
+          <Routes>
+            <Route path='*' element={<NotFound />} />
+            <Route path='home/*' element={<Header  prop={{"headerType":"main"}} />} />
+            <Route path='list/*' element={<Header  prop={{"headerType":"main"}} />} />
+            <Route path='search/*' element={<Header  prop={{"headerType":"main"}} />} />
+            <Route path='movie/*' element={<Header  prop={{"headerType":"main"}} />} />
+            <Route path='user'>
+              <Route path=":id" element={<Header prop={{"headerType":"sub"}} />} />
             </Route>
-          </Route>
+          </Routes>
 
-          <Route path="list">
-            <Route path=":menu" >
-              <Route path=":cate" element={<Lists /> }>
-                <Route path=":id" element={<View prop={{"page":"search"}} />} >
-                  <Route path="poster/:nums" element={<Poster />} />
-                  <Route path="person/:nums" element={<Person />} />
-                  <Route path="videos/:nums" element={<Videos  />} />
+          {/* <TransitionGroup className="transition-group">
+            <CSSTransition in={true} classNames={"right"} timeout={5000}> */}
+              
+          <Routes>
+
+            <Route path='*' element={<NotFound />} />
+
+            <Route path="/" element={<Navigate to="/home/"></Navigate>} />
+
+            <Route path="home" element={<Home />} />
+
+            <Route path="home/:menu" element={<Home /> }>
+              <Route path=":id" element={<View prop={{"page":"home"}} />} >
+                <Route path="poster/:nums" element={<Poster  />} />
+                <Route path="person/:nums" element={<Person  />} />
+                <Route path="videos/:nums" element={<Videos  />} />
+              </Route>
+            </Route>
+
+            <Route path="list">
+              <Route path=":menu" >
+                <Route path=":cate" element={<Lists /> }>
+                  <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                    <Route path="poster/:nums" element={<Poster />} />
+                    <Route path="person/:nums" element={<Person />} />
+                    <Route path="videos/:nums" element={<Videos  />} />
+                  </Route>
                 </Route>
               </Route>
             </Route>
-          </Route>
 
-          <Route path=":menu">
-            <Route path='*' element={<NotFound />} />
-            <Route path=":id" element={<View prop={{"page":"page"}}/>} >
-              <Route path="poster/:nums" element={<Poster />} />
-              <Route path="person/:nums" element={<Person />} />
-              <Route path="videos/:nums" element={<Videos  />} />
-            </Route>
-          </Route>
-
-          <Route path="search" >
-            <Route path=":menu" element={<Search />} >
-              <Route path=":id" element={<View prop={{"page":"search"}} />} >
-                <Route path="poster/:nums" element={<Poster prop={{"page":"search"}} />} />
-                <Route path="person/:nums" element={<Person prop={{"page":"search"}} />} />
-                <Route path="videos/:nums" element={<Videos prop={{"page":"search"}} />} />
+            <Route path=":menu">
+              <Route path='*' element={<NotFound />} />
+              <Route path=":id" element={<View prop={{"page":"page"}}/>} >
+                <Route path="poster/:nums" element={<Poster />} />
+                <Route path="person/:nums" element={<Person />} />
+                <Route path="videos/:nums" element={<Videos  />} />
               </Route>
-              <Route path=":keyword" element={<Search />} />
             </Route>
-          </Route>
 
-          <Route path="user">
-            <Route path="*" element={<NotFound /> } />
-            <Route path="signin" element={<SignIn /> } />
-            <Route path="signout" element={<SignOut /> } />
-            <Route path="signup" element={<SignUp /> } />
-            
-            <Route path=":id" element={<User />} />
-            
-          </Route>
+            <Route path="search" >
+              <Route path=":menu" element={<Search />} >
+                <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                  <Route path="poster/:nums" element={<Poster prop={{"page":"search"}} />} />
+                  <Route path="person/:nums" element={<Person prop={{"page":"search"}} />} />
+                  <Route path="videos/:nums" element={<Videos prop={{"page":"search"}} />} />
+                </Route>
+                <Route path=":keyword" element={<Search />} />
+              </Route>
+            </Route>
+
+            <Route path="user">
+              <Route path="*" element={<NotFound /> } />
+              <Route path="signin" element={<SignIn /> } />
+              <Route path="signout" element={<SignOut /> } />
+              <Route path="signup" element={<SignUp /> } />
+              
+              <Route path=":id" element={<User />} />
+              
+            </Route>
 
 
 
 
-        </Routes>
-            
-          {/* </CSSTransition>
-        </TransitionGroup> */}
+          </Routes>
+              
+            {/* </CSSTransition>
+          </TransitionGroup> */}
 
-        <Nav/>
-      </Router>
+          <Nav/>
+        </Router>
+      </RecoilRoot>
     </>
   );
 }

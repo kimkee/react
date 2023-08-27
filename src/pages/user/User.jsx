@@ -9,6 +9,31 @@ import store from '../../store.js';
 import ui from '../../ui.js';
 
 
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+
+
+const textState = atom({
+  key: 'textState', // unique ID (with respect to other atoms/selectors)
+  default: '', // default value (aka initial value)
+});
+
+function TextInput() {
+  const [text, setText] = useRecoilState(textState);
+
+  const onChange = (event) => {
+    setText(event.target.value);
+  };
+
+  return (
+    <div>
+      <input type="text" value={text} onChange={onChange} />
+      <br />
+      Echo: {text}
+    </div>
+  );
+}
+
+
 export default function User() {
   let params = useParams()
   
@@ -83,6 +108,9 @@ export default function User() {
           </div>
         </div>
         :null}
+
+      <TextInput />
+      
           
       </main>
     </div>
