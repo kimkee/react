@@ -83,8 +83,14 @@ export default function User() {
     ui.loading.hide();
   }
 
-  const gotoSlide = (num)=>{
+  const menuSlide = useRef()
 
+  const [swiper, setSwiper] = useState(null);
+  const [spIdx, setSpIdx] = useState(0);
+  const gotoSlide = (num)=>{
+    console.log(num , menuSlide);
+    swiper.slideTo(num);
+    menuSlide.current.querySelector("li").classList.add("sfdfsd")
   }
 
   useEffect( () => {
@@ -122,19 +128,19 @@ export default function User() {
             <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {uInfo.date}</span>
             <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>
           </div>
-          <div className="bts bot">
-            <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
-          </div>
         </div>
         :null}
 
         <div className="post">
-          <ul className="menu">
-            <li className="active">
-              <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-heart"></i></span></button>
+          <ul className="menu" ref={menuSlide}>
+            <li className={spIdx == 0 ? "active" : ""}>
+              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-heart"></i></span></button>
             </li>
-            <li>
-              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
+            <li className={spIdx == 1 ? "active" : ""}>
+              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
+            </li>
+            <li className={spIdx == 2 ? "active" : ""}>
+              <button type="button" className="bt" onClick={()=>gotoSlide(12)}><span><i className="fa-regular fa-user"></i></span></button>
             </li>
           </ul>
           <Swiper className="swiper-wrapper swiper pctn " 
@@ -154,10 +160,14 @@ export default function User() {
             autoHeight={false}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
-              // setSwiper(swiper);
+              setSwiper(swiper);
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
-            onSlideChange={(swiper) => {console.log('slide change' , swiper.realIndex)}}
+            onSlideChange={(swiper) => {
+              console.log('slide change' , swiper.realIndex);
+              setSpIdx(swiper.realIndex)
+              gotoSlide(swiper.realIndex);
+            }}
           >
             <SwiperSlide tag="div" className="swiper-slide ctn b">
               좋아요
@@ -165,6 +175,12 @@ export default function User() {
             <SwiperSlide tag="div" className="swiper-slide ctn l">
               댓글
               <TextInput />
+            </SwiperSlide>
+            <SwiperSlide tag="div" className="swiper-slide ctn p">
+              
+              <div className="bts bot">
+                <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
+              </div>
             </SwiperSlide>
           </Swiper>
         </div>
