@@ -1146,11 +1146,11 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile .bts{ margin: 20rem 20rem; text-align: right; }
 .page.user.view .profile .bts .btn{ min-width: 104rem; }
 .page.user.view .post{margin: 10rem 0rem 0rem 0rem;}
-.page.user.view .post .menu{position: sticky;top: 54rem;height: 50rem;text-align: center; display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #0d1117;}
+.page.user.view .post .menu{position: sticky;top: 54rem;height: 50rem;text-align: center;display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;/* background-color: #0d1117; */}
 .page.user.view .post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}
 .page.user.view .post .menu>li{position:relative;width: 100%;}
 .page.user.view .post .menu>li+li{margin-left: 0rem;}
-.page.user.view .post .menu>li>.bt{font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center; height: 50rem;position: relative; font-weight:normal;}
+.page.user.view .post .menu>li>.bt{width: 100%;font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center;height: 50rem;position: relative;font-weight:normal;}
 .page.user.view .post .menu>li>.bt>span i{font-weight: normal;}
 .page.user.view .post .menu>li:last-child>.bt{ border-right-width:1rem; }
 .page.user.view .post .menu>li.active>.bt{color: #41b883;}

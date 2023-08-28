@@ -4,21 +4,24 @@ import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-
 import {db} from '../../firebaseConfig.js';
 import { collection, query, getDocs, orderBy, getDoc, doc, where } from 'firebase/firestore';
 import { getAuth, signOut } from 'firebase/auth';
+// import { atom } from 'recoil';
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 import store from '../../store.js';
+import {textState,sss} from '../../atom.js';
 // import axios from 'axios';
 import ui from '../../ui.js';
 
 
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+console.log(textState , sss);
 
-
-const textState = atom({
+/* const textState = atom({
   key: 'textState', // unique ID (with respect to other atoms/selectors)
   default: '', // default value (aka initial value)
-});
+}); */
 
 function TextInput() {
   const [text, setText] = useRecoilState(textState);
+  const [sssVal, setSssVal] = useRecoilState(sss);
 
   const onChange = (event) => {
     setText(event.target.value);
@@ -29,6 +32,8 @@ function TextInput() {
       <input type="text" value={text} onChange={onChange} />
       <br />
       Echo: {text}
+      <br /> {sssVal.a}
+      <br /> {sssVal.b}
     </div>
   );
 }
@@ -67,6 +72,9 @@ export default function User() {
     ui.loading.hide();
   }
 
+  const gotoSlide = (num)=>{
+
+  }
 
   useEffect( () => {
     window.scrollTo(0,0);
@@ -109,8 +117,23 @@ export default function User() {
         </div>
         :null}
 
+        <div className="post">
+          <ul className="menu">
+            <li className="active">
+              <button type='button' className="bt" onClick={()=>gotoSlide(0)} data-val="tab_a_1"><span><i className="fa-regular fa-list"></i></span></button>
+            </li>
+            <li>
+              <button type='button' className="bt" onClick={()=>gotoSlide(1)} data-val="tab_a_2"><span><i className="fa-regular fa-camera"></i></span></button>
+            </li>
+            <li>
+              <button type='button' className="bt" onClick={()=>gotoSlide(2)} data-val="tab_a_3"><span><i className="fa-regular fa-heart"></i></span></button>
+            </li>
+          </ul>
+        </div>
+
+
       <TextInput />
-      
+          
           
       </main>
     </div>
