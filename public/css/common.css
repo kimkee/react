@@ -1162,7 +1162,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .post .pctn .board-list .list>li{}
 .page.user.view .post .pctn .board-list .list>li .box .info{}
 .page.user.view .post .pctn .board-list .list>li .box{}
-.page.user.view .post .pctn .ctn.p{padding-top: 0rem;}
+.page.user.view .post .pctn .ctn.b{padding: 20rem;}
 .page.user.view .post .pctn .ctn.l{padding: 20rem;}
 .page.user.view .post .pctn .ctn .nodata{padding:20vh 10rem;}
 .page.user.view .swiper-wrapper{padding-bottom: 0;}

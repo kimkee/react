@@ -8,6 +8,17 @@ import { getAuth, signOut } from 'firebase/auth';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 import store from '../../store.js';
 import {textState,sss} from '../../atom.js';
+
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper'; //,EffectFade 
+import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
 // import axios from 'axios';
 import ui from '../../ui.js';
 
@@ -120,20 +131,45 @@ export default function User() {
         <div className="post">
           <ul className="menu">
             <li className="active">
-              <button type='button' className="bt" onClick={()=>gotoSlide(0)} data-val="tab_a_1"><span><i className="fa-regular fa-list"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-heart"></i></span></button>
             </li>
             <li>
-              <button type='button' className="bt" onClick={()=>gotoSlide(1)} data-val="tab_a_2"><span><i className="fa-regular fa-camera"></i></span></button>
-            </li>
-            <li>
-              <button type='button' className="bt" onClick={()=>gotoSlide(2)} data-val="tab_a_3"><span><i className="fa-regular fa-heart"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
           </ul>
+          <Swiper className="swiper-wrapper swiper pctn " 
+            // install Swiper modules
+            modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
+            spaceBetween={0}
+            slidesPerView={1}
+            // navigation
+            loop={false}
+            // effect={"fade"}
+            // autoplay={false}
+            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
+            wrapperTag="div"
+            // pagination={{ clickable: true }}
+            // scrollbar={{ draggable: true }}
+            // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
+            autoHeight={false}
+            onSwiper={(swiper) => {
+              console.log("initialize swiper", swiper);
+              // setSwiper(swiper);
+              // swiper.slideTo( Math.floor( Math.random() *10 ) );
+            }}
+            onSlideChange={(swiper) => {console.log('slide change' , swiper.realIndex)}}
+          >
+            <SwiperSlide tag="div" className="swiper-slide ctn b">
+              좋아요
+            </SwiperSlide>
+            <SwiperSlide tag="div" className="swiper-slide ctn l">
+              댓글
+              <TextInput />
+            </SwiperSlide>
+          </Swiper>
         </div>
 
 
-      <TextInput />
-          
           
       </main>
     </div>
