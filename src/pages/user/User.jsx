@@ -83,14 +83,11 @@ export default function User() {
     ui.loading.hide();
   }
 
-  const menuSlide = useRef()
-
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(0);
   const gotoSlide = (num)=>{
-    console.log(num , menuSlide);
+    console.log(num);
     swiper.slideTo(num);
-    menuSlide.current.querySelector("li").classList.add("sfdfsd")
   }
 
   useEffect( () => {
@@ -132,7 +129,7 @@ export default function User() {
         :null}
 
         <div className="post">
-          <ul className="menu" ref={menuSlide}>
+          <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-heart"></i></span></button>
             </li>
@@ -140,7 +137,7 @@ export default function User() {
               <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(12)}><span><i className="fa-regular fa-user"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-user"></i></span></button>
             </li>
           </ul>
           <Swiper className="swiper-wrapper swiper pctn " 
