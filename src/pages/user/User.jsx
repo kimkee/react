@@ -150,8 +150,8 @@ export default function User() {
             // navigation
             loop={false}
             // effect={"fade"}
-            // autoplay={false}
-            autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
+            autoplay={false}
+            // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
             wrapperTag="div"
             // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}

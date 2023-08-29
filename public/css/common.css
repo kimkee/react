@@ -11,7 +11,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 em {font-style: normal;}
 p {vertical-align: baseline;}
 hr { display: none; } 
- 
+
 html, body {font-size: 1400%;line-height: 1.6;font-family: 'Roboto',"Noto Sans KR",Arial,"Malgun Gothic",sans-serif;}
 input , textarea{font-family: 'Roboto',"Noto Sans KR",Arial,"Malgun Gothic",sans-serif;}
 html{font-size: 1px;}
@@ -1128,7 +1128,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 /* User  회원정보 */
 .page.user.view{}
-.page.user.view .contents{display:none;padding: 0rem 0rem  30rem 0rem;margin: 0;}
+.page.user.view .contents{display:none;padding: 0rem 0rem 0rem 0rem;margin: 0;}
 .page.user.view.load .contents{display:block;}
 .page.user.view .profile{padding: 30rem 0rem 0rem 0rem;}
 .page.user.view .profile .user{display: flex;align-items: center;margin: 0rem 20rem 20rem 20rem;}
@@ -1153,11 +1153,11 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .post .menu>li>.bt{width: 100%;font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center;height: 50rem;position: relative;font-weight:normal;}
 .page.user.view .post .menu>li>.bt>span i{font-weight: normal;}
 .page.user.view .post .menu>li:last-child>.bt{ border-right-width:1rem; }
-.page.user.view .post .menu>li.active>.bt{color: #41b883;}
-.page.user.view .post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #41b883;border-radius: 0rem;display:block;content:"";}
+.page.user.view .post .menu>li.active>.bt{color: #61dafb;}
+.page.user.view .post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #61dafb;border-radius: 0rem;display:block;content:"";}
 .page.user.view .post .menu>li.active>.bt>span i{font-weight: 900;}
 .page.user.view .post .pctn{}
-.page.user.view .post .pctn .ctn{min-height: calc(100vh - 370rem);}
+.page.user.view .post .pctn .ctn{min-height: calc(100vh - 344rem - var(--safe-top) - var(--safe-bottom) );}
 .page.user.view .post .pctn .ctn.b{padding: 0rem;}
 .page.user.view .post .pctn .board-list .list>li{}
 .page.user.view .post .pctn .board-list .list>li .box .info{}
