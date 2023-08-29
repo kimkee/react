@@ -61,7 +61,7 @@ export default function Nav() {
       unsubscribe();
       window.removeEventListener("scroll", scrollEvent);
     }
-  },[userInfo]);
+  },[userInfo.id]);
   
 
   return (
