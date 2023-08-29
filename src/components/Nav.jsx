@@ -33,7 +33,8 @@ export default function Nav() {
   };
   const auth = getAuth();
   const [isUser, isSetUser] = useState(null);
-
+  const [userInfo, setUserInfo] = useState({});
+  
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
 
@@ -43,9 +44,15 @@ export default function Nav() {
       if (authUser) {
         // 사용자가 로그인한 경우
         isSetUser(authUser);
+        setUserInfo({
+          uid : authUser.uid
+        })
+        
+        
       } else {
         // 사용자가 로그아웃한 경우
         isSetUser(null);
+        setUserInfo({ })
       }
     });
 
@@ -54,8 +61,8 @@ export default function Nav() {
       unsubscribe();
       window.removeEventListener("scroll", scrollEvent);
     }
-  } );
-  console.log(isUser);
+  },[userInfo]);
+  
 
   return (
     <>
@@ -75,10 +82,8 @@ export default function Nav() {
               
             <li className={isActive("user/")}>
 
-              { isUser 
-              ? <NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/${store.state.userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>
-              : <NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
-              }
+              { ( store.state.userInfo.stat || userInfo.uid) && <NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/${userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
+              { !userInfo.uid && <NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
             </li>
             
           </ul>

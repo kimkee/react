@@ -7,7 +7,7 @@ import { getAuth, signOut } from 'firebase/auth';
 // import { atom } from 'recoil';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 import store from '../../store.js';
-import {textState,sss} from '../../atom.js';
+import {atomStore,textState,sss} from '../../atom.js';
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper'; //,EffectFade 
@@ -23,7 +23,7 @@ import 'swiper/css/effect-fade';
 import ui from '../../ui.js';
 
 
-console.log(textState , sss);
+console.log(atomStore, textState , sss);
 
 /* const textState = atom({
   key: 'textState', // unique ID (with respect to other atoms/selectors)
@@ -33,6 +33,7 @@ console.log(textState , sss);
 function TextInput() {
   const [text, setText] = useRecoilState(textState);
   const [sssVal, setSssVal] = useRecoilState(sss);
+  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
   const onChange = (event) => {
     setText(event.target.value);
@@ -45,6 +46,7 @@ function TextInput() {
       Echo: {text}
       <br /> {sssVal.a}
       <br /> {sssVal.b}
+      <br /> {atomStoreVal.state.userInfo.nick}
     </div>
   );
 }

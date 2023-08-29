@@ -7,6 +7,7 @@ import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'rec
 
 
 import ui from './ui.js';
+import {atomStore} from './atom.js';
 
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
