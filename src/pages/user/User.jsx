@@ -168,18 +168,15 @@ export default function User() {
               gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="div" className="swiper-slide ctn b">
+            <SwiperSlide tag="article" className="ctn like">
               좋아요
             </SwiperSlide>
-            <SwiperSlide tag="div" className="swiper-slide ctn l">
+            <SwiperSlide tag="article" className="ctn post">
               댓글
               <TextInput />
             </SwiperSlide>
-            <SwiperSlide tag="div" className="swiper-slide ctn p">
-              
-              <div className="bts bot">
+            <SwiperSlide tag="article" className="ctn revw">
                 <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
-              </div>
             </SwiperSlide>
           </Swiper>
         </div>
