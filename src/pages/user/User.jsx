@@ -133,10 +133,10 @@ export default function User() {
         <div className="post">
           <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-heart"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 1 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-heart"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-user"></i></span></button>
@@ -168,12 +168,11 @@ export default function User() {
               gotoSlide(swiper.realIndex);
             }}
           >
+            <SwiperSlide tag="article" className="ctn post">
+              댓글 <TextInput />
+            </SwiperSlide>
             <SwiperSlide tag="article" className="ctn like">
               좋아요
-            </SwiperSlide>
-            <SwiperSlide tag="article" className="ctn post">
-              댓글
-              <TextInput />
             </SwiperSlide>
             <SwiperSlide tag="article" className="ctn revw">
                 <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
