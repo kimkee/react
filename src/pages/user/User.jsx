@@ -86,10 +86,12 @@ export default function User() {
   }
 
   const [swiper, setSwiper] = useState(null);
-  const [spIdx, setSpIdx] = useState(0);
+  const [spIdx, setSpIdx] = useState(null);
+  console.log(`spIdx   ${spIdx}`);
   const gotoSlide = (num)=>{
     console.log(num);
-    swiper.slideTo(num);
+    // swiper.slideTo(num);
+    swiper.slideToLoop(num);
   }
 
   useEffect( () => {
@@ -148,33 +150,34 @@ export default function User() {
             spaceBetween={0}
             slidesPerView={1}
             // navigation
-            loop={false}
+            loop={true}
             // effect={"fade"}
             autoplay={false}
             // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
             wrapperTag="div"
             // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
-            // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
+            initialSlide={ 0 } // 0 ~ 9
             autoHeight={false}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
+              setSpIdx(0)
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={(swiper) => {
-              console.log('slide change' , swiper.realIndex);
+              console.log('slide change' , swiper.realIndex , swiper.activeIndex);
               setSpIdx(swiper.realIndex)
-              gotoSlide(swiper.realIndex);
+              // gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="article" className="ctn repl">
+            <SwiperSlide tag="section" className="ctn repl">
               댓글 <TextInput />
             </SwiperSlide>
-            <SwiperSlide tag="article" className="ctn like">
+            <SwiperSlide tag="section" className="ctn like">
               좋아요
             </SwiperSlide>
-            <SwiperSlide tag="article" className="ctn revw">
+            <SwiperSlide tag="section" className="ctn revw">
                 <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
             </SwiperSlide>
           </Swiper>
