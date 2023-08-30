@@ -168,7 +168,7 @@ export default function User() {
               gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="article" className="ctn post">
+            <SwiperSlide tag="article" className="ctn repl">
               댓글 <TextInput />
             </SwiperSlide>
             <SwiperSlide tag="article" className="ctn like">
