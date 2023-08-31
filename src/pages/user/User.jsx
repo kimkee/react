@@ -37,7 +37,7 @@ function TextInput() {
 
   const onChange = (event) => {
     setText(event.target.value);
-    setAtomStore({'state':"dd"});
+    
   };
 
   return (
@@ -47,21 +47,7 @@ function TextInput() {
       Echo: {text}
       <br /> {sssVal.a}
       <br /> {sssVal.b}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
-      <br /> {atomStoreVal.state.avatar[3]}
+      {/* {atomStoreVal.state.avatar.map( i=> <span style={{'width':'50%','display':'inline-flex'}} key={i}><img style={{'width':'100%','display':'inline-flex'}} src={i} /></span>)} */}
     </div>
   );
 }
