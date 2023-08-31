@@ -37,6 +37,7 @@ function TextInput() {
 
   const onChange = (event) => {
     setText(event.target.value);
+    setAtomStore({'state':"dd"});
   };
 
   return (
@@ -46,7 +47,21 @@ function TextInput() {
       Echo: {text}
       <br /> {sssVal.a}
       <br /> {sssVal.b}
-      <br /> {atomStoreVal.state.userInfo.nick}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
+      <br /> {atomStoreVal.state.avatar[3]}
     </div>
   );
 }
@@ -158,7 +173,7 @@ export default function User() {
             // pagination={{ clickable: true }}
             // scrollbar={{ draggable: true }}
             initialSlide={ 0 } // 0 ~ 9
-            autoHeight={false}
+            autoHeight={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
@@ -175,7 +190,9 @@ export default function User() {
               댓글 <TextInput />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn like">
-              좋아요
+              <div className="nodata">
+                <p className="msg">좋아요</p>
+              </div>
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn revw">
                 <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
