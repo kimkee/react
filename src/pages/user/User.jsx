@@ -29,11 +29,10 @@ console.log(atomStore, textState , sss);
   key: 'textState', // unique ID (with respect to other atoms/selectors)
   default: '', // default value (aka initial value)
 }); */
-
 function TextInput() {
   const [text, setText] = useRecoilState(textState);
   const [sssVal, setSssVal] = useRecoilState(sss);
-  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
+  
 
   const onChange = (event) => {
     setText(event.target.value);
@@ -47,7 +46,7 @@ function TextInput() {
       Echo: {text}
       <br /> {sssVal.a}
       <br /> {sssVal.b}
-      {/* {atomStoreVal.state.avatar.map( i=> <span style={{'width':'50%','display':'inline-flex'}} key={i}><img style={{'width':'100%','display':'inline-flex'}} src={i} /></span>)} */}
+      
     </div>
   );
 }
@@ -61,6 +60,7 @@ export default function User() {
   let navigate = useNavigate();
   let uid = params.id;
   const [uInfo, setUInfo] = useState({});
+  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
   const viewUser = async (ids)=> {
     const docRef = doc(db, 'member', ids);
@@ -181,6 +181,7 @@ export default function User() {
               </div>
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn revw">
+                {atomStoreVal.state.avatar.map( i=> <span style={{'width':'33%','display':'inline-flex'}} key={i}><img style={{'width':'100%','display':'inline-flex'}} src={i} /></span>)}
                 <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
             </SwiperSlide>
           </Swiper>
