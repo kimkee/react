@@ -21,6 +21,7 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 // import axios from 'axios';
 import ui from '../../ui.js';
+import UserRevw from './UserRevw.jsx';
 
 
 console.log(atomStore, textState , sss);
@@ -60,7 +61,7 @@ export default function User() {
   let navigate = useNavigate();
   let uid = params.id;
   const [uInfo, setUInfo] = useState({});
-  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
+  const [store, setAtomStore] = useRecoilState(atomStore);
 
   const viewUser = async (ids)=> {
     const docRef = doc(db, 'member', ids);
@@ -100,7 +101,7 @@ export default function User() {
     
     // document.querySelector(".header").classList.remove("trans");
     // window.addEventListener("scroll", scrollEvent);
-    console.log( uid , params);
+    console.log( uid , params , store);
     viewUser(uid);
     return ()=>{
       // window.removeEventListener("scroll", scrollEvent);
@@ -181,8 +182,7 @@ export default function User() {
               </div>
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn revw">
-                {atomStoreVal.state.avatar.map( i=> <span style={{'width':'33%','display':'inline-flex'}} key={i}><img style={{'width':'100%','display':'inline-flex'}} src={i} /></span>)}
-                <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
+                <UserRevw />
             </SwiperSlide>
           </Swiper>
         </div>
