@@ -21,36 +21,9 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 // import axios from 'axios';
 import ui from '../../ui.js';
-import UserRevw from './UserRevw.jsx';
-
-
-console.log(atomStore, textState , sss);
-
-/* const textState = atom({
-  key: 'textState', // unique ID (with respect to other atoms/selectors)
-  default: '', // default value (aka initial value)
-}); */
-function TextInput() {
-  const [text, setText] = useRecoilState(textState);
-  const [sssVal, setSssVal] = useRecoilState(sss);
-  
-
-  const onChange = (event) => {
-    setText(event.target.value);
-    
-  };
-
-  return (
-    <div>
-      <input type="text" value={text} onChange={onChange} />
-      <br />
-      Echo: {text}
-      <br /> {sssVal.a}
-      <br /> {sssVal.b}
-      
-    </div>
-  );
-}
+import UserPost from './UserPost.jsx';
+import UserLike from './UserLike.jsx';
+import UserFolw from './UserFolw.jsx';
 
 
 export default function User() {
@@ -61,7 +34,7 @@ export default function User() {
   let navigate = useNavigate();
   let uid = params.id;
   const [uInfo, setUInfo] = useState({});
-  const [store, setAtomStore] = useRecoilState(atomStore);
+  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
   const viewUser = async (ids)=> {
     const docRef = doc(db, 'member', ids);
@@ -134,7 +107,7 @@ export default function User() {
         </div>
         :null}
 
-        <div className="post">
+        <div className="user-post">
           <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
@@ -173,16 +146,15 @@ export default function User() {
               // gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="section" className="ctn repl">
-              댓글 <TextInput />
+            <SwiperSlide tag="section" className="ctn post">
+              <UserPost />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn like">
-              <div className="nodata">
-                <p className="msg">좋아요</p>
-              </div>
+              <UserLike />
             </SwiperSlide>
-            <SwiperSlide tag="section" className="ctn revw">
-                <UserRevw />
+            <SwiperSlide tag="section" className="ctn repl">
+              <UserFolw />
+
             </SwiperSlide>
           </Swiper>
         </div>

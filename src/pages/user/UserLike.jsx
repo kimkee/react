@@ -15,7 +15,7 @@ import ui from '../../ui.js';
 
 
 
-export default function UserRevw() {
+export default function UserLike() {
 
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
@@ -30,11 +30,12 @@ export default function UserRevw() {
 
   return (
     <>
-      <p>내 리뷰들</p>
-      <p>
-        <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
-      </p>
-      {atomStoreVal.state.avatar.map( i=> <span style={{'width':'33%','display':'inline-flex'}} key={i}><img style={{'width':'100%','display':'inline-flex'}} src={i} /></span>)}
+      <p>찜 리스트</p>
+      
+
+      <div className="nodata">
+        <p className="msg">좋아요</p>
+      </div>
     </>
   )
 }
