@@ -19,15 +19,12 @@ export default function Nav() {
 
   const isActive = els => location.pathname.includes(`${els}`) ? "active" : "";
   
+  const [isOnTop, setIsOnTop] = useState('');
   const scrollEvent = ()=> {
-    const scr = ui.viewport.scrollTop();   
-    if ( ui.lock.stat) return;
-    if ( scr > 50 ) {
-     document.querySelector(".floatnav")?.classList.add("on-top");
-    }else{
-      document.querySelector(".floatnav")?.classList.remove("on-top");
-    }
+    if ( ui.lock.stat ) return;
+    ui.viewport.scrollTop() > 50 ? setIsOnTop(true) : setIsOnTop(false);
   };
+
   const goTop = ()=> {
     ui.scrollTo("body", 0 , 200 );
   };
@@ -67,7 +64,7 @@ export default function Nav() {
   return (
     <>
       
-      <div className="floatnav">
+      <div className={`floatnav ${ isOnTop ? `on-top` : `` }` }>
         <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up"></i><em>위로</em></button>
       </div>
       <nav id="menubar" className="menubar">
