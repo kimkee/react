@@ -1145,28 +1145,28 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile .desc .txt i{font-weight:normal;}
 .page.user.view .profile .bts{ margin: 20rem 20rem; text-align: right; }
 .page.user.view .profile .bts .btn{ min-width: 104rem; }
-.page.user.view .post{margin: 0rem 0rem 0rem 0rem;}
-.page.user.view .post .menu{position: sticky;top: calc(54rem + var(--safe-top));height: 50rem;text-align: center;display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #161616;}
-.page.user.view .post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}
-.page.user.view .post .menu>li{position:relative;width: 100%;}
-.page.user.view .post .menu>li+li{margin-left: 0rem;}
-.page.user.view .post .menu>li>.bt{width: 100%;font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center;height: 50rem;position: relative;font-weight:normal;}
-.page.user.view .post .menu>li>.bt>span i{font-weight: normal;}
-.page.user.view .post .menu>li:last-child>.bt{ border-right-width:1rem; }
-.page.user.view .post .menu>li.active>.bt{color: #61dafb;}
-.page.user.view .post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #61dafb;border-radius: 0rem;display:block;content:"";}
-.page.user.view .post .menu>li.active>.bt>span i{font-weight: 900;}
-.page.user.view .post .pctn{}
-.page.user.view .post .pctn .ctn{min-height: calc(100vh - 164rem - var(--safe-top) - var(--safe-bottom) );}
-.page.user.view .post .pctn .ctn.b{padding: 0rem;}
-.page.user.view .post .pctn .board-list .list>li{}
-.page.user.view .post .pctn .board-list .list>li .box .info{}
-.page.user.view .post .pctn .board-list .list>li .box{}
-.page.user.view .post .pctn .ctn.repl{padding: 20rem;}
-.page.user.view .post .pctn .ctn.like{padding: 20rem;}
-.page.user.view .post .pctn .ctn.revw{padding: 20rem;}
-.page.user.view .post .pctn .ctn.folw{padding: 20rem;}
-.page.user.view .post .pctn .ctn .nodata{padding: 0;display: flex;justify-content: center;align-items: center;height: 100%;}
+.page.user.view .user-post{margin: 0rem 0rem 0rem 0rem;}
+.page.user.view .user-post .menu{position: sticky;top: calc(54rem + var(--safe-top));height: 50rem;text-align: center;display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #161616;}
+.page.user.view .user-post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}
+.page.user.view .user-post .menu>li{position:relative;width: 100%;}
+.page.user.view .user-post .menu>li+li{margin-left: 0rem;}
+.page.user.view .user-post .menu>li>.bt{width: 100%;font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center;height: 50rem;position: relative;font-weight:normal;}
+.page.user.view .user-post .menu>li>.bt>span i{font-weight: normal;}
+.page.user.view .user-post .menu>li:last-child>.bt{ border-right-width:1rem; }
+.page.user.view .user-post .menu>li.active>.bt{color: #61dafb;}
+.page.user.view .user-post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #61dafb;border-radius: 0rem;display:block;content:"";}
+.page.user.view .user-post .menu>li.active>.bt>span i{font-weight: 900;}
+.page.user.view .user-post .pctn{}
+.page.user.view .user-post .pctn .ctn{min-height: calc(100vh - 164rem - var(--safe-top) - var(--safe-bottom) );}
+.page.user.view .user-post .pctn .ctn.b{padding: 0rem;}
+.page.user.view .user-post .pctn .board-list .list>li{}
+.page.user.view .user-post .pctn .board-list .list>li .box .info{}
+.page.user.view .user-post .pctn .board-list .list>li .box{}
+.page.user.view .user-post .pctn .ctn.post{padding: 20rem;}
+.page.user.view .user-post .pctn .ctn.like{padding: 20rem;}
+.page.user.view .user-post .pctn .ctn.revw{padding: 20rem;}
+.page.user.view .user-post .pctn .ctn.repl{padding: 20rem;}
+.page.user.view .user-post .pctn .ctn .nodata{padding: 0;display: flex;justify-content: center;align-items: center;height: 100%;}
 .page.user.view .swiper-wrapper{padding-bottom: 0;}
 
 .ut-avata{display: flex;gap: 5rem 0rem;flex-wrap: wrap;justify-content: center;}
