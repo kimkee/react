@@ -70,17 +70,9 @@ export default function View({prop}) {
     }).catch( e => { console.log(e); });
   };
 
-  
-  const scrollEvent = ()=> {
-    const scr = parseInt( document.querySelector(".popup.movie .pct").scrollTop );
-    if( scr > 50){
-      document.querySelector(".popup.movie .phd").classList.add("trans");
-      document.querySelector(".floatpop")?.classList.add("on-top");
-    }else{
-      document.querySelector(".popup.movie .phd").classList.remove("trans");
-      document.querySelector(".floatpop")?.classList.remove("on-top");
-    }
-  };
+  const [scr, setScr] = useState(0);
+  const scrollEvent = (e)=> setScr( parseInt( e.target.scrollTop ) ) ;
+
   console.log(prop.page+"  d");
   const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
   const goTop = ()=>{
@@ -98,7 +90,6 @@ export default function View({prop}) {
     fetchCast();
     fetchMov();
     popResize();
-    document.querySelector(".popup.movie .pct").addEventListener("scroll",scrollEvent);
     window.addEventListener("resize",popResize);
     document.querySelector(".popup.movie").classList.add("ani","on");
     ui.lock.using(true); 
@@ -121,7 +112,7 @@ export default function View({prop}) {
     <Outlet/>
     <article className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} `}>
       <div className="pbd">
-        <div className="phd">
+        <div className={`phd ${ scr > 50 ? 'trans' : ''}`}>
           <div className="inr">
               <div className="ptit">{datas?.title || datas?.name}</div>
           </div>
@@ -137,7 +128,7 @@ export default function View({prop}) {
         }
         
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
-        <div className="pct">
+        <div className="pct" onScroll={scrollEvent}>
           <main className="poptents">
             
             { !datas && !casts && !moves &&
@@ -309,7 +300,7 @@ export default function View({prop}) {
           </main>
         </div>
       
-        <div className="floatpop">
+        <div className={`floatpop ${ scr > 50 ? 'on-top' : ''}`}>
           <button type="button" className="bt top" onClick={goTop}><i className="fa-solid fa-arrow-up"></i><em>위로</em></button>
         </div>
       </div>
