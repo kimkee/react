@@ -9,12 +9,11 @@ export default function View({prop}) {
   
   
   let params = useParams()
-  console.log(params);
+
   let opts = params.menu
   let navigate = useNavigate();
   prop.page = prop.page || 'page' ;
   
-  console.log(params , opts);
   const [cate, setCate] = useState({});
   const getCate = async ()=>{
     let cate = {
@@ -73,15 +72,12 @@ export default function View({prop}) {
   const [scr, setScr] = useState(0);
   const scrollEvent = (e)=> setScr( parseInt( e.target.scrollTop ) ) ;
 
-  console.log(prop.page+"  d");
   const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
   const goTop = ()=>{
     // document.querySelector(".popup.movie .pct").scrollTo(0,0);
     ui.scrollTo(".popup.movie .pct", 0, 200 );
   }
-  const imgError = (e)=> {
-    (e)=>{console( e + "썸네일 없음")} 
-  }
+
   useEffect(() => {
     goTop();
     console.log(  document.querySelector(".pct").offsetHeight );
