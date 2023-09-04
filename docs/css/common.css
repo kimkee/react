@@ -1151,7 +1151,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .menu>li{position:relative;width: 100%;}
 .page.user.view .user-post .menu>li+li{margin-left: 0rem;}
 .page.user.view .user-post .menu>li>.bt{width: 100%;font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center;height: 50rem;position: relative;font-weight:normal;}
-.page.user.view .user-post .menu>li>.bt>span i{font-weight: normal;}
+.page.user.view .user-post .menu>li>.bt>span i{}
 .page.user.view .user-post .menu>li:last-child>.bt{ border-right-width:1rem; }
 .page.user.view .user-post .menu>li.active>.bt{color: #61dafb;}
 .page.user.view .user-post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #61dafb;border-radius: 0rem;display:block;content:"";}
