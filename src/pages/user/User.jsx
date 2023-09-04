@@ -113,7 +113,7 @@ export default function User() {
               <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 1 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-heart"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-popcorn"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-user"></i></span></button>
