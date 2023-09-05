@@ -48,14 +48,11 @@ export default function Lists() {
   };
   // const keyword = "미녀";
   
-  const [nowPage, nowPageSet] = useState({
-    "pge":0,
-    "tot":0
-  })
+  const [nowPage, nowPageSet] = useState({ "pge":0, "tot":0 });
   
   const fetchMoive = (page)=>{
-    
     console.log( "로드 " + page );
+    nowPageSet({ "pge":0, "tot":0 });
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
@@ -153,13 +150,30 @@ export default function Lists() {
       <main className="contents">
 
         <div className='poster-list'>
+            
 
           { !movieList.length 
           ?
-            <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div>
+            <>
+              <ul className='list skelt'>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
+              </ul>
+              {/* <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div> */}
+            </>
           :
           <>
-          <ul className='list'>            
+          <ul className='list'>
           {
             movieList.map((data,num) =>{
                 return(
