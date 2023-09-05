@@ -29,7 +29,7 @@ export default function Nav() {
     ui.scrollTo("body", 0 , 200 );
   };
   const auth = getAuth();
-  const [isUser, isSetUser] = useState(null);
+
   const [userInfo, setUserInfo] = useState({});
   
   useEffect( () => {
@@ -39,25 +39,20 @@ export default function Nav() {
       uid : sessionStorage.user && JSON.parse(sessionStorage.user).uid
     })
 
-    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+    onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         // 사용자가 로그인한 경우
-        isSetUser(authUser);
-        setUserInfo({
-          uid : authUser.uid
-        })
+        setUserInfo( prevUserInfo => ({...prevUserInfo,  uid : authUser.uid }))
       } else {
         // 사용자가 로그아웃한 경우
-        isSetUser(null);
         setUserInfo({ })
       }
     });
 
     return ()=>{
-      unsubscribe();
       window.removeEventListener("scroll", scrollEvent);
     }
-  },[userInfo.id]);
+  },[userInfo.uid]);
 
   return (
     <>
