@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 import axios from 'axios';
 import ui from '../../ui.js';
+import Skeleton from '../../components/Skeleton.jsx';
 import ItemB from '../../components/ItemB.jsx';
 import CateMenu from '../../components/CateMenu.jsx';
 
@@ -154,23 +155,10 @@ export default function Lists() {
 
           { !movieList.length 
           ?
-            <>
-              <ul className='list skelt'>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-                <li><div className="box"><div className="cont"><div className="pics"></div></div><div className="tits"></div></div></li>
-              </ul>
-              {/* <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div> */}
-            </>
+          <ul className='list skelt'>
+            <Skeleton opts={ {type: 'movie-list', num: 20} } />
+            {/* <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div> */}
+          </ul>
           :
           <>
           <ul className='list'>
