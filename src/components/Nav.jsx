@@ -71,8 +71,8 @@ export default function Nav() {
         <div className="inr">
           <ul className="menu">
             <li className={isActive("home")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}home/`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink></li>
-            <li className={isActive("list/movie/0")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/movie/0/`} className={"bt"}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
-            <li className={isActive("list/tv/0")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/tv/0/`} className={"bt"}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
+            <li className={isActive("list/movie")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/movie/0/`} className={"bt"}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink></li>
+            <li className={isActive("list/tv")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}list/tv/0/`} className={"bt"}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink></li>
             <li className={isActive("search/movie")}><NavLink to={`${import.meta.env.VITE_APP_PUBLIC_URL}search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink></li>
             
             
