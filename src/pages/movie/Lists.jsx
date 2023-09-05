@@ -69,9 +69,8 @@ export default function Lists() {
     // setMlist([])
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
-      movieListSet( mlist => [...mlist,...res.data.results] );
+      movieListSet( prevList => [...prevList, ...res.data.results] );
       console.log(page + "=== " + res.data.total_pages );
-
       callStat = true;
       console.log(callStat);
       // ui.loading.hide();
@@ -182,9 +181,10 @@ export default function Lists() {
         
         </div>
         
+        { nowPage.tot > 0 &&
         <div className="page-set">
           <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
-        </div>
+        </div>}
 
       </main>
     </div>
