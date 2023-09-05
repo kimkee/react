@@ -35,7 +35,9 @@ export default function Nav() {
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
 
-
+    setUserInfo({
+      uid : sessionStorage.user && JSON.parse(sessionStorage.user).uid
+    })
 
     const unsubscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {

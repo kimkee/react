@@ -24,7 +24,7 @@ export default function Lists() {
   cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
   console.log(cateList);
  
-  const [mlist, setMlist] = useState([]);
+  const [movieList, movieListSet] = useState([]);
   const [genrMenu, genrMenuSet] = useState([]);
 
   let page = 1;
@@ -69,8 +69,9 @@ export default function Lists() {
     // setMlist([])
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
-      setMlist( mlist => [...mlist,...res.data.results] );
+      movieListSet( mlist => [...mlist,...res.data.results] );
       console.log(page + "=== " + res.data.total_pages );
+
       callStat = true;
       console.log(callStat);
       // ui.loading.hide();
@@ -95,10 +96,10 @@ export default function Lists() {
     }); 
   }
 
-  
+      console.log(movieList);  
   useEffect( () => {
 
-    setMlist([])
+    movieListSet([])
     window.scrollTo(0,0);
     // ui.loading.show();
     fetchMoive(page);
@@ -154,14 +155,14 @@ export default function Lists() {
 
         <div className='poster-list'>
 
-          { !mlist.length 
+          { !movieList.length 
           ?
             <div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div>
           :
           <>
           <ul className='list'>            
           {
-            mlist.map((data,num) =>{
+            movieList.map((data,num) =>{
                 return(
                   <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                     <ItemB data={data} cate={cate} opts={opts} />
