@@ -24,6 +24,6 @@ export default defineConfig({
   build: {
       outDir: './docs',
       minify: 'esbuild',
-      chunkSizeWarningLimit :1000 ,
+      chunkSizeWarningLimit :1500 ,
   },
 })
