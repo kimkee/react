@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
 import store from '../../store.js';
-import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'; //inMemoryPersistence
+import { initializeApp } from 'firebase/app';
+import { db } from '../../firebaseConfig.js';
+import { doc, setDoc } from 'firebase/firestore';
+import { getAuth, GoogleAuthProvider,  signInWithRedirect, getRedirectResult, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'; //inMemoryPersistence
+
 // import axios from 'axios';
 import ui from '../../ui.js';
 
@@ -75,6 +79,13 @@ export default function SignIn() {
         });
     }
   }
+
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  const loginGoogle = ()=>{
+    signInWithRedirect(auth, provider);
+  }
   
 
   const saveSheck = ()=> {
@@ -101,9 +112,39 @@ export default function SignIn() {
       });
     }
   }
-
+  const addMember = async (user, gourl)=> {
+    await setDoc(doc(db, "member", user.uid), {
+      id: user.uid,
+      email: user.email,
+      nick: user.displayName,
+      avatar: 0,
+      liked: [],
+      date: new Date(),
+    }).then(() => {
+      ui.loading.show();
+      console.log("멤버 생성: ");
+      ui.alert(`${user.email} 로그인 되었습니다.`, {
+        ycb: () => { navigate(gourl); }
+      });
+    }).catch(e => {
+      console.error("멤버 생성 Error : ", e);
+    });
+  }
   useEffect( () => {
     window.scrollTo(0,0);
+
+
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result.user) {
+          console.log("Google 로그인 성공:", result.user);
+          addMember(result.user , `/`);
+        }
+      })
+      .catch((error) => {
+        console.error("Google 로그인 실패:", error);
+      });
+
     // document.querySelector(".header").classList.remove("trans");
     // window.addEventListener("scroll", scrollEvent);
     return ()=>{
@@ -138,6 +179,9 @@ export default function SignIn() {
             <Link className={`bt`} to={"/user/signup"}> 
               회원가입하러 가기 <i className="fa-regular fa-chevron-right"></i>
             </Link>
+          </div>
+          <div className="sns-login btn-set">
+            <button type="button" className="btn" onClick={loginGoogle}><i className="fa-brands fa-google"></i><em>Google 로그인</em></button>
           </div>
         </div>
         
