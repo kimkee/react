@@ -53,7 +53,10 @@ export default function UserPost() {
       <p>내 글</p>
       <p>댓글</p> <TextInput />
       <p>
-        <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
+        { store.state.userInfo.stat == true ?
+          <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
+          :null
+        }
       </p>
     </>
   )

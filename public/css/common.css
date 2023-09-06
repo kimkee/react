@@ -1085,7 +1085,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .sign-form .btn-set{margin-top: 20rem;}
 .sign-form .link{margin-top: 20rem; font-size:12rem;}
 .sign-form .link a{color: #d5d5d5;}
-
+.sign-form .sns-login{margin-top: 20rem;}
 
 .page.home .contents{overflow:hidden;margin: 0;padding-top: 0; padding-bottom: 20rem;}
 .page.home .slide{} 
