@@ -5,7 +5,7 @@ import store from '../../store.js';
 import { initializeApp } from 'firebase/app';
 import { db } from '../../firebaseConfig.js';
 import { doc, setDoc } from 'firebase/firestore';
-import { getAuth, GoogleAuthProvider,  signInWithRedirect, getRedirectResult, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'; //inMemoryPersistence
+import { getAuth, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithRedirect, getRedirectResult, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'; //inMemoryPersistence
 
 // import axios from 'axios';
 import ui from '../../ui.js';
@@ -81,9 +81,21 @@ export default function SignIn() {
   }
 
   const auth = getAuth();
-  const provider = new GoogleAuthProvider();
-
+  
   const loginGoogle = ()=>{
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
+  }
+  const loginGithub = ()=>{
+    const provider = new GithubAuthProvider();
+    signInWithRedirect(auth, provider);
+  }
+  const loginFacebook = ()=>{
+    const provider = new FacebookAuthProvider();
+    signInWithRedirect(auth, provider);
+  }
+  const loginTwitter = ()=>{
+    const provider = new TwitterAuthProvider();
     signInWithRedirect(auth, provider);
   }
   
@@ -117,13 +129,14 @@ export default function SignIn() {
       id: user.uid,
       email: user.email,
       nick: user.displayName,
-      avatar: 0,
+      avatar: null,
+      photoURL: user.photoURL,
       liked: [],
       date: new Date(),
     }).then(() => {
-      ui.loading.show();
+      
       console.log("멤버 생성: ");
-      ui.alert(`${user.email} 로그인 되었습니다.`, {
+      ui.alert(`${user.email || user.displayName} 로그인 되었습니다.`, {
         ycb: () => { navigate(gourl); }
       });
     }).catch(e => {
@@ -137,6 +150,7 @@ export default function SignIn() {
     getRedirectResult(auth)
       .then((result) => {
         if (result.user) {
+          ui.loading.show();
           console.log("Google 로그인 성공:", result.user);
           addMember(result.user , `/`);
         }
@@ -162,27 +176,41 @@ export default function SignIn() {
       <main className="contents">
         
         <div className="sign-form">
-          <div className="hdt">로그인</div>
-          <ul className="list">
-            <li>
-              <label className="dt">이메일 (user@test.com) </label>
-              <div className="dd"><span className="input"><input type="email" ref={userEmail} placeholder="입력하세요" /></span></div>
-            </li>
-            <li>
-              <label className="dt">비밀번호 (123456) </label>
-              <div className="dd"><span className="input"><input type="password" ref={userPassword} placeholder="입력하세요" /></span></div>
-            </li>
-          </ul>
-          <div className="savelogin"><label className="checkbox"><input type="checkbox" ref={autoLogin} onChange={saveSheck} /><span className="txt">자동 로그인</span></label></div>
-          <div className="btsbox btn-set"><button type="button" className="btn" onClick={login}><i className="fa-regular fa-right-to-bracket"></i><em>로그인</em></button></div>
-          <div className="link">
+          {/* <div className="hdt">로그인</div> */}
+          <div className="sns loginset">
+            <div className="tit"><em className="t">SNS 로그인</em></div>
+            <div className="bts">
+              <button type="button" className="btn" onClick={loginGoogle  }><i className="fa-brands fa-google"></i><em>Google </em></button>
+              <button type="button" className="btn" onClick={loginGithub  }><i className="fa-brands fa-github"></i><em>Github </em></button>
+              <button type="button" className="btn" onClick={loginFacebook}><i className="fa-brands fa-facebook"></i><em>Facebook </em></button>
+              <button type="button" className="btn" onClick={loginTwitter }><i className="fa-brands fa-twitter"></i><em>Twitter </em></button>
+            </div>
+          </div>
+          <div className="eml loginset">
+            <div className="tit"><em className="t">Email 계정 로그인</em></div>
+            <ul className="list">
+              <li>
+                <label className="dt">이메일 (user@test.com) </label>
+                <div className="dd"><span className="input"><input type="email" ref={userEmail} placeholder="입력하세요" /></span></div>
+              </li>
+              <li>
+                <label className="dt">비밀번호 (123456) </label>
+                <div className="dd"><span className="input"><input type="password" ref={userPassword} placeholder="입력하세요" /></span></div>
+              </li>
+            </ul>
+            <div className="savelogin">
+              <Link className={`bt`} to={"/user/signup"}>
+                회원가입하러 가기 <i className="fa-regular fa-chevron-right"></i>
+              </Link>
+              <label className="checkbox"><input type="checkbox" ref={autoLogin} onChange={saveSheck} /><span className="txt">자동 로그인</span></label>
+            </div>
+            <div className="btsbox btn-set"><button type="button" className="btn" onClick={login}><i className="fa-regular fa-right-to-bracket"></i><em>로그인</em></button></div>
+          </div>
+          {/* <div className="link">
             <Link className={`bt`} to={"/user/signup"}> 
               회원가입하러 가기 <i className="fa-regular fa-chevron-right"></i>
             </Link>
-          </div>
-          <div className="sns-login btn-set">
-            <button type="button" className="btn" onClick={loginGoogle}><i className="fa-brands fa-google"></i><em>Google 로그인</em></button>
-          </div>
+          </div> */}
         </div>
         
       </main>

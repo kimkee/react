@@ -20,6 +20,7 @@ import Person from './pages/movie/Person.jsx';
 import Videos from './pages/movie/Videos.jsx';
 import Search from './pages/movie/Search.jsx';
 import SignIn from './pages/user/SignIn.jsx';
+import SnsLogin from './pages/user/SnsLogin.jsx';
 import SignOut from './pages/user/SignOut.jsx';
 import SignUp from './pages/user/SignUp.jsx';
 import User from './pages/user/User.jsx';
@@ -43,11 +44,10 @@ export default function App() {
       <RecoilRoot>
         <Router>
           <Routes>
-            <Route path='*' element={<NotFound />} />
-            <Route path='home/*' element={<Header  prop={{"headerType":"main"}} />} />
-            <Route path='list/*' element={<Header  prop={{"headerType":"main"}} />} />
-            <Route path='search/*' element={<Header  prop={{"headerType":"main"}} />} />
-            <Route path='movie/*' element={<Header  prop={{"headerType":"main"}} />} />
+            <Route path='home/*' element={<Header prop={{"headerType":"main"}} />} />
+            <Route path='list/*' element={<Header prop={{"headerType":"main"}} />} />
+            <Route path='search/*' element={<Header prop={{"headerType":"main"}} />} />
+            <Route path='movie/*' element={<Header prop={{"headerType":"main"}} />} />
             <Route path='user'>
               <Route path=":id" element={<Header prop={{"headerType":"sub"}} />} />
             </Route>
@@ -114,6 +114,7 @@ export default function App() {
               
             </Route>
 
+            <Route path="snslogin" element={<SnsLogin /> } />
 
 
 
@@ -122,7 +123,16 @@ export default function App() {
             {/* </CSSTransition>
           </TransitionGroup> */}
 
-          <Nav/>
+          <Routes>
+            <Route path='home/*' element={<Nav />} />
+            <Route path='list/*' element={<Nav />} />
+            <Route path='search/*' element={<Nav />} />
+            <Route path='movie/*' element={<Nav />} />
+            <Route path='user'>
+              <Route path=":id" element={<Nav />} />
+            </Route>
+          </Routes>
+
         </Router>
       </RecoilRoot>
     </>

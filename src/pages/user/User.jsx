@@ -45,6 +45,7 @@ export default function User() {
         uid : docSnap.data().uid,
         nick : docSnap.data().nick,
         avatar : docSnap.data().avatar,
+        photoURL : docSnap.data().photoURL,
         email : docSnap.data().email,
         date : ui.dateForm( docSnap.data().date.toDate() ),
         liked : docSnap.data().liked.length ,
@@ -93,7 +94,7 @@ export default function User() {
         {store?.state ?
         <div className="profile">
           <div className="user">
-            <span className="pic"><img src={store.state.avatar[uInfo.avatar]} className="img" /></span>
+            <span className="pic"><img src={store.state.avatar[uInfo.avatar] || uInfo.photoURL } className="img" /></span>
             <div className="info">
               <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
               <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
