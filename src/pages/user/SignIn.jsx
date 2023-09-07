@@ -190,12 +190,12 @@ export default function SignIn() {
             <div className="tit"><em className="t">Email 계정 로그인</em></div>
             <ul className="list">
               <li>
-                <label className="dt">이메일 (user@test.com) </label>
-                <div className="dd"><span className="input"><input type="email" ref={userEmail} placeholder="입력하세요" /></span></div>
+                {/* <label className="dt">이메일 (user@test.com) </label> */}
+                <div className="dd"><span className="input"><input type="email" ref={userEmail} placeholder="이메일 (user@test.com)" /></span></div>
               </li>
               <li>
-                <label className="dt">비밀번호 (123456) </label>
-                <div className="dd"><span className="input"><input type="password" ref={userPassword} placeholder="입력하세요" /></span></div>
+                {/* <label className="dt">비밀번호 (123456) </label> */}
+                <div className="dd"><span className="input"><input type="password" ref={userPassword} placeholder="비밀번호 (123456)" /></span></div>
               </li>
             </ul>
             <div className="savelogin">
