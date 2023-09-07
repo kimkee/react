@@ -136,44 +136,46 @@ export default function SignUp() {
         
         <div className="sign-form">
           <div className="hdt">회원가입</div>
-          <ul className="list">
-            <li>
-              <label className="dt">아바타</label>
-              <div className="dd">
-                <div className="ut-avata">
-                  { store.state.avatar.map( (icon,index) => {
-                      return (
-                        <label key={index}>
-                          <input type="radio" name="avatar" ref={avatarRef} value={index} defaultChecked={index == 0 } />
-                          <span className="txt"><img className="img" src={icon} alt="" /></span>
-                        </label>
-                      )
-                    }) }
+          <div className="join form">
+            <ul className="list">
+              <li>
+                <label className="dt">아바타</label>
+                <div className="dd">
+                  <div className="ut-avata">
+                    { store.state.avatar.map( (icon,index) => {
+                        return (
+                          <label key={index}>
+                            <input type="radio" name="avatar" ref={avatarRef} value={index} defaultChecked={index == 0 } />
+                            <span className="txt"><img className="img" src={icon} alt="" /></span>
+                          </label>
+                        )
+                      }) }
+                  </div>
                 </div>
-              </div>
-            </li>
-            <li>
-              <label className="dt">이메일</label>
-              <div className="dd">
-                <span className="input"><input ref={emailRef} name="email" type="email" placeholder="예) test@naver.com" onInput={(e)=>validate(e.currentTarget)} data-webkit-autofill /></span>
-                {!inpVal.isMail ? <p className={`msg-valid`}>이메일 형식에 맞게 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
-              </div>
-            </li>
-            <li>
-              <label className="dt">비밀번호</label>
-              <div className="dd">
-                <span className="input"><input ref={passwordRef} name="password" type="password" placeholder="예) abc123" onInput={(e)=>validate(e.currentTarget)} maxLength={15} /></span>
-                {!inpVal.isPwds ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
-              </div>
-            </li>
-            <li>
-              <label className="dt">닉네임</label>
-              <div className="dd">
-                <span className="input"><input ref={nicknameRef} name="nickname" type="text" placeholder="입력하세요" onInput={(e)=>validate(e.currentTarget)} maxLength={15} /></span>
-                {!inpVal.isNick ? <p className={`msg-valid`}>특수문자 제외하고 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
-              </div>
-            </li>
-          </ul>
+              </li>
+              <li>
+                <label className="dt">이메일</label>
+                <div className="dd">
+                  <span className="input"><input ref={emailRef} name="email" type="email" placeholder="예) test@naver.com" onInput={(e)=>validate(e.currentTarget)} data-webkit-autofill /></span>
+                  {!inpVal.isMail ? <p className={`msg-valid`}>이메일 형식에 맞게 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+                </div>
+              </li>
+              <li>
+                <label className="dt">비밀번호</label>
+                <div className="dd">
+                  <span className="input"><input ref={passwordRef} name="password" type="password" placeholder="예) abc123" onInput={(e)=>validate(e.currentTarget)} maxLength={15} /></span>
+                  {!inpVal.isPwds ? <p className={`msg-valid`}>문자,숫자 포함 6자리 이상 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+                </div>
+              </li>
+              <li>
+                <label className="dt">닉네임</label>
+                <div className="dd">
+                  <span className="input"><input ref={nicknameRef} name="nickname" type="text" placeholder="입력하세요" onInput={(e)=>validate(e.currentTarget)} maxLength={15} /></span>
+                  {!inpVal.isNick ? <p className={`msg-valid`}>특수문자 제외하고 입력해주세요.</p> : <i className="chk fa-regular fa-check"></i>}
+                </div>
+              </li>
+            </ul>
+          </div>
           <div className="btsbox btn-set">
             <button type="button" className="btn" disabled={!(inpVal.isMail && inpVal.isPwds && inpVal.isNick)} onClick={member.joinReq}><i className="fa-regular fa-right-to-bracket"></i><em>회원가입</em></button>
           </div>

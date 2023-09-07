@@ -177,7 +177,7 @@ export default function SignIn() {
         
         <div className="sign-form">
           {/* <div className="hdt">로그인</div> */}
-          <div className="sns loginset">
+          <div className="sns form">
             <div className="tit"><em className="t">SNS 로그인</em></div>
             <div className="bts">
               <button type="button" className="btn" onClick={loginGoogle  }><i className="fa-brands fa-google"></i><em>Google </em></button>
@@ -186,7 +186,7 @@ export default function SignIn() {
               <button type="button" className="btn" onClick={loginTwitter }><i className="fa-brands fa-twitter"></i><em>Twitter </em></button>
             </div>
           </div>
-          <div className="eml loginset">
+          <div className="eml form">
             <div className="tit"><em className="t">Email 계정 로그인</em></div>
             <ul className="list">
               <li>
