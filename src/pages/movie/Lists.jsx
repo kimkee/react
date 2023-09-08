@@ -53,7 +53,7 @@ export default function Lists() {
   
   const fetchMoive = (page)=>{
     console.log( "로드 " + page );
-    nowPageSet({ "pge":0, "tot":0 });
+    // nowPageSet({ "pge":0, "tot":0 });
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
