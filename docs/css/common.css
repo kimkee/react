@@ -82,7 +82,7 @@ a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 .header .user{display: flex;align-items: center;margin-right: 14rem;}
 .header .user .pic{margin-left: auto; width: 26rem;min-width: 26rem;height: 26rem;padding-bottom: 26rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
 .header .user .pic .img{position: absolute; width: 100%; left: 0; top: 0;}
-.header .user .txt{color: #e1e1e1;margin-left: 4rem; line-height: 1.2;}
+.header .user .txt{color: #e1e1e1;margin-left: 10rem;line-height: 1.2;}
 
 
 
