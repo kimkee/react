@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
 import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
-
+import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 
 
@@ -30,15 +30,39 @@ export default function App() {
   // console.log(location);
   // const { location,pathname, hash, key } = useLocation();
 
-  /* 로그인 상태 알아보기 */
-  const info = JSON.parse(  sessionStorage.getItem("user") );
-  if(info){
-    store.state.userInfo.stat = true;
-    store.state.userInfo.uid = info?.uid;
-    store.state.userInfo.email = info?.email;
-    store.state.userInfo.join = new Date( parseInt(info?.createdAt) );
-  }
+
+
+  useEffect(() => {
+      /* 로그인 상태 알아보기 */
+
+      const auth = getAuth();
+      onAuthStateChanged(auth, (authUser) => {
+        if (authUser) {
+          // 사용자가 로그인한 경우
+            const info = JSON.parse(  sessionStorage.getItem("user") );
+          if(info){
+            store.state.userInfo.stat = true;
+            store.state.userInfo.avata = info?.avata;
+            store.state.userInfo.photoURL = info?.photoURL;
+            store.state.userInfo.uid = info?.uid;
+            store.state.userInfo.nick = info?.nick || info?.displayName;
+            store.state.userInfo.displayName = info?.displayName;
+            store.state.userInfo.email = info?.email;
+            store.state.userInfo.join = new Date( parseInt(info?.createdAt) );
+          }
+        } else {
+          // 사용자가 로그아웃한 경우
+          
+        }
+      });
   
+    return () => {
+       
+    }
+  }, [ ])
+  
+
+
   return (
     <>
       <RecoilRoot>

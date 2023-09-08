@@ -1,6 +1,6 @@
 
 import React, {  useEffect } from 'react'; //useState,
-import {Link, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
+import {Link, NavLink, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
 import ui from '/src/ui.js';
 import store from '../store.js';
 
@@ -53,6 +53,17 @@ export default function Header({prop}) {
 
         </div>
         <div className="rdt">
+          
+          { store.state.userInfo.stat ? 
+            <NavLink to={`/user/${store.state.userInfo.uid}`} className={"user"}> 
+              <span className="pic"><img alt="" className="img" src={ store.state.avatar[store.state.userInfo.avatar] || store.state.userInfo.photoURL} /></span>
+              <span className="txt">{store.state.userInfo.nick}</span>
+              
+            </NavLink>
+            :
+            <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
+          }
+          
           <button type="button" onClick={test} className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
         </div>
       </div>
