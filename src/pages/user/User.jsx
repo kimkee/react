@@ -103,7 +103,7 @@ export default function User() {
           </div>
           <div className="desc">
             <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {uInfo.date}</span>
-            <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>
+            {uInfo.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>}
           </div>
         </div>
         :null}

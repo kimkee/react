@@ -127,7 +127,7 @@ export default function SignIn() {
   const addMember = async (user, gourl)=> {
     await setDoc(doc(db, "member", user.uid), {
       id: user.uid,
-      email: user.email,
+      email: user.email || user.providerData.email,
       nick: user.displayName,
       avatar: null,
       photoURL: user.photoURL,

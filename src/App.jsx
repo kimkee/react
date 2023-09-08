@@ -47,7 +47,7 @@ export default function App() {
             store.state.userInfo.uid = info?.uid;
             store.state.userInfo.nick = info?.nick || info?.displayName;
             store.state.userInfo.displayName = info?.displayName;
-            store.state.userInfo.email = info?.email;
+            store.state.userInfo.email = info?.email || info?.providerData.email;
             store.state.userInfo.join = new Date( parseInt(info?.createdAt) );
           }
         } else {
