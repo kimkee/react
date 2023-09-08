@@ -36,10 +36,10 @@ export default function Search() {
   };
   // const keyword = "미녀";
 
-  const [nowPage, nowPageSet] = useState({
-    "pge":0,
-    "tot":0
-  })
+  const [nowPage, nowPageSet] = useState({ "pge":0, "tot":0 })
+  const [loadActive, loadActiveSet] = useState(``);
+  const [loadHide, loadHideSet] = useState(``);
+  const [loadError, loadErrorSet] = useState(``);
   const inputRef = useRef();
   
   const fetchMoive = (page , kwd )=>{
@@ -63,20 +63,19 @@ export default function Search() {
       callStat = true;
       console.log(callStat);
       ui.loading.hide();
-      nowPageSet({
-        "pge":res.data.page,
-        "tot":res.data.total_pages
-      });
+      nowPageSet({ "pge":res.data.page, "tot":res.data.total_pages });
       if( res.data.total_pages <= page ) {
         callStat = false;
-        document.querySelector(".ui-loadmore")?.classList.add("hide");
+        loadHideSet("hide");
+      }else{
+        loadHideSet("");
       };
-      document.querySelector(".ui-loadmore")?.classList.remove("active");
+      loadActiveSet("");
       
     }).catch(e=>{
       console.log(e);
       ui.loading.hide();
-      document.querySelector(".ui-loadmore")?.classList.add("error");
+      loadErrorSet("error");
     }); 
   }
 
@@ -123,7 +122,7 @@ export default function Search() {
     if (docH <= scr && callStat === true) {
       console.log("바닥도착");
       // console.log( page);
-      document.querySelector(".ui-loadmore")?.classList.add("active");
+      loadActiveSet("active");
       callStat = false;
       // console.log(callStat);
       if(ui.lock.stat) {
@@ -290,12 +289,11 @@ export default function Search() {
           </ul>
 
           { mlist.length > 0 &&
-          <div className={`ui-loadmore`}>
+          <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
             <em><i className="fa-duotone fa-spinner"></i></em>
             <button onClick={ (e)=>{
-              // setPage(page + 1)
-              page = page + 1
-              fetchMoive( page , e)
+              callStat = true;
+              fetchMoive( page , e);
             }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
           </div>
           }

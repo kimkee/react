@@ -175,7 +175,7 @@ export default function Lists() {
           </ul>
           <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
             <em><i className="fa-duotone fa-spinner"></i></em>
-            <button onClick={ (e)=>{ callStat = true; fetchMoive( page , e) /* setPage(page + 1) */ } } type="button" className="btn-load">
+            <button onClick={ (e)=>{ callStat = true; fetchMoive( page , e); } } type="button" className="btn-load">
               <i className="fa-regular fa-rotate-right"></i>
             </button>
           </div>
