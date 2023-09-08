@@ -303,11 +303,11 @@ export default function Search() {
         }     
         </div>
                 
-        { mlist.length > 0 &&
         <div className="page-set">
+        { mlist.length > 0 &&
             <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
-        </div>
         }
+        </div>
 
       </main>
     </div>
