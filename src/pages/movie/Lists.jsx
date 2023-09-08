@@ -39,7 +39,7 @@ export default function Lists() {
     }
     await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
       res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
-      console.log(res.data.genres);
+      // console.log(res.data.genres);
       genrMenuSet(res.data.genres);
       // setCate(cate); 
     }).then( res =>{
@@ -50,6 +50,9 @@ export default function Lists() {
   // const keyword = "미녀";
   
   const [nowPage, nowPageSet] = useState({ "pge":0, "tot":0 });
+  const [loadActive, loadActiveSet] = useState(``);
+  const [loadHide, loadHideSet] = useState(``);
+  const [loadError, loadErrorSet] = useState(``);
   
   const fetchMoive = (page)=>{
     console.log( "로드 " + page );
@@ -68,32 +71,29 @@ export default function Lists() {
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       movieListSet( prevList => [...prevList, ...res.data.results] );
-      console.log(page + "=== " + res.data.total_pages );
+      console.log(`callStat : ${callStat} , page : ${page} , res.data.total_pages :  ${res.data.total_pages} `);
       callStat = true;
-      console.log(callStat);
-      // ui.loading.hide();
-      nowPageSet({
-        "pge":res.data.page,
-        "tot":res.data.total_pages
-      });
+      console.log(`callStat : ${callStat} , page : ${page} , res.data.total_pages :  ${res.data.total_pages} `);
+      loadErrorSet("");
+      nowPageSet({ "pge":res.data.page, "tot":res.data.total_pages });
       if( res.data.total_pages <= page ) {
         callStat = false;
-        document.querySelector(".ui-loadmore")?.classList.add("hide");
+        loadHideSet("hide");
       }else{
-        document.querySelector(".ui-loadmore")?.classList.remove("hide");
-
+        loadHideSet("");
       };
-      document.querySelector(".ui-loadmore")?.classList.remove("active");
-
+      // document.querySelector(".ui-loadmore")?.classList.remove("active");
+      loadActiveSet("");
 
     }).catch(e=>{
       console.log(e);
-      // ui.loading.hide();
-      document.querySelector(".ui-loadmore")?.classList.add("error");
+      callStat = true;
+      loadErrorSet("error");
     }); 
   }
 
-      console.log(movieList);  
+  console.log(movieList);  
+  
   useEffect( () => {
 
     movieListSet([])
@@ -120,7 +120,8 @@ export default function Lists() {
     if (docH <= scr && callStat === true) {
       console.log("바닥도착");
       // console.log( page);
-      document.querySelector(".ui-loadmore")?.classList.add("active");
+      // document.querySelector(".ui-loadmore")?.classList.add("active");
+      loadActiveSet("active");
       callStat = false;
       console.log(callStat);
       if(ui.lock.stat) {
@@ -172,9 +173,9 @@ export default function Lists() {
             })
           }
           </ul>
-          <div className="ui-loadmore">
+          <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
             <em><i className="fa-duotone fa-spinner"></i></em>
-            <button onClick={ (e)=>{ fetchMoive( page + 1 , e) /* setPage(page + 1) */ } } type="button" className="btn-load">
+            <button onClick={ (e)=>{ callStat = true; fetchMoive( page , e) /* setPage(page + 1) */ } } type="button" className="btn-load">
               <i className="fa-regular fa-rotate-right"></i>
             </button>
           </div>
