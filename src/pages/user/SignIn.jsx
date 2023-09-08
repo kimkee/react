@@ -156,7 +156,8 @@ export default function SignIn() {
         }
       })
       .catch((error) => {
-        console.error("Google 로그인 실패:", error);
+        console.log("Google 로그인 실패:");
+        console.log(error);
       });
 
     // document.querySelector(".header").classList.remove("trans");
