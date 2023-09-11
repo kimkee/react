@@ -67,13 +67,13 @@ a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 .header .rdt{ display: flex; align-items: center; }
 .header .logo{display: inline-block;margin: -1rem 0rem 0rem 0rem;}
 .header .logo .btlogo{width:32rem;height: 32rem;background: url('../img/logo.png') no-repeat center;background-size: 32rem auto;font-size: 0rem;display:inline-block;vertical-align:middle;}
-.header .bt{width: 24rem;height: 24rem;font-size:0rem;background: no-repeat center;background-size: 24rem auto;color: #eeeeee;}
-.header .bt i{font-size:24rem;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 36%);}
-.header .bt+.bt{margin-left: 20rem;}
+.header .bt{width: 24rem;height: 24rem;font-size:0rem;background: no-repeat center;background-size: 24rem auto;color: #eeeeee;display: flex;align-items: center;justify-content: center;}
+.header .bt i{font-size: 20rem;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 36%);}
+.header .bt+.bt{margin-left: 10rem;}
 .header .bt.back{color: #aaaaaa;}
 .header .bt.back{color: #eeeeee; background-size: 24rem auto;}
-.header .bt.gnb{display:block;position: relative;height: 35rem;width: 35rem; margin-right: -5rem; transition: all 0.2s;font-size:0rem;}
-.header .bt.gnb i{font-size: 27rem;}
+.header .bt.gnb{display:block;position: relative;height: 35rem;width: 35rem;margin-right: -5rem;transition: all 0.2s;font-size:0rem;}
+.header .bt.gnb i{font-size: 24rem;}
 .header .bt.gnb::before{top: 8rem;}
 .header .bt.gnb>b{top: 16rem;}
 .header .bt.gnb::after{top: 24rem;}
