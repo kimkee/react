@@ -57,7 +57,12 @@ const store = {
         store.state.userInfo.nick = docSnap.data().nick;
         store.state.userInfo.uid = user.uid;
         store.state.userInfo.liked = docSnap.data().liked || [];
-        console.table(store.state.userInfo);
+        const session = JSON.parse( sessionStorage.getItem("user"));
+        session.avatar = docSnap.data().avatar ;
+        session.nick = docSnap.data().nick ;
+        session.liked = docSnap.data().liked || []; ;
+        sessionStorage.setItem("user",JSON.stringify(session));
+        
       } catch(error) {
         console.log(error)
       }

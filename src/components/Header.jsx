@@ -1,9 +1,10 @@
 
-import React, {  useEffect } from 'react'; //useState,
+import React, {useState,  useEffect } from 'react'; //
 import {Link, NavLink, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
 import ui from '/src/ui.js';
 import store from '../store.js';
-
+import isuser from '../getUser.js';
+import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 export default function Header({prop}) {
   console.log(prop.headerType + "===================================");
   let params = useParams();
@@ -12,19 +13,33 @@ export default function Header({prop}) {
   // console.log(params);
   location.pathname
   console.log(params , location);
-  
+  const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
     
-    // let cls = location.pathname === '/' ? "trans" : "";
-    // document.querySelector(".header")?.classList.add(cls)
-    // document.querySelector(".header .htit")?.innerText = store.state.userInfo.nick;
+    setUserInfo({
+      uid : sessionStorage.user && JSON.parse(sessionStorage.user).uid,
+      nick : sessionStorage.user && JSON.parse(sessionStorage.user).nick
+    })
+    const auth = getAuth();
+    onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        // 사용자가 로그인한 경우
+        setUserInfo( prevUserInfo => ({ ...prevUserInfo, uid : authUser.uid , nick: store.state.userInfo.nick }))
+        console.log(`유저정보             ${authUser}`);
+      } else {
+        // 사용자가 로그아웃한 경우
+        // setUserInfo({ })
+      }
+    });
+
+
     return ()=>{
       
     }
     
-  });
-
+  },[userInfo.uid,userInfo.nick]);
+  
 
   const test =()=>{
     ui.confirm("리액트 보다 쀼가 짱입니까?",{
@@ -43,7 +58,7 @@ export default function Header({prop}) {
 	  <header className={`header ${prop.headerType}`}>
       <div className="inr">
         <div className="ldt">
-          
+         
           { prop.headerType == "main" 
             ? <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1> 
             : <button type="button" className="bt back" onClick={()=>navigate(-1)}><i className="fa-regular fa-arrow-left"></i>뒤로</button>
@@ -53,8 +68,8 @@ export default function Header({prop}) {
 
         </div>
         <div className="rdt">
-          
-          { store.state.userInfo.stat ? 
+           
+          { store.state.userInfo.stat || userInfo.uid ? 
             <NavLink to={`/user/${store.state.userInfo.uid}`} className={"user"}> 
               <span className="pic"><img alt="" className="img" src={ store.state.avatar[store.state.userInfo.avatar] || store.state.userInfo.photoURL} /></span>
               <span className="txt">{store.state.userInfo.nick}</span>

@@ -8,6 +8,7 @@ import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'rec
 
 import ui from './ui.js';
 import {atomStore} from './atom.js';
+import store from './store.js';
 
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
@@ -30,7 +31,7 @@ export default function App() {
   // console.log(location);
   // const { location,pathname, hash, key } = useLocation();
 
-
+  store.authState();
 
   useEffect(() => {
       /* 로그인 상태 알아보기 */
@@ -41,14 +42,7 @@ export default function App() {
           // 사용자가 로그인한 경우
             const info = JSON.parse(  sessionStorage.getItem("user") );
           if(info){
-            store.state.userInfo.stat = true;
-            store.state.userInfo.avata = info?.avata;
-            store.state.userInfo.photoURL = info?.photoURL;
-            store.state.userInfo.uid = info?.uid;
-            store.state.userInfo.nick = info?.nick || info?.displayName;
-            store.state.userInfo.displayName = info?.displayName;
-            store.state.userInfo.email = info?.email || info?.providerData.email;
-            store.state.userInfo.join = new Date( parseInt(info?.createdAt) );
+             
           }
         } else {
           // 사용자가 로그아웃한 경우
