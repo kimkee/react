@@ -134,11 +134,11 @@ export default function SignIn() {
       liked: [],
       date: new Date(),
     }).then(() => {
-      
+      navigate(`/`);
       console.log("멤버 생성: ");
-      ui.alert(`${user.email || user.displayName} 로그인 되었습니다.`, {
-        ycb: () => { navigate(gourl); }
-      });
+      // ui.alert(`${user.email || user.displayName} 로그인 되었습니다.`, {
+      //   ycb: () => { navigate(gourl); }
+      // });
     }).catch(e => {
       console.error("멤버 생성 Error : ", e);
     });
@@ -150,7 +150,7 @@ export default function SignIn() {
     getRedirectResult(auth)
       .then((result) => {
         if (result.user) {
-          ui.loading.show();
+          // ui.loading.show();
           console.log("Google 로그인 성공:", result.user);
           addMember(result.user , `/`);
         }

@@ -15,20 +15,22 @@ export default function Header({prop}) {
   const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
+    setUserInfo( prevUserInfo => ({ ...prevUserInfo, uid: sessionStorage.user && JSON.parse(sessionStorage.user).uid }));
+
     getUser().then((userData) => {
       console.log(userData); // 얻은 사용자 데이터를 사용하세요
+      setUserInfo(userData)
     });
-    setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
-    const auth = getAuth();
-    onAuthStateChanged(auth, (authUser) => {
-      if (authUser) {
-        // 사용자가 로그인한 경우
-        setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...JSON.parse(sessionStorage.user) }))
-      } else {
-        // 사용자가 로그아웃한 경우
-        // setUserInfo({ })
-      }
-    });
+    // const auth = getAuth();
+    // onAuthStateChanged(auth, (authUser) => {
+    //   if (authUser) {
+    //     // 사용자가 로그인한 경우
+    //     setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...JSON.parse(sessionStorage.user) }))
+    //   } else {
+    //     // 사용자가 로그아웃한 경우
+    //     // setUserInfo({ })
+    //   }
+    // });
 
 
     return ()=>{
@@ -66,15 +68,14 @@ export default function Header({prop}) {
         </div>
         <div className="rdt">
            
-          { store.state.userInfo.stat || userInfo ? 
-            <NavLink to={`/user/${store.state.userInfo.uid}`} className={"user"}> 
-              <span className="pic"><img alt="" className="img" src={ store.state.avatar[store.state.userInfo.avatar] ||  userInfo.photoURL} /></span>
-              <span className="txt">{store.state.userInfo.nick || userInfo.displayName}</span>
-              
+          { (  userInfo?.uid) &&
+            <NavLink to={`/user/${userInfo.uid}`} className={"user"}> 
+              <span className="pic"><img alt="" className="img" src={ store.state.avatar[userInfo.avatar] || userInfo.photoURL} /></span>
+              <span className="txt">{ userInfo.nick || userInfo.displayName}</span>
             </NavLink>
-            :
-            <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
           }
+          {!userInfo?.uid && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>}
+          
           
           <button type="button" onClick={test} className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
         </div>

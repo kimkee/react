@@ -27,6 +27,7 @@ import UserFolw from './UserFolw.jsx';
 
 
 export default function User() {
+  
   let params = useParams()
   
   // console.log(params);
@@ -37,6 +38,7 @@ export default function User() {
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
   const viewUser = async (ids)=> {
+    ui.loading.show();
     const docRef = doc(db, 'member', ids);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -56,7 +58,7 @@ export default function User() {
     }
 
     // this.gotoSlide(0,0);
-    document.querySelector(".page.user").classList.add("load");
+    document.querySelector(".page.user")?.classList.add("load");
     document.querySelector(".header .htit").innerText = uInfo.nick || ``;
     ui.loading.hide();
   }
