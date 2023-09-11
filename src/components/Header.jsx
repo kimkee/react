@@ -15,7 +15,7 @@ export default function Header({prop}) {
   const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
-    
+    console.log(isuser);
     setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
     const auth = getAuth();
     onAuthStateChanged(auth, (authUser) => {
