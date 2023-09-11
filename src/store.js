@@ -55,10 +55,13 @@ const store = {
         store.state.userInfo.email = docSnap.data().email;
         store.state.userInfo.avatar = docSnap.data().avatar;
         store.state.userInfo.nick = docSnap.data().nick;
+        store.state.userInfo.displayName = docSnap.data().nick;
         store.state.userInfo.uid = user.uid;
         store.state.userInfo.liked = docSnap.data().liked || [];
         const session = JSON.parse( sessionStorage.getItem("user"));
         session.avatar = docSnap.data().avatar ;
+        session.photoURL = docSnap.data().photoURL ;
+        session.displayName = docSnap.data().nick ;
         session.nick = docSnap.data().nick ;
         session.liked = docSnap.data().liked || []; ;
         sessionStorage.setItem("user",JSON.stringify(session));

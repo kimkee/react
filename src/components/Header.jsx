@@ -6,27 +6,22 @@ import store from '../store.js';
 import isuser from '../getUser.js';
 import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 export default function Header({prop}) {
-  console.log(prop.headerType + "===================================");
   let params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   // console.log(params);
   location.pathname
-  console.log(params , location);
+  // console.log(params , location);
   const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
     
-    setUserInfo({
-      uid : sessionStorage.user && JSON.parse(sessionStorage.user).uid,
-      nick : sessionStorage.user && JSON.parse(sessionStorage.user).nick
-    })
+    setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
     const auth = getAuth();
     onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         // 사용자가 로그인한 경우
-        setUserInfo( prevUserInfo => ({ ...prevUserInfo, uid : authUser.uid , nick: store.state.userInfo.nick }))
-        console.log(`유저정보             ${authUser}`);
+        setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...JSON.parse(sessionStorage.user) }))
       } else {
         // 사용자가 로그아웃한 경우
         // setUserInfo({ })
@@ -38,7 +33,7 @@ export default function Header({prop}) {
       
     }
     
-  },[userInfo.uid,userInfo.nick]);
+  },[userInfo?.uid,userInfo?.nick,userInfo?.displayName]);
   
 
   const test =()=>{
@@ -69,10 +64,10 @@ export default function Header({prop}) {
         </div>
         <div className="rdt">
            
-          { store.state.userInfo.stat || userInfo.uid ? 
+          { store.state.userInfo.stat || userInfo ? 
             <NavLink to={`/user/${store.state.userInfo.uid}`} className={"user"}> 
-              <span className="pic"><img alt="" className="img" src={ store.state.avatar[store.state.userInfo.avatar] || store.state.userInfo.photoURL} /></span>
-              <span className="txt">{store.state.userInfo.nick}</span>
+              <span className="pic"><img alt="" className="img" src={ store.state.avatar[store.state.userInfo.avatar] ||  userInfo.photoURL} /></span>
+              <span className="txt">{store.state.userInfo.nick || userInfo.displayName}</span>
               
             </NavLink>
             :

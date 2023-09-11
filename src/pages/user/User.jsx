@@ -29,7 +29,7 @@ import UserFolw from './UserFolw.jsx';
 export default function User() {
   let params = useParams()
   
-  console.log(params);
+  // console.log(params);
   let location = useLocation()
   let navigate = useNavigate();
   let uid = params.id;
@@ -63,7 +63,7 @@ export default function User() {
 
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
-  console.log(`spIdx   ${spIdx}`);
+  // console.log(`spIdx   ${spIdx}`);
   const gotoSlide = (num)=>{
     console.log(num);
     // swiper.slideTo(num);
@@ -75,7 +75,7 @@ export default function User() {
     
     // document.querySelector(".header").classList.remove("trans");
     // window.addEventListener("scroll", scrollEvent);
-    console.log( uid , params , store);
+    
     viewUser(uid);
     return ()=>{
       // window.removeEventListener("scroll", scrollEvent);
@@ -83,7 +83,7 @@ export default function User() {
     // eslint-disable-next-line
   },[uInfo.nick]);
 
-  console.log(store);
+  
   return (
     <>
     <Outlet/>

@@ -18,7 +18,7 @@ export default function Lists() {
   let opts = params.menu;
   const cateID = params.cate;
   cateID === undefined && navigate(`/${opts}/0`) ;
-  console.log(cateID);
+  // console.log(cateID);
 
   console.log( params , location.pathname)
   let cateList;

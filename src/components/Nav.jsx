@@ -15,7 +15,7 @@ export default function Nav() {
   // console.log(searchParams.get('search'))
   const PUBLIC_URL = import.meta.env.VITE_APP_PUBLIC_URL;  
   const location = useLocation();
-  console.log(location);
+  
 
   const isActive = els => location.pathname.includes(`${els}`) ? "active" : "";
   
@@ -35,14 +35,12 @@ export default function Nav() {
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
 
-    setUserInfo({
-      uid : sessionStorage.user && JSON.parse(sessionStorage.user).uid
-    })
+    setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
 
     onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
         // 사용자가 로그인한 경우
-        setUserInfo( prevUserInfo => ({...prevUserInfo,  uid : authUser.uid }))
+        setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...JSON.parse(sessionStorage.user) }))
       } else {
         // 사용자가 로그아웃한 경우
         setUserInfo({ })
@@ -52,7 +50,7 @@ export default function Nav() {
     return ()=>{
       window.removeEventListener("scroll", scrollEvent);
     }
-  },[userInfo.uid]);
+  },[userInfo?.uid]);
 
   return (
     <>
@@ -75,8 +73,8 @@ export default function Nav() {
               <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink>
             </li>
             <li className={isActive("user/")}>
-              { ( store.state.userInfo.stat || userInfo.uid) && <NavLink to={`/user/${userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
-              { !userInfo.uid && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
+              { ( store.state.userInfo.stat || userInfo) && <NavLink to={`/user/${userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
+              { !userInfo?.uid && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
             </li>
           </ul>
         </div>
