@@ -73,7 +73,7 @@ export default function Nav() {
               <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink>
             </li>
             <li className={isActive("user/")}>
-              { ( store.state.userInfo.stat || userInfo) && <NavLink to={`/user/${userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
+              { ( store.state.userInfo.stat || userInfo?.uid) && <NavLink to={`/user/${userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
               { !userInfo?.uid && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
             </li>
           </ul>
