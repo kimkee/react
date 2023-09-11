@@ -3,7 +3,7 @@ import React, {useState,  useEffect } from 'react'; //
 import {Link, NavLink, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
 import ui from '/src/ui.js';
 import store from '../store.js';
-import getUserData from '../getUser.js';
+import getUser from '../getUser.js';
 import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 export default function Header({prop}) {
   let params = useParams();
@@ -15,8 +15,7 @@ export default function Header({prop}) {
   const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
-    console.log(getUserData() );
-    getUserData().then((userData) => {
+    getUser().then((userData) => {
       console.log(userData); // 얻은 사용자 데이터를 사용하세요
     });
     setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))

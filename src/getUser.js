@@ -1,9 +1,9 @@
-// getUserData.js
+// getUser.js
 import { db } from './firebaseConfig.js';
 import { getDoc, doc } from 'firebase/firestore';
 
 // async 함수로 래핑
-const getUserData = async () => {
+const getUser = async () => {
   let userData = {};
 
   if (sessionStorage?.user) {
@@ -22,4 +22,4 @@ const getUserData = async () => {
   return userData; // 사용자 데이터 반환
 };
 
-export default getUserData;
+export default getUser;
