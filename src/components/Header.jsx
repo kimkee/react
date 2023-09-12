@@ -68,7 +68,7 @@ export default function Header({prop}) {
         </div>
         <div className="rdt">
            
-          { (  userInfo?.uid) &&
+          { ( store.state.userInfo.stat || userInfo?.uid) &&
             <NavLink to={`/user/${userInfo.uid}`} className={"user"}> 
               <span className="pic"><img alt="" className="img" src={ store.state.avatar[userInfo.avatar] || userInfo.photoURL} /></span>
               <span className="txt">{ userInfo.nick || userInfo.displayName}</span>
