@@ -27,7 +27,7 @@ export default function Home() {
     const q = query(collection(db, "bbs"), orderBy("timestamp", "desc"), limit(nums));
     const querySnapshot = await getDocs(q);    
     querySnapshot.forEach( (doc) => {
-      console.log( doc.data().title );
+      // console.log( doc.data().title );
     });
   }
   

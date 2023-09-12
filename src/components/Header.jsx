@@ -12,13 +12,13 @@ export default function Header({prop}) {
   // console.log(params);
   location.pathname
   // console.log(params , location);
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState(store.state.userInfo);
   
   useEffect(() => {
     setUserInfo( prevUserInfo => ({ ...prevUserInfo, uid: sessionStorage.user && JSON.parse(sessionStorage.user).uid }));
 
     getUser().then((userData) => {
-      console.log(userData); // 얻은 사용자 데이터를 사용하세요
+      // console.log(userData); // 얻은 사용자 데이터를 사용하세요
       setUserInfo(userData)
     });
     // const auth = getAuth();
