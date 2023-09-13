@@ -12,14 +12,15 @@ export default function Header({prop}) {
   // console.log(params);
   location.pathname
   // console.log(params , location);
-  const [userInfo, setUserInfo] = useState(store.state.userInfo);
+  const [userInfo, setUserInfo] = useState({});
   
   useEffect(() => {
-    setUserInfo( prevUserInfo => ({ ...prevUserInfo, uid: sessionStorage.user && JSON.parse(sessionStorage.user).uid }));
+    setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
 
     getUser().then((userData) => {
-      // console.log(userData); // 얻은 사용자 데이터를 사용하세요
-      setUserInfo(userData)
+      console.log(userData); // 얻은 사용자 데이터를 사용하세요
+      
+      setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...userData }));
     });
     // const auth = getAuth();
     // onAuthStateChanged(auth, (authUser) => {
@@ -37,9 +38,9 @@ export default function Header({prop}) {
       
     }
     
-  },[userInfo?.uid,userInfo?.nick,userInfo?.displayName]);
+  },[userInfo?.uid,userInfo?.nick,userInfo?.displayName, userInfo?.stat]);
   
-
+console.log(userInfo);
   const test =()=>{
     ui.confirm("리액트 보다 쀼가 짱입니까?",{
       ycb:function(){
@@ -68,8 +69,8 @@ export default function Header({prop}) {
         </div>
         <div className="rdt">
            
-          { ( store.state.userInfo.stat || userInfo?.uid) &&
-            <NavLink to={`/user/${userInfo.uid}`} className={"user"}> 
+          { (  userInfo?.stat || userInfo?.uid) &&
+            <NavLink to={`/user/${userInfo?.uid}`} className={"user"}> 
               <span className="pic"><img alt="" className="img" src={ store.state.avatar[userInfo.avatar] || userInfo.photoURL} /></span>
               <span className="txt">{ userInfo.nick || userInfo.displayName}</span>
             </NavLink>
