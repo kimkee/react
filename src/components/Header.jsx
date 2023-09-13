@@ -19,7 +19,6 @@ export default function Header({prop}) {
 
     getUser().then((userData) => {
       console.log(userData); // 얻은 사용자 데이터를 사용하세요
-      
       setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...userData }));
     });
     // const auth = getAuth();
