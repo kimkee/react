@@ -29,14 +29,8 @@ export default  function ListSet({opts}){
       console.log(res.data);
       setMlist( predata => [...predata, ...res.data.results] );
       // console.log( mlist );
-      ui.loading.hide();
-      if( res.data.total_pages <= page ) {
-      };
-
-
     }).catch(e=>{
       console.log(e);
-      ui.loading.hide();
     }); 
   }
 

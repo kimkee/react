@@ -89,7 +89,7 @@ export default  function ListSet({opts}){
             <ul>
                 {
                   mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
-                    const img = 'https://image.tmdb.org/t/p/w154'+data.poster_path ;
+                    const img = `https://image.tmdb.org/t/p/w154${data.poster_path}` ;
                     return (
                       <li key={idx}  className="pbox">
                         <Link className="box" to={`${opts.opts}/${data.id}`}>
