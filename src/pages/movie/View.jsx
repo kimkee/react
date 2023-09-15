@@ -63,7 +63,6 @@ export default function View({prop}) {
 
   const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
   const goTop = ()=>{
-    // document.querySelector(".popup.movie .pct").scrollTo(0,0);
     ui.scrollTo(".popup.movie .pct", 0, 200 );
   }
 
@@ -76,7 +75,7 @@ export default function View({prop}) {
     fetchMov();
     popResize();
     window.addEventListener("resize",popResize);
-    document.querySelector(".popup.movie").classList.add("ani","on");
+    popup.current.classList.add("ani","on");
     ui.lock.using(true); 
 
     return () => {
