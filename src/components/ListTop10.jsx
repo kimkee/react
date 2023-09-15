@@ -53,7 +53,7 @@ export default  function ListSet({opts}){
                 const img = `//image.tmdb.org/t/p/w154${data.poster_path}`;
                 return (
                   <li key={idx}  className="pbox">
-                    <Link className="box" to={`${opts.opts}/${data.id}`}>
+                    <Link className="box" to={`${opts.media}/${data.id}`}>
                       <div className="pics">
                         <img src={`${img}`} alt="" className='img' 
                           onError={ e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` } 

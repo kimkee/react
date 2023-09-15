@@ -20,13 +20,13 @@ import StarPoint from '../components/StarPoint';
 
 
 export default  function HomeTop({opts}){
-  console.log(opts);
+  // console.log(opts);
   let page = Math.floor( Math.random() *3 )+1;
   const [mlist, setMlist] = useState([]);
   const fetchMoive = (page)=>{
     ui.loading.show();
    
-    const fetchURL = `https://api.themoviedb.org/3/${opts.list}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/${opts.media}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
@@ -62,18 +62,13 @@ export default  function HomeTop({opts}){
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-
+  const [topVal, setTopVal] = useState(0);
   const scrollHome = ()=> {
-    const val = parseInt( ui.viewport.scrollTop()/1.8 );
-    if ( ui.lock.stat) return;
-    document.querySelectorAll(".page.home .sect.mnTop .slide ul>li .box .pics").forEach(element => {
-      element.style.transform = 'translate3D(0rem , 0'+val+'rem , 0rem)';
-      // element.style.transform = parseInt(scr/1.5)+"rem";
-    });
-    // console.log(scr );
+    if ( ui.lock.stat ) return;
+    setTopVal(parseInt( ui.viewport.scrollTop()/1.8 ));
   };
 
-  console.log(MY_GLOBAL_VARIABLE);
+  // console.log(MY_GLOBAL_VARIABLE);
 
   return(
     <>
@@ -110,8 +105,10 @@ export default  function HomeTop({opts}){
                 const img = `//image.tmdb.org/t/p/w780${data.poster_path}`;
                 return (
                   <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
-                    <Link className="box" to={`${opts.opts}/${data.id}`}>
-                        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                    <Link className="box" to={`${opts.media}/${data.id}`}>
+                        <div className="pics" style={{transform:'translate3D(0rem , 0'+topVal+'rem , 0rem)'}}>
+                          <img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} />
+                        </div>
                         <div className="info">
                           <div className="star">
                             <StarPoint point={data.vote_average} />

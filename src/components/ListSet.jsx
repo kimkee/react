@@ -78,7 +78,7 @@ export default  function ListSet({opts}){
       
       <section className="sect mnList">
 
-        <Link  to={`/list/${opts.opts}/${opts.cate || 0}`} className="hbox">
+        <Link  to={`/list/${opts.media}/${opts.cate || 0}`} className="hbox">
           <h3 className="stit">{opts.title}</h3>
           <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
         </Link>
@@ -89,10 +89,10 @@ export default  function ListSet({opts}){
             <ul>
                 {
                   mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
-                    const img = `https://image.tmdb.org/t/p/w154${data.poster_path}` ;
+                    const img = `//image.tmdb.org/t/p/w154${data.poster_path}` ;
                     return (
                       <li key={idx}  className="pbox">
-                        <Link className="box" to={`${opts.opts}/${data.id}`}>
+                        <Link className="box" to={`${opts.media}/${data.id}`}>
                             <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
                             <div className="info">
                               {/* <StarPoint point={data.vote_average} /> */}
