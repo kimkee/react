@@ -4,7 +4,7 @@ import axios from 'axios';
 import ui from '../../ui.js';
 export default function ViewRev({postID, opts}) {
 
-  console.log(postID);
+  // console.log(postID);
   const [review, setReview] = useState(null);
   const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchReview = () => {
@@ -50,7 +50,7 @@ export default function ViewRev({postID, opts}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  console.log(review);
+  // console.log(review);
 
   if(!review) return <div>Loading...</div>
   togView.set();

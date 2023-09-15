@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
-import {Outlet,useParams, useNavigate, Link} from 'react-router-dom'; //,useOutletContext  , useLocation
+import {Outlet,useParams, useNavigate, Link } from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
@@ -27,17 +27,6 @@ export default function View({prop}) {
 
 
   const postID = params.id;
-  const popResize = ()=>{
-    let $pop =  document.querySelector(".popup.movie");
-    let pctnH =  $pop.offsetHeight || 0;
-    let pbtnH =  $pop.querySelector(".pbt")?.offsetHeight || 0 ;
-    let phtnH =  $pop.querySelector(".phd")?.offsetHeight || 0 ;
-    pctnH = (pctnH - phtnH) || 0 ;
-    console.log(pctnH  );
-    $pop.querySelector(".pct").style.height = pctnH - pbtnH+"px" ; 
-  }
-
-
   const [datas, setDatas] = useState(null);
   const [casts, setCasts] = useState(null);
   const [moves, setMovs] = useState(null);
@@ -104,15 +93,22 @@ export default function View({prop}) {
   // if(!datas || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
   const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` ;
   const errUsr = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png` ;
-
+  const popup = useRef();
+  const popResize = ()=>{;
+    let $pop  =  popup.current;
+    let pctnH =  $pop.offsetHeight;
+    let phdtH =  $pop.querySelector(".phd").offsetHeight;
+    console.log( $pop , pctnH ,phdtH );
+    $pop.querySelector(".pct").style.height = pctnH-phdtH+"px" ; 
+  }
   return (
   <>
     <Outlet/>
-    <article className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} `}>
+    <article ref={popup} className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} `}>
       <div className="pbd">
-        <div className={`phd ${ scr > 50 ? 'trans' : ''}`}>
+        <div className={`phd ${ scr > 50 ? 'trans' : ''}`} >
           <div className="inr">
-              <div className="ptit">{datas?.title || datas?.name}</div>
+              { datas && <div className="ptit"> {datas.title || datas.name} </div> }
           </div>
         </div>
         {
@@ -126,7 +122,7 @@ export default function View({prop}) {
         }
         
         <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
-        <div className="pct" onScroll={scrollEvent}>
+        <div className="pct" onScroll={scrollEvent}  >
           <main className="poptents">
             
             { !datas && !casts && !moves &&
