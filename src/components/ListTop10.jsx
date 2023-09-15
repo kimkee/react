@@ -51,11 +51,12 @@ export default  function ListSet({opts}){
             <ul>
               { mlist?.filter( (item, idx) => idx < 20 ).map( (data, idx) => {
                 const img = `//image.tmdb.org/t/p/w154${data.poster_path}`;
+                const tit = data.title || data.name;
                 return (
                   <li key={idx}  className="pbox">
                     <Link className="box" to={`${opts.media}/${data.id}`}>
                       <div className="pics">
-                        <img src={`${img}`} alt="" className='img' 
+                        <img src={`${img}`} alt={tit} className='img' 
                           onError={ e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` } 
                         />
                       </div>

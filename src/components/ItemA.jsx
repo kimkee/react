@@ -8,14 +8,14 @@ import StarPoint from '../components/StarPoint';
 export default function ItemA({data,cate,opts}) {
   // console.log(data);
   // console.log(cate.genr);
-  const imgpath = 'https://image.tmdb.org/t/p/w200';
+  const imgpath = '//image.tmdb.org/t/p/w200';
   const img = data.poster_path ? imgpath + data.poster_path : `${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`;
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
   return (
   <>
     <Link className="box" to={`/search/${opts}/${data.id}`}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt={data.title || data.name} className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
         <div className="desc">
           <div className="tits">{data.title || data.name}</div>
           <div className="text">{data.overview}</div>

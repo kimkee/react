@@ -63,10 +63,7 @@ export default  function HomeTop({opts}){
   },[]);
 
   const [topVal, setTopVal] = useState(0);
-  const scrollHome = ()=> {
-    if ( ui.lock.stat ) return;
-    setTopVal(parseInt( ui.viewport.scrollTop()/1.8 ));
-  };
+  const scrollHome = ()=> setTopVal( parseInt( ui.viewport.scrollTop() * 0.2 )) ;
 
   // console.log(MY_GLOBAL_VARIABLE);
 
@@ -74,7 +71,6 @@ export default  function HomeTop({opts}){
     <>
       
       <section className="sect mnTop">
-      
 
         <div className="inr" id="slide">
           

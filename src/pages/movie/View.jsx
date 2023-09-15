@@ -177,7 +177,7 @@ export default function View({prop}) {
                     </ul>
                   </div>
                   <div className="thum">
-                    <Link to={`./poster/0`} className="pics"><img src={'https://image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
+                    <Link to={`./poster/0`} className="pics"><img src={'//image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title||datas.name} className="img" onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></Link>
                   </div>
                 </div>
                 
@@ -191,7 +191,7 @@ export default function View({prop}) {
                       casts.cast.filter( (item, i) => i < 999 ).map( b => {
                         return (
                           <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
-                            <div className="pics"><img src={'https://image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
+                            <div className="pics"><img src={'//image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png`}} loading="lazy" /></div>
                             <div className="name">{b.name}</div>
                             <div className="carc">{b.character}</div>
                           </Link>

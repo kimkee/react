@@ -90,10 +90,15 @@ export default  function ListSet({opts}){
                 {
                   mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
                     const img = `//image.tmdb.org/t/p/w154${data.poster_path}` ;
+                    const tit = data.title || data.name;
                     return (
                       <li key={idx}  className="pbox">
                         <Link className="box" to={`${opts.media}/${data.id}`}>
-                            <div className="pics"><img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} /></div>
+                            <div className="pics">
+                              <img src={`${img}`} alt={tit} className='img' 
+                                onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} 
+                              />
+                            </div>
                             <div className="info">
                               {/* <StarPoint point={data.vote_average} /> */}
                               {/* <div className="tit">{data.title}</div> */}
