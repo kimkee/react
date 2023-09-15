@@ -107,7 +107,7 @@ export default  function HomeTop({opts}){
           >
             {
               mlist?.filter( (item, i) => i < 10 ).map( (data, idx) => {
-                const img = 'https://image.tmdb.org/t/p/w780'+data.poster_path ;
+                const img = `//image.tmdb.org/t/p/w780${data.poster_path}`;
                 return (
                   <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                     <Link className="box" to={`${opts.opts}/${data.id}`}>

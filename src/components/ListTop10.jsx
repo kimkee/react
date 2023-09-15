@@ -15,10 +15,7 @@ export default  function ListSet({opts}){
   cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
   
 
-  const fetchMoive = (page)=>{
-    ui.loading.show();
-    
-
+  const fetchMoive = ()=>{
     console.log( "로드 ");
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
