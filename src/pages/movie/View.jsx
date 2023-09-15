@@ -210,13 +210,13 @@ export default function View({prop}) {
                   <h4 className="tts">영상</h4>
                   <div className="lst">
                     {
-                      moves.results.filter( (item, i) => i < 100 ).reverse().map( (b,idx) => {
+                      moves.results.filter( (item, i) => i < 100 ).reverse().map( (mov,idx) => {
                         return (
-                          <div className="box" key={b.id}>
+                          <div className="box" key={mov.id}>
                             <Link to={`./videos/${idx+1}`} className="pic" >
-                              <span className="msg"><span className="tit">{b.name}</span></span>
+                              <span className="msg"><span className="tit">{mov.name}</span></span>
                               <i className="ico fa-solid fa-play"></i>
-                              <img className="img" src={"//i.ytimg.com/vi/"+b.key+"/sddefault.jpg"} onError={errUsr} alt={b.name} loading="lazy" />
+                              <img className="img" src={"//i.ytimg.com/vi/"+mov.key+"/sddefault.jpg"} onError={errUsr} alt={mov.name} loading="lazy" />
                             </Link>
                           </div>
                         )

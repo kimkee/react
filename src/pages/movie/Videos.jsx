@@ -121,7 +121,7 @@ export default function Videos({prop}) {
                 {
                 movs.results.filter( (item, i) => i < 100 ).reverse().map( (data, idx) => {  // .filter( (item, i) => i < 10 )
                   return (
-                    <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
+                    <SwiperSlide tag="li" key={idx} className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
                             <span className="ui-load-glx full"> <span className="gbx"> <em className="bx"> <i></i> <i></i> <i></i> <i></i> </em> </span> </span>
