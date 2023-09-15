@@ -36,7 +36,6 @@ export default  function ListSet({opts}){
 
   useEffect(() => {
     fetchMoive(1);
-    // swiper.slideTo(2);
     
     return ()=>{
       
