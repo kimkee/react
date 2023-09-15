@@ -9,14 +9,15 @@ export default function ItemA({data,cate,opts}) {
   // console.log(data);
   // console.log(cate.genr);
   const imgpath = '//image.tmdb.org/t/p/w200';
-  const img = data.poster_path ? imgpath + data.poster_path : `${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`;
+  const img = imgpath + data.poster_path;
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
   const tit = data.title || data.name;
+  const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` ;
   return (
   <>
     <Link className="box" to={`/search/${opts}/${data.id}`}>
       <div className="cont">
-        <div className="pics"><img src={`${img}`} alt={tit} className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}}/></div>
+        <div className="pics"><img src={`${img}`} alt={tit} onError={errImg} className='img'/></div>
         <div className="desc">
           <div className="tits">{tit}</div>
           <div className="text">{data.overview}</div>

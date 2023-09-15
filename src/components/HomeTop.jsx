@@ -64,7 +64,7 @@ export default  function HomeTop({opts}){
 
   const [topVal, setTopVal] = useState(0);
   const scrollHome = ()=> setTopVal( parseInt( ui.viewport.scrollTop() * 0.2 )) ;
-
+  const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` ;
   // console.log(MY_GLOBAL_VARIABLE);
 
   return(
@@ -103,7 +103,7 @@ export default  function HomeTop({opts}){
                   <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
                     <Link className="box" to={`${opts.media}/${data.id}`}>
                         <div className="pics" style={{transform:'translate3D(0rem , 0'+topVal+'rem , 0rem)'}}>
-                          <img src={`${img}`} alt="" className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} />
+                          <img src={`${img}`} alt="" className='img' onError={errImg} />
                         </div>
                         <div className="info">
                           <div className="star">
