@@ -1,7 +1,7 @@
 import React, { useState, useEffect,useRef } from 'react';
 import {Outlet,useParams, useNavigate } from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui.js';
-import Detail from './Detail';
+import ViewInfo from './ViewInfo';
 
 export default function View({prop}) {
   
@@ -48,9 +48,15 @@ export default function View({prop}) {
     $pop.querySelector(".pct").style.height = pctnH-phdtH+"px" ; 
   }
 
-
   const [parentTit, setParentTit] = useState('');
   const popTitle = text => setParentTit(text);
+
+
+  const shareLink = ()=> {
+    const surl = `${location.origin}/#/${params.menu}/${postID}`;
+    navigator.clipboard.writeText(surl);
+    ui.alert(`<b>${parentTit}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
+  }
 
   return (
   <>
@@ -60,6 +66,7 @@ export default function View({prop}) {
         <div className={`phd ${ scr > 50 ? 'trans' : ''}`} >
           <div className="inr">
               <div className="ptit">{parentTit}</div>
+              <button type="button" className="btn-share" onClick={shareLink} ><i className="fa-regular fa-share-nodes"></i></button>
           </div>
         </div>
         {
@@ -72,7 +79,7 @@ export default function View({prop}) {
         <div className="pct" onScroll={scrollEvent}>
           <main className="poptents">
             
-            <Detail postID={postID} popTitle={popTitle} />
+            <ViewInfo postID={postID} popTitle={popTitle} />
 
           </main>
         </div>

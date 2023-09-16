@@ -16,6 +16,7 @@ import Home from './pages/Home.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
+import Detail from './pages/movie/Detail.jsx';
 import Poster from './pages/movie/Poster.jsx';
 import Person from './pages/movie/Person.jsx';
 import Videos from './pages/movie/Videos.jsx';
@@ -63,6 +64,7 @@ export default function App() {
         <Router>
           <Routes>
             <Route path='home/*' element={<Header prop={{"headerType":"main"}} />} />
+            <Route path=':menu/*' element={<Header prop={{"headerType":"main"}} />} />
             <Route path='list/*' element={<Header prop={{"headerType":"main"}} />} />
             <Route path='search/*' element={<Header prop={{"headerType":"main"}} />} />
             <Route path='movie/*' element={<Header prop={{"headerType":"main"}} />} />
@@ -76,7 +78,7 @@ export default function App() {
               
           <Routes>
 
-            <Route path='*' element={<NotFound />} />
+            {/* <Route path='*' element={<NotFound />} /> */}
 
             <Route path="/" element={<Navigate to="/home/"></Navigate>} />
 
@@ -89,6 +91,8 @@ export default function App() {
                 <Route path="videos/:nums" element={<Videos  />} />
               </Route>
             </Route>
+
+            
 
             <Route path="list">
               <Route path=":menu" >
@@ -104,7 +108,7 @@ export default function App() {
 
             <Route path=":menu">
               <Route path='*' element={<NotFound />} />
-              <Route path=":id" element={<View prop={{"page":"page"}}/>} >
+              <Route path=":id" element={<Detail prop={{"page":"page"}}/>} >
                 <Route path="poster/:nums" element={<Poster />} />
                 <Route path="person/:nums" element={<Person />} />
                 <Route path="videos/:nums" element={<Videos  />} />
@@ -135,6 +139,14 @@ export default function App() {
             <Route path="snslogin" element={<SnsLogin /> } />
 
 
+            {/* <Route path="detail/:menu/:id"  element={<Detail  />}>
+              
+              <Route path="poster/:nums" element={<Poster  />} />
+              <Route path="person/:nums" element={<Person  />} />
+              <Route path="videos/:nums" element={<Videos  />} />
+              
+            </Route> */}
+          
 
           </Routes>
               
@@ -143,6 +155,7 @@ export default function App() {
 
           <Routes>
             <Route path='home/*' element={<Nav />} />
+            <Route path=':menu/*' element={<Nav />} />
             <Route path='list/*' element={<Nav />} />
             <Route path='search/*' element={<Nav />} />
             <Route path='movie/*' element={<Nav />} />
