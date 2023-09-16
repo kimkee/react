@@ -76,8 +76,7 @@ export default function View({prop}) {
     popResize();
     window.addEventListener("resize",popResize);
     popup.current.classList.add("ani","on");
-    ui.lock.using(true); 
-
+    ui.lock.using(true);
     return () => {
       window.removeEventListener("resize",popResize);
       console.log('컴포넌트가 화면에서 사라짐');

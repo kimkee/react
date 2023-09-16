@@ -213,8 +213,8 @@ export default function Search() {
     inputRef.current.focus();
   }
   
-  console.log(mlist);
-  console.log(kwdLists);
+  // console.log(mlist);
+  // console.log(kwdLists);
   
   console.log(  inputRef.current?.value );
   

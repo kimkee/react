@@ -38,9 +38,10 @@ export default function Poster({prop}) {
     $pop.querySelector(".pct").style.maxHeight = pctnH - pbtnH+"px" ; 
   }
 
-
+  
   const [datas, setDatas] = useState(null);
   const [pstImg, pstImgSet] = useState('');
+  const [title, titleSet] = useState('');
   const loopSet = ()=> datas.images.posters.length > 1 ? true : false;
   const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
@@ -48,10 +49,10 @@ export default function Poster({prop}) {
       console.log("영화정보" , response.data);
       setDatas(response.data);
       let bgDm = response.data.poster_path ? response.data.poster_path : response.data.backdrop_path;
-      pstImgSet('https://image.tmdb.org/t/p/w780'+bgDm);
+      pstImgSet('//image.tmdb.org/t/p/w780'+bgDm);
+      titleSet(response.data.title || response.data.name);
     }).catch( e => { console.log(e); });
   };
-
   useEffect(() => {
     console.log(  document.querySelector(".popup.poster .pct").offsetHeight );
     fetchDatas();
@@ -68,7 +69,8 @@ export default function Poster({prop}) {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
-  
+
+  const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`;
   // console.log(datas);
   // if(!datas)  return ;
   // console.log( txtHt );
@@ -80,7 +82,7 @@ export default function Poster({prop}) {
       <div className="pbd">
         <div className="phd">
           <div className="inr">
-              <div className="ptit">{datas?.title || datas?.name}</div>
+              <div className="ptit">{title}</div>
           </div>
         </div>
 
@@ -114,19 +116,19 @@ export default function Poster({prop}) {
                 <SwiperSlide tag="li">
                   <div className='box'>
                     <div  className='pics'>
-                      <img src={pstImg} className="img" alt={datas?.title || datas?.name} onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy"/>
+                      <img src={pstImg} className="img" alt={`${title}_Poster[1]`} onError={errImg} loading="lazy"/>
                       <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                     </div>
                   </div>
                 </SwiperSlide>
                 {
-                datas.images.posters.map( (data, idx) => {  // .filter( (item, i) => i < 10 )
-                  const img = 'https://image.tmdb.org/t/p/w780'+data.file_path ;
+                datas.images.posters.map( (item, idx) => {  // .filter( (item, i) => i < 10 )
+                  const img = `//image.tmdb.org/t/p/w780${item.file_path}` ;
                   return (
-                    <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
+                    <SwiperSlide tag="li" key={idx} className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
-                            <img src={`${img}`} alt={datas?.title || datas?.name} className='img' onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`}} loading="lazy" />
+                            <img src={`${img}`} alt={`${title}_Poster[${idx+2}]`} className='img' onError={errImg} loading="lazy" />
                             <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                           </div>
                       </div>
