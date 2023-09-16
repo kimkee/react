@@ -16,9 +16,9 @@ export default function CateMenu({menu, opts}) {
   // const [swiper, setSwiper] = useState(null);
   const [slideActive, slideActiveSet] = useState(0);
   const goSlide = (num) => { 
-    document.querySelectorAll(".cate-box ul>li .bt.active").forEach( bt => {
-      num = parseInt( bt.closest("li").getAttribute("data-index") );
-    });
+    // document.querySelectorAll(".cate-box ul>li .bt.active").forEach( bt => {
+    //   num = parseInt( bt.closest("li").getAttribute("data-index") );
+    // });
     const catebox = document.querySelector(".cate-box>.inr");
     const cateboxWid = catebox.offsetWidth * 0.5;
     const btnAct = document.querySelector(".cate-box ul>li .bt.active");
@@ -44,7 +44,6 @@ export default function CateMenu({menu, opts}) {
   <>
     <div className={"cate-box " + cateID}>
       <div className="inr">
-        {/* <button onClick={goSlide}>SSSSS</button> */}
         
         <ul className="list">
           <li data-index="0" className={ "0" === cateID ? "active" : null }>
