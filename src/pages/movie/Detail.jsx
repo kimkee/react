@@ -5,24 +5,11 @@ import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
-export default function Detail({postID,  prop , popTitle }) {
+export default function Detail({ postID, popTitle }) {
   
   let params = useParams();
 
-  let opts = params.menu
-  let navigate = useNavigate();
-  // prop.page = prop.page || 'page' ;
-  // console.log(prop);
-  const [cate, setCate] = useState({});
-  const getCate = async ()=>{
-    let cate = {
-      genr:{}
-    }
-    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
-      res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
-      // setCate(cate); 
-    }).then( res =>{ setCate(cate); console.log(cate); });
-  };
+  let opts = params.menu;
 
   const [datas, setDatas] = useState(null);
   const [casts, setCasts] = useState(null);
@@ -65,16 +52,12 @@ export default function Detail({postID,  prop , popTitle }) {
 
   useEffect(() => {
     goTop();
-    console.log(  document.querySelector(".pct").offsetHeight );
-    getCate();
     fetchDatas();
     fetchCast();
     fetchMov();
-    ui.lock.using(true);
+    
     return () => {
-      
-      console.log('컴포넌트가 화면에서 사라짐');
-      ui.lock.using(false);
+
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[params.id]);
@@ -86,20 +69,7 @@ export default function Detail({postID,  prop , popTitle }) {
   const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` ;
   const errUsr = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png` ;
 
-  
-
-  const handleChange = (e) => {
-    
-    setChildState(response.data.name);
-    console.log(response.data.name);
-  
-    // 콜백 함수를 호출하여 상태를 부모 컴포넌트로 전달
-    popTitle(response.data.name);
-
-  };
-
-
-  return (
+    return (
   <>
     <div className="movie-detail">
       <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
@@ -110,7 +80,7 @@ export default function Detail({postID,  prop , popTitle }) {
         <div className="m-info">
           
           <div className="info">
-            <div className="desc" onClick={handleChange}>
+            <div className="desc">
               
               {datas.title && <p className="tit">{datas.title}</p>}
               {datas.tagline && <p className="sit">{datas.tagline}</p>}
@@ -123,7 +93,7 @@ export default function Detail({postID,  prop , popTitle }) {
                 <StarPoint point={datas.vote_average} />
               </div>
               <div className="cate">
-                {datas.genres.map( item => <em className="ico" key={item.id}> {cate.genr ? cate.genr[item.id] : null }</em> )}
+                {datas.genres.map( item => <em className="ico" key={item.id}> {item.name }</em> )}
               </div>
               <ul className="lst">
                 <li className="vot"> 

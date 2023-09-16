@@ -72,7 +72,7 @@ export default function View({prop}) {
         <div className="pct" onScroll={scrollEvent}>
           <main className="poptents">
             
-            <Detail postID={postID} popTitle={popTitle}/>
+            <Detail postID={postID} popTitle={popTitle} />
 
           </main>
         </div>
