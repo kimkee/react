@@ -1,5 +1,5 @@
 import React, { useState, useEffect,useRef } from 'react';
-import {Outlet,useParams, useNavigate, Link } from 'react-router-dom'; //,useOutletContext  , useLocation
+import {Outlet,useParams, useNavigate } from 'react-router-dom'; //,useOutletContext  , useLocation
 import ui from '../../ui.js';
 import Detail from './Detail';
 
@@ -47,6 +47,11 @@ export default function View({prop}) {
     console.log( pctnH ,phdtH );
     $pop.querySelector(".pct").style.height = pctnH-phdtH+"px" ; 
   }
+
+
+  const [parentTit, setParentTit] = useState('');
+  const popTitle = text => setParentTit(text);
+
   return (
   <>
     <Outlet/>
@@ -54,7 +59,7 @@ export default function View({prop}) {
       <div className="pbd">
         <div className={`phd ${ scr > 50 ? 'trans' : ''}`} >
           <div className="inr">
-              {/* { datas && <div className="ptit"> {datas.title || datas.name} </div> } */}
+              <div className="ptit">{parentTit}</div>
           </div>
         </div>
         {
@@ -67,7 +72,7 @@ export default function View({prop}) {
         <div className="pct" onScroll={scrollEvent}>
           <main className="poptents">
             
-            <Detail postID={postID} />
+            <Detail postID={postID} popTitle={popTitle}/>
 
           </main>
         </div>

@@ -5,10 +5,9 @@ import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
 import ViewElips from './ViewElips';
 import ViewRev from './ViewRev';
-export default function Detail({postID,  prop}) {
+export default function Detail({postID,  prop , popTitle }) {
   
-  
-  let params = useParams()
+  let params = useParams();
 
   let opts = params.menu
   let navigate = useNavigate();
@@ -25,13 +24,11 @@ export default function Detail({postID,  prop}) {
     }).then( res =>{ setCate(cate); console.log(cate); });
   };
 
-
-  
   const [datas, setDatas] = useState(null);
   const [casts, setCasts] = useState(null);
   const [moves, setMovs] = useState(null);
   const [bgImg, setBgImg] = useState('');
-  
+  const [childState, setChildState] = useState('');
   const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}&append_to_response=images&include_image_language=en,null`;
   const fetchDatas = () => {
     axios.get( fetchURL ).then(response => {
@@ -39,6 +36,9 @@ export default function Detail({postID,  prop}) {
       setDatas(response.data);
       let bgDm = response.data.backdrop_path ? response.data.backdrop_path : response.data.poster_path;
       setBgImg('https://image.tmdb.org/t/p/w780'+bgDm);
+
+      // 팝업 헤더에 제목
+      popTitle(response.data.title || response.data.name);
     }).catch( e => { console.log(e); });
   };
 
@@ -70,9 +70,6 @@ export default function Detail({postID,  prop}) {
     fetchDatas();
     fetchCast();
     fetchMov();
-    
-    
-    
     ui.lock.using(true);
     return () => {
       
@@ -89,6 +86,19 @@ export default function Detail({postID,  prop}) {
   const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` ;
   const errUsr = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png` ;
 
+  
+
+  const handleChange = (e) => {
+    
+    setChildState(response.data.name);
+    console.log(response.data.name);
+  
+    // 콜백 함수를 호출하여 상태를 부모 컴포넌트로 전달
+    popTitle(response.data.name);
+
+  };
+
+
   return (
   <>
     <div className="movie-detail">
@@ -100,7 +110,7 @@ export default function Detail({postID,  prop}) {
         <div className="m-info">
           
           <div className="info">
-            <div className="desc">
+            <div className="desc" onClick={handleChange}>
               
               {datas.title && <p className="tit">{datas.title}</p>}
               {datas.tagline && <p className="sit">{datas.tagline}</p>}
