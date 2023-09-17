@@ -67,7 +67,7 @@ export default function View({prop}) {
         console.log('공유 성공');
       })
       .catch((error) => {
-        ui.alert('공유 실패:'+ error)
+        // ui.alert('공유 실패:'+ error)
         console.error('공유 실패:', error);
       });
     } else {
