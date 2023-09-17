@@ -8,6 +8,10 @@ const ui = {
     aaa:function(){
         console.log("dsfafsafdsffsafasfdfas");
     },
+    error:{
+        poster: e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`,
+        user: e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png`
+    },
     iosx:{ // 아이폰X 여백값
         top: ()=>    parseInt(getComputedStyle(document.documentElement).getPropertyValue("--safe-top").replace(/[^0-9]/g, "")) || 0 ,
         bottom: ()=> parseInt(getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom").replace(/[^0-9]/g, "")) || 0

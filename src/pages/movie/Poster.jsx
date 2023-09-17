@@ -70,7 +70,6 @@ export default function Poster({prop}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
-  const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png`;
   // console.log(datas);
   // if(!datas)  return ;
   // console.log( txtHt );
@@ -116,7 +115,7 @@ export default function Poster({prop}) {
                 <SwiperSlide tag="li">
                   <div className='box'>
                     <div  className='pics'>
-                      <img src={pstImg} className="img" alt={`${title}_Poster[1]`} onError={errImg} loading="lazy"/>
+                      <img src={pstImg} className="img" alt={`${title}_Poster[1]`} onError={ui.error.poster} loading="lazy"/>
                       <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                     </div>
                   </div>
@@ -128,7 +127,7 @@ export default function Poster({prop}) {
                     <SwiperSlide tag="li" key={idx} className="swiper-slide pbox">
                       <div className="box">
                           <div className="pics">
-                            <img src={`${img}`} alt={`${title}_Poster[${idx+2}]`} className='img' onError={errImg} loading="lazy" />
+                            <img src={`${img}`} alt={`${title}_Poster[${idx+2}]`} className='img' onError={ui.error.poster} loading="lazy" />
                             <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
                           </div>
                       </div>

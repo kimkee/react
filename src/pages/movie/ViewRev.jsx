@@ -41,6 +41,8 @@ export default function ViewRev({postID, opts}) {
     }
   }
 
+  const errUsr = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png` ;
+
   useEffect(() => {
     fetchReview();
     
@@ -66,15 +68,15 @@ export default function ViewRev({postID, opts}) {
             {
               review.results &&
               review.results.map((rev,idx) => {
-                let avatar = rev.author_details.avatar_path || "";
+                const avatar = rev.author_details.avatar_path || "";
                 // console.log(avatar);
-                let nImg = avatar.replace(/^\/+/g, '');
+                const nImg = '//image.tmdb.org/t/p/w45_and_h45_face/'+avatar ;
                 // console.log(nImg);
                 return(
                 <li key={idx}>
                   <div className="rpset">
                     <div className="user">
-                      <span className="pic"><img src={nImg} alt="사진"  className="img"  onError={(e)=>{e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png`}}/></span>
+                      <span className="pic"><img src={nImg} alt="사진"  className="img" onError={ui.error.user} /></span>
                     </div>
                     <div className="infs">
                       <div className="name">

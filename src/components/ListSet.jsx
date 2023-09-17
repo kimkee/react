@@ -71,7 +71,6 @@ export default  function ListSet({opts}){
     // eslint-disable-next-line
   },[]);
 
-  const errImg = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/non_poster.png` ;
 
   return(
     <>
@@ -94,7 +93,7 @@ export default  function ListSet({opts}){
                     return (
                       <li key={idx}  className="pbox">
                         <Link className="box" to={`${opts.media}/${data.id}`}>
-                            <div className="pics"><img src={`${img}`} alt={tit} className='img' onError={errImg} /></div>
+                            <div className="pics"><img src={`${img}`} alt={tit} className='img' onError={ui.error.poster} /></div>
                             <div className="info">
                               {/* <StarPoint point={data.vote_average} /> */}
                               {/* <div className="tit">{data.title}</div> */}
