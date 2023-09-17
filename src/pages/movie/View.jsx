@@ -53,7 +53,7 @@ export default function View({prop}) {
 
 
   const shareLink = ()=> {
-    const surl = `${location.origin+location.pathname}/#/${params.menu}/${postID}`;
+    const surl = `${location.origin+location.pathname}#/${params.menu}/${postID}`;
     navigator.clipboard.writeText(surl);
     ui.alert(`<b>${parentTit}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
   }
