@@ -50,6 +50,9 @@ textarea:-ms-input-placeholder {color: #444444; font-weight: normal;}
 #app{margin: 0rem 0rem;text-align: left;}
 a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 
+.body{}
+.body::after{position: fixed;left: 0;right: 0;top: 0;bottom: 0;content:"";background: url(../img/ogimage.png) #000 center bottom;background-size: cover;opacity: 0.3;z-index: -1;}
+.body::before{position: fixed;left: 0;right: 0;top: 0px;bottom: 0;content:"";background-image: linear-gradient(180deg, black, transparent);}
 .body>.wrap{/* min-height: 100dvh; */}
 
 /* 헤더 */
@@ -1132,7 +1135,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .swiper .swiper-pagination-bullet{margin: 0rem 1rem; transition: all 0.2s;}
 
 .page.home .sect.mnTop{position: relative;}
-.page.home .sect.mnTop>.inr{position: relative;min-height: 133.9vw;}
+.page.home .sect.mnTop>.inr{position: relative;/* min-height: 133.9vw; *//* max-height: 300px; */}
 .page.home .sect.mnTop .slide{padding-bottom: 20rem;overflow: visible;}
 .page.home .sect.mnTop .slide ul{}
 .page.home .sect.mnTop .slide ul>li{ }
