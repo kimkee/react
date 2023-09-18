@@ -70,8 +70,11 @@ export default function ViewInfo({ postID, popTitle }) {
     }
   }
   
-  const likeTog = ()=> {
-    ui.alert(`준비 중 입니다.`);
+  const likeTog = (e)=> {
+    console.log(e.target);
+    ui.alert(`준비 중 입니다.`,{
+      ycb: () => e.target.classList.toggle('on')
+    });
   }
 
 
@@ -154,7 +157,7 @@ export default function ViewInfo({ postID, popTitle }) {
           
           
           <div className="dins">
-            <button type="button" onClick={likeTog} className="bt bt-vote"><i className="fa-regular fa-heart"></i><em>스크랩</em></button>
+            <button type="button" onClick={likeTog} className="bt bt-scrap"><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>
             <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
           </div>
 
