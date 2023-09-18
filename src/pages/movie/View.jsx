@@ -52,32 +52,6 @@ export default function View({prop}) {
   const popTitle = text => setParentTit(text);
 
 
-  const shareLink = ()=> {
-    const surl = `${location.origin+location.pathname}#/${params.menu}/${postID}`;
-    // navigator.clipboard.writeText(surl);
-    // ui.alert(`<b>${parentTit}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
-
-    if (navigator.share) {
-      navigator.share({
-        title: parentTit,
-        text: parentTit+' 를 공유합니다.',
-        url: surl,
-      })
-      .then(() => {
-        console.log('공유 성공');
-      })
-      .catch((error) => {
-        // ui.alert('공유 실패:'+ error)
-        console.error('공유 실패:', error);
-      });
-    } else {
-      ui.alert(`<b>${parentTit}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
-      console.log('Web Share API를 지원하지 않습니다.');
-    }
-
-
-  }
-
   return (
   <>
     <Outlet/>
@@ -86,7 +60,7 @@ export default function View({prop}) {
         <div className={`phd ${ scr > 50 ? 'trans' : ''}`} >
           <div className="inr">
               <div className="ptit">{parentTit}</div>
-              <button type="button" className="btn-share" onClick={shareLink} ><i className="fa-regular fa-share-nodes"></i></button>
+              {/* <button type="button" className="btn-share" onClick={shareLink} ><i className="fa-regular fa-share-nodes"></i></button> */}
           </div>
         </div>
         {

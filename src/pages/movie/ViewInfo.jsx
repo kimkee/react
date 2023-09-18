@@ -45,7 +45,36 @@ export default function ViewInfo({ postID, popTitle }) {
     }).catch( e => { console.log(e); });
   };
 
+  const shareLink = ()=> {
+    const surl = `${location.origin+location.pathname}#/${params.menu}/${postID}`;
+    navigator.clipboard.writeText(surl);
+    // ui.alert(`<b>${parentTit}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
+
+    if (navigator.share) {
+      navigator.share({
+        title: datas.title,
+        text: datas.title +' 를 공유합니다.',
+        url: surl,
+      })
+      .then(() => {
+        console.log('공유 성공');
+        
+      })
+      .catch((error) => {
+        // ui.alert('공유 실패:'+ error)
+        console.error('공유 실패:', error);
+      });
+    } else {
+      ui.alert(`<b>${datas.title}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
+      console.log('Web Share API를 지원하지 않습니다.');
+    }
+  }
   
+  const likeTog = ()=> {
+    ui.alert(`준비 중 입니다.`);
+  }
+
+
   const goTop = ()=>{
     ui.scrollTo(".popup.movie .pct", 0, 200 );
   }
@@ -75,7 +104,6 @@ export default function ViewInfo({ postID, popTitle }) {
       }
       { datas && casts && moves &&
         <div className="m-info">
-          
           <div className="info">
             <div className="desc">
               
@@ -124,6 +152,12 @@ export default function ViewInfo({ postID, popTitle }) {
             </div>
           </div>
           
+          
+          <div className="dins">
+            <button type="button" onClick={likeTog} className="bt bt-vote"><i className="fa-regular fa-heart"></i><em>스크랩</em></button>
+            <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
+          </div>
+
           {datas.overview && <ViewElips overview={datas.overview} /> }
           
           {casts.cast.length ?
