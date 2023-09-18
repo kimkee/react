@@ -168,7 +168,7 @@ export default function ViewInfo({ postID, popTitle }) {
                 casts.cast.filter( (item, i) => i < 999 ).map( b => {
                   return (
                     <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
-                      <div className="pics"><img src={'//image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={ui.error.user} loading="lazy" /></div>
+                      <div className="pics"><img src={`//image.tmdb.org/t/p/w92${b.profile_path}`} alt={b.name} className="img"  onError={ui.error.user} loading="lazy" /></div>
                       <div className="name">{b.name}</div>
                       <div className="carc">{b.character}</div>
                     </Link>
@@ -191,7 +191,7 @@ export default function ViewInfo({ postID, popTitle }) {
                       <Link to={`./videos/${idx+1}`} className="pic" >
                         <span className="msg"><span className="tit">{mov.name}</span></span>
                         <i className="ico fa-solid fa-play"></i>
-                        <img className="img" src={"//i.ytimg.com/vi/"+mov.key+"/sddefault.jpg"} onError={ui.error.user} alt={mov.name} loading="lazy" />
+                        <img className="img" src={`//i.ytimg.com/vi/${mov.key}/sddefault.jpg`}   alt={mov.name} loading="lazy" />
                       </Link>
                     </div>
                   )
@@ -211,7 +211,7 @@ export default function ViewInfo({ postID, popTitle }) {
                 casts.crew.filter( (item, i) => i < 999 ).map( b => {
                   return (
                     <Link to={`./person/${b.id}`} key={b.credit_id} className='profile'>
-                      <div className="pics"><img src={'//image.tmdb.org/t/p/w92'+b.profile_path} alt={b.name} className="img"  onError={ui.error.user} loading="lazy" /></div>
+                      <div className="pics"><img src={`//image.tmdb.org/t/p/w92${b.profile_path}`} alt={b.name} className="img"  onError={ui.error.user} loading="lazy" /></div>
                       <div className="name">{b.name}</div>
                       <div className="carc">{b.known_for_department}</div>
                     </Link>
@@ -228,13 +228,13 @@ export default function ViewInfo({ postID, popTitle }) {
             <h4 className="tts">포스터 : {datas.images.posters.length+1}</h4>
             <div className="lst">
               <div className='box' data-index={0}>
-                <Link to={`./poster/0`}  className='pic'><img src={'//image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title} className="img" onError={ui.error.poster} loading="lazy" /></Link> 
+                <Link to={`./poster/0`} className='pic'><img src={`//image.tmdb.org/t/p/w300${datas.poster_path}`} alt={datas.title} className="img" onError={ui.error.poster} loading="lazy" /></Link> 
               </div>
               {
               datas.images.posters.map((img,idx) => {
                 return(
                 <div key={idx} className='box' data-index={idx+1}>
-                  <Link to={`./poster/${idx+1}`}  className='pic'><img src={'//image.tmdb.org/t/p/w300'+img.file_path} alt={img.name} className="img" onError={ui.error.poster} loading="lazy" /></Link> 
+                  <Link to={`./poster/${idx+1}`} className='pic'><img src={`//image.tmdb.org/t/p/w300${img.file_path}`} alt={img.name} className="img" onError={ui.error.poster} loading="lazy" /></Link> 
                 </div>
                 )
               })
@@ -255,7 +255,7 @@ export default function ViewInfo({ postID, popTitle }) {
               datas.production_companies.map(comp => {
                 return comp.logo_path 
                 ? 
-                <span key={comp.id} className='logo'><img src={'//image.tmdb.org/t/p/w92'+comp.logo_path} alt={comp.name} className="img" /></span> 
+                <span key={comp.id} className='logo'><img src={`//image.tmdb.org/t/p/w92${comp.logo_path}`} alt={comp.name} className="img" /></span> 
                 : 
                 <span key={comp.id} className='logo'>{comp.name}</span> 
               })
