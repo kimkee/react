@@ -728,6 +728,13 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .info .desc .lst>li.tim{}
 .movie-detail .info .desc .lst>li i{margin-right: 4rem;min-width: 14rem; position: absolute; left: 0rem; top: 3rem;}
 .movie-detail .info .desc .lst>li b{font-weight: normal;}
+.movie-detail .dins{margin-top: 20rem;display: flex;border: #30363d solid 1rem;border-radius: 5rem;justify-content: space-around;padding: 0rem 0rem;overflow: hidden;}
+.movie-detail .dins .bt{font-size: 17rem;width: 100%;height: 34rem;background: rgb(0 0 0 / 38%);display: flex;justify-content: center;align-items: center;}
+.movie-detail .dins .bt+.bt{border-left: #30363d solid 1rem;}
+.movie-detail .dins .bt em{font-size: 13rem;margin-left: 4rem}
+.movie-detail .dins .bt-vote.on{color: #41b883; }
+.movie-detail .dins .bt-vote.on i{font-weight: 900;}
+.movie-detail .dins .bt-vote.ani i{ animation: anilike 0.3s alternate 1;}
 .movie-detail .vinf{margin: 20rem 0rem 20rem 0rem;color: #aaa;/* max-height: 90rem;overflow-y: auto; */}
 .movie-detail .vinf::-webkit-scrollbar {display: none;}
 .movie-detail .vinf::-webkit-scrollbar-thumb {  box-shadow: none;}
@@ -767,7 +774,11 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .revw{margin: 25rem 0rem 0rem 0rem;}
 .movie-detail .revw .tts{}
 .movie-detail .ui-loading-dot.on{height: calc(100dvh - 120rem);}
-
+@keyframes anilike {
+	0%{  transform: translateY(0rem) scale(1); }
+	50%{ transform: translateY(0rem) scale(2); }
+    100%{transform: translateY(0rem) scale(1); }
+}
 
 /* 영상상세 페이지 */
 .page.detail{}
@@ -787,7 +798,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.movie.view>.pbd>.pct{padding: 0rem;}
 .popup.movie.view>.pbd>.phd{z-index: 20;}
 .popup.movie.view>.pbd>.phd .rdt{padding-left: 60rem;padding-right: 20rem;width: 100%;}
-.popup.movie.view>.pbd>.phd .ptit{opacity: 0;height: 28rem;word-break: break-all;white-space: normal;width: 100%;padding: 0rem 60rem 0rem 60rem;text-align: right;}
+.popup.movie.view>.pbd>.phd .ptit{opacity: 0;height: 28rem;word-break: break-all;white-space: normal;width: 100%;padding: 0rem 20rem 0rem 60rem;text-align: right;}
 .popup.movie.view>.pbd>.phd.trans .ptit{opacity: 1;}
 .popup.movie.view>.pbd>.pct .poptents{margin: 65rem 20rem 40rem 20rem;margin-top: calc( 65rem + var(--safe-top) + var(--safe-watch) );padding: 0rem;z-index: 10;position: relative;}
 
