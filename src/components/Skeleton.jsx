@@ -38,43 +38,43 @@ export default function Skeleton({ opts }) {
             </ul>
           </div>
           <div className="thum"><div className="pics"></div></div></div>
-          <div class="sect cast">
-            <h4 class="tts"></h4>
-            <div class="lst">
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+          <div className="sect cast">
+            <h4 className="tts"></h4>
+            <div className="lst">
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
             </div>
           </div>
-          <div class="sect cast">
-            <h4 class="tts"></h4>
-            <div class="lst">
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+          <div className="sect cast">
+            <h4 className="tts"></h4>
+            <div className="lst">
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
-              <div class="profile">
-                <div class="pics"></div> <div class="name"></div> <div class="carc"></div>
+              <div className="profile">
+                <div className="pics"></div> <div className="name"></div> <div className="carc"></div>
               </div>
             </div>
           </div>
