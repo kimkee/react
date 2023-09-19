@@ -21,6 +21,7 @@ export default function View({prop}) {
   }
 
   useEffect(() => {
+    ui.loading.show('glx');
     goTop();
     popResize();
     window.addEventListener("resize",popResize);
@@ -50,6 +51,9 @@ export default function View({prop}) {
 
   const [parentTit, setParentTit] = useState('');
   const popTitle = text => setParentTit(text);
+  if (parentTit) {
+    setTimeout(() => ui.loading.hide(), 500);  ;
+  }
 
 
   return (
