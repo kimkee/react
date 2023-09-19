@@ -51,11 +51,11 @@ export default function ViewInfo({ postID, popTitle }) {
     const surl = `${location.origin+location.pathname}#/${params.menu}/${postID}`;
     navigator.clipboard.writeText(surl);
     // ui.alert(`<b>${parentTit}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
-
+    const datatitle = datas.title || datas.name;
     if (navigator.share) {
       navigator.share({
-        title: datas.title,
-        text: datas.title +' 를 공유합니다.',
+        title: datatitle,
+        text: datatitle +' 를 공유합니다.',
         url: surl,
       })
       .then(() => {
@@ -67,7 +67,7 @@ export default function ViewInfo({ postID, popTitle }) {
         console.error('공유 실패:', error);
       });
     } else {
-      ui.alert(`<b>${datas.title}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
+      ui.alert(`<b>${datatitle}</b><br> URL 주소를 복사했습니다 <br> <a class="under" href="${surl}" target="_blank">${surl}</a>`)
       console.log('Web Share API를 지원하지 않습니다.');
     }
   }
