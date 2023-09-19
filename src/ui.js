@@ -236,19 +236,31 @@ const ui = {
         }
     },
     loading: { // 로딩중..
-        show: function () {
-            if (!document.querySelectorAll("body>.ui-loading-dot").length) {
-                // var els = '<div class="ui-loading"><em></em></div>';
-                var els =
-                    `<div class="ui-loading-dot">
+        show: function (opt) {
+            var els = '';
+            if (document.querySelectorAll("body>.ui-loading").length) { return}
+            console.log(opt);
+            // var els = '<div class="ui-loading"><em></em></div>';
+            if (opt == 'dot' || opt == undefined){
+                els = `<div class="ui-loading ui-loading-dot">
                     <div class="bx"><em><i></i></em></div>
                 </div>`;
-                document.querySelector("body").insertAdjacentHTML("afterbegin", els);
-                document.querySelector("body").classList.add("is-loading");
             }
+            if (opt == 'glx'){
+                els = `<span class="ui-loading ui-load-glx full">
+                <span class="gbx">
+                    <em class="bx">
+                        <i></i> <i></i><i></i><i></i>
+                    </em>
+                </span>
+              </span>`;
+            }
+            document.querySelector("body").insertAdjacentHTML("afterbegin", els);
+            document.querySelector("body").classList.add("is-loading");
+        
         },
         hide: function () {
-            document.querySelectorAll(".ui-loading-dot").forEach(el => el.remove());
+            document.querySelectorAll(".ui-loading").forEach(el => el.remove());
             document.querySelector("body").classList.remove("is-loading");
         }
     },

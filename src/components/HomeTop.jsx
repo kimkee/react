@@ -24,7 +24,7 @@ export default  function HomeTop({opts}){
   let page = Math.floor( Math.random() *3 )+1;
   const [mlist, setMlist] = useState([]);
   const fetchMoive = (page)=>{
-    ui.loading.show();
+    ui.loading.show('glx');
    
     const fetchURL = `https://api.themoviedb.org/3/${opts.media}/now_playing?language=ko&region=kr&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
