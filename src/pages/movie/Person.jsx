@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate, Link} from 'react-router-dom'; //,useOutletContext  , useLocation, Outlet, Link
 import ui from '../../ui.js';
+import Loading from '../../components/Loading';
 
 export default function Person() {
   let params = useParams()
@@ -88,7 +89,7 @@ export default function Person() {
           <main className="poptents">
           
             { !datas && !casts && !photos &&
-              <div className="m-info"><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>
+              <div className="m-info"><Loading opts={{type:'dot', cls:'abs'}}/></div>
             }
             { datas && casts && photos &&
               <div className="m-info">
