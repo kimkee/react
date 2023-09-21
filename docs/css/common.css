@@ -711,7 +711,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .cate-box .list>li.active .bt{background: #273c5a;border-color: #2c3a58;color: #fff;text-shadow: 0 0rem 2rem black;}
 
 /* 영상,Tv 정보 */
-.movie-detail{}
+.movie-detail{
+    padding-bottom: 0rem;
+}
 .movie-detail .m-info{position: relative;}
 .movie-detail .bgs{position: fixed;top: 0;left: 50%;right: 0;width: 100%;max-width: var(--mwide);transform: translateX(-50%);height: 100vw;background: center top no-repeat;background-size: auto;opacity:0.3;overflow: hidden;filter:blur(2px);z-index: 0;}
 .movie-detail .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 300rem;background-image: linear-gradient(180deg, transparent, #111111);}
@@ -815,7 +817,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 /* 영상상세 페이지 */
 .page.detail{}
-.page.detail .contents{margin: 25rem 20rem 40rem 20rem;}
+.page.detail .contents{padding: 25rem 20rem 40rem 20rem;}
 
 
 /* 영상상세 팝업 */
@@ -851,9 +853,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .popup.poster .poster-box .lazy-preloader{width: 40rem;height: 40rem;display: flex;justify-content: center;align-items: center;z-index: 5;animation: loading-rotate 1s infinite steps(8);font-size:0rem;position: absolute;left: 50%;top: 50%;margin: -20rem 0 0 -20rem;}
 .popup.poster .poster-box .lazy-preloader i{font-size:28rem;}
-.popup.poster .poster-box .lazy-preloader .ui-load-glx{
-    position: absolute;
-}
+.popup.poster .poster-box .lazy-preloader .ui-load-glx{ position: absolute; }
 .popup.poster .poster-box .swiper .swiper-wrapper{padding-bottom: 45rem;}
 .popup.poster .poster-box .swiper-pagination-fraction{position: absolute;height: 32rem;display: inline-flex;align-items: center;left: 50%;transform: translateX(-50%);width: auto; bottom: calc(0rem + env(safe-area-inset-bottom));background: rgb(80 80 80 / 50%);border-radius: 30rem;font-size: 11rem;min-width: 33rem; padding: 4rem 11rem;letter-spacing: 0rem;color: #eeeeee;}
 .popup.poster .poster-box .swiper-pagination-current,
