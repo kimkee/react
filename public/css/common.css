@@ -626,8 +626,10 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .list>li .box .info .cate .ico{display: inline-flex;justify-content: center;border-radius: 10rem;padding: 3rem 5rem 3rem 5rem;margin: 1rem 3rem 1rem 0rem;font-size: 10rem;line-height: 1;font-family: 'Tahoma';color: #aaa;background: #333;cursor: default;}
 .movie-list .list>li .box .info .keys{font-size: 10rem;color: #707887;margin-left: 6rem;display: none;}
 
- 
- 
+ .movie-list.user{}
+ .movie-list.user .list>li .box .cont .pics{ min-width: 14%; width: 14%; padding-bottom: calc(1200% / 780 * 14); }
+ .movie-list.user .list>li .box .cont .text{ max-height: 52rem; }
+
 .poster-list{ overflow: hidden;padding: 5rem calc(15rem - 1.5%); position: relative; }
 .poster-list>.list{display:flex; flex-wrap: wrap;}
 .poster-list>.list>li{width: calc(25% - 3%);margin: 8rem 1.5%;}
@@ -860,8 +862,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .popup.person{ z-index: 1100; }
 .popup.person .phd>.inr {justify-content: left; padding-left: 20rem;}
-.popup.person .pct{/* height:50vh; */}
-.popup.person .pct .poptents{padding-top: 0;padding-bottom: calc(50rem + var(--safe-top) );min-height: calc(70vh);}
+.popup.person .pct{}
+.popup.person .pct .poptents{padding-top: 0;padding-bottom: calc(50rem + var(--safe-top) );/* min-height: calc(70vh); */}
 .popup.person .m-info .ui-loading-dot{min-height: calc(125vw);} 
 .popup.person .info{display: flex;/* flex-wrap: wrap; */justify-content: space-between;flex-direction: row;gap: 20rem;}
 .popup.person .info .thum{display:block;position:relative; width: 100%; overflow: hidden;width: 45%;}
@@ -1247,7 +1249,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .pctn .board-list .list>li .box .info{}
 .page.user.view .user-post .pctn .board-list .list>li .box{}
 .page.user.view .user-post .pctn .ctn.post{padding: 20rem;}
-.page.user.view .user-post .pctn .ctn.like{padding: 20rem;}
+.page.user.view .user-post .pctn .ctn.like{padding: 0rem;}
 .page.user.view .user-post .pctn .ctn.revw{padding: 20rem;}
 .page.user.view .user-post .pctn .ctn.repl{padding: 20rem;}
 .page.user.view .user-post .pctn .ctn .nodata{padding: 0;display: flex;justify-content: center;align-items: center;height: 100%;}

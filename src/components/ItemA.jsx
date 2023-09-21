@@ -7,7 +7,7 @@ import StarPoint from '../components/StarPoint';
 // 검색 결과 유닛
 export default function ItemA({data,cate,opts}) {
   console.log(data);
-  // console.log(cate.genr);
+  console.log(cate.genr);
   const imgpath = '//image.tmdb.org/t/p/w200';
   const img = imgpath + data.poster_path;
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
