@@ -10,19 +10,19 @@ import CateMenu from '../../components/CateMenu.jsx';
 export default function Lists() {
   // console.log(opts);
 
-  let params = useParams()
+  const params = useParams()
   
   console.log(params);
-  let location = useLocation()
-  let navigate = useNavigate();
-  let opts = params.menu;
+  const location = useLocation()
+  const navigate = useNavigate();
+  const opts = params.menu;
   const cateID = params.cate;
   cateID === undefined && navigate(`/${opts}/0`) ;
   // console.log(cateID);
 
   console.log( params , location.pathname)
-  let cateList;
-  cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
+  // let cateList;
+  const cateList = cateID !== '0' ? `&with_genres=${cateID}` : ``;
   console.log(cateList);
  
   const [movieList, movieListSet] = useState([]);
@@ -54,8 +54,8 @@ export default function Lists() {
   const [loadHide, loadHideSet] = useState(``);
   const [loadError, loadErrorSet] = useState(``);
   
-  const fetchMoive = (page)=>{
-    console.log( "로드 " + page );
+  const fetchMoive = async (page)=>{
+    
     // nowPageSet({ "pge":0, "tot":0 });
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
@@ -68,8 +68,8 @@ export default function Lists() {
     // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // setMlist([])
-    axios.get( fetchURL ).then(res =>{
-      console.log(res.data);
+    await axios.get( fetchURL ).then(res =>{
+      console.log(res.data);console.log( "로드 " + page );
       movieListSet( prevList => [...prevList, ...res.data.results] );
       console.log(`callStat : ${callStat} , page : ${page} , res.data.total_pages :  ${res.data.total_pages} `);
       callStat = true;
@@ -99,7 +99,7 @@ export default function Lists() {
     movieListSet([])
     window.scrollTo(0,0);
     // ui.loading.show();
-    fetchMoive(page);
+    fetchMoive(1);
     getCate();
     document.querySelector(".header").classList.remove("trans");
     window.addEventListener("scroll", scrollEvent);
