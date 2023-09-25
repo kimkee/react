@@ -232,13 +232,11 @@ export default function Search() {
                   onChange={onChange}
                   onInvalid={ (e)=> e.preventDefault() }
                 />
-                <button type="button" className="btdel" title='삭제'
-                  onClick={delFormText}
-                >
+                <button type="button" className="bt-del" title='삭제' onClick={delFormText} >
                   <i className="fa-regular fa-xmark"></i>
                 </button>
               </span>
-              <button type="submit" className="bt-sch"><i className="fa-regular fa-search"></i></button>
+              <button type="submit" className="bt-sch" title='검색'><i className="fa-regular fa-search"></i></button>
               
             </form>
           </div>

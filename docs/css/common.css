@@ -636,7 +636,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .poster-list>.list>li .box{position: relative;display: block;}
 .poster-list>.list>li .box .cont{position: relative;}
 .poster-list>.list>li .box .desc{   position: absolute; left: 0; right: 0; bottom: 0; background-image: linear-gradient(360deg, rgb(0 0 0 / 62%), transparent); padding: 4% 0;}
-.poster-list>.list>li .box .tits{line-height: 1.2;font-size: clamp(11rem, 3.3vw, 16rem);color: #999;margin: 3rem 0rem 0rem 0rem;padding: 0rem 0rem 2rem 0rem;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+.poster-list>.list>li .box .tits{line-height: 1.2;font-size: clamp(11rem, 3.3vw, 14rem);color: #999;margin: 3rem 0rem 0rem 0rem;padding: 0rem 0rem 2rem 0rem;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
 .poster-list>.list>li .box .desc em{text-shadow: 0rem 0rem 6rem #0000007d;font-size: 3vw;margin-left: 7rem;display: inline-flex;line-height: 1.2;text-shadow: 0rem 1rem 2rem rgb(0 0 0 / 70%);opacity: 0.9;}
 .poster-list>.list>li .box .desc .cate .ico{display: inline-flex;justify-content: center;border-radius: 10rem;padding: 3rem 5rem 3rem 5rem;margin: 1rem 3rem 1rem 0rem;font-size: 10rem;line-height: 1;font-family: 'Tahoma';color: #aaa;background: #333;cursor: default;}
 .poster-list>.list>li .box .cont .pics{display:block;position:relative;padding-bottom: calc(1200% / 780 * 100);overflow: hidden;/* border-radius: 6rem; */}
@@ -684,8 +684,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .schs-form .form .input{border-width: 0;background-color: #121212;}
 .schs-form .form .input input{padding-left: 124rem;color: #dddddd;height: 46rem;}
 .schs-form .form .input input::-webkit-input-placeholder{ color: #666;}
-.schs-form .form .input input:valid + .btdel{display: block;}
-.schs-form .form .input .btdel{position: absolute;right: 8rem;top: 12rem;width: 24rem;height: 24rem;display: none;}
+.schs-form .form .input input:valid + .bt-del{display: block;}
+.schs-form .form .input .bt-del{position: absolute;right: 8rem;top: 12rem;width: 24rem;height: 24rem;display: none;}
 .schs-form .form .tts{font-size: 15rem;font-weight: 700;white-space:nowrap;color: #596272;min-width: 34rem;position: absolute;left: 13rem;top: 8rem;z-index: 10;}
 .schs-form .form .input{width: calc(100% - 52rem);}
 .schs-form .form .bt-sch{font-size:20rem;width: 46rem;height: 46rem;background: #121212;color: #61dafb;border-radius: 6rem;}
