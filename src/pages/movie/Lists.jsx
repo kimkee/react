@@ -11,8 +11,6 @@ export default function Lists() {
   // console.log(opts);
 
   const params = useParams()
-  
-  console.log(params);
   const location = useLocation()
   const navigate = useNavigate();
   const opts = params.menu;

@@ -12,8 +12,8 @@ export default function Search() {
   const params = useParams();
 
   const opts = params.menu;
-  const [keyword,keywordSet] = useState(searchParams.get('search'));
-  const [mlist, setMlist] = useState([]);
+  const [keyword, keywordSet] = useState(searchParams.get('search'));
+  const [schList, schListSet] = useState([]);
   // const [page, setPage] = useState(1);
   let page = 1;
   const [cate, setCate] = useState({});
@@ -21,11 +21,11 @@ export default function Search() {
   const getCate = async ()=>{
     
     await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
-      console.log(res.data.genres);  
+      // console.log(res.data.genres);  
       const mcate = {};
       res.data.genres.forEach( d => mcate[d.id] = d.name );
       setCate(mcate);
-      console.log(mcate);
+      // console.log(mcate);
     }).catch( error =>{
       console.log(error);
       setCate(null);
@@ -44,20 +44,13 @@ export default function Search() {
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
     inputRef.current.value = keyword;
-    kwd = keyword
+    kwd = keyword || '';
     
-    if(keyword == null) {
-      // fetchURL = ''
-      kwd = ''
-      ui.loading.hide();
-      // return
-    };
-
     const fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
-      setMlist( mlist => [...mlist,...res.data.results] );
+      schListSet( prevList => [...prevList,...res.data.results] );
       console.log(page + "=== " + res.data.total_pages );
       callStat = true;
       console.log(callStat);
@@ -83,7 +76,7 @@ export default function Search() {
     ui.loading.show();
     fetchMoive(page);
     document.querySelector('.header').classList.add("hide");
-    setMlist([]);
+    schListSet([]);
     !keyword && !document.querySelector(".pop-layer") && inputRef.current.focus();
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
@@ -150,7 +143,7 @@ export default function Search() {
   const goSearch = (e) => {
     keywordSet( inputRef.current?.value );
     window.history.replaceState(null, null, `#/search/${opts}?search=${inputRef.current?.value}`);
-    setMlist([]);
+    schListSet([]);
     fetchMoive( 1 );
     e.preventDefault();
     document.querySelector(".movie-list").focus();
@@ -169,7 +162,7 @@ export default function Search() {
   }
   const onChange = (event) => {
     keywordSet(event.target.value )
-    setMlist([]);
+    schListSet([]);
     const url = new URL(window.location);
     url.searchParams.set("search", event.target.value);
     console.log(url);
@@ -210,6 +203,8 @@ export default function Search() {
     console.log(e);
     inputRef.current.value = "";
     inputRef.current.focus();
+    keywordSet(``)
+    window.history.replaceState(null, null, `#/search/${opts}?search=`);
   }
   
   // console.log(mlist);
@@ -268,16 +263,16 @@ export default function Search() {
         <div className='movie-list' tabIndex="-1">
         { 
         
-        mlist.length <= 0  ? 
+        schList.length <= 0  ? 
           <div className="nodata">
             <i className="fa-solid fa-file-magnifying-glass"></i>
-            { keyword ? <p> ‟{keyword}” 검색 결과가 없습니다.</p> : null} 
+            { keyword ? <p> ‟{keyword}” 검색 결과가 없습니다.</p> : <p> 검색어를 입력하세요.</p> } 
           </div>
           :
           <>
           <ul className='list'>
           {
-            mlist.map((data,num) =>{
+            schList.map((data,num) =>{
               return(
                 <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                   <ItemA data={data} cate={cate} />
@@ -287,7 +282,7 @@ export default function Search() {
           }
           </ul>
 
-          { mlist.length > 0 &&
+          { schList.length > 0 &&
           <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
             <em><i className="fa-duotone fa-spinner"></i></em>
             <button onClick={ (e)=>{
@@ -301,7 +296,7 @@ export default function Search() {
         </div>
                 
         <div className="page-set">
-        { mlist.length > 0 &&
+        { schList.length > 0 &&
             <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
         }
         </div>
