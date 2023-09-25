@@ -5,9 +5,9 @@ import StarPoint from '../components/StarPoint';
 
 
 // 검색 결과 유닛
-export default function ItemA({data,cate,opts}) {
+export default function ItemA({data,cate}) {
   console.log(data);
-  console.log(cate.genr);
+  console.log(cate);
   const imgpath = '//image.tmdb.org/t/p/w200';
   const img = imgpath + data.poster_path;
   const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
@@ -15,7 +15,7 @@ export default function ItemA({data,cate,opts}) {
 
   return (
   <>
-    <Link className="box" to={`/search/${opts}/${data.id}`}>
+    <Link className="box" to={`${data.id}`}>
       <div className="cont">
         <div className="pics"><img src={`${img}`} alt={tit} onError={ui.error.poster} className='img'/></div>
         <div className="desc">
@@ -27,7 +27,8 @@ export default function ItemA({data,cate,opts}) {
         <div className="dd">
           <div className="cate">
             <span className="txt">
-              {data.genre_ids.map( item => <em className="ico" key={item}> {  cate.genr ? cate.genr[item] : null  } </em> )}
+              
+              {data.genre_ids.map( item => <em className="ico" key={item}> {  cate[item] } </em> )}
             </span>
           </div>
         </div>

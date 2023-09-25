@@ -9,26 +9,23 @@ import ItemA from '../../components/ItemA.jsx';
 
 export default function Search() {
   const [searchParams] = useSearchParams();
-  let params = useParams();
-  // let {state} = useLocation();
-  console.log(params);
+  const params = useParams();
+
   const opts = params.menu;
-  let [keyword,keywordSet] = useState(searchParams.get('search'));
+  const [keyword,keywordSet] = useState(searchParams.get('search'));
   const [mlist, setMlist] = useState([]);
   // const [page, setPage] = useState(1);
   let page = 1;
   const [cate, setCate] = useState({});
   // const total;
   const getCate = async ()=>{
-    let cate = {
-      genr:{}
-    }
+    
     await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
-      res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
-      // setCate(cate); 
-    }).then( res =>{
-      setCate(cate);
-      console.log(cate);
+      console.log(res.data.genres);  
+      const mcate = {};
+      res.data.genres.forEach( d => mcate[d.id] = d.name );
+      setCate(mcate);
+      console.log(mcate);
     }).catch( error =>{
       console.log(error);
       setCate(null);
@@ -49,12 +46,14 @@ export default function Search() {
     inputRef.current.value = keyword;
     kwd = keyword
     
-    let fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     if(keyword == null) {
-      fetchURL = ''
+      // fetchURL = ''
+      kwd = ''
       ui.loading.hide();
-      return
+      // return
     };
+
+    const fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
 
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -281,7 +280,7 @@ export default function Search() {
             mlist.map((data,num) =>{
               return(
                 <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                  <ItemA data={data} cate={cate} opts={opts} />
+                  <ItemA data={data} cate={cate} />
                 </li>
               )
             })
