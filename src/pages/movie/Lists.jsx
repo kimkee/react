@@ -30,24 +30,15 @@ export default function Lists() {
 
   let page = 1;
   
-  const [cate, setCate] = useState({});
+  // const [cate, setCate] = useState({});
   // let cate = {};
   // const total;
   const getCate = async ()=>{
-    let cate = {
-      genr:{}
-    }
     await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
-      res.data.genres.forEach( d=> cate.genr[d.id] = d.name);
       // console.log(res.data.genres);
       genrMenuSet(res.data.genres);
-      // setCate(cate); 
-    }).then( res =>{
-      setCate(cate);
-      console.log(cate);
     });
   };
-  // const keyword = "미녀";
   
   const [nowPage, nowPageSet] = useState({ "pge":0, "tot":0 });
   const [loadActive, loadActiveSet] = useState(``);
@@ -167,7 +158,7 @@ export default function Lists() {
             movieList.map((data,num) =>{
                 return(
                   <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                    <ItemB data={data} cate={cate} opts={opts} />
+                    <ItemB data={data} />
                   </li>
                 )
             })

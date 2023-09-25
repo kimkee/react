@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';  // useParams , Outlet, useSearchParams
 import StarPoint from '../components/StarPoint';
 
 // Movie, TV 리스트 유닛
-export default function ItemB({data,cate}) {
+export default function ItemB({data}) {
   // console.log(data);
-  // console.log(cate.genr);
   
   const img = `//image.tmdb.org/t/p/w200/${data.poster_path}`;
   const tit = data.title || data.name;
