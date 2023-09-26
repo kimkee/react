@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate, Link } from 'react-router-dom'; //,useOutletContext  , useLocation
 import axios from 'axios';
-
+import { db } from '../../firebaseConfig.js';
+import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import ui from '../../ui.js';
 export default function ViewCtls({datas,postID, opts}) {
   const params = useParams();
@@ -31,12 +32,73 @@ export default function ViewCtls({datas,postID, opts}) {
     }
   }
   
-  const likeTog = (e)=> {
-    console.log(e.currentTarget);
+  const [scrapArray, scrapArraySet] = useState();
+
+  
+  const likeTog = async (e)=> {
     const btn = e.currentTarget;
-    ui.alert(`준비 중 입니다.`,{
+    if( store.state.userInfo.stat == true ){
+      ui.loading.show(`glx`);
+      const docRef = doc(db, 'member', store.state.userInfo.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+
+        let newScrapMovie = [];
+        let newScrapTv = [];
+        
+        const movie_scrap = docSnap.data().tmdb_movie_scrap || [datas] 
+        const tv_scrap = docSnap.data().tmdb_tv_scrap || [datas] 
+        console.log( movie_scrap ,  opts );
+        
+        if (opts == `movie`) {
+          newScrapMovie = [...movie_scrap, datas ].filter((element, index, self) => {
+            return self.findIndex(e => e.id === element.id ) === index;
+          });
+          
+          await updateDoc(docRef, {
+            tmdb_movie_scrap: newScrapMovie
+          }).then(() => {
+            console.log("Movie 스크랩: ", datas , btn);
+            btn.classList.add('on');
+            ui.loading.hide();
+          }).catch(e => { console.error(e); ui.loading.hide(); });
+
+        } else if (opts == `tv`){
+          newScrapTv = [...tv_scrap, datas ].filter((element, index, self) => {
+            return self.findIndex(e => e.id === element.id ) === index;
+          });
+          console.log(newScrapTv);
+          await updateDoc(docRef, {
+            tmdb_tv_scrap: newScrapTv
+          }).then(() => {
+            console.log("Tv 스크랩: ", datas , btn);
+            btn.classList.add('on');
+            ui.loading.hide();
+          }).catch(e => { console.error(e); ui.loading.hide(); });
+        }
+        
+        
+
+      }
+      
+      
+
+
+    }else{
+      ui.confirm(`로그인이 필요합니다.<br>로그인페이지로 이동하시겠습니까? `,{
+        ycb: () => {
+          
+        },
+        ncb: () => {
+
+        }
+      });
+    }
+
+
+    /* ui.alert(`준비 중 입니다.`,{
       ycb: () => btn.classList.toggle('on')
-    });
+    }); */
   }
   const inputReply = (e)=> {
     ui.alert(`준비 중 입니다.`,{

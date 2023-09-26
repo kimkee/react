@@ -51,6 +51,8 @@ export default function User() {
         email : docSnap.data().email,
         date : ui.dateForm( docSnap.data().date.toDate() ),
         liked : docSnap.data().liked.length ,
+        tmdb_movie_scrap : docSnap.data().tmdb_movie_scrap ,
+        tmdb_tv_scrap : docSnap.data().tmdb_tv_scrap ,
       })
       
     } else {
@@ -153,7 +155,7 @@ export default function User() {
               <UserPost />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn like">
-              <UserLike />
+              <UserLike uInfo={uInfo} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
               <UserFolw />
