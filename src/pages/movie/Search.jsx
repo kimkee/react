@@ -189,14 +189,13 @@ export default function Search() {
     kwdLists.current?.classList.add("open");
   }
 
-  const delRecentKwd =(e,txt) =>{
+  const delRecentKwd =(txt) =>{
     const newArray = kwdLists.filter(item => item !== txt);
-    const nkeyArr = [...new Set(newArray)];
-    localStorage.setItem("keyword", JSON.stringify( nkeyArr ) );
-    setKeywords(nkeyArr);
+    localStorage.setItem("keyword", JSON.stringify( newArray ) );
+    setKeywords(newArray);
     keyWordBox.current.classList.add("open");
     setTimeout(() => inputRef.current.focus());
-    e.preventDefault();
+    // e.preventDefault();
     return false;
   }
   const delFormText =(e,txt) =>{
@@ -250,7 +249,7 @@ export default function Search() {
                 return (
                   <li key={kwd}>
                     <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                    <button className="del" type="button" onClick={ (e)=> delRecentKwd(e,kwd) }><i className="fa-regular fa-xmark"></i></button>
+                    <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
                   </li>
                 )
               }) }
