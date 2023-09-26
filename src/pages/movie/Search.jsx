@@ -146,7 +146,6 @@ export default function Search() {
     schListSet([]);
     fetchMoive( 1 );
     e.preventDefault();
-    document.querySelector(".movie-list").focus();
     kwdStorage(inputRef.current?.value);
     // keyWordBox.current.classList.remove("open");
   }
@@ -172,37 +171,33 @@ export default function Search() {
 
   const keyWordBox = useRef();
   const schsForm = useRef();
-  const [kwdLists, setKeywords] = useState([]);
+  const [keywordList, keywordListSet] = useState([]);
   const kwdStorage =(k) =>{
     const keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     k.trim() !== '' ? keyArr.unshift(k) : null;
     const nkeyArr = [...new Set(keyArr)].slice(0, 10);
     localStorage.setItem("keyword", JSON.stringify( nkeyArr ) )
-    setKeywords(nkeyArr)
+    keywordListSet(nkeyArr);
   }
 
   const showKwdList =(k) =>{
     const keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
-    const nkeyArr = [...new Set(keyArr)];
-    setKeywords(nkeyArr)
-    schsForm.current?.classList.add("open");
-    kwdLists.current?.classList.add("open");
+    keywordListSet(keyArr);
   }
 
   const delRecentKwd =(txt) =>{
-    const newArray = kwdLists.filter(item => item !== txt);
+    const newArray = keywordList.filter(item => item !== txt);
     localStorage.setItem("keyword", JSON.stringify( newArray ) );
-    setKeywords(newArray);
-    keyWordBox.current.classList.add("open");
+    keywordListSet(newArray);
+    
     setTimeout(() => inputRef.current.focus());
-    // e.preventDefault();
     return false;
   }
   const delFormText =(e,txt) =>{
     console.log(e);
     inputRef.current.value = "";
     inputRef.current.focus();
-    keywordSet(``)
+    keywordSet(``);
     window.history.replaceState(null, null, `#/search/${opts}?search=`);
   }
   
@@ -240,22 +235,20 @@ export default function Search() {
             </form>
           </div>
         </div>
-        <div className={  kwdLists.length > 0 ? `recent-kwds open` : `recent-kwds` } ref={keyWordBox}>
-          {
-            kwdLists.length < 1 
-            ? ``
-            : <ul className="lst">
-              { kwdLists.map( kwd => {
-                return (
-                  <li key={kwd}>
-                    <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                    <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
-                  </li>
-                )
-              }) }
-            </ul>
-          }
+        {keywordList.length > 0 &&
+        <div className={`recent-kwds`} ref={keyWordBox}>
+          <ul className="lst">
+          { keywordList.map( kwd => {
+            return (
+              <li key={kwd}>
+                <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
+                <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
+              </li>
+            )
+          }) }
+          </ul>
         </div>
+        }
 
         <div className='movie-list' tabIndex="-1">
         { 
