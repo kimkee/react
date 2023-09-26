@@ -73,7 +73,7 @@ export default function Search() {
 
   useEffect(() => {
     getCate();
-    ui.loading.show();
+    ui.loading.show(`glx`);
     fetchMoive(page);
     document.querySelector('.header').classList.add("hide");
     schListSet([]);
@@ -81,27 +81,13 @@ export default function Search() {
     window.addEventListener("scroll", scrollEvent);
     window.scrollTo(0, 0);
     showKwdList()
-    // document.addEventListener("focus", openClick);
-    document.querySelectorAll("*").forEach( (element)=> element.addEventListener("focus", openClick) );
-    document.addEventListener("touchstart", openClick);
 
     return ()=>{
       document.querySelector('.header').classList.remove("hide");
       window.removeEventListener("scroll", scrollEvent);
-      document.querySelectorAll("*").forEach( (element)=> element.removeEventListener("focus", openClick) );
-      document.removeEventListener("touchstart", openClick);
     }
     // eslint-disable-next-line
   },[keyword,opts]);
-
-  const openClick = (e)=>{
-    // console.log(e.target);
-    if ( e.target.closest(".schs-form") ) {
-        return
-      }else{
-        // schsForm?.current.classList.remove("open");
-      }
-  }
 
 
   // const [callStat, callStatSet] = useState(true);
@@ -146,12 +132,12 @@ export default function Search() {
     schListSet([]);
     fetchMoive( 1 );
     e.preventDefault();
-    kwdStorage(inputRef.current?.value);
+    saveKwdStorage(inputRef.current?.value);
     // keyWordBox.current.classList.remove("open");
   }
   const goRecentSearch = (txt)=>{
     inputRef.current.value = txt;
-    keywordSet( txt )
+    keywordSet( txt );
     window.history.replaceState(null, null, `#/search/${opts}?search=${txt}`);
     // setMlist([]);
     // fetchMoive( 1,txt );
@@ -160,7 +146,7 @@ export default function Search() {
     // keyWordBox.current.classList.remove("open");
   }
   const onChange = (event) => {
-    keywordSet(event.target.value )
+    keywordSet(event.target.value );
     schListSet([]);
     const url = new URL(window.location);
     url.searchParams.set("search", event.target.value);
@@ -172,7 +158,7 @@ export default function Search() {
   const keyWordBox = useRef();
   const schsForm = useRef();
   const [keywordList, keywordListSet] = useState([]);
-  const kwdStorage =(k) =>{
+  const saveKwdStorage =(k) =>{
     const keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     k.trim() !== '' ? keyArr.unshift(k) : null;
     const nkeyArr = [...new Set(keyArr)].slice(0, 10);
@@ -180,7 +166,7 @@ export default function Search() {
     keywordListSet(nkeyArr);
   }
 
-  const showKwdList =(k) =>{
+  const showKwdList =() =>{
     const keyArr = JSON.parse( localStorage.getItem("keyword") || '["스타워즈","포레스트 검프"]' );
     keywordListSet(keyArr);
   }
@@ -221,8 +207,7 @@ export default function Search() {
               <span className="input">
                 <input type="text" placeholder="검색어를 입력하세요." 
                   ref={inputRef}
-                  required maxLength={12} 
-                  onMouseDown={showKwdList}
+                  required maxLength={12}
                   onChange={onChange}
                   onInvalid={ (e)=> e.preventDefault() }
                 />
