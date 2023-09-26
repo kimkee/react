@@ -175,12 +175,10 @@ export default function Search() {
     const newArray = keywordList.filter(item => item !== txt);
     localStorage.setItem("keyword", JSON.stringify( newArray ) );
     keywordListSet(newArray);
-    
     setTimeout(() => inputRef.current.focus());
-    return false;
+    // return false;
   }
-  const delFormText =(e,txt) =>{
-    console.log(e);
+  const delFormText =() =>{
     inputRef.current.value = "";
     inputRef.current.focus();
     keywordSet(``);
