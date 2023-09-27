@@ -28,15 +28,12 @@ const store = {
       "https://cdn-icons-png.flaticon.com/128/1154/1154473.png",
       "https://cdn-icons-png.flaticon.com/128/4532/4532510.png",
     ],
-    todos : "fdsssssss", 
-    saying : "sssssssss",
-    count: 0,
   },
   authState: ()=>{
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        getUser(user);
+        setUser(user);
         sessionStorage.setItem("user",JSON.stringify(user));
         return;
       }
@@ -47,7 +44,7 @@ const store = {
       console.table(store.state.userInfo);
 
     });
-    const getUser = async (user)=>{
+    const setUser = async (user)=>{
       const docRef =  doc(db, "member" , user.uid);
       try {
         const docSnap = await getDoc(docRef);
@@ -58,12 +55,16 @@ const store = {
         store.state.userInfo.displayName = docSnap.data().nick;
         store.state.userInfo.uid = user.uid;
         store.state.userInfo.liked = docSnap.data().liked || [];
+        store.state.userInfo.tmdb_movie_scrap = docSnap.data().tmdb_movie_scrap || [];
+        store.state.userInfo.tmdb_tv_scrap = docSnap.data().tmdb_tv_scrap || [];
         const session = JSON.parse( sessionStorage.getItem("user"));
         session.avatar = docSnap.data().avatar ;
         session.photoURL = docSnap.data().photoURL ;
         session.displayName = docSnap.data().nick ;
         session.nick = docSnap.data().nick ;
         session.liked = docSnap.data().liked || []; ;
+        session.tmdb_movie_scrap = docSnap.data().tmdb_movie_scrap || [];
+        session.tmdb_tv_scrap = docSnap.data().tmdb_tv_scrap || [];
         session.stat = true ;
         sessionStorage.setItem("user",JSON.stringify(session));
         store.state.userInfo = session;
