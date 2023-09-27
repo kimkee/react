@@ -28,12 +28,12 @@ import UserFolw from './UserFolw.jsx';
 
 export default function User() {
   
-  let params = useParams()
+  const params = useParams()
   
-  // console.log(params);
-  let location = useLocation()
-  let navigate = useNavigate();
-  let uid = params.id;
+  console.log(params);
+  const location = useLocation()
+  const navigate = useNavigate();
+  const uid = params.id;
   const [uInfo, setUInfo] = useState({});
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
@@ -75,7 +75,7 @@ export default function User() {
   }
 
   useEffect( () => {
-    window.scrollTo(0,0);
+    // window.scrollTo(0,0);
     
     // document.querySelector(".header").classList.remove("trans");
     // window.addEventListener("scroll", scrollEvent);
@@ -85,7 +85,7 @@ export default function User() {
       // window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[uInfo.nick]);
+  },[uInfo.nick,uid]);
 
   
   return (
@@ -115,10 +115,10 @@ export default function User() {
         <div className="user-post">
           <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-bookmark"></i></span></button>
             </li>
             <li className={spIdx == 1 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-popcorn"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-solid fa-users"></i></span></button>
@@ -151,11 +151,11 @@ export default function User() {
               // gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="section" className="ctn post">
-              <UserPost />
-            </SwiperSlide>
             <SwiperSlide tag="section" className="ctn like">
               <UserLike uInfo={uInfo} />
+            </SwiperSlide>
+            <SwiperSlide tag="section" className="ctn post">
+              <UserPost />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
               <UserFolw />

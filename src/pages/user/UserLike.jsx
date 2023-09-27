@@ -47,30 +47,18 @@ export default function UserLike({uInfo}) {
                 const tit = data.title || data.name;
                 return(
                   <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                    <Link className="box" to={`/search/`}>
-                      <div className="cont">
+                    <div className="box">
+                      <Link className="cont"  to={`movie/${data.id}`}>
                         <div className="pics"><img src={`${img}`} alt={tit} onError={ui.error.poster} className='img'/></div>
                         <div className="desc">
                           <div className="tits">{data.title}</div>
                           <div className="text">{data.overview}</div>
                         </div>
+                      </Link>
+                      <div className="bts">
+                        <button type="button" className="bt"><span><i className="fa-regular fa-close"></i></span></button>
                       </div>
-                      <div className="info">
-                        <div className="dd">
-                          <div className="cate">
-                            <span className="txt"><em className="ico"> 코미디 </em><em className="ico"> 드라마 </em><em className="ico"> 로맨스 </em></span>
-                          </div>
-                        </div>
-                        <div className="dd">
-                          <div className="hits">
-                            <StarPoint point={data.vote_average} />
-                            <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
-                          </div>
-                          <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date || data.first_air_date}</b></div>
-                        </div>
-                      </div>
-                      
-                    </Link>
+                    </div>
                   </li>
                 )
             })}

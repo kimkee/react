@@ -626,9 +626,15 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .list>li .box .info .cate .ico{display: inline-flex;justify-content: center;border-radius: 10rem;padding: 3rem 5rem 3rem 5rem;margin: 1rem 3rem 1rem 0rem;font-size: 10rem;line-height: 1;font-family: 'Tahoma';color: #aaa;background: #333;cursor: default;}
 .movie-list .list>li .box .info .keys{font-size: 10rem;color: #707887;margin-left: 6rem;display: none;}
 
- .movie-list.user{}
- .movie-list.user .list>li .box .cont .pics{ min-width: 14%; width: 14%; padding-bottom: calc(1200% / 780 * 14); }
- .movie-list.user .list>li .box .cont .text{ max-height: 52rem; }
+.movie-list.user{}
+.movie-list.user .list>li .box{ padding-right: 55rem; }
+.movie-list.user .list>li .box .cont .pics{margin-right: 14rem;}
+.movie-list.user .list>li .box .cont .pics{min-width: 14%;width: 14%;padding-bottom: calc(1200% / 780 * 12);}
+.movie-list.user .list>li .box .cont .desc{}
+.movie-list.user .list>li .box .cont .text{ -webkit-line-clamp: 2; max-height: 34rem; }
+.movie-list.user .list>li .box .bts{position: absolute;right: 11rem;top: 14rem;}
+.movie-list.user .list>li .box .bts .bt{ width: 32rem; height: 32rem; }
+.movie-list.user .list>li .box .bts .bt i{font-size: 20rem;color: #5e5e5e;}
 
 .poster-list{ overflow: hidden;padding: 5rem calc(15rem - 1.5%); position: relative; }
 .poster-list>.list{display:flex; flex-wrap: wrap;}

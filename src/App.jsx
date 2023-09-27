@@ -127,12 +127,21 @@ export default function App() {
             </Route>
 
             <Route path="user">
+
               <Route path="*" element={<NotFound /> } />
               <Route path="signin" element={<SignIn /> } />
               <Route path="signout" element={<SignOut /> } />
               <Route path="signup" element={<SignUp /> } />
               
-              <Route path=":id" element={<User />} />
+              <Route path=":id" element={<User />} >
+                <Route path=":menu">
+                  <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                    <Route path="poster/:nums" element={<Poster />} />
+                    <Route path="person/:nums" element={<Person />} />
+                    <Route path="videos/:nums" element={<Videos  />} />
+                  </Route>
+                </Route>
+              </Route>
               
             </Route>
 
