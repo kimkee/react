@@ -3,10 +3,11 @@ import {useParams, useNavigate, Link } from 'react-router-dom'; //,useOutletCont
 import axios from 'axios';
 import { db } from '../../firebaseConfig.js';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import ui from '../../ui.js';
 export default function ViewCtls({datas,postID, opts}) {
   const params = useParams();
-
+  const navigate = useNavigate();
   const shareLink = ()=> {
     const surl = `${location.origin+location.pathname}#/${params.menu}/${postID}`;
     navigator.clipboard.writeText(surl);
@@ -87,7 +88,7 @@ export default function ViewCtls({datas,postID, opts}) {
     }else{
       ui.confirm(`로그인이 필요합니다.<br>로그인페이지로 이동하시겠습니까? `,{
         ycb: () => {
-          
+          navigate(`/user/signin`);
         },
         ncb: () => {
 
@@ -105,20 +106,43 @@ export default function ViewCtls({datas,postID, opts}) {
       ycb: () => {}
     });
   }
+  const [userInfo, setUserInfo] = useState({});
+  const [isScrap, setIsScrap] = useState('dd')
 
 
   useEffect(() => {
+    /* const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(userInfo);
+        setUserInfo(  sessionStorage.user && JSON.parse(sessionStorage.user)   )
+        setIsScrap( userInfo.tmdb_movie_scrap?.some(item => {
+          console.log(item.id , postID);
+          return item.id == postID
+        } ) ? 'on' : 'off' );
+      }
+    }); */
+    console.log(userInfo);
+    setUserInfo(  sessionStorage.user && JSON.parse(sessionStorage.user)   )
+    setIsScrap( userInfo?.tmdb_movie_scrap?.some(item => {
+      console.log(item.id , postID);
+      return item.id == postID
+    } ) ? 'on' : 'off' );
     
+  
+    
+
+
     return () => {
     
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  },[isScrap]);
 
   return (
     <>
       <div className="dins">
-        <button type="button" onClick={likeTog} className="bt bt-scrap"><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>
+        <button type="button" onClick={likeTog} className={`bt bt-scrap ${isScrap}`}><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>
         <button type="button" onClick={inputReply} className="bt bt-reply"><i className="fa-regular fa-pen-to-square"></i><em>리뷰</em></button>
         <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
       </div>
