@@ -61,7 +61,7 @@ export default function UserLike({uInfo}) {
                     </div>
                   </li>
                 )
-            })}
+            }).reverse()}
             
           </ul>
           }
