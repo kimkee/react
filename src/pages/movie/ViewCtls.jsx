@@ -38,6 +38,9 @@ export default function ViewCtls({datas,postID, opts}) {
   
   const likeTog = async (e)=> {
     const btn = e.currentTarget;
+    const scraped =  btn.classList.contains('on');
+    console.log(scraped);
+    // return
     if( store.state.userInfo.stat == true ){
       ui.loading.show(`glx`);
       const docRef = doc(db, 'member', store.state.userInfo.uid);
@@ -52,19 +55,33 @@ export default function ViewCtls({datas,postID, opts}) {
         console.log( movie_scrap ,  opts );
         
         if (opts == `movie`) {
-          newScrapMovie = [...movie_scrap, datas ].filter((element, index, self) => {
-            return self.findIndex(e => e.id === element.id ) === index;
-          });
+
+          if( scraped ) {            
+            newScrapMovie = [...movie_scrap, datas ].filter(item => {
+              console.log(item.id , postID);
+              return  item.id != postID
+            });
+          }else{
+            newScrapMovie = [...movie_scrap, datas ].filter((element, index, self) => {
+              return self.findIndex(e => e.id === element.id ) === index;
+            });
+          }
+
           
           await updateDoc(docRef, {
             tmdb_movie_scrap: newScrapMovie
           }).then(() => {
             console.log("Movie 스크랩: ", datas , btn);
-            btn.classList.add('on');
+            scraped ? setIsScrap('off') : setIsScrap('on');
             ui.loading.hide();
           }).catch(e => { console.error(e); ui.loading.hide(); });
 
-        } else if (opts == `tv`){
+        }
+
+
+
+
+        if (opts == `tv`){
           newScrapTv = [...tv_scrap, datas ].filter((element, index, self) => {
             return self.findIndex(e => e.id === element.id ) === index;
           });
@@ -73,7 +90,7 @@ export default function ViewCtls({datas,postID, opts}) {
             tmdb_tv_scrap: newScrapTv
           }).then(() => {
             console.log("Tv 스크랩: ", datas , btn);
-            btn.classList.add('on');
+            scraped ? setIsScrap('off') : setIsScrap('on');
             ui.loading.hide();
           }).catch(e => { console.error(e); ui.loading.hide(); });
         }
