@@ -38,7 +38,7 @@ export default function User() {
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
   const viewUser = async (ids)=> {
-    ui.loading.show();
+    ui.loading.show(`glx`);
     const docRef = doc(db, 'member', ids);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
