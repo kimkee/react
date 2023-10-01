@@ -43,7 +43,6 @@ export default function UserLike({uInfo}) {
             {uInfo.tmdb_movie_scrap.map((data,num) =>{
                 const imgpath = '//image.tmdb.org/t/p/w92';
                 const img = imgpath + data.poster_path;
-                const bgs = data.backdrop_path ? imgpath + data.backdrop_path : imgpath + data.poster_path;
                 const tit = data.title || data.name;
                 return(
                   <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
