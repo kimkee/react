@@ -122,7 +122,8 @@ export default function ViewCtls({datas,postID, opts}) {
   return (
     <>
       <div className="dins">
-        <button type="button" onClick={likeTog} className={`bt bt-scrap ${isScrap ? 'on' : 'off'}`}><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>
+        {opts == `movie` &&
+          <button type="button" onClick={likeTog} className={`bt bt-scrap ${isScrap ? 'on' : 'off'}`}><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>}
         <button type="button" onClick={inputReply} className="bt bt-reply"><i className="fa-regular fa-pen-to-square"></i><em>리뷰</em></button>
         <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
       </div>
