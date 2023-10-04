@@ -57,13 +57,13 @@ export default function ViewCtls({datas,postID, opts}) {
         if (opts == `movie`) {
 
           if( isScrap ) {            
+            setIsScrap(false);
             newScrapMovie = [...movie_scrap, datas ].filter(item => {
-              setIsScrap(false);
               return  item.id != postID
             });
           }else{
+            setIsScrap(true);
             newScrapMovie = [...movie_scrap, datas ].filter((element, index, self) => {
-              setIsScrap(true);
               return self.findIndex(e => e.id === element.id ) === index;
             });
           }
@@ -123,7 +123,8 @@ export default function ViewCtls({datas,postID, opts}) {
     <>
       <div className="dins">
         {opts == `movie` &&
-          <button type="button" onClick={likeTog} className={`bt bt-scrap ${isScrap ? 'on' : 'off'}`}><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>}
+        <button type="button" onClick={likeTog} className={`bt bt-scrap ${isScrap ? 'on' : 'off'}`}><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>
+        }
         <button type="button" onClick={inputReply} className="bt bt-reply"><i className="fa-regular fa-pen-to-square"></i><em>리뷰</em></button>
         <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
       </div>
