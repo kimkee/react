@@ -4,6 +4,7 @@ import axios from 'axios';
 import { db } from '../../firebaseConfig.js';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import getUser from '../../getUser.js';
 import ui from '../../ui.js';
 export default function ViewCtls({datas,postID, opts}) {
   const params = useParams();
@@ -124,7 +125,7 @@ export default function ViewCtls({datas,postID, opts}) {
     });
   }
   const [userInfo, setUserInfo] = useState({});
-  const [isScrap, setIsScrap] = useState('dd')
+  const [isScrap, setIsScrap] = useState('')
 
 
   useEffect(() => {
@@ -140,14 +141,17 @@ export default function ViewCtls({datas,postID, opts}) {
       }
     }); */
     console.log(userInfo);
-    setUserInfo(  sessionStorage.user && JSON.parse(sessionStorage.user)   )
-    setIsScrap( userInfo?.tmdb_movie_scrap?.some(item => {
-      console.log(item.id , postID);
-      return item.id == postID
-    } ) ? 'on' : 'off' );
+    // setUserInfo(  sessionStorage.user && JSON.parse(sessionStorage.user)   )
     
-  
     
+    getUser().then((userData) => {
+      console.log(userData); // 얻은 사용자 데이터를 사용하세요
+      setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...userData }));
+      setIsScrap( userInfo?.tmdb_movie_scrap?.some(item => {
+        console.log(item.id , postID);
+        return item.id == postID
+      } ) ? 'on' : 'off' );
+    });
 
 
     return () => {
