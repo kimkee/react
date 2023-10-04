@@ -58,7 +58,6 @@ export default function ViewCtls({datas,postID, opts}) {
 
           if( isScrap ) {            
             newScrapMovie = [...movie_scrap, datas ].filter(item => {
-              // console.log(item.id , postID);
               setIsScrap(false);
               return  item.id != postID
             });
@@ -68,7 +67,6 @@ export default function ViewCtls({datas,postID, opts}) {
               return self.findIndex(e => e.id === element.id ) === index;
             });
           }
-
           
           await updateDoc(docRef, {
             tmdb_movie_scrap: newScrapMovie
@@ -77,9 +75,6 @@ export default function ViewCtls({datas,postID, opts}) {
             ui.loading.hide();
           }).catch(e => { console.error(e); ui.loading.hide(); });
           // isScrap ? setIsScrap(false) : setIsScrap(true);
-
-
-          
 
         }
 
@@ -95,12 +90,8 @@ export default function ViewCtls({datas,postID, opts}) {
         }
       });
     }
-
-
-    /* ui.alert(`준비 중 입니다.`,{
-      ycb: () => btn.classList.toggle('on')
-    }); */
   }
+
   const inputReply = (e)=> {
     ui.alert(`준비 중 입니다.`,{
       ycb: () => {}
@@ -111,32 +102,16 @@ export default function ViewCtls({datas,postID, opts}) {
 
 
   useEffect(() => {
-    /* const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(userInfo);
-        setUserInfo(  sessionStorage.user && JSON.parse(sessionStorage.user)   )
-        setIsScrap( userInfo.tmdb_movie_scrap?.some(item => {
-          console.log(item.id , postID);
-          return item.id == postID
-        } ) ? 'on' : 'off' );
-      }
-    }); */
-    // console.log(isScrap);
-    // setUserInfo(  sessionStorage.user && JSON.parse(sessionStorage.user)   )
-    
-    
     getUser().then((userData) => {
       console.log(userData); // 얻은 사용자 데이터를 사용하세요
       setUserInfo( userData);
       return userData
     }).then(data => {
-      setIsScrap( data?.tmdb_movie_scrap?.some(item => {
+      setIsScrap( data.tmdb_movie_scrap.some(item => {
         console.log(item.id , postID);
         return item.id == postID
       } ) );
     });
-
 
     return () => {
     

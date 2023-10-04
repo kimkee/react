@@ -28,17 +28,13 @@ export default function UserLike({uInfo}) {
     }
     // eslint-disable-next-line
   });
-  if (!uInfo.tmdb_movie_scrap) { return false
-    
-  }
+  if (!uInfo.tmdb_movie_scrap) { return false }
+
   return (
     <>
       <div className="movie-list user">
-          {/* <div className="nodata">
-            <i className="fa-solid fa-file-magnifying-glass"></i>
-            { <p> ‟{1}” 검색 결과가 없습니다.</p> } 
-          </div> */}
-          {uInfo.tmdb_movie_scrap.length > 0 &&
+          
+          {uInfo.tmdb_movie_scrap.length > 0 ?
           <ul className='list'>
             {uInfo.tmdb_movie_scrap.map((data,num) =>{
                 const imgpath = '//image.tmdb.org/t/p/w92';
@@ -63,10 +59,13 @@ export default function UserLike({uInfo}) {
             }).reverse()}
             
           </ul>
+          :
+          <div className="nodata">
+            {/* <i className="fa-solid fa-file-magnifying-glass"></i> */}
+            <p> 스크랩된 컨텐츠가 없습니다.</p>
+          </div>
           }
       </div>
-      
-
     </>
   )
 }

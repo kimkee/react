@@ -51,8 +51,8 @@ export default function User() {
         email : docSnap.data().email,
         date : ui.dateForm( docSnap.data().date.toDate() ),
         liked : docSnap.data().liked.length ,
-        tmdb_movie_scrap : docSnap.data().tmdb_movie_scrap ,
-        tmdb_tv_scrap : docSnap.data().tmdb_tv_scrap ,
+        tmdb_movie_scrap : docSnap.data().tmdb_movie_scrap || [] ,
+        tmdb_tv_scrap : docSnap.data().tmdb_tv_scrap || {},
       })
       
     } else {

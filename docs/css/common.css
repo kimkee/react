@@ -1259,7 +1259,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .pctn .ctn.like{padding: 0rem;}
 .page.user.view .user-post .pctn .ctn.revw{padding: 20rem;}
 .page.user.view .user-post .pctn .ctn.repl{padding: 20rem;}
-.page.user.view .user-post .pctn .ctn .nodata{padding: 0;display: flex;justify-content: center;align-items: center;height: 100%;}
+.page.user.view .user-post .pctn .ctn .nodata{padding: 80rem 0rem;display: flex;justify-content: center;align-items: center;height: 100%;}
 .page.user.view .swiper-wrapper{padding-bottom: 0;}
 
 .ut-avata{display: flex;gap: 5rem 0rem;flex-wrap: wrap;justify-content: center;}
