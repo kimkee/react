@@ -21,34 +21,30 @@ export default function UserLike({uInfo}) {
   if (!uInfo.tmdb_movie_scrap) { return false }
 
   // const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
-  const [newScrapMovie, setNewScrapMovie] = useState(uInfo.tmdb_movie_scrap )
-  
-  const deleteScrap =  async (opts, data) => {
+  const [newScrapMovie, setNewScrapMovie] = useState(uInfo.tmdb_movie_scrap);
+
+  const deleteScrap = async (opts, data) => {
     ui.loading.show('glx');
     console.log(opts, data);
-    
-    const movie_scrap = uInfo.tmdb_movie_scrap || [data] 
-    const tv_scrap = uInfo.tmdb_tv_scrap || [data] 
-    
-    setNewScrapMovie( uInfo.tmdb_movie_scrap );
-    uInfo.tmdb_movie_scrap = [...movie_scrap, data ].filter(item => {
-      return  item.id != data.id
-    })
-    
   
-    console.log(  uInfo.tmdb_movie_scrap);
-    console.log( newScrapMovie);
-    
+    const movie_scrap = uInfo.tmdb_movie_scrap || [data];
+    const tv_scrap = uInfo.tmdb_tv_scrap || [data];
+  
+    uInfo.tmdb_movie_scrap = [...movie_scrap, data].filter(item => item.id != data.id);
+    await setNewScrapMovie(uInfo.tmdb_movie_scrap);
+  
+    console.log(uInfo.tmdb_movie_scrap);
+    console.log(newScrapMovie);
+  
     const docRef = doc(db, 'member', uInfo.id);
-    await  updateDoc(docRef, {
-      tmdb_movie_scrap: uInfo.tmdb_movie_scrap
+    await updateDoc(docRef, {
+      tmdb_movie_scrap: newScrapMovie
     }).then(() => {
-      console.log("Movie 스크랩: " , uInfo.tmdb_movie_scrap);
-      console.log("Movie 스크랩: " , newScrapMovie);
+      console.log("Movie 스크랩: ", uInfo.tmdb_movie_scrap);
+      console.log("Movie 스크랩: ", newScrapMovie);
       ui.loading.hide();
     }).catch(e => { console.error(e); ui.loading.hide(); });
-
-  };
+  };  
 
   useEffect( () => {
     console.log(uInfo);
