@@ -90,7 +90,7 @@ export default function UserLike({uInfo}) {
                   </li>
                 )
             }).reverse()}
-            
+            { uInfo.tmdb_movie_scrap.length % 2 === 1 && <li></li>}
           </ul>
           :
           <div className="nodata">
