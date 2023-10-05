@@ -24,7 +24,7 @@ export default function UserLike({uInfo}) {
   const [newScrapMovie, setNewScrapMovie] = useState(uInfo.tmdb_movie_scrap )
   
   const deleteScrap =  async (opts, data) => {
-    
+    ui.loading.show('glx');
     console.log(opts, data);
     
     const movie_scrap = uInfo.tmdb_movie_scrap || [data] 
