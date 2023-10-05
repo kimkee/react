@@ -109,6 +109,11 @@ export default function User() {
             <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {uInfo.date}</span>
             {uInfo.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>}
           </div>
+            { store.state.userInfo.uid == uInfo.id &&
+          <div className="bts">
+              <Link to="/user/signout" className="btn sm logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
+          </div>
+            }
         </div>
         :null}
 
