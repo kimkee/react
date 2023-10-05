@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
 import {db} from '../../firebaseConfig.js';
-import { collection, query, getDocs, orderBy, getDoc, doc, where } from 'firebase/firestore';
+import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { getAuth, signOut } from 'firebase/auth';
 // import { atom } from 'recoil';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
@@ -17,23 +17,56 @@ import StarPoint from '../../components/StarPoint';
 
 
 export default function UserLike({uInfo}) {
+  
+  if (!uInfo.tmdb_movie_scrap) { return false }
 
-  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
+  // const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
+  const [newScrapMovie, setNewScrapMovie] = useState(uInfo.tmdb_movie_scrap )
+  
+  const deleteScrap =  async (opts, data) => {
+    
+    console.log(opts, data);
+    
+    const movie_scrap = uInfo.tmdb_movie_scrap || [data] 
+    const tv_scrap = uInfo.tmdb_tv_scrap || [data] 
+    
+    setNewScrapMovie( uInfo.tmdb_movie_scrap );
+    uInfo.tmdb_movie_scrap = [...movie_scrap, data ].filter(item => {
+      return  item.id != data.id
+    })
+    
+  
+    console.log(  uInfo.tmdb_movie_scrap);
+    console.log( newScrapMovie);
+    
+    const docRef = doc(db, 'member', uInfo.id);
+    await  updateDoc(docRef, {
+      tmdb_movie_scrap: uInfo.tmdb_movie_scrap
+    }).then(() => {
+      console.log("Movie 스크랩: " , uInfo.tmdb_movie_scrap);
+      console.log("Movie 스크랩: " , newScrapMovie);
+      ui.loading.hide();
+    }).catch(e => { console.error(e); ui.loading.hide(); });
 
+  };
 
   useEffect( () => {
     console.log(uInfo);
+    // setNewScrapMovie( uInfo.tmdb_movie_scrap );
     return ()=>{
 
     }
     // eslint-disable-next-line
-  });
+  },[]);
+  console.log(uInfo.tmdb_movie_scrap);
+  console.log(newScrapMovie);
   if (!uInfo.tmdb_movie_scrap) { return false }
+  // if (!newScrapMovie) { return false }
 
   return (
     <>
       <div className="movie-list user">
-          
+          {/* <button onClick={()=>{console.log(newScrapMovie)}}>dsf</button> */}
           {uInfo.tmdb_movie_scrap.length > 0 ?
           <ul className='list'>
             {uInfo.tmdb_movie_scrap.map((data,num) =>{
@@ -51,7 +84,7 @@ export default function UserLike({uInfo}) {
                         </div>
                       </Link>
                       <div className="bts">
-                        <button type="button" className="bt"><span><i className="fa-regular fa-close"></i></span></button>
+                        <button type="button" className="bt" onClick={ ()=>deleteScrap('movie',data) }><span><i className="fa-regular fa-close"></i></span></button>
                       </div>
                     </div>
                   </li>

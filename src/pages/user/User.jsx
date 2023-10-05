@@ -87,7 +87,7 @@ export default function User() {
     // eslint-disable-next-line
   },[uInfo.nick,uid]);
 
-  
+  if(!uInfo){return}
   return (
     <>
     <Outlet/>

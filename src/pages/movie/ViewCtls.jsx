@@ -56,7 +56,7 @@ export default function ViewCtls({datas,postID, opts}) {
         
         if (opts == `movie`) {
 
-          if( isScrap ) {            
+          if( isScrap ) {
             setIsScrap(false);
             newScrapMovie = [...movie_scrap, datas ].filter(item => {
               return  item.id != postID
