@@ -626,22 +626,15 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .list>li .box .info .cate .ico{display: inline-flex;justify-content: center;border-radius: 10rem;padding: 3rem 5rem 3rem 5rem;margin: 1rem 3rem 1rem 0rem;font-size: 10rem;line-height: 1;font-family: 'Tahoma';color: #aaa;background: #333;cursor: default;}
 .movie-list .list>li .box .info .keys{font-size: 10rem;color: #707887;margin-left: 6rem;display: none;}
 
-.movie-list.user{
-    padding: 20rem;
-}
-.movie-list.user .list{ justify-content: start; }
-.movie-list.user .list>li{width: 50%;border-color: #23232300 !important;}
-.movie-list.user .list>li:nth-child(2n+1){border-right: 1rem solid #242b36;}
-.movie-list.user .list>li .box{padding: 0rem 20rem 0rem 0rem;}
-.movie-list.user .list>li .box .cont .pics{margin-right: 3rem;}
-.movie-list.user .list>li .box .cont .pics{min-width: 30%;width: 30%;padding-bottom: calc(1200% / 780 * 30);border-radius: 0;}
-.movie-list.user .list>li .box .cont .desc{padding: 6rem;}
-.movie-list.user .list>li .box .tits{font-size: 13rem;}
-.movie-list.user .list>li .box .text{font-size: 12rem;}
-.movie-list.user .list>li .box .cont .text{-webkit-line-clamp: 3;max-height: 46rem;}
-.movie-list.user .list>li .box .bts{position: absolute;right: 0rem;top: 0rem;font-size: 11rem;}
+.movie-list.user{}
+.movie-list.user .list>li .box{ padding-right: 55rem; }
+.movie-list.user .list>li .box .cont .pics{margin-right: 14rem;}
+.movie-list.user .list>li .box .cont .pics{min-width: 14%;width: 14%;padding-bottom: calc(1200% / 780 * 12);}
+.movie-list.user .list>li .box .cont .desc{}
+.movie-list.user .list>li .box .cont .text{ -webkit-line-clamp: 2; max-height: 34rem; }
+.movie-list.user .list>li .box .bts{position: absolute;right: 11rem;top: 14rem;}
 .movie-list.user .list>li .box .bts .bt{ width: 32rem; height: 32rem; }
-.movie-list.user .list>li .box .bts .bt i{font-size: 16rem;color: #5e5e5e;}
+.movie-list.user .list>li .box .bts .bt i{font-size: 20rem;color: #5e5e5e;}
 
 .poster-list{ overflow: hidden;padding: 5rem calc(15rem - 1.5%); position: relative; }
 .poster-list>.list{display:flex; flex-wrap: wrap;}
