@@ -47,7 +47,7 @@ export default function UserLike({uInfo}) {
   };  
 
   useEffect( () => {
-    console.log(uInfo);
+    console.log(uInfo , uInfo.id);
     // setNewScrapMovie( uInfo.tmdb_movie_scrap );
     return ()=>{
 
@@ -81,13 +81,15 @@ export default function UserLike({uInfo}) {
                         <div className="dd">
                           <div className="hits">
                             {/* <StarPoint point={data.vote_average} /> */}
-                            <em><i className="fa-regular fa-heart"></i> <b>{data.vote_average}</b></em>
+                            <em><i className="fa-regular fa-thumbs-up"></i> 평점 : <b>{data.vote_average}</b></em>
                           </div>
                           <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date || data.first_air_date}</b></div>
                         </div>
                       </Link>
                       <div className="bts">
-                        <button type="button" className="bt" onClick={ ()=>deleteScrap('movie',data) }><span><i className="fa-regular fa-close"></i></span></button>
+                        {store.state.userInfo.uid == uInfo.id &&
+                          <button type="button" className="bt" onClick={ ()=>deleteScrap('movie',data) }><span><i className="fa-regular fa-close"></i></span></button>
+                        }
                       </div>
                     </div>
                   </li>
