@@ -78,6 +78,13 @@ export default function UserLike({uInfo}) {
                           <div className="tits">{data.title}</div>
                           <div className="text">{data.overview}</div>
                         </div>
+                        <div className="dd">
+                          <div className="hits">
+                            <StarPoint point={data.vote_average} />
+                            <em><i className="fa-regular fa-heart"></i><b>{data.vote_average}</b></em>
+                          </div>
+                          <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date || data.first_air_date}</b></div>
+                        </div>
                       </Link>
                       <div className="bts">
                         <button type="button" className="bt" onClick={ ()=>deleteScrap('movie',data) }><span><i className="fa-regular fa-close"></i></span></button>
