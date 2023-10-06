@@ -31,14 +31,14 @@ export default function UserLike({uInfo}) {
     const tv_scrap = uInfo.tmdb_tv_scrap || [data];
   
     uInfo.tmdb_movie_scrap = [...movie_scrap, data].filter(item => item.id != data.id);
-    await setNewScrapMovie(uInfo.tmdb_movie_scrap);
+    setNewScrapMovie(uInfo.tmdb_movie_scrap);
   
     console.log(uInfo.tmdb_movie_scrap);
     console.log(newScrapMovie);
   
     const docRef = doc(db, 'member', uInfo.id);
     await updateDoc(docRef, {
-      tmdb_movie_scrap: newScrapMovie
+      tmdb_movie_scrap: uInfo.tmdb_movie_scrap
     }).then(() => {
       console.log("Movie 스크랩: ", uInfo.tmdb_movie_scrap);
       console.log("Movie 스크랩: ", newScrapMovie);
@@ -63,9 +63,9 @@ export default function UserLike({uInfo}) {
     <>
       <div className="movie-list user">
           {/* <button onClick={()=>{console.log(newScrapMovie)}}>dsf</button> */}
-          {uInfo.tmdb_movie_scrap.length > 0 ?
+          {newScrapMovie.length > 0 ?
           <ul className='list'>
-            {uInfo.tmdb_movie_scrap.map((data,num) =>{
+            {newScrapMovie.map((data,num) =>{
                 const imgpath = '//image.tmdb.org/t/p/w92';
                 const img = imgpath + data.poster_path;
                 const tit = data.title || data.name;
