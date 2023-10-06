@@ -144,6 +144,10 @@ export default function User() {
             // scrollbar={{ draggable: true }}
             initialSlide={ 0 } // 0 ~ 9
             autoHeight={true}
+            watchOverflow={true}
+            observer={true}
+            observeSlideChildren={true}
+            observeParents={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
@@ -157,7 +161,7 @@ export default function User() {
             }}
           >
             <SwiperSlide tag="section" className="ctn like">
-              <UserLike uInfo={uInfo} />
+              <UserLike uInfo={uInfo} swiper={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
               <UserPost />

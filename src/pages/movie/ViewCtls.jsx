@@ -45,38 +45,42 @@ export default function ViewCtls({datas,postID, opts}) {
     if( store.state.userInfo.stat == true ){
       ui.loading.show(`glx`);
       const docRef = doc(db, 'member', store.state.userInfo.uid);
+      
+      let data_scrap = [];
+      if (opts == `movie`){
+        data_scrap = userInfo.tmdb_movie_scrap || [datas] 
+      }
+      if (opts == `tv`){
+        data_scrap = userInfo.tmdb_tv_scrap || [datas] 
+      }
 
 
-        let newScrapMovie = [];
-        let newScrapTv = [];
-        
-        const movie_scrap = userInfo.tmdb_movie_scrap || [datas] 
-        const tv_scrap = userInfo.tmdb_tv_scrap || [datas] 
-        console.log( movie_scrap ,  opts );
-        
-        if (opts == `movie`) {
-
-          if( isScrap ) {
-            setIsScrap(false);
-            newScrapMovie = [...movie_scrap, datas ].filter(item => {
-              return  item.id != postID
-            });
-          }else{
-            setIsScrap(true);
-            newScrapMovie = [...movie_scrap, datas ].filter((element, index, self) => {
-              return self.findIndex(e => e.id === element.id ) === index;
-            });
-          }
-          
-          await updateDoc(docRef, {
-            tmdb_movie_scrap: newScrapMovie
-          }).then(() => {
-            console.log("Movie 스크랩: ", datas , btn);
-            ui.loading.hide();
-          }).catch(e => { console.error(e); ui.loading.hide(); });
-          // isScrap ? setIsScrap(false) : setIsScrap(true);
-
-        }
+      if( isScrap ) {
+        setIsScrap(false); //삭제
+        data_scrap = [...data_scrap, datas ].filter(item => item.id != postID);
+      }else{
+        setIsScrap(true); // 추가
+        data_scrap = [...data_scrap, datas ].filter((element, index, self) => {
+          return self.findIndex(e => e.id === element.id ) === index;
+        });
+      }
+      if (opts == `movie`){
+        await updateDoc(docRef, {
+          tmdb_movie_scrap: data_scrap
+        }).then(() => {
+          console.log("Movie 스크랩: ", datas , btn);
+          ui.loading.hide();
+        }).catch(e => { console.error(e); ui.loading.hide(); });
+      }
+      if (opts == `tv`){
+        await updateDoc(docRef, {
+          tmdb_tv_scrap: data_scrap
+        }).then(() => {
+          console.log("TV 스크랩: ", datas , btn);
+          ui.loading.hide();
+        }).catch(e => { console.error(e); ui.loading.hide(); });
+      }
+    
 
 
 
@@ -107,10 +111,11 @@ export default function ViewCtls({datas,postID, opts}) {
       setUserInfo( userData);
       return userData
     }).then(data => {
-      setIsScrap( data.tmdb_movie_scrap.some(item => {
-        console.log(item.id , postID);
-        return item.id == postID
-      } ) );
+      setIsScrap( 
+        data.tmdb_movie_scrap.some(item => { return item.id == postID } ) 
+        ||
+        data.tmdb_tv_scrap.some(item => { return item.id == postID } )
+      );
     });
 
     return () => {
@@ -122,9 +127,8 @@ export default function ViewCtls({datas,postID, opts}) {
   return (
     <>
       <div className="dins">
-        {opts == `movie` &&
+        {/* {opts == `movie` && } */}
         <button type="button" onClick={likeTog} className={`bt bt-scrap ${isScrap ? 'on' : 'off'}`}><i className="fa-regular fa-bookmark"></i><em>스크랩</em></button>
-        }
         <button type="button" onClick={inputReply} className="bt bt-reply"><i className="fa-regular fa-pen-to-square"></i><em>리뷰</em></button>
         <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
       </div>
