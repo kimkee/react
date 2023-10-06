@@ -26,6 +26,6 @@ export default defineConfig({
       minify: 'esbuild',
       chunkSizeWarningLimit :1500 ,
       // assetsInlineLimit: 0,
-      filenameHashing: false,
+      // filenameHashing: false,
   },
 })
