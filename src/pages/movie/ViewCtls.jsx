@@ -80,9 +80,6 @@ export default function ViewCtls({datas,postID, opts}) {
           ui.loading.hide();
         }).catch(e => { console.error(e); ui.loading.hide(); });
       }
-    
-
-
 
     }else{
       ui.confirm(`로그인이 필요합니다.<br>로그인페이지로 이동하시겠습니까? `,{
