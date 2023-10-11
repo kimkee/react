@@ -40,7 +40,7 @@ export default function SignIn() {
     const email = userEmail.current.value;
     const password = userPassword.current.value;
     const auth = getAuth();
-    ui.loading.show();
+    ui.loading.show(`glx`);
     console.log(email, password , auth);
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
