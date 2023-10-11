@@ -21,17 +21,6 @@ export default function Header({prop}) {
       console.log(userData); // 얻은 사용자 데이터를 사용하세요
       setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...userData }));
     });
-    // const auth = getAuth();
-    // onAuthStateChanged(auth, (authUser) => {
-    //   if (authUser) {
-    //     // 사용자가 로그인한 경우
-    //     setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...JSON.parse(sessionStorage.user) }))
-    //   } else {
-    //     // 사용자가 로그아웃한 경우
-    //     // setUserInfo({ })
-    //   }
-    // });
-
 
     return ()=>{
       

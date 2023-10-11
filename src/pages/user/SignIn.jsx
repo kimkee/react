@@ -49,9 +49,9 @@ export default function SignIn() {
         console.log(user.email);
         // const gourl = localStorage.getItem("preurl").replace("#", "");
         ui.loading.hide();
-        ui.alert("" + user.email + "<br> 로그인 성공!", {
+        ui.alert(`${user.email}<br> 로그인 성공!`, {
           ycb: () => {
-            navigate(`/`)
+            navigate(`/`);
           }
         });
       })

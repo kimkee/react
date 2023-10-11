@@ -34,8 +34,6 @@ export default function SignOut() {
   useEffect( () => {
     window.scrollTo(0,0);
     logout();
-    // document.querySelector(".header").classList.remove("trans");
-    // window.addEventListener("scroll", scrollEvent);
     return ()=>{
       // window.removeEventListener("scroll", scrollEvent);
     }
