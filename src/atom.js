@@ -8,6 +8,10 @@ const textState = atom({
   key: 'textState', // unique ID (with respect to other atoms/selectors)
   default: '2312312', // default value (aka initial value)
 });
+const store2 = atom({
+  key: 'store2', // unique ID (with respect to other atoms/selectors)
+  default: {}, // default value (aka initial value)
+});
 const sss = atom({
   key: 'sss', // unique ID (with respect to other atoms/selectors)
   default: {
@@ -82,4 +86,4 @@ const authState = async ()=>{
     }
   }
 } 
-export {sss, atomStore,textState}
+export {sss, atomStore,textState, store2}
