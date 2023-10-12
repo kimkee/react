@@ -14,7 +14,6 @@ export default function Header({prop}) {
   const location = useLocation();
   const navigate = useNavigate();
   // console.log(params);
-  location.pathname
   // console.log(params , location);
   const [userInfo, setUserInfo] = useState({});
   
