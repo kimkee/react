@@ -31,7 +31,7 @@ export default function Header({prop}) {
     
   },[userInfo?.uid,userInfo?.nick,userInfo?.displayName, userInfo?.stat]);
   
-console.log(userInfo);
+  console.log(userInfo);
   const test =()=>{
     ui.confirm("리액트 보다 쀼가 짱입니까?",{
       ycb:function(){
