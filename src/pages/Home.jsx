@@ -37,7 +37,7 @@ export default function Home() {
     header.classList.add("home");
     window.addEventListener("scroll",scrollEvent);
 
-    readBbs(10);
+    // readBbs(10);
 
     return ()=>{
       header.classList.remove("home");
