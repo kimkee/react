@@ -260,7 +260,7 @@ const ui = {
         
         },
         hide: function () {
-            document.querySelectorAll(".ui-loading").forEach(el => el.remove());
+            document.querySelectorAll("body>.ui-loading.full").forEach(el => el.remove());
             document.querySelector("body").classList.remove("is-loading");
         }
     },
