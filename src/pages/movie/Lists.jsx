@@ -67,7 +67,7 @@ export default function Lists() {
       nowPageSet({ "pge":res.data.page, "tot":res.data.total_pages });
       if( res.data.total_pages <= page ) {
         callStat = false;
-        loadHideSet("hide");
+        loadHideSet(" hide");
       }else{
         loadHideSet("");
       };
@@ -77,7 +77,7 @@ export default function Lists() {
     }).catch(e=>{
       console.log(e);
       callStat = true;
-      loadErrorSet("error");
+      loadErrorSet(" error");
     }); 
   }
 
@@ -110,7 +110,7 @@ export default function Lists() {
       console.log("바닥도착");
       // console.log( page);
       // document.querySelector(".ui-loadmore")?.classList.add("active");
-      loadActiveSet("active");
+      loadActiveSet(" active");
       callStat = false;
       console.log(callStat);
       if(ui.lock.stat) {
@@ -162,7 +162,7 @@ export default function Lists() {
             })
           }
           </ul>
-          <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
+          <div className={`ui-loadmore${loadActive+loadHide+loadError}`}>
             <span class="ui-loading ui-load-glx">
               <span class="gbx"> <em class="bx"> <i></i> <i></i><i></i><i></i> </em> </span>
             </span>
