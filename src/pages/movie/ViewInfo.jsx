@@ -71,7 +71,7 @@ export default function ViewInfo({ postID, popTitle }) {
     return (
   <>
     <div className="movie-detail">
-      <div className="bgs" style={{backgroundImage: `url(${bgImg}) `}}></div>
+      <div className="bgs" style={{backgroundImage: `url(${bgImg})`}}></div>
       {/* <Skeleton opts={ {type: 'movie-detail'} } /> */}
       {/* <div className="m-info"><Loading opts={{type:'dot'}} /></div> */}
       { !datas && !casts && !moves &&
