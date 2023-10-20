@@ -1347,6 +1347,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .ui-loadmore .ui-load-glx{display: none;}
 .ui-loadmore.active .ui-load-glx{display: inline-block;margin-top: 18rem;transform: scale(1.5);}
+.ui-loadmore.error .ui-load-glx{display: none;}
 
 
 .ui-loadmore.error .btn-load{ position:relative; left:auto; width:100%; height: 56rem; }
