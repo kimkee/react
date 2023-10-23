@@ -98,7 +98,7 @@ export default function User() {
         {store?.state ?
         <div className="profile">
           <div className="user">
-            <span className="pic"><img src={store.state.avatar[uInfo.avatar] || uInfo.photoURL } className="img" /></span>
+            <Link to={'/user/'+params.id} className="pic"><img src={store.state.avatar[uInfo.avatar] || uInfo.photoURL } className="img" /></Link>
             <div className="info">
               <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
               <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
