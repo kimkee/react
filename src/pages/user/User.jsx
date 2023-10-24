@@ -126,7 +126,7 @@ export default function User() {
               <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-solid fa-users"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-users"></i></span></button>
             </li>
           </ul>
           <Swiper className="swiper-wrapper swiper pctn " 
