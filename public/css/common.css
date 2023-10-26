@@ -68,13 +68,13 @@ a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 
 .header .ldt{ display: flex; align-items: center; }
 .header .cdt{position: absolute;left: 64rem;right: 64rem;text-align: center;z-index: 0;}
-.header .htit{font-size:17rem;font-weight: 700;color: #ffffff;padding-top: 0rem; margin: 0rem;}
-.header .bt.back+.htit{margin-left: 10rem;}
+.header .htit{font-size: 18rem;font-weight: 700;color: #ffffff;padding-top: 0rem;margin: 0rem;}
+.header .bt.back+.htit{margin-left: 15rem;}
 .header .rdt{ display: flex; align-items: center; }
 .header .logo{display: inline-block;margin: -1rem 0rem 0rem 0rem;}
 .header .logo .btlogo{width:32rem;height: 32rem;background: url('../img/logo.png') no-repeat center;background-size: 32rem auto;font-size: 0rem;display:inline-block;vertical-align:middle;}
 .header .bt{width: 24rem;height: 24rem;font-size:0rem;background: no-repeat center;background-size: 24rem auto;color: #eeeeee;display: flex;align-items: center;justify-content: center;}
-.header .bt i{font-size: 20rem;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 36%);}
+.header .bt i{font-size: 28rem;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 36%);}
 .header .bt+.bt{margin-left: 10rem;}
 .header .bt.back{color: #aaaaaa;}
 .header .bt.back{color: #eeeeee; background-size: 24rem auto;}
@@ -631,7 +631,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .tabs .btn{width: 100%;border: none;border-radius: 0rem;background-color: #111111;color: #424242;}
 .movie-list.user .tabs .btn+.btn{border-left: 1rem solid #242b36;}
 .movie-list.user .tabs .btn.active{background-color: #1a1a1a;font-weight: 700;color: #61dafb;}
-.movie-list.user .list>li .box{padding-right: 40rem;}
+.movie-list.user .list>li .box{ padding: 0; }
+.movie-list.user .list>li .box .cont {padding: 18rem 30rem 18rem 20rem;}
 .movie-list.user .list>li .box .cont .pics{margin-right: 14rem;}
 .movie-list.user .list>li .box .cont .pics{min-width: 14%;width: 14%;padding-bottom: calc(1200% / 780 * 12);}
 .movie-list.user .list>li .box .cont .desc{ margin-top: -5rem; }
