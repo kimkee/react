@@ -198,12 +198,12 @@ const ui = {
             nbt: "취소"
         }, params);
 
-        if (document.querySelectorAll(".ui-confrim").length) return;
+        if (document.querySelectorAll(".ui-confirm").length) return;
 
         ui.lock.using(true);
 
         let lyConfirm =
-        `<article class="ui-confrim ${opt.cls}" tabindex="0">
+        `<article class="ui-confirm ${opt.cls}" tabindex="0">
             <div class="pbd">
                 <div class="phd"><span class="ptit">${opt.tit}</span></div>
                 <div class="pct"><div class="msg">${opt.msg}</div></div>
@@ -217,7 +217,7 @@ const ui = {
         const body = document.querySelector("body");
         body.insertAdjacentHTML("beforeend", lyConfirm);
 
-        const uiConfirm = document.querySelector(".ui-confrim");
+        const uiConfirm = document.querySelector(".ui-confirm");
         body.classList.add("is-confrim");
         setTimeout(() => uiConfirm.classList.add("open"));
         opt.tit && uiConfirm.querySelector(".pbd>.phd").classList.add("is-tit");
@@ -267,7 +267,7 @@ const ui = {
     lock: { // 스크롤 막기,풀기
         sct: 0,
         stat: false,
-        els: ".pop-layer  , .ui-confrim , .ui-alert",
+        els: ".pop-layer  , .ui-confirm , .ui-alert",
         set: function () {
             if (document.querySelectorAll(this.els).length <= 0) {
                 this.using(false);

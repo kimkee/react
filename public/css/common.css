@@ -543,25 +543,25 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 
 /* 팝업 컨펌 */
-.ui-confrim{ white-space:nowrap;position:fixed;left:0rem;right:0rem;top:0rem;bottom:0;text-align:center;overflow-y:auto;z-index:1500;background-color: rgba(0,0,0,0.5);outline:none; padding: 0rem 0rem calc(20vh + var(--safe-bottom)) 0rem}
-.ui-confrim>.pbd{ display:inline-block;max-width: 315rem;min-width: 315rem;vertical-align:bottom;text-align:left;position:relative;white-space:normal;z-index:200;box-shadow: rgba(0,0,0,0.2) 2rem 2rem 7rem;border-radius: 10rem;background-color: #ffffff;overflow: hidden;}
-.ui-confrim.open>.pbd{}
-.ui-confrim:after{content:''; width:0; height:100%; display:inline-block; vertical-align:middle;}
-.ui-confrim>.pbd>.phd{display: none;padding: 15rem 20rem 0rem 20rem;box-sizing: border-box;background-color: #fff;text-align: center;font-size: 16rem;font-weight: 700;margin-bottom: -17rem;line-height: 1.5;}
-.ui-confrim>.pbd>.phd .ptit{ font-weight: 700; font-size:16rem; color: #333333;}
-.ui-confrim>.pbd>.phd.is-tit{display:block;}
-.ui-confrim>.pbd>.pct{overflow:auto;padding: 30rem 20rem 30rem 20rem;text-align:center;font-size: 16rem;color: #000000;min-height: 102rem;display: flex;justify-content: center;align-items: center;}
-.ui-confrim>.pbd>.pct .msg{word-break: break-all;}
-.ui-confrim>.pbd>.pct p{}
-.ui-confrim>.pbd>.pct b{color: #f0344d;font-weight: 700;}
-.ui-confrim>.pbd>.pbt{padding: 0rem 0rem 0rem 0rem;box-sizing: border-box;text-align: center;display: flex;margin: 0rem 0rem;}
-.ui-confrim>.pbd>.pbt .btn {width: 100%;border-radius: 0rem;background: #aeb0bd;border: #aeb0bd 1rem solid;color: #ffffff;font-size: 14rem;height: 50rem;font-weight: 400;}
-.ui-confrim>.pbd>.pbt .btn + .btn{border: #33445c solid 1rem;color: #ffffff;background: #33445c;}
-.ui-confrim>.pbd>.pbt .btn.btn-confirm:active{border-color: #114c68;background-color: #114c68;}
-.ui-confrim>.pbd>.pbt .btn.btn-cancel:active{border-color:#898c9d; background-color:#898c9d;}
-.ui-confrim>.pbd>.pbt .btn:disabled{border-color:#cccedb; background-color:#cccedb;}
-.ui-confrim>.pbd>.pbt .btn-cancel{color: #ffffff;}
-.ui-confrim>.pbd>.btn-close{width: 24rem;height: 24rem;position:absolute;right: 10rem;top: 10rem; font-size: 18rem;overflow:hidden;}
+.ui-confirm{ white-space:nowrap;position:fixed;left:0rem;right:0rem;top:0rem;bottom:0;text-align:center;overflow-y:auto;z-index:1500;background-color: rgba(0,0,0,0.5);outline:none; padding: 0rem 0rem calc(20vh + var(--safe-bottom)) 0rem}
+.ui-confirm>.pbd{ display:inline-block;max-width: 315rem;min-width: 315rem;vertical-align:bottom;text-align:left;position:relative;white-space:normal;z-index:200;box-shadow: rgba(0,0,0,0.2) 2rem 2rem 7rem;border-radius: 10rem;background-color: #ffffff;overflow: hidden;}
+.ui-confirm.open>.pbd{}
+.ui-confirm:after{content:''; width:0; height:100%; display:inline-block; vertical-align:middle;}
+.ui-confirm>.pbd>.phd{display: none;padding: 15rem 20rem 0rem 20rem;box-sizing: border-box;background-color: #fff;text-align: center;font-size: 16rem;font-weight: 700;margin-bottom: -17rem;line-height: 1.5;}
+.ui-confirm>.pbd>.phd .ptit{ font-weight: 700; font-size:16rem; color: #333333;}
+.ui-confirm>.pbd>.phd.is-tit{display:block;}
+.ui-confirm>.pbd>.pct{overflow:auto;padding: 30rem 20rem 30rem 20rem;text-align:center;font-size: 16rem;color: #000000;min-height: 102rem;display: flex;justify-content: center;align-items: center;}
+.ui-confirm>.pbd>.pct .msg{word-break: break-all;}
+.ui-confirm>.pbd>.pct p{}
+.ui-confirm>.pbd>.pct b{color: #f0344d;font-weight: 700;}
+.ui-confirm>.pbd>.pbt{padding: 0rem 0rem 0rem 0rem;box-sizing: border-box;text-align: center;display: flex;margin: 0rem 0rem;}
+.ui-confirm>.pbd>.pbt .btn {width: 100%;border-radius: 0rem;background: #aeb0bd;border: #aeb0bd 1rem solid;color: #ffffff;font-size: 14rem;height: 50rem;font-weight: 400;}
+.ui-confirm>.pbd>.pbt .btn + .btn{border: #33445c solid 1rem;color: #ffffff;background: #33445c;}
+.ui-confirm>.pbd>.pbt .btn.btn-confirm:active{border-color: #114c68;background-color: #114c68;}
+.ui-confirm>.pbd>.pbt .btn.btn-cancel:active{border-color:#898c9d; background-color:#898c9d;}
+.ui-confirm>.pbd>.pbt .btn:disabled{border-color:#cccedb; background-color:#cccedb;}
+.ui-confirm>.pbd>.pbt .btn-cancel{color: #ffffff;}
+.ui-confirm>.pbd>.btn-close{width: 24rem;height: 24rem;position:absolute;right: 10rem;top: 10rem; font-size: 18rem;overflow:hidden;}
 
 
 
