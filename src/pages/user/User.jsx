@@ -135,7 +135,7 @@ export default function User() {
             spaceBetween={0}
             slidesPerView={1}
             // navigation
-            loop={true}
+            loop={false}
             // effect={"fade"}
             autoplay={false}
             // autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
