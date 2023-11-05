@@ -266,6 +266,7 @@ const ui = {
     },
     lock: { // 스크롤 막기,풀기
         sct: 0,
+        gap: ()=> window.innerWidth - document.body.clientWidth,
         stat: false,
         els: ".pop-layer  , .ui-confirm , .ui-alert",
         set: function () {
@@ -277,6 +278,7 @@ const ui = {
             const body = document.querySelectorAll("body , html");
             const html = document.querySelector("html");
             if (opt === true && this.stat === false) {
+                document.documentElement.style.setProperty('--scrPad', `${this.gap()}rem`);
                 ui.lock.stat = true;
                 ui.lock.sct = window.scrollY;
                 body.forEach(body => body.classList.add("is-lock", "is-lock-end"));
@@ -292,6 +294,7 @@ const ui = {
                 setTimeout(() => {
                     body.forEach(body => body.classList.remove("is-lock-end"));
                 }, 50);
+                document.documentElement.style.setProperty('--scrPad', `0rem`);
             }
         }
     },
