@@ -43,6 +43,7 @@ textarea:-ms-input-placeholder {color: #444444; font-weight: normal;}
     --safe-bottom: calc( env(safe-area-inset-bottom) );
 	--safe-watch: 0px;
     --mwide: 480px;
+    --scrPad: 0rem;
 }
 
 
