@@ -28,10 +28,10 @@ import UserFolw from './UserFolw.jsx';
 
 export default function User() {
   
-  const params = useParams()
+  const params = useParams();
   
   console.log(params);
-  const location = useLocation()
+  const location = useLocation();
   const navigate = useNavigate();
   const uid = params.id;
   const [uInfo, setUInfo] = useState({});
