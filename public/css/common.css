@@ -209,7 +209,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 
 
 /* 팝업 레이어 a */
-.pop-layer.a{/* display:none; */font-size: 0;position:fixed;left:0rem;right:0rem;top: 0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0.0);outline:none;transition: background-color 0.2s;text-align: center;padding-right: var(--scrPad);}
+.pop-layer.a{font-size: 0;position:fixed;left:0rem;right:0rem;top: 0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0.0);outline:none;transition: background-color 0.2s;text-align: center;padding-right: var(--scrPad);}
 .pop-layer.a.on{display:block;background-color: rgba(0,0,0,0.5);}
 .pop-layer.a>.pbd{position:relative;overflow: hidden;transition: transform 0.2s ease-in-out; transition-property: transform,opacity;}
 .pop-layer.a>.pbd>.phd{height: 50rem;position: relative;}
@@ -256,7 +256,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 
 
 /* 팝업 레이어 b */
-.pop-layer.b{/* display:none; */position:fixed;left:0rem;right:0rem;top: 0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0.0);outline:none;white-space:nowrap;text-align:center;font-size: 0rem;transition: background-color 0.4s;}
+.pop-layer.b{position:fixed;left:0rem;right:0rem;top: 0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0.0);outline:none;white-space:nowrap;text-align:center;font-size: 0rem;transition: background-color 0.4s;}
 .pop-layer.b.on{display:block;background-color: rgba(0,0,0,0.5);}
 .pop-layer.b:after{content: '';width:0;height:100%;display:inline-block;vertical-align:middle;}
 .pop-layer.b .pbd{font-size: 15rem;display:inline-block;max-width: calc(100% - 60rem);min-width: 300rem;vertical-align:middle;text-align:left;white-space:normal;padding-top: 0;background: #111111;border-radius: 10rem 10rem 10rem 10rem;transition: transform 0.3s cubic-bezier(0, 0.7, 0.4, 1) 0s;}
@@ -273,7 +273,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .pop-layer.b>.pbd>.pbt .bts .btn{width:100%;margin: 0rem 0rem;border-radius: 0rem;}
 
 /* 팝업 레이어 c */
-.pop-layer.c{/* display: none; */position:fixed;left:0rem;right:0rem;top:0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0);outline:none;touch-action: none !important;transition: background-color 0.4s !important;}
+.pop-layer.c{position:fixed;left:0rem;right:0rem;top:0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0);outline:none;touch-action: none !important;transition: background-color 0.4s !important;}
 .pop-layer.c.on{display:block;background-color: rgba(0,0,0,0.5);}
 .pop-layer.c.on .pbd{transform: translateY(0%);}
 .pop-layer.c{white-space:nowrap;text-align:center;font-size: 0rem;padding: 10rem 0rem 0rem 0rem;}
