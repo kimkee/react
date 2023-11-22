@@ -65,7 +65,7 @@ a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 .header.hide{display: none;}
 .header.trans>.inr{background-color: rgb(0 0 0 / 70%);border-color: transparent;}
 .header.trans .htit{display: none;}
-.header.trans .rdt{/* display: none; */} 
+.header.trans .rdt{} 
 
 .header .ldt{ display: flex; align-items: center; }
 .header .cdt{position: absolute;left: 64rem;right: 64rem;text-align: center;z-index: 0;}
@@ -357,7 +357,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 
 
 /* 플로팅 탑버튼 글쓰기버튼 */
-.floatnav{position:fixed;/* right: 20rem; */text-align: right;padding: 0rem 20rem;left: 50%;max-width: var(--mwide);width: 100%;height: 0;z-index: 500;transition: all 0.3s;bottom: calc(78rem + var(--safe-bottom));transform: translate3D(-50%,90rem,0rem);transition: transform 0.2s;}
+.floatnav{position:fixed;text-align: right;padding: 0rem 20rem;left: 50%;max-width: var(--mwide);width: 100%;height: 0;z-index: 500;transition: all 0.3s;bottom: calc(78rem + var(--safe-bottom));transform: translate3D(-50%,90rem,0rem);transition: transform 0.2s;}
 .floatnav.is-top{bottom: 20rem;bottom: calc(20rem + var(--safe-bottom));transition: none;}
 .floatnav .bt{font-size: 0rem;width: 52rem;height: 52rem;display: inline-block;background: no-repeat #555555;background-size: 100% auto;margin: 10rem auto 0 auto;border-radius: 35rem;box-shadow: 0rem 0rem 6rem rgb(0 0 0 / 49%);}
 .floatnav .bt i{font-size: 17rem;}
