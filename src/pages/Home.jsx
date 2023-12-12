@@ -54,7 +54,7 @@ export default function Home() {
 
         <HomeTop opts={{media:"movie"}} />
 
-        <ListTop10 opts={{media:"movie",list:"trending/movie/week", cate: "0", title:'Weekly 영화 TOP 20'}} />
+        <ListTop10 opts={{media:"movie", list: "trending/movie/week", cate: "0", title:"Weekly 영화 TOP 20"}} />
 
         <ListSet opts={{media:"movie", list: "discover/movie", cate: "16", title: "영화/애니메이션"}} />
 
@@ -62,7 +62,7 @@ export default function Home() {
 
         <ListSet opts={{media:"movie", list: "discover/movie", cate: "99", title: "영화/다큐멘터리"}} />
 
-        <ListTop10 opts={{media:"tv",list:"trending/tv/week", cate: "0", title:'Weekly TV TOP 20'}} />
+        <ListTop10 opts={{media:"tv", list: "trending/tv/week", cate: "0", title:"Weekly TV TOP 20"}} />
         
         <ListSet opts={{media:"tv", list: "discover/tv", cate: "16", title: "TV/애니메이션"}} />
         
