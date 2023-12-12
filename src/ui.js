@@ -38,6 +38,10 @@ const ui = {
         bottom: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom")  ) || 0,
         watch: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-watch")  ) || 0
     },
+    commasDel(str) {
+        if (typeof str == 'number') { return; }
+        return parseInt(str.replace(/,/g, ''));
+    },
     dpmode:{
         init: function(){
             setInterval( this.set , 500);

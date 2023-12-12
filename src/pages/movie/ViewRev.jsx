@@ -41,13 +41,25 @@ export default function ViewRev({postID, opts}) {
     }
   }
 
+  
+  
+
+  const [revNumNow, setRevNumNow] = useState(0)
   const autoheight = (e)=>{
-    console.log("fsd" , e);
     const $els = e.target;
     let tboxS;
     $els.style.height = "1rem";
     tboxS = $els.scrollHeight;
     $els.style.height = tboxS + "rem";
+
+    const revNumMax = 1000;
+    setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
+    console.log(ui.commasDel(revNumNow) , revNumMax  );
+    if ( ui.commasDel(revNumNow) > revNumMax ) {
+      ui.alert(`감상평은 1,000글자 까지 입니다.`,{
+        ycb: () => {}
+      });      
+    }
   }
 
   const sendReview = ()=>{
@@ -75,7 +87,7 @@ export default function ViewRev({postID, opts}) {
         <h4 className="tts">리뷰</h4>
         <div className="form textarea">
           <textarea onInput={autoheight} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
-          <span className="num"><i className="i">0</i>/<b className="n">1,000</b></span>
+          <span className="num"><i className="i">{revNumNow}</i>/<b className="n">1,000</b></span>
         </div>
         <div className="bts">
           <button type="button" className="btn btsend" onClick={sendReview}>등록하기</button>
