@@ -73,8 +73,9 @@ export default function ViewRev({postID, opts}) {
     <>
       <div className="sect revk" id='writeRev'>
         <h4 className="tts">리뷰</h4>
-        <div className="form">
-          <textarea onInput={autoheight} className="rtext" placeholder="감상평을 남겨주세요."></textarea>
+        <div className="form textarea">
+          <textarea onInput={autoheight} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
+          <span className="num"><i className="i">0</i>/<b className="n">1,000</b></span>
         </div>
         <div className="bts">
           <button type="button" className="btn btsend" onClick={sendReview}>등록하기</button>

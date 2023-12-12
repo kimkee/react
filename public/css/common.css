@@ -804,8 +804,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .revw .tts{}
 .movie-detail .revk{}
 .movie-detail .revk .tts{}
-.movie-detail .revk .form{ position: relative; border: 1rem solid #28364a; border-radius: 4rem; min-height: 40rem; padding: 8rem 10rem 0rem 10rem; }
-.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 120rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;}
+.movie-detail .revk .form{position: relative;border: 1rem solid #28364a;border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
+.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 180rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;}
 .movie-detail .revk .bts{ margin-top: 10rem; }
 .movie-detail .revk .bts .btsend{width: 100%;}
 
