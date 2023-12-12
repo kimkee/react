@@ -53,13 +53,16 @@ export default function ViewRev({postID, opts}) {
     $els.style.height = tboxS + "rem";
 
     const revNumMax = 1000;
-    setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
     console.log(ui.commasDel(revNumNow) , revNumMax  );
     if ( ui.commasDel(revNumNow) > revNumMax ) {
+      console.log($els.value);
+      $els.value = $els.value.slice(0, revNumMax );
+      
       ui.alert(`감상평은 1,000글자 까지 입니다.`,{
         ycb: () => {}
       });      
     }
+    setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
   }
 
   const sendReview = ()=>{
