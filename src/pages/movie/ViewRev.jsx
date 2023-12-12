@@ -41,7 +41,20 @@ export default function ViewRev({postID, opts}) {
     }
   }
 
-  const errUsr = e => e.target.src=`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png` ;
+  const autoheight = (e)=>{
+    console.log("fsd" , e);
+    const $els = e.target;
+    let tboxS;
+    $els.style.height = "1rem";
+    tboxS = $els.scrollHeight;
+    $els.style.height = tboxS + "rem";
+  }
+
+  const sendReview = ()=>{
+    ui.alert(`준비 중 입니다.`,{
+      ycb: () => {}
+    });
+  }
 
   useEffect(() => {
     fetchReview();
@@ -58,9 +71,18 @@ export default function ViewRev({postID, opts}) {
   togView.set();
   return (
     <>
+      <div className="sect revk" id='writeRev'>
+        <h4 className="tts">리뷰</h4>
+        <div className="form">
+          <textarea onInput={autoheight} className="rtext" placeholder="감상평을 남겨주세요."></textarea>
+        </div>
+        <div className="bts">
+          <button type="button" className="btn btsend" onClick={sendReview}>등록하기</button>
+        </div>
+      </div>
+
       {review.results.length ?
       <div className="sect revw">
-        <h4 className="tts">리뷰</h4>
         <div className="ut-reply">
           <div className="rplist">
             

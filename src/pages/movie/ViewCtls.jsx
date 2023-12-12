@@ -94,8 +94,12 @@ export default function ViewCtls({datas,postID, opts}) {
   }
 
   const inputReply = (e)=> {
-    ui.alert(`준비 중 입니다.`,{
-      ycb: () => {}
+    const boxScroll = ".popup.movie.view>.pbd>.pct";
+    const $writeRev = document.querySelector("#writeRev");
+    const rvPosTop = $writeRev.offsetTop;
+    console.log(rvPosTop);
+    ui.scrollTo( boxScroll, rvPosTop ,100, 200, ()=>{
+      console.log("도착");
     });
   }
   const [userInfo, setUserInfo] = useState({});
