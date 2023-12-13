@@ -54,11 +54,10 @@ export default function ViewRev({postID, opts}) {
 
     setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
     const revNumMax = 1000;
-      console.log(revText.current.value);
-      console.log(ui.commasDel(revNumNow) , revNumMax  );
+      console.log( revText.current.value );
+      console.log( revText.current.value.length , revNumMax  );
     if ( revText.current.value.length > revNumMax ) {
       $els.value = $els.value.slice(0, revNumMax );
-      setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
       ui.alert(`감상평은 1,000글자 까지 입니다.`,{
         ycb: () => {}
       });      
