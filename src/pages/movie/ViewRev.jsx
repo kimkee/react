@@ -52,17 +52,17 @@ export default function ViewRev({postID, opts}) {
     tboxS = $els.scrollHeight;
     $els.style.height = tboxS + "rem";
 
+    setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
     const revNumMax = 1000;
-    console.log(ui.commasDel(revNumNow) , revNumMax  );
-    if ( ui.commasDel(revNumNow) > revNumMax ) {
       console.log($els.value);
+      console.log(ui.commasDel(revNumNow) , revNumMax  );
+    if ( ui.commasDel(revNumNow) > revNumMax ) {
       $els.value = $els.value.slice(0, revNumMax );
-      
+      setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
       ui.alert(`감상평은 1,000글자 까지 입니다.`,{
         ycb: () => {}
       });      
     }
-    setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
   }
 
   const sendReview = ()=>{
