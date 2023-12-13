@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 import ui from '../../ui.js';
@@ -41,7 +41,7 @@ export default function ViewRev({postID, opts}) {
     }
   }
 
-  
+  const revText = useRef('');
   
 
   const [revNumNow, setRevNumNow] = useState(0)
@@ -52,13 +52,13 @@ export default function ViewRev({postID, opts}) {
     tboxS = $els.scrollHeight;
     $els.style.height = tboxS + "rem";
 
-    setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
+    setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
     const revNumMax = 1000;
-      console.log($els.value);
+      console.log(revText.current.value);
       console.log(ui.commasDel(revNumNow) , revNumMax  );
-    if ( ui.commasDel(revNumNow) > revNumMax ) {
+    if ( revText.current.value.length > revNumMax ) {
       $els.value = $els.value.slice(0, revNumMax );
-      setRevNumNow( new Intl.NumberFormat().format($els.value.length) );
+      setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
       ui.alert(`감상평은 1,000글자 까지 입니다.`,{
         ycb: () => {}
       });      
@@ -89,10 +89,10 @@ export default function ViewRev({postID, opts}) {
       <div className="sect revk" id='writeRev'>
         <h4 className="tts">리뷰</h4>
         <div className="form textarea">
-          <textarea onInput={autoheight} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
+          <textarea onInput={autoheight} ref={revText} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
           <span className="num"><i className="i">{revNumNow}</i>/<b className="n">1,000</b></span>
           <div className="bts">
-            <button type="button" className="btn sm btsend" onClick={sendReview}>등록하기(준비중)</button>
+            <button type="button" className="btn sm btsend" disabled={ !revText.current.value } onClick={sendReview}>등록하기(준비중)</button>
           </div>
         </div>
       </div>
