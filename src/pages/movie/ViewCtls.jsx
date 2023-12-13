@@ -94,7 +94,9 @@ export default function ViewCtls({datas,postID, opts}) {
   }
 
   const inputReply = (e)=> {
-    const boxScroll = ".popup.movie.view>.pbd>.pct";
+    const isPop = !!e.target.closest(".poptents");
+    console.log(`isPop ${isPop}`);
+    const boxScroll = isPop ? ".popup.movie.view>.pbd>.pct" : "body,html";
     const $writeRev = document.querySelector("#writeRev");
     const rvPosTop = $writeRev.offsetTop;
     console.log(rvPosTop);
