@@ -92,7 +92,7 @@ export default function ViewRev({postID, opts}) {
           <textarea onInput={autoheight} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
           <span className="num"><i className="i">{revNumNow}</i>/<b className="n">1,000</b></span>
           <div className="bts">
-            <button type="button" className="btn btsend" onClick={sendReview}>등록하기</button>
+            <button type="button" className="btn sm btsend" onClick={sendReview}>등록하기(준비중)</button>
           </div>
         </div>
       </div>
