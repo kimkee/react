@@ -33,10 +33,10 @@ caption{display:none;}
 
 [tabindex]{}
 
-input::-webkit-input-placeholder {color: #444444; font-weight: normal;}
-input:-ms-input-placeholder {color: #444444; font-weight: normal;}
-textarea::-webkit-input-placeholder {color: #444444; font-weight: normal;} 
-textarea:-ms-input-placeholder {color: #444444; font-weight: normal;} 
+input::-webkit-input-placeholder {color: #999999; font-weight: normal;}
+input:-ms-input-placeholder {color: #999999; font-weight: normal;}
+textarea::-webkit-input-placeholder {color: #999999; font-weight: normal;} 
+textarea:-ms-input-placeholder {color: #999999; font-weight: normal;} 
 
 :root {
     --safe-top: calc( env(safe-area-inset-top) );
@@ -487,8 +487,8 @@ input[type="checkbox"]{width:30rem;height:30rem;display:inline-block;vertical-al
 .textarea{border: #30363d solid 1rem;background-color: #090c12;}
 .textarea.focus{border-color: #000000;}
 .textarea .num{font-size:12rem;position: relative;margin: 6rem 0rem -1rem 0rem;display: block;text-align: right;color: #666666;}
-.textarea .num .i{color: #999999;font-style: normal;}
-.textarea .num .n{color: #999999;font-weight: normal;}
+.textarea .num .i{color: #aaaaaa;font-style: normal;}
+.textarea .num .n{color: #aaaaaa;font-weight: normal;}
 .textarea.coms .num{}
 .textarea.coms .num .i{color: #f1344d;}
 .textarea.coms .num .n{color: #666666;font-weight: normal;}
@@ -800,8 +800,16 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .comp{display: flex;flex-wrap: wrap;margin-top: 30rem;margin-bottom: 0rem;gap: 5rem;}
 .movie-detail .comp .logo{background-color: #ffffffc7;padding: 2rem 7rem 3rem;border-radius: 12rem;display: inline-flex;height: 24rem;align-items: center;max-width: 100%;font-size: 10rem;color: #000;} 
 .movie-detail .comp .logo .img{max-height: 15rem;vertical-align: middle;max-width: 100%;}
-.movie-detail .revw{margin: 25rem 0rem 0rem 0rem;}
+.movie-detail .revw{margin: 5rem 0rem 0rem 0rem;}
 .movie-detail .revw .tts{}
+.movie-detail .revk{}
+.movie-detail .revk .tts{}
+.movie-detail .revk .form{position: relative;border: 1rem solid #28364a;border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
+.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 180rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;}
+.movie-detail .revk .form .num{position: absolute;right: 0rem;top: -31rem;}
+.movie-detail .revk .bts{margin-top: 8rem;}
+.movie-detail .revk .bts .btsend{width: 100%;}
+
 .movie-detail .ui-loading-dot.on{height: calc(100dvh - 120rem);}
 @keyframes anilike {
 	0%{  transform: translateY(0rem) scale(1); }
