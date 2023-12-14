@@ -145,7 +145,7 @@ body.is-gnb .btn-gnb{}
 .gnb-screen {display: none;background-color: rgba(0,0,0,0.3);width: 100%;height: 100%;zoom: 1;position: fixed;left: 0rem;z-index: 700;top: 0rem;}
 
 /* 댓글 */
-.ut-reply{padding: 6rem 0 0 0;}
+.ut-reply{padding: 0rem 0 0 0;}
 .ut-reply .optsort{margin: 0rem 0rem 11rem 0rem;}
 .ut-reply .optsort .radio{}
 .ut-reply .optsort .radio+.radio{margin-left: 11rem;}
@@ -157,7 +157,7 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist .rtop.r2{padding-bottom: 10rem;}
 .ut-reply .rplist ul.rlist{}
 .ut-reply .rplist ul.rlist>li{padding: 14rem 0rem;border-bottom: #333333 solid 1rem;}
-.ut-reply .rplist ul.rlist>li:first-child{border-top: #333333 solid 1rem;}
+.ut-reply .rplist ul.rlist>li:first-child{/* border-top: #333333 solid 1rem; */}
 .ut-reply .rplist ul.rlist>li .rpset{display: flex;padding: 0rem 0rem 0rem 41rem;position: relative;}
 .ut-reply .rplist ul.rlist>li .rpset .user{ position: absolute; left: 0rem; top: 0rem; }
 .ut-reply .rplist ul.rlist>li .rpset .user .pic{width: 28rem;min-width: 28rem;height: 28rem;padding-bottom: 28rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
@@ -382,7 +382,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .btn.xl{height: 60rem;min-width: 80rem;padding: 0 10rem;font-size: 16rem;font-weight: 400;}
 
 .btn.disabled,
-.btn[disabled]:not(.a){color:#dddddd33 }
+.btn[disabled]:not(.a){color: rgb(221 221 221 / 40%);}
 
 .btn.a{border-color: #41b883;background-color: #41b883;color:#ffffff;}
 .btn.a:disabled,
@@ -488,6 +488,7 @@ input[type="checkbox"]{width:30rem;height:30rem;display:inline-block;vertical-al
 .textarea.focus{border-color: #000000;}
 .textarea .num{font-size:12rem;position: relative;margin: 6rem 0rem -1rem 0rem;display: block;text-align: right;color: #666666;}
 .textarea .num .i{color: #aaaaaa;font-style: normal;}
+.textarea .num .n:before{content:"/";margin: 0rem 2rem;font-size: 10rem;}
 .textarea .num .n{color: #aaaaaa;font-weight: normal;}
 .textarea.coms .num{}
 .textarea.coms .num .i{color: #f1344d;}
@@ -802,10 +803,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .comp .logo .img{max-height: 15rem;vertical-align: middle;max-width: 100%;}
 .movie-detail .revw{margin: 5rem 0rem 0rem 0rem;}
 .movie-detail .revw .tts{}
-.movie-detail .revk{}
+.movie-detail .revk{
+    margin: 20rem 0rem 0rem 0rem;
+}
 .movie-detail .revk .tts{}
-.movie-detail .revk .form{position: relative;border: 1rem solid #28364a;border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
-.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 180rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;}
+.movie-detail .revk .form{position: relative;border: 1rem solid #28364a;background-color: rgb(9 12 18 / 30%);border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
+.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 212rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;}
 .movie-detail .revk .form .num{position: absolute;right: 0rem;top: -31rem;}
 .movie-detail .revk .bts{margin-top: 8rem;}
 .movie-detail .revk .bts .btsend{width: 100%;}
