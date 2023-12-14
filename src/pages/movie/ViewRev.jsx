@@ -51,13 +51,14 @@ export default function ViewRev({postID, opts}) {
     $els.style.height = "1rem";
     tboxS = $els.scrollHeight;
     $els.style.height = tboxS + "rem";
-
-    setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
     const revNumMax = 1000;
+    const revTxtNow = revText.current.value;
+    setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
       console.log( revText.current.value );
       console.log( revText.current.value.length , revNumMax  );
-    if ( revText.current.value.length > revNumMax ) {
+    if ( revTxtNow.length > revNumMax ) {
       $els.value = $els.value.slice(0, revNumMax );
+      setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
       ui.alert(`감상평은 1,000글자 까지 입니다.`,{
         ycb: () => {}
       });      
@@ -65,6 +66,7 @@ export default function ViewRev({postID, opts}) {
   }
 
   const sendReview = ()=>{
+    fetchReview()
     ui.alert(`준비 중 입니다.`,{
       ycb: () => {}
     });
@@ -77,7 +79,7 @@ export default function ViewRev({postID, opts}) {
     
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  },[postID]);
 
   // console.log(review);
 
@@ -89,9 +91,9 @@ export default function ViewRev({postID, opts}) {
         <h4 className="tts">리뷰</h4>
         <div className="form textarea">
           <textarea onInput={autoheight} ref={revText} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
-          <span className="num"><i className="i">{revNumNow}</i>/<b className="n">1,000</b></span>
+          <span className="num"><i className="i">{revNumNow}</i><b className="n">1,000</b></span>
           <div className="bts">
-            <button type="button" className="btn sm btsend" disabled={ !revText.current.value } onClick={sendReview}>등록하기(준비중)</button>
+            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}>등록하기(준비중)</button>
           </div>
         </div>
       </div>

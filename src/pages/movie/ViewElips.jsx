@@ -29,7 +29,7 @@ export default function ViewElips({overview}) {
       const txtHeight = txtElem.offsetHeight;
       const scrollHeight = txtElem.scrollHeight;
   
-      console.log("scrollHeight == ", scrollHeight, ".txtHeight == ", txtHeight);
+      // console.log("scrollHeight == ", scrollHeight, ".txtHeight == ", txtHeight);
       if (txtHeight < scrollHeight) {
         elipsElem.classList.add("elips");
       }
