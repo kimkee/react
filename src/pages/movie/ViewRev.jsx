@@ -88,12 +88,12 @@ export default function ViewRev({postID, opts}) {
   return (
     <>
       <div className="sect revk" id='writeRev'>
-        <h4 className="tts">리뷰</h4>
+        <h4 className="tts">리뷰(준비중)</h4>
         <div className="form textarea">
           <textarea onInput={autoheight} ref={revText} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
           <span className="num"><i className="i">{revNumNow}</i><b className="n">1,000</b></span>
           <div className="bts">
-            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}>등록하기(준비중)</button>
+            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}>등록하기</button>
           </div>
         </div>
       </div>
