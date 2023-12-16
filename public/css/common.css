@@ -769,7 +769,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .vinf::-webkit-scrollbar {display: none;}
 .movie-detail .vinf::-webkit-scrollbar-thumb {  box-shadow: none;}
 .movie-detail .sect{ margin: 15rem 0rem 0rem 0rem;}
-.movie-detail .sect  .tts{margin: 0rem 0rem 5rem 0rem; color: #ddd;}
+.movie-detail .sect  .tts{margin: 0rem 0rem 8rem 0rem;color: #ddd;}
 .movie-detail .cast{}
 .movie-detail .cast .tts{margin: 0rem 0rem 5rem 0rem; color: #ddd;}
 .movie-detail .cast .lst{display: flex;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden; margin: 0rem -20rem;padding: 0rem 10rem;}
@@ -807,7 +807,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
     margin: 20rem 0rem 0rem 0rem;
 }
 .movie-detail .revk .tts{}
-.movie-detail .revk .form{position: relative;border: 1rem solid #28364a;background-color: rgb(9 12 18 / 30%);border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
+.movie-detail .revk .form{position: relative;border: 1rem solid #333333;background-color: rgb(40 40 41 / 13%);border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
 .movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 212rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;}
 .movie-detail .revk .form .num{position: absolute;right: 0rem;top: -31rem;}
 .movie-detail .revk .bts{margin-top: 8rem;}
