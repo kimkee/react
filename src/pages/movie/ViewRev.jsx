@@ -93,7 +93,7 @@ export default function ViewRev({postID, opts}) {
           <textarea onInput={autoheight} ref={revText} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
           <span className="num"><i className="i">{revNumNow}</i><b className="n">1,000</b></span>
           <div className="bts">
-            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}>등록하기</button>
+            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
           </div>
         </div>
       </div>
@@ -110,6 +110,7 @@ export default function ViewRev({postID, opts}) {
                 const avatar = rev.author_details.avatar_path || "";
                 // console.log(avatar);
                 const nImg = '//image.tmdb.org/t/p/w45_and_h45_face/'+avatar ;
+                const rvTxt = rev.content.replace(/\n/g, "<br>")
                 // console.log(nImg);
                 return(
                 <li key={idx}>
@@ -125,7 +126,7 @@ export default function ViewRev({postID, opts}) {
                         <em className="time">{ ui.dateForm( new Date( rev.created_at) ) }</em>
                       </div>
                       <div data-ui="elips" className="mbox">
-                        <div className="ment txt" onClick={togView.evt}>{rev.content}</div>
+                        <div className="ment txt" onClick={togView.evt}  dangerouslySetInnerHTML={{ __html: rvTxt }} ></div>
                       </div>
                     </div>
                   </div>
