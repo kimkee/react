@@ -66,7 +66,6 @@ export default function ViewRev({postID, opts}) {
   }
 
   const sendReview = ()=>{
-    fetchReview()
     ui.alert(`준비 중 입니다.`,{
       ycb: () => {}
     });

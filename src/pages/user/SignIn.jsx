@@ -153,6 +153,7 @@ export default function SignIn() {
           // ui.loading.show();
           console.log("Google 로그인 성공:", result.user);
           addMember(result.user , `/`);
+          navigate(`/`);
         }
       })
       .catch((error) => {
