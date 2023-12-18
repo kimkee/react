@@ -175,7 +175,7 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox {padding-bottom: 4rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 13rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment br{display: none;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .mbox.open .ment br{display: block;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .mbox.open .ment br{display: block;height: 10px;overflow: hidden;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment::-webkit-scrollbar{background-color: transparent;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment::-webkit-scrollbar-track{background-color: transparent; box-shadow: none;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .btn-tog{font-size:12rem;position: absolute;left: auto;right: 0rem;color: #999;bottom: 0rem;padding: 0rem 0rem 0rem 10rem;transform: none;}

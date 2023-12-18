@@ -173,7 +173,9 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .time{font-size: 10rem;color: #999999; text-align: right}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.delt{margin: 0rem 0rem 0rem 8rem ;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox {padding-bottom: 4rem;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 12rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 13rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment br{display: none;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .mbox.open .ment br{display: block;height: 10px;overflow: hidden;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment::-webkit-scrollbar{background-color: transparent;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment::-webkit-scrollbar-track{background-color: transparent; box-shadow: none;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .btn-tog{font-size:12rem;position: absolute;left: auto;right: 0rem;color: #999;bottom: 0rem;padding: 0rem 0rem 0rem 10rem;transform: none;}
@@ -769,7 +771,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .vinf::-webkit-scrollbar {display: none;}
 .movie-detail .vinf::-webkit-scrollbar-thumb {  box-shadow: none;}
 .movie-detail .sect{ margin: 15rem 0rem 0rem 0rem;}
-.movie-detail .sect  .tts{margin: 0rem 0rem 5rem 0rem; color: #ddd;}
+.movie-detail .sect  .tts{margin: 0rem 0rem 8rem 0rem;color: #ddd;}
 .movie-detail .cast{}
 .movie-detail .cast .tts{margin: 0rem 0rem 5rem 0rem; color: #ddd;}
 .movie-detail .cast .lst{display: flex;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden; margin: 0rem -20rem;padding: 0rem 10rem;}
@@ -807,11 +809,11 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
     margin: 20rem 0rem 0rem 0rem;
 }
 .movie-detail .revk .tts{}
-.movie-detail .revk .form{position: relative;border: 1rem solid #28364a;background-color: rgb(9 12 18 / 30%);border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
-.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 212rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;}
+.movie-detail .revk .form{position: relative;border: 1rem solid #333333;background-color: rgb(40 40 41 / 13%);border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
+.movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 212rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;font-size: 13rem;}
 .movie-detail .revk .form .num{position: absolute;right: 0rem;top: -31rem;}
 .movie-detail .revk .bts{margin-top: 8rem;}
-.movie-detail .revk .bts .btsend{width: 100%;}
+.movie-detail .revk .bts .btsend{width: 100%;background: rgb(0 0 0 / 38%);border-color: rgb(152 152 152 / 20%);}
 
 .movie-detail .ui-loading-dot.on{height: calc(100dvh - 120rem);}
 @keyframes anilike {
