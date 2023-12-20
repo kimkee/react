@@ -25,9 +25,7 @@ export default function Nav() {
     ui.viewport.scrollTop() > 50 ? setIsOnTop(true) : setIsOnTop(false);
   };
 
-  const goTop = ()=> {
-    ui.scrollTo("body", 0 , 200 );
-  };
+  const goTop = ()=> ui.scrollTo("body", 0 , 200 );
   const auth = getAuth();
 
   const [userInfo, setUserInfo] = useState({});
