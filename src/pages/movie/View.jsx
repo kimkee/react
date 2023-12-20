@@ -16,9 +16,7 @@ export default function View({prop}) {
   const scrollEvent = (e)=> setScr( parseInt( e.target.scrollTop ) ) ;
 
   const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
-  const goTop = ()=>{
-    ui.scrollTo(".popup.movie .pct", 0, 200 );
-  }
+  const goTop = ()=> ui.scrollTo(".popup.movie .pct", 0, 200 );
 
   useEffect(() => {
     ui.loading.show('glx');

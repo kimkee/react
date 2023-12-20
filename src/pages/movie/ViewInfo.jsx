@@ -48,12 +48,10 @@ export default function ViewInfo({ postID, popTitle }) {
     }).catch( e => { console.log(e); });
   };
 
-  const goTop = ()=>{
-    ui.scrollTo(".popup.movie .pct", 0, 200 );
-  }
+  // const goTop = ()=> ui.scrollTo(".popup.movie .pct", 0, 200 ) ;
 
   useEffect(() => {
-    goTop();
+    // goTop();
     fetchDatas();
     fetchCast();
     fetchMov();
