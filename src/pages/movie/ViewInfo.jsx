@@ -170,8 +170,6 @@ export default function ViewInfo({ postID, popTitle }) {
           </div>
           : null}
 
-
-
           {casts.crew.length ?
           <div className="sect cast">
             <h4 className="tts">제작진</h4>
@@ -211,9 +209,6 @@ export default function ViewInfo({ postID, popTitle }) {
             </div>
           </div>
           : null}
-
-
-
 
           <ViewRev postID={postID} opts={opts}/>
 
