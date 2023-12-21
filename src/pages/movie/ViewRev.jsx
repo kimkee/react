@@ -44,6 +44,7 @@ export default function ViewRev({postID, opts}) {
   const revText = useRef('');
   
 
+  const revNumMax = 1000;
   const [revNumNow, setRevNumNow] = useState(0)
   const autoheight = (e)=>{
     const $els = e.target;
@@ -51,14 +52,13 @@ export default function ViewRev({postID, opts}) {
     $els.style.height = "1rem";
     tboxS = $els.scrollHeight;
     $els.style.height = tboxS + "rem";
-    const revNumMax = 1000;
     const revTxtNow = revText.current.value;
-    setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
+    setRevNumNow( ui.commas.add(revText.current.value.length) );
       console.log( revText.current.value );
       console.log( revText.current.value.length , revNumMax  );
     if ( revTxtNow.length > revNumMax ) {
       $els.value = $els.value.slice(0, revNumMax );
-      setRevNumNow( new Intl.NumberFormat().format(revText.current.value.length) );
+      setRevNumNow( ui.commas.add(revText.current.value.length) );
       ui.alert(`감상평은 1,000글자 까지 입니다.`,{
         ycb: () => {}
       });      
@@ -90,7 +90,7 @@ export default function ViewRev({postID, opts}) {
         <h4 className="tts">리뷰(준비중)</h4>
         <div className="form textarea">
           <textarea onInput={autoheight} ref={revText} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
-          <span className="num"><i className="i">{revNumNow}</i><b className="n">1,000</b></span>
+          <span className="num"><i className="i">{revNumNow}</i><b className="n">{ui.commas.add(revNumMax)}</b></span>
           <div className="bts">
             <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
           </div>

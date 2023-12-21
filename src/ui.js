@@ -38,9 +38,13 @@ const ui = {
         bottom: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom")  ) || 0,
         watch: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-watch")  ) || 0
     },
-    commasDel(str) {
-        if (typeof str == 'number') { return; }
-        return parseInt(str.replace(/,/g, ''));
+    commas:{
+        add:function(str){
+            return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        },
+        del:function(str){
+            return parseInt(str.replace(/,/g , ''));
+        }
     },
     dpmode:{
         init: function(){
