@@ -1,12 +1,12 @@
 import fs from 'fs';
 
 const d = new Date();
-let yy = d.getFullYear();
-let mm = d.getMonth()+1;
-let dd = d.getDate();
-let hh = d.getHours();
-let min = d.getMinutes();
-let sec = d.getSeconds();
+const yy = d.getFullYear();
+const mm = d.getMonth()+1;
+const dd = d.getDate();
+const hh = d.getHours();
+const min = d.getMinutes();
+const sec = d.getSeconds();
 
 const digt = n => n < 10 ? ".0"+n : "."+n ;
 const ver = yy + digt(mm) + digt(dd) + digt(hh) + digt(min) + digt(sec);
