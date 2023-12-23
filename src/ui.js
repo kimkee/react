@@ -39,12 +39,8 @@ const ui = {
         watch: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-watch")  ) || 0
     },
     commas:{
-        add:function(str){
-            return str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        },
-        del:function(str){
-            return parseInt(str.replace(/,/g , ''));
-        }
+        add: (str)=> str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') ,
+        del: (str)=> parseInt(str.replace(/,/g , ''))
     },
     dpmode:{
         init: function(){
