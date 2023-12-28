@@ -56,8 +56,7 @@ const ui = {
                 : document.documentElement.classList.remove("is-pwa-fullscreen");
             isPwaFull 
                 ? document.documentElement.style.setProperty("--safe-watch","24px")
-                : document.documentElement.style.setProperty("--safe-watch","0px");
-            
+                : document.documentElement.style.setProperty("--safe-watch","0px");            
             isPwaStad
                 ? document.documentElement.classList.add("is-pwa-standalone")
                 : document.documentElement.classList.remove("is-pwa-standalone");
