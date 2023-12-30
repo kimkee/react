@@ -177,7 +177,7 @@ export default function Lists() {
         
         <div className="page-set">
         { nowPage.tot > 0 &&
-          <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
+          <div className="inr"><div className="pg"><i className="p">{nowPage.pge}</i> <i className="s">/</i> <i className="t">{nowPage.tot}</i></div></div>
         }
         </div>
 

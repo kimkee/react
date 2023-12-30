@@ -270,7 +270,7 @@ export default function Search() {
                 
         <div className="page-set">
         { schList.length > 0 &&
-            <div className="inr"><div className="pg">{nowPage.pge} / {nowPage.tot}</div></div>
+            <div className="inr"><div className="pg"><i className="p">{nowPage.pge}</i> <i className="s">/</i> <i className="t">{nowPage.tot}</i></div></div>
         }
         </div>
 
