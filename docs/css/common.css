@@ -683,15 +683,20 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 }
 
 
+
+.page .page-set{height: 60rem;}
+.page .page-set>.inr{}
+.page .page-set .pg{height: 30rem;display: flex;position: fixed;left: 50%;transform: translateX(-50%);bottom: calc(77rem + var(--safe-bottom));z-index: 100;align-items: center;padding: 0rem 12rem 0rem;border-radius: 30rem;box-shadow: 0rem 0rem 6rem rgb(0 0 0 / 49%);background-color: rgb(255 255 255 / 70%);color: #000;margin-left: calc( 0px - var(--scrPad) /2 );}
+.page .page-set .pg i{font-style: normal;}
+.page .page-set .pg i.p{}
+.page .page-set .pg i.s{font-size: 10rem; margin: 0rem 3rem}
+.page .page-set .pg i.t{}
+
 .page.movie{}
-.page.movie .page-set{height: 60rem;}
-.page.movie .page-set>.inr{}
-.page.movie .page-set .pg{height: 30rem;display: flex;position: fixed;left: 50%;transform: translateX(-50%);bottom: calc(77rem + var(--safe-bottom));z-index: 100;align-items: center;padding: 0rem 12rem 0rem;border-radius: 30rem;box-shadow: 0rem 0rem 6rem rgb(0 0 0 / 49%);background-color: rgb(255 255 255 / 70%);color: #000;margin-left: calc( 0px - var(--scrPad) /2 );}
-
-
 .page.list{min-height: calc(100dvh - 175rem - var(--safe-top) - var(--safe-bottom) );}
 .page.list~.floatnav.on-top{bottom: calc(130rem + var(--safe-bottom));}
 .page.list .page-set .pg{bottom: calc(136rem + var(--safe-bottom));}
+
 
 .page.movie.search{min-height: calc(100dvh - 60rem - var(--safe-top));}
 .page.movie.search .nodata{min-height: calc(100 * var(--vh) - 197rem - var(--safe-top) - var(--safe-bottom) );display: flex;justify-content: center;align-items: center;padding: 10vh 10rem;flex-direction: column;}
@@ -805,9 +810,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .comp .logo .img{max-height: 15rem;vertical-align: middle;max-width: 100%;}
 .movie-detail .revw{margin: 5rem 0rem 0rem 0rem;}
 .movie-detail .revw .tts{}
-.movie-detail .revk{
-    margin: 20rem 0rem 0rem 0rem;
-}
+.movie-detail .revk{ margin: 20rem 0rem 0rem 0rem; }
 .movie-detail .revk .tts{}
 .movie-detail .revk .form{position: relative;border: 1rem solid #333333;background-color: rgb(40 40 41 / 13%);border-radius: 4rem;min-height: 40rem;padding: 8rem 10rem 10rem 10rem;}
 .movie-detail .revk .form .rtext{border: none;resize: none;width: 100%;padding: 1rem;line-height: 1.36;max-height: 212rem;-webkit-appearance: none;outline: none;word-break: break-all;height: 24rem;background: transparent;color: #999;min-height: 50rem;font-size: 13rem;}
