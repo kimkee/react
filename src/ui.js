@@ -42,6 +42,44 @@ const ui = {
         add: (str)=> str.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') ,
         del: (str)=> parseInt(str.replace(/,/g , ''))
     },
+    numToCommaHan : function(num) {
+        var number = ["영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
+		num = num + "";
+		number = parseInt(num.replace(/,/gi, ""));
+		// console.log(">>>>>>in:one:", number);
+		let inputNumber  = number < 0 ? false : number;
+		let unitWords    = ['', '만', '억', '조', '경']
+		let splitUnit    = 10000;
+		let splitCount   = unitWords.length;
+		let resultArray  = [];
+		let resultString = '';
+		for(let i = 0; i < splitCount; i++) {
+			let unitResult = (inputNumber % Math.pow(splitUnit, i + 1)) / Math.pow(splitUnit, i);
+			unitResult = Math.floor(unitResult);
+			if(unitResult > 0) {
+				resultArray[i] = unitResult;
+			}
+		}
+		for(let i = 0; i < resultArray.length; i++) {
+			if(!resultArray[i]) continue;
+			let numWithComma = (resultArray[i]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			resultString = String(numWithComma) + unitWords[i] + resultString;
+		}
+		return resultString;
+	},
+    makeHan : function(text) {
+        var number = ["영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구"];
+        var smallUnit = ["천", "백", "십", ""];
+		var str = "";
+		for(var i=0; i < text.length; i++) {
+			var num = text[i];
+			// '0' 은 읽지 않음
+			if (num == "0") continue;
+			str += number[num] + smallUnit[i];
+		}
+
+		return str;
+	},
     dpmode:{
         init: function(){
             setInterval( this.set , 500);
