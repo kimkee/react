@@ -1218,13 +1218,13 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList>.inr{position: relative;overflow-x: auto;scroll-behavior: smooth;display: block;white-space: nowrap;}
 .page.home .sect.mnList>.inr::-webkit-scrollbar{display: none;}
 .page.home .sect.mnList .hbox{display: flex;padding: 10rem  20rem 10rem;justify-content: space-between;align-items: center;}
-.page.home .sect.mnList .hbox .link{ display: inline-flex; }
+.page.home .sect.mnList .hbox .link{display: inline-flex;align-items: center;}
 .page.home .sect.mnList .hbox .stit{}
-.page.home .sect.mnList .hbox .more{ margin-left: 3rem; }
-.page.home .sect.mnList .hbox .bt-nav{ margin-right: -5rem; }
-.page.home .sect.mnList .hbox .bt-nav .bt{width: 14rem;height: 20rem; border-radius: 16rem;padding: 0rem 1rem;}
+.page.home .sect.mnList .hbox .more{margin-left: 5rem;font-size: 11rem;}
+.page.home .sect.mnList .hbox .bt-nav{margin-right: -3rem;}
+.page.home .sect.mnList .hbox .bt-nav .bt{width: 16rem;height: 20rem;border-radius: 16rem;padding: 0rem 3rem;}
 .page.home .sect.mnList .hbox .bt-nav .bt:hover i{color: #61dafb;}
-.page.home .sect.mnList .hbox .bt-nav .bt i{ font-size: 13rem; }
+.page.home .sect.mnList .hbox .bt-nav .bt i{font-size: 15rem;color: #4a4a4a;}
 .page.home .sect.mnList .hbox .bt-nav .bt.prev{ text-align: right; }
 .page.home .sect.mnList .hbox .bt-nav .bt.next{ text-align: left; }
 .page.home .sect.mnList .slide{padding: 0rem  20rem;display: inline-block;white-space: nowrap;flex-wrap: wrap;width: 100%;}

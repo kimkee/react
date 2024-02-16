@@ -61,20 +61,17 @@ export default  function ListSet({opts}){
   //   swiper.slideTo( Math.floor( Math.random() *10 ) , 0 );
   // };
   const scrollBox = useRef();
-  const navSlide = (e)=>{
+  const goScroll = (e)=>{
     const isNext = e.currentTarget.classList.contains('next');
     const minus = isNext  ? 1 : -1;
-    const scAmount = (scrollBox.current.offsetWidth - 100) * minus;
-    // console.log( scAmount , scrollBox.current);
-    scrollBox.current.scrollLeft += scAmount;
+    const scAmt = (scrollBox.current.offsetWidth - 100) * minus;
+    console.log( scAmt , scrollBox.current , minus);
+    scrollBox.current.scrollLeft += scAmt;
   }
 
   useEffect(() => {
     fetchMoive(1);
-    // swiper.slideTo(2);
-    
     return ()=>{
-      
     }
     // eslint-disable-next-line
   },[]);
@@ -91,8 +88,8 @@ export default  function ListSet({opts}){
             <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
           </Link>
           <div className="bt-nav">
-            <button type="button" className="bt prev" onClick={e=>navSlide(e)}><i class="fa-solid fa-caret-left"></i></button>
-            <button type="button" className="bt next" onClick={e=>navSlide(e)}><i class="fa-solid fa-caret-right"></i></button>
+            <button type="button" className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
+            <button type="button" className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
           </div>
         </div>
 
