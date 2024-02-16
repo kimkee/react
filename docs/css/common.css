@@ -1215,11 +1215,18 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnTop .screen{position: absolute;height: 200rem;z-index: 9;left: 0;right: 0;bottom: 0rem;background-image: linear-gradient(360deg, rgb(17 17 17), transparent);padding: 4% 0;}
 
 .page.home .sect.mnList{margin-bottom: 10rem;}
-.page.home .sect.mnList>.inr{position: relative;overflow-x: auto;display: block;flex-wrap: wrap;/* width: 100%; */white-space: nowrap;}
+.page.home .sect.mnList>.inr{position: relative;overflow-x: auto;scroll-behavior: smooth;display: block;white-space: nowrap;}
 .page.home .sect.mnList>.inr::-webkit-scrollbar{display: none;}
 .page.home .sect.mnList .hbox{display: flex;padding: 10rem  20rem 10rem;justify-content: space-between;align-items: center;}
+.page.home .sect.mnList .hbox .link{display: inline-flex;align-items: center;}
 .page.home .sect.mnList .hbox .stit{}
-.page.home .sect.mnList .hbox .more{}
+.page.home .sect.mnList .hbox .more{margin-left: 5rem;font-size: 11rem;}
+.page.home .sect.mnList .hbox .bt-nav{margin-right: -3rem;}
+.page.home .sect.mnList .hbox .bt-nav .bt{width: 16rem;height: 20rem;border-radius: 16rem;padding: 0rem 3rem;}
+.page.home .sect.mnList .hbox .bt-nav .bt:hover i{color: #61dafb;}
+.page.home .sect.mnList .hbox .bt-nav .bt i{font-size: 15rem;color: #4a4a4a;}
+.page.home .sect.mnList .hbox .bt-nav .bt.prev{ text-align: right; }
+.page.home .sect.mnList .hbox .bt-nav .bt.next{ text-align: left; }
 .page.home .sect.mnList .slide{padding: 0rem  20rem;display: inline-block;white-space: nowrap;flex-wrap: wrap;width: 100%;}
 .page.home .sect.mnList .slide ul{display: inline-block;width: 100%;display: block;white-space: nowrap;flex-wrap: wrap;}
 .page.home .sect.mnList .slide ul>li{margin: 0 3% 0 0rem;width: calc(24% - 3%);display: inline-block;}
