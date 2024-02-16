@@ -160,7 +160,8 @@ export default function ViewInfo({ postID, popTitle }) {
                       <Link to={`./videos/${idx+1}`} className="pic" >
                         <span className="msg"><span className="tit">{mov.name}</span></span>
                         <i className="ico fa-solid fa-play"></i>
-                        <img className="img" src={`//i.ytimg.com/vi/${mov.key}/sddefault.jpg`}   alt={mov.name} loading="lazy" />
+                        <img className="img" src={`//i.ytimg.com/vi/${mov.key}/hqdefault.jpg`}   alt={mov.name} loading="lazy" />
+                        {/* <img className="img" src={`//i.ytimg.com/vi/${mov.key}/sddefault.jpg`}   alt={mov.name} loading="lazy" /> */}
                       </Link>
                     </div>
                   )
