@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link  } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
 import axios from 'axios';
 
@@ -60,6 +60,14 @@ export default  function ListSet({opts}){
   // const nexto = () => {
   //   swiper.slideTo( Math.floor( Math.random() *10 ) , 0 );
   // };
+  const scrollBox = useRef();
+  const navSlide = (e)=>{
+    const isNext = e.currentTarget.classList.contains('next');
+    const minus = isNext  ? 1 : -1;
+    const scAmount = (scrollBox.current.offsetWidth - 100) * minus;
+    // console.log( scAmount , scrollBox.current);
+    scrollBox.current.scrollLeft += scAmount;
+  }
 
   useEffect(() => {
     fetchMoive(1);
@@ -77,12 +85,18 @@ export default  function ListSet({opts}){
       
       <section className="sect mnList">
 
-        <Link  to={`/list/${opts.media}/${opts.cate || 0}`} className="hbox">
-          <h3 className="stit">{opts.title}</h3>
-          <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
-        </Link>
+        <div className="hbox">
+          <Link  className="link" to={`/list/${opts.media}/${opts.cate || 0}`}>
+            <h3 className="stit">{opts.title}</h3>
+            <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
+          </Link>
+          <div className="bt-nav">
+            <button type="button" className="bt prev" onClick={e=>navSlide(e)}><i class="fa-solid fa-caret-left"></i></button>
+            <button type="button" className="bt next" onClick={e=>navSlide(e)}><i class="fa-solid fa-caret-right"></i></button>
+          </div>
+        </div>
 
-        <div className="inr">
+        <div className="inr" ref={scrollBox}>
           
           <div className="slide">
             <ul>
