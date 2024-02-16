@@ -80,7 +80,7 @@ export default function App() {
 
             {/* <Route path='*' element={<NotFound />} /> */}
 
-            <Route path="/" element={<Navigate to="/home/"></Navigate>} />
+            <Route path="/" element={<Navigate to="/home/" replace></Navigate>} />
 
             <Route path="home" element={<Home />} />
 
