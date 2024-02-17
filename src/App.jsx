@@ -92,8 +92,6 @@ export default function App() {
               </Route>
             </Route>
 
-            
-
             <Route path="list">
               <Route path=":menu" >
                 <Route path=":cate" element={<Lists /> }>
