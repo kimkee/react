@@ -69,10 +69,7 @@ export default  function ListSet({opts}){
     scrollBox.current.scrollLeft += scAmt;
   }
   const handleWheel = function (event) {
-    // Prevent the default vertical scrolling behavior
     event.preventDefault();
-
-    // Adjust the horizontal scroll position based on the wheel delta
     scrollBox.current.scrollLeft += event.deltaY;
   }
 
@@ -101,12 +98,8 @@ export default  function ListSet({opts}){
         </div>
 
         <div className="inr" ref={scrollBox} 
-          onMouseEnter={()=>{
-            scrollBox.current.addEventListener('wheel', handleWheel);
-          }}
-          onMouseLeave={()=>{
-            scrollBox.current.removeEventListener('wheel', handleWheel);
-          }}
+          onMouseEnter={ ()=>scrollBox.current.addEventListener('wheel', handleWheel) }
+          onMouseLeave={ ()=>scrollBox.current.removeEventListener('wheel', handleWheel) }
         >
           
           <div className="slide">
