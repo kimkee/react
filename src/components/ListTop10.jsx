@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link  } from 'react-router-dom';  // useParams , Outlet, useSearchParams, useLocation
 import axios from 'axios';
 
@@ -30,8 +30,11 @@ export default  function ListSet({opts}){
       console.log(e);
     }); 
   }
-
-
+  const scrollBox = useRef();
+  const handleWheel = function (event) {
+    event.preventDefault();
+    scrollBox.current.scrollLeft += event.deltaY;
+  }
   useEffect(() => {
     fetchMoive(1);
     return ()=>{
@@ -45,7 +48,10 @@ export default  function ListSet({opts}){
         <div className="hbox">
           <h3 className="stit">{opts.title}</h3>
         </div>
-        <div className="inr">
+        <div className="inr" ref={scrollBox} 
+          onMouseEnter={ ()=>scrollBox.current.addEventListener('wheel', handleWheel) }
+          onMouseLeave={ ()=>scrollBox.current.removeEventListener('wheel', handleWheel) }
+        >
           <div className="slide">
             <ul>
               { mlist?.filter( (item, idx) => idx < 20 ).map( (data, idx) => {
