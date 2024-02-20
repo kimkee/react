@@ -50,6 +50,14 @@ export default function ViewInfo({ postID, popTitle }) {
 
   // const goTop = ()=> ui.scrollTo(".popup.movie .pct", 0, 200 ) ;
 
+  const goScroll = (e)=>{
+    const scrollBox = e.currentTarget.closest(".sect").querySelector(".lst");
+    const isNext = e.currentTarget.classList.contains('next');
+    const minus = isNext  ? 1 : -1;
+    const scAmt = (scrollBox.offsetWidth - 100) * minus;
+    console.log( scAmt , scrollBox , minus);
+    scrollBox.scrollLeft += scAmt;
+  }
   useEffect(() => {
     // goTop();
     fetchDatas();
@@ -131,7 +139,13 @@ export default function ViewInfo({ postID, popTitle }) {
           
           {casts.cast.length ?
           <div className="sect cast">
-            <h4 className="tts">출연진</h4>
+            <div className="hbox">
+              <h4 className="tts">출연진</h4>
+              <div className="bt-nav">
+                <button type="button" className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
+                <button type="button" className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
+              </div>
+            </div>
             <div className="lst">
               {
                 casts.cast.filter( (item, i) => i < 999 ).map( b => {
@@ -151,7 +165,13 @@ export default function ViewInfo({ postID, popTitle }) {
 
           {moves.results.length > 0 ?
           <div className="sect movs">
-            <h4 className="tts">영상</h4>
+            <div className="hbox">
+              <h4 className="tts">영상</h4>
+              <div className="bt-nav">
+                <button type="button" className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
+                <button type="button" className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
+              </div>
+            </div>
             <div className="lst">
               {
                 moves.results.filter( (item, i) => i < 100 ).reverse().map( (mov,idx) => {
@@ -173,7 +193,13 @@ export default function ViewInfo({ postID, popTitle }) {
 
           {casts.crew.length ?
           <div className="sect cast">
-            <h4 className="tts">제작진</h4>
+            <div className="hbox">
+              <h4 className="tts">제작진</h4>
+              <div className="bt-nav">
+                <button type="button" className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
+                <button type="button" className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
+              </div>
+            </div>
             <div className="lst">
               {
                 casts.crew.filter( (item, i) => i < 999 ).map( b => {
@@ -193,7 +219,13 @@ export default function ViewInfo({ postID, popTitle }) {
 
           {datas.images.posters.length ? 
           <div className="sect post">
-            <h4 className="tts">포스터 : {datas.images.posters.length+1}</h4>
+            <div className="hbox">
+              <h4 className="tts">포스터 : {datas.images.posters.length+1}</h4>
+              <div className="bt-nav">
+                <button type="button" className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
+                <button type="button" className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
+              </div>
+            </div>
             <div className="lst">
               <div className='box' data-index={0}>
                 <Link to={`./poster/0`} className='pic'><img src={`//image.tmdb.org/t/p/w300${datas.poster_path}`} alt={datas.title} className="img" onError={ui.error.poster} loading="lazy" /></Link> 
