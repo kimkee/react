@@ -777,6 +777,15 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .vinf::-webkit-scrollbar-thumb {  box-shadow: none;}
 .movie-detail .sect{ margin: 15rem 0rem 0rem 0rem;}
 .movie-detail .sect  .tts{margin: 0rem 0rem 8rem 0rem;color: #ddd;}
+.movie-detail .sect .lst{scroll-behavior: smooth;}
+.movie-detail .sect .hbox{display: flex;justify-content: space-between;align-items: center;margin-bottom: 6rem;}
+.movie-detail .sect .bt-nav{margin-right: -3rem;}
+.movie-detail .sect .bt-nav .bt{width: 16rem;height: 20rem;border-radius: 16rem;padding: 0rem 3rem;}
+.movie-detail .sect .bt-nav .bt:hover i{color: #61dafb;}
+.movie-detail .sect .bt-nav .bt i{font-size: 15rem;color: #4a4a4a;}
+.movie-detail .sect .bt-nav .bt.prev{ text-align: right; }
+.movie-detail .sect .bt-nav .bt.next{ text-align: left; }
+
 .movie-detail .cast{}
 .movie-detail .cast .tts{margin: 0rem 0rem 5rem 0rem; color: #ddd;}
 .movie-detail .cast .lst{display: flex;flex-wrap: nowrap;overflow-x: auto;overflow-y: hidden; margin: 0rem -20rem;padding: 0rem 10rem;}
