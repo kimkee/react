@@ -90,8 +90,8 @@ export default function UserLike({uInfo,swiper}) {
     <>
       <div className="movie-list user">
         <div className="tabs">
-          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>{ mediaList('movie') }}>Movie</button>
-          <button className={`btn ${media == 'tv'    ? 'active':''}`} onClick={()=>{ mediaList('tv')    }}>TV</button>
+          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>{ mediaList('movie') }}><em>Movie</em> <i>{uInfo.tmdb_movie_scrap.length}</i></button>
+          <button className={`btn ${media == 'tv'    ? 'active':''}`} onClick={()=>{ mediaList('tv')    }}><em>TV</em> <i>{uInfo.tmdb_tv_scrap.length}</i></button>
         </div>
         {newScrapMovie.length > 0 ?
         <ul className='list'>
