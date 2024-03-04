@@ -632,9 +632,13 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .movie-list.user{}
 .movie-list.user .tabs{display: flex;justify-content: center;border-bottom: 1rem solid #242b36;}
-.movie-list.user .tabs .btn{width: 100%;border: none;border-radius: 0rem;background-color: #111111;color: #424242;}
+.movie-list.user .tabs .btn{width: 100%;border: none;font-weight: 700;border-radius: 0rem;background-color: #111111;color: #6f6f6f;}
 .movie-list.user .tabs .btn+.btn{border-left: 1rem solid #242b36;}
-.movie-list.user .tabs .btn.active{background-color: #1a1a1a;font-weight: 700;color: #61dafb;}
+.movie-list.user .tabs .btn.active{background-color: #1a1a1a;/* font-weight: 700; */color: #61dafb;}
+.movie-list.user .tabs .btn em{font-size: 14rem;}
+.movie-list.user .tabs .btn i{font-style: normal;margin: 0rem 0rem 0rem 4rem;font-size: 11rem;border-radius: 10rem;background: #636363;color: #282828;display: inline-flex;padding: 0rem 2rem;}
+.movie-list.user .tabs .btn.active i{background:#61dafb}
+
 .movie-list.user .list>li .box{ padding: 0; }
 .movie-list.user .list>li .box .cont {padding: 18rem 30rem 18rem 20rem;}
 .movie-list.user .list>li .box .cont .pics{margin-right: 14rem;}
