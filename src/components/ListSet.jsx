@@ -6,10 +6,10 @@ import ui from '../ui.js';
 export default  function ListSet({opts}){
   
   const [mlist, setMlist] = useState([]);
-  console.log(opts);
+ 
   const cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
   
-  const fetchMoive = (page)=>{
+  const fetchMoive = ()=>{
     const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
@@ -35,7 +35,7 @@ export default  function ListSet({opts}){
   const [isNavNext, setIsNavNext] = useState(false);
   const handeScroll = ()=> {
     const box = scrollBox.current;
-    const amount = box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0;
+    const amount = Math.round(box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
     console.log( amount );
     setIsNavPrev( amount == 0 ? true : false);
     setIsNavNext( amount == 100 ? true : false);
@@ -43,7 +43,7 @@ export default  function ListSet({opts}){
 
   useEffect(() => {
     handeScroll();
-    fetchMoive(1);
+    fetchMoive();
     // eslint-disable-next-line
   },[]);
 
