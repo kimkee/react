@@ -1236,8 +1236,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList .hbox .more{margin-left: 5rem;font-size: 11rem;}
 .page.home .sect.mnList .hbox .bt-nav{margin-right: -3rem;}
 .page.home .sect.mnList .hbox .bt-nav .bt{width: 16rem;height: 20rem;border-radius: 16rem;padding: 0rem 3rem;}
-.page.home .sect.mnList .hbox .bt-nav .bt:hover i{color: #61dafb;}
-.page.home .sect.mnList .hbox .bt-nav .bt i{font-size: 15rem;color: #4a4a4a;}
+.page.home .sect.mnList .hbox .bt-nav .bt:not(:disabled):hover i{color: #61dafb;}
+.page.home .sect.mnList .hbox .bt-nav .bt i{font-size: 15rem;color: #878787;}
+.page.home .sect.mnList .hbox .bt-nav .bt:disabled i{opacity:0.3;}
 .page.home .sect.mnList .hbox .bt-nav .bt.prev{ text-align: right; }
 .page.home .sect.mnList .hbox .bt-nav .bt.next{ text-align: left; }
 .page.home .sect.mnList .slide{padding: 0rem  20rem;display: inline-block;white-space: nowrap;flex-wrap: wrap;width: 100%;}
