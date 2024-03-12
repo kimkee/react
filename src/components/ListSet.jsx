@@ -68,15 +68,23 @@ export default  function ListSet({opts}){
     console.log( scAmt , scrollBox.current , minus);
     scrollBox.current.scrollLeft += scAmt;
   }
-  const handleWheel = function (event) {
+  const handleWheel = (event)=> {
     event.preventDefault();
     scrollBox.current.scrollLeft += event.deltaY;
   }
+  const [isNavPrev, setIsNavPrev] = useState(false);
+  const [isNavNext, setIsNavNext] = useState(false);
+  const handeScroll = ()=> {
+    const box = scrollBox.current;
+    const amount = box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0;
+    console.log( amount );
+    setIsNavPrev( amount == 0 ? true : false);
+    setIsNavNext( amount == 100 ? true : false);
+  }
 
   useEffect(() => {
+    handeScroll();
     fetchMoive(1);
-    return ()=>{
-    }
     // eslint-disable-next-line
   },[]);
 
@@ -92,14 +100,15 @@ export default  function ListSet({opts}){
             <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
           </Link>
           <div className="bt-nav">
-            <button type="button" className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
-            <button type="button" className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
+            <button type="button" disabled={isNavPrev}  className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
+            <button type="button" disabled={isNavNext} className="bt next" onClick={goScroll}><i className="fa-solid fa-caret-right"></i></button>
           </div>
         </div>
 
         <div className="inr" ref={scrollBox} 
           onMouseEnter={ ()=>scrollBox.current.addEventListener('wheel', handleWheel) }
           onMouseLeave={ ()=>scrollBox.current.removeEventListener('wheel', handleWheel) }
+          onScroll={ handeScroll }
         >
           
           <div className="slide">
