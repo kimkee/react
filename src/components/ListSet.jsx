@@ -13,7 +13,7 @@ export default  function ListSet({opts}){
     const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
-      setMlist( mlist => [...mlist,...res.data.results] );
+      setMlist( res.data.results );
     }).catch(e=>{
       console.log(e);
     }); 
@@ -35,10 +35,10 @@ export default  function ListSet({opts}){
   const [isNavNext, setIsNavNext] = useState(false);
   const handeScroll = ()=> {
     const box = scrollBox.current;
-    const amount = Math.round(box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
+    const amount = (box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
     console.log( amount );
     setIsNavPrev( amount == 0 ? true : false);
-    setIsNavNext( amount == 100 ? true : false);
+    setIsNavNext( amount >= 100 ? true : false);
   }
 
   useEffect(() => {

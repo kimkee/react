@@ -80,15 +80,15 @@ export default function App() {
 
             {/* <Route path='*' element={<NotFound />} /> */}
 
-            <Route path="/" element={<Navigate to="/home/" replace></Navigate>} />
+            <Route path="/" element={<Navigate to="/home/" replace />} />
 
             <Route path="home" element={<Home />} />
 
             <Route path="home/:menu" element={<Home /> }>
               <Route path=":id" element={<View prop={{"page":"home"}} />} >
-                <Route path="poster/:nums" element={<Poster  />} />
-                <Route path="person/:nums" element={<Person  />} />
-                <Route path="videos/:nums" element={<Videos  />} />
+                <Route path="poster/:nums" element={<Poster />} />
+                <Route path="person/:nums" element={<Person />} />
+                <Route path="videos/:nums" element={<Videos />} />
               </Route>
             </Route>
 
@@ -98,7 +98,7 @@ export default function App() {
                   <Route path=":id" element={<View prop={{"page":"search"}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
                     <Route path="person/:nums" element={<Person />} />
-                    <Route path="videos/:nums" element={<Videos  />} />
+                    <Route path="videos/:nums" element={<Videos />} />
                   </Route>
                 </Route>
               </Route>
