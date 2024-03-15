@@ -35,10 +35,10 @@ export default  function ListSet({opts}){
   const [isNavNext, setIsNavNext] = useState(false);
   const handeScroll = ()=> {
     const box = scrollBox.current;
-    const amount = (box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
-    console.log( amount );
-    setIsNavPrev( amount == 0 ? true : false);
-    setIsNavNext( amount >= 100 ? true : false);
+    const amt = (box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
+    console.log( amt );
+    setIsNavPrev( amt == 0 ? true : false);
+    setIsNavNext( amt >= 100 ? true : false);
   }
 
   useEffect(() => {
