@@ -72,7 +72,7 @@ export default  function ListSet({opts}){
           <div className="slide">
             <ul>
                 {
-                  mlist?.filter( (item, i) => i < 20 ).map( (data, idx) => {
+                  mlist.filter( (item, i) => i < 20 ).map( (data, idx) => {
                     const img = `//image.tmdb.org/t/p/w154${data.poster_path}` ;
                     const tit = data.title || data.name;
                     return (
