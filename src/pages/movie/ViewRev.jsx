@@ -109,7 +109,7 @@ export default function ViewRev({postID, opts}) {
                 const avatar = rev.author_details.avatar_path || "";
                 // console.log(avatar);
                 const nImg = '//image.tmdb.org/t/p/w45_and_h45_face/'+avatar ;
-                const rvTxt = rev.content.replace(/\n/g, "<br>")
+                const rvTxt = rev.content.replace(/\n/g, "<br>");
                 // console.log(nImg);
                 return(
                 <li key={idx}>
