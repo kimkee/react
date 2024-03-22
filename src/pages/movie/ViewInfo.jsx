@@ -78,12 +78,11 @@ export default function ViewInfo({ postID, popTitle }) {
   <>
     <div className="movie-detail">
       <div className="bgs" style={{backgroundImage: `url(${bgImg})`}}></div>
-      {/* <Skeleton opts={ {type: 'movie-detail'} } /> */}
-      {/* <div className="m-info"><Loading opts={{type:'dot'}} /></div> */}
-      { !datas && !casts && !moves &&
+      { 
+        !datas || !casts || !moves
+        ?
         <Skeleton opts={ {type: 'movie-detail'} } />
-      }
-      { datas && casts && moves &&
+        :
         <div className="m-info">
           <div className="info">
             <div className="desc">
@@ -261,8 +260,7 @@ export default function ViewInfo({ postID, popTitle }) {
           </>
           : null}
 
-        </div> 
-        
+        </div>
       }
     </div>
   </>
