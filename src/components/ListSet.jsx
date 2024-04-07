@@ -35,7 +35,7 @@ export default  function ListSet({opts}){
   const [isNavNext, setIsNavNext] = useState(false);
   const handeScroll = ()=> {
     const box = scrollBox.current;
-    const amt = (box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
+    const amt = Math.ceil(box.scrollLeft / (box.scrollWidth - box.offsetWidth)*100 || 0);
     console.log( amt );
     setIsNavPrev( amt <= 0 ? true : false);
     setIsNavNext( amt >= 100 ? true : false);
