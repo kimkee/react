@@ -76,7 +76,7 @@ export default  function ListSet({opts}){
                     const img = `//image.tmdb.org/t/p/w154${data.poster_path}` ;
                     const tit = data.title || data.name;
                     return (
-                      <li key={idx}  className="pbox">
+                      <li key={idx} className="pbox">
                         <Link className="box" to={`${opts.media}/${data.id}`}>
                             <div className="pics"><img src={`${img}`} alt={tit} className='img' onError={ui.error.poster} /></div>
                         </Link>
