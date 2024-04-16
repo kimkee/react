@@ -194,7 +194,7 @@ body.is-gnb .btn-gnb{}
 [data-ui='elips'].elips{/* padding-bottom: 18px; */}
 [data-ui='elips'].elips .btn-tog{display:block;}
 [data-ui='elips'] .txt{text-overflow: ellipsis;overflow:hidden;-webkit-line-clamp: 3;-webkit-box-orient:vertical;display:-webkit-box;word-wrap:break-word;font-size: 14rem;line-height: 1.6;}
-[data-ui='elips'].open  .txt{text-overflow:inherit; max-height:inherit; overflow:inherit; -webkit-line-clamp:inherit;-webkit-box-orient:inherit; display:block; }
+[data-ui='elips'].open  .txt{text-overflow:inherit;max-height:inherit;overflow:inherit;-webkit-line-clamp:inherit;-webkit-box-orient:inherit;display:block;text-wrap: balance;}
 [data-ui='elips'].elips.open {padding-bottom: 0;}
 [data-ui='elips'].elips.open .btn-tog{display: inline;position: static;margin-left: 10rem;}
 [data-ui='elips'].elips.open .btn-tog i{ position: static; transform: none;}
