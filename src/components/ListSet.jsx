@@ -19,7 +19,7 @@ export default  function ListSet({opts}){
     }); 
   }
 
-  const scrollBox = useRef();
+  const scrollBox = useRef(); 
   const goScroll = (e)=>{
     const isNext = e.currentTarget.classList.contains('next');
     const minus = isNext  ? 1 : -1;
