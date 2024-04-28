@@ -32,7 +32,7 @@ export default function Lists() {
   // let cate = {};
   // const total;
   const getCate = async ()=>{
-    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
+    await axios.get(`//api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
       // console.log(res.data.genres);
       genrMenuSet(res.data.genres);
     });
