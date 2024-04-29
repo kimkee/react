@@ -10,7 +10,7 @@ export default  function ListSet({opts}){
   const cateList = opts.cate !== '0' ? `&with_genres=${opts.cate}` : ``;
   
   const fetchMoive = ()=>{
-    const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+    const fetchURL = `//api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( res.data.results );
