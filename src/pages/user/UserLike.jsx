@@ -26,8 +26,8 @@ export default function UserLike({uInfo,swiper}) {
     opts == 'movie' && setNewScrapMovie( uInfo.tmdb_movie_scrap );
     opts == 'tv' && setNewScrapMovie( uInfo.tmdb_tv_scrap );
     setMedia(opts);
-    console.log(swiper);
     setTimeout(() => swiper.update() , 100); 
+    console.log(newScrapMovie);
   };
 
   const deleteScrap = async (opts, data) => {
@@ -82,7 +82,7 @@ export default function UserLike({uInfo,swiper}) {
     }
     // eslint-disable-next-line
   },[]);
-  console.log(newScrapMovie);
+  // console.log(newScrapMovie);
   if (!uInfo ) { return false }
   // if (!newScrapMovie) { return false }
 
@@ -118,7 +118,7 @@ export default function UserLike({uInfo,swiper}) {
                     </Link>
                     <div className="bts">
                       {store.state.userInfo.uid == uInfo.id &&
-                        <button type="button" className="bt" onClick={ ()=>deleteScrap(media, data) }><span><i className="fa-regular fa-close"></i></span></button>
+                        <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(media, data)}) }><span><i className="fa-regular fa-close"></i></span></button>
                       }
                     </div>
                   </div>
