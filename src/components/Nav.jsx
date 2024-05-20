@@ -67,7 +67,7 @@ export default function Nav() {
             <li className={isActive("list/tv")}>
               <NavLink to={`/list/tv/0/`} className={"bt"}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink>
             </li>
-            <li className={isActive("search/movie")}>
+            <li className={isActive("search/")}>
               <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink>
             </li>
             <li className={isActive("user/")}>
