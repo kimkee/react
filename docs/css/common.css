@@ -39,8 +39,8 @@ textarea::-webkit-input-placeholder {color: #666666; font-weight: normal;}
 textarea:-ms-input-placeholder {color: #666666; font-weight: normal;} 
 
 :root {
-    --safe-top: calc( env(safe-area-inset-top) );
-    --safe-bottom: calc( env(safe-area-inset-bottom) );
+    --safe-top: env(safe-area-inset-top) ;
+    --safe-bottom: env(safe-area-inset-bottom) ;
 	--safe-watch: 0px;
     --mwide: 480px;
     --scrPad: 0rem;
