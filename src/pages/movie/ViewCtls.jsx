@@ -115,9 +115,9 @@ export default function ViewCtls({datas,postID, opts}) {
       return userData
     }).then(data => {
       setIsScrap( 
-        data.tmdb_movie_scrap.some(item => { return item.id == postID } ) 
+        data.tmdb_movie_scrap?.some(item => { return item.id == postID } ) 
         ||
-        data.tmdb_tv_scrap.some(item => { return item.id == postID } )
+        data.tmdb_tv_scrap?.some(item => { return item.id == postID } )
       );
     });
 
