@@ -13,6 +13,7 @@ import {atomStore,textState,sss} from '../../atom.js';
 import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
 
+
 export default function UserLike({uInfo,swiper}) {
   
   if (!uInfo.tmdb_movie_scrap) { return false }
