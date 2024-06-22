@@ -647,7 +647,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .list>li .box .cont .pics{margin-right: 14rem;}
 .movie-list.user .list>li .box .cont .pics{min-width: 14%;width: 14%;padding-bottom: calc(1200% / 780 * 12);}
 .movie-list.user .list>li .box .cont .desc{ margin-top: -5rem; }
-.movie-list.user .list>li .box .cont .text{-webkit-line-clamp: 3;max-height: 34rem;}
+.movie-list.user .list>li .box .cont .text{-webkit-line-clamp: 3;max-height: 50rem;}
 .movie-list.user .list>li .box .cont .dd{ margin-left: 15rem; white-space: nowrap; text-align: right; }
 .movie-list.user .list>li .box .cont .dd .hits{display: flex;flex-direction: column;align-items: flex-end;}
 .movie-list.user .list>li .box .cont .dd .hits em{}
