@@ -27,7 +27,6 @@ export default function ItemA({data,cate}) {
         <div className="dd">
           <div className="cate">
             <span className="txt">
-              
               {data.genre_ids.map( item => <em className="ico" key={item}> {  cate[item] } </em> )}
             </span>
           </div>
