@@ -1,9 +1,9 @@
 # React + TMDB API
  
 
-## React : <a href="https://kimkee.github.io/react/" :target="blank">https://kimkee.github.io/react/</a>
+## React : https://kplex.pages.dev
 
-## https://kplex.netlify.app/
+
 
 <br>
 
