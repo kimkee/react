@@ -5,7 +5,7 @@ import store from '../../store.js';
 import { initializeApp } from 'firebase/app';
 import { db } from '../../firebaseConfig.js';
 import { doc, setDoc } from 'firebase/firestore';
-import { getAuth, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithRedirect, getRedirectResult, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'; //inMemoryPersistence
+import { getAuth, GoogleAuthProvider, GithubAuthProvider, FacebookAuthProvider, TwitterAuthProvider,signInWithPopup, signInWithRedirect, getRedirectResult, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth'; //inMemoryPersistence
 
 // import axios from 'axios';
 import ui from '../../ui.js';
@@ -82,21 +82,31 @@ export default function SignIn() {
 
   const auth = getAuth();
   
-  const loginGoogle = ()=>{
+  const loginGoogle = async ()=>{
     const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    addMember(result.user , `/`);
+    // await navigate(`/`);
   }
-  const loginGithub = ()=>{
+  const loginGithub = async ()=>{
     const provider = new GithubAuthProvider();
-    signInWithRedirect(auth, provider);
+    const result = await signInWithPopup(auth, provider);
+    console.log(result.user);
+    
+    addMember(result.user , `/`);
+    // navigate(`/`);
   }
-  const loginFacebook = ()=>{
+  const loginFacebook = async ()=>{
     const provider = new FacebookAuthProvider();
-    signInWithRedirect(auth, provider);
+    await signInWithPopup(auth, provider);
+    navigate(`/`);
+    addMember(result.user , `/`);
   }
-  const loginTwitter = ()=>{
+  const loginTwitter = async ()=>{
     const provider = new TwitterAuthProvider();
-    signInWithRedirect(auth, provider);
+    await signInWithPopup(auth, provider);
+    navigate(`/`);
+    addMember(result.user , `/`);
   }
   
 
@@ -134,7 +144,7 @@ export default function SignIn() {
       liked: [],
       date: new Date(),
     }).then(() => {
-      navigate(`/`);
+      // navigate(`/`);
       console.log("멤버 생성: ");
       // ui.alert(`${user.email || user.displayName} 로그인 되었습니다.`, {
       //   ycb: () => { navigate(gourl); }
@@ -179,7 +189,7 @@ export default function SignIn() {
         
         <div className="sign-form">
           {/* <div className="hdt">로그인</div> */}
-          <div className="sns form">
+          {/* <div className="sns form">
             <div className="tit"><em className="t">SNS 로그인</em></div>
             <div className="bts">
               <button type="button" className="btn" onClick={loginGoogle  }><i className="fa-brands fa-google"></i><em>Google </em></button>
@@ -187,7 +197,7 @@ export default function SignIn() {
               <button type="button" className="btn" onClick={loginFacebook}><i className="fa-brands fa-facebook"></i><em>Facebook </em></button>
               <button type="button" className="btn" onClick={loginTwitter }><i className="fa-brands fa-twitter"></i><em>Twitter </em></button>
             </div>
-          </div>
+          </div> */}
           <div className="eml form">
             <div className="tit"><em className="t">Email 계정 로그인</em></div>
             <ul className="list">

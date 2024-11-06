@@ -86,6 +86,8 @@ export default function User() {
     }
     // eslint-disable-next-line
   },[uInfo.nick,uid]);
+console.log(store);
+console.log(uInfo);
 
   if(!uInfo){return}
   return (
