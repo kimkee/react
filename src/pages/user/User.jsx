@@ -25,26 +25,34 @@ import UserPost from './UserPost.jsx';
 import UserLike from './UserLike.jsx';
 import UserFolw from './UserFolw.jsx';
 
-
+import { supabase } from '@/supabase.js';
 export default function User({prop}) {
   
   const params = useParams();
   
-  console.log(params);
   const location = useLocation();
   const navigate = useNavigate();
   const uid = params.id;
-  const [uInfo, setUInfo] = useState({});
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
-
-  const { user } = prop;
-
+  
+  const { user, myinfo } = prop;
+  
+  const [uInfo, setUInfo] = useState();
+  
   const viewUser = async (ids)=> {
+    console.log(params.id);
+    
+    const { data: _info, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('id', ids).order('created_at', { ascending: true });
+    setUInfo(_info[0])
+      
+    
+    console.log(uInfo);
+
     ui.loading.show(`glx`);
 
     // this.gotoSlide(0,0);
-    document.querySelector(".page.user")?.classList.add("load");
-    document.querySelector(".header .htit").innerText = uInfo.nick || ``;
+    // document.querySelector(".page.user")?.classList.add("load");
+    // document.querySelector(".header .htit")?.innerText = uInfo?.nick || ``;
     ui.loading.hide();
   }
 
@@ -56,23 +64,23 @@ export default function User({prop}) {
     // swiper.slideTo(num);
     swiper.slideToLoop(num);
   }
-
   useEffect( () => {
     // window.scrollTo(0,0);
+    viewUser(uid);
     
     // document.querySelector(".header").classList.remove("trans");
     // window.addEventListener("scroll", scrollEvent);
     
-    viewUser(uid);
+    
+    
     return ()=>{
       // window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[user]);
-console.log(user);
-console.log(uInfo);
+  },[uid]);
 
-  if(!user){return}
+
+  // if(!uInfo){return}
   return (
     <>
     <Outlet/>
@@ -80,10 +88,10 @@ console.log(uInfo);
     <div className="container page user view">
       <main className="contents">
         
-        {store?.state ?
+        {uInfo ?
         <div className="profile">
           <div className="user">
-            <Link to={'/user/'+params.id} className="pic"><img src={user.user_metadata.avatar_url} className="img" /></Link>
+            <Link to={'/user/'+params.id} className="pic"><img src={uInfo.profile_picture} className="img" /></Link>
             <div className="info">
               <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
               <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
@@ -91,10 +99,10 @@ console.log(uInfo);
             </div>
           </div>
           <div className="desc">
-            <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {ui.dateForm(user.created_at)}</span>
-            {user.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {user.email}</span>}
+            <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {ui.dateForm(uInfo.created_at)}</span>
+            {uInfo.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>}
           </div>
-            { params.id == user.id &&
+            { user?.id == uInfo.user_id &&
           <div className="bts">
               <Link to="/user/signout" className="btn sm logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
           </div>
@@ -146,7 +154,7 @@ console.log(uInfo);
             }}
           >
             <SwiperSlide tag="section" className="ctn like">
-              <UserLike uInfo={uInfo} swiper={swiper} />
+              {/* <UserLike uInfo={uInfo} swiper={swiper} /> */}
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
               <UserPost />

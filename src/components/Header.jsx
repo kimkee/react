@@ -13,28 +13,16 @@ export default function Header({prop}) {
   let params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = prop;
-  const { myinfo } = prop;
+  const { user, myinfo } = prop;
+
   
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     console.log(myinfo);
     return ()=>{ }
   },[user,myinfo ]);
-  console.table(prop);
-  const test =()=>{
-    ui.confirm("리액트 보다 쀼가 짱입니까?",{
-      ycb:function(){
-        console.log("컴펌 예");
-        window.location.href = "https://kimkee.github.io/vue"
-      },
-      ncb:function(){
-        console.log("컴펌 아뇨");
-      },
-      ybt:"마자요!",
-      nbt:"아니오!",
-    });
-  }
+  // console.table(prop);
+ 
   return (
 	  <header className={`header ${prop.headerType}`}>
       <div className="inr">
@@ -51,17 +39,17 @@ export default function Header({prop}) {
         </div>
         <div className="rdt">
            
-          { ( user?.id) ?
-            <NavLink to={`/user/${user.id}`} className={"user"}> 
-              <span className="pic"><img alt="" className="img" src={ user.user_metadata.avatar_url} /></span>
-              <span className="txt">{ user.user_metadata.user_name || user.user_metadata.name}</span>
+          { ( user?.id && myinfo?.id) ?
+            <NavLink to={`/user/${myinfo.id}`} className={"user"}> 
+              <span className="pic"><img alt="" className="img" src={ myinfo.profile_picture} /></span>
+              <span className="txt">{ myinfo.username }</span>
             </NavLink>
           :
-            <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
+            <NavLink to={`/user/signin`} className={"bt login"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
           }
           
           
-          <button type="button" onClick={test} className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
+          <button type="button" className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
         </div>
       </div>
     </header>

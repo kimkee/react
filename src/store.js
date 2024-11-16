@@ -40,8 +40,8 @@ const store = {
       sessionStorage.removeItem("user");
       store.state.userInfo = {};
       store.state.userInfo.stat = false;
-      console.log('logout 된 상태' , store.state.userInfo);
-      console.table(store.state.userInfo);
+      // console.log('logout 된 상태' , store.state.userInfo);
+      // console.table(store.state.userInfo);
 
     });
     const setUser = async (user)=>{

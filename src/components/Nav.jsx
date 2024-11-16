@@ -23,7 +23,7 @@ export default function Nav({prop}) {
 
   const goTop = ()=> ui.scrollTo("body", 0 , 200 );
   
-  const { user } = prop;
+  const { user, myinfo } = prop;
   const [userInfo, setUserInfo] = useState({});
   
   useEffect( () => {
@@ -55,8 +55,12 @@ export default function Nav({prop}) {
               <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink>
             </li>
             <li className={isActive("user/")}>
-              { ( user?.id) && <NavLink to={`/user/${user?.id}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
-              { !user?.id && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
+              {  myinfo?.id
+              ?
+              <NavLink to={`/user/${myinfo?.id}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>
+              :
+              <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
+              }
             </li>
           </ul>
         </div>

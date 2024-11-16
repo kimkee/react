@@ -280,7 +280,7 @@ const ui = {
         show: function (opt) {
             var els = '';
             if (document.querySelectorAll("body>.ui-loading").length) { return}
-            console.log(opt);
+            // console.log(opt);
             // var els = '<div class="ui-loading"><em></em></div>';
             if (opt == 'dot' || opt == undefined){
                 els = `<div class="ui-loading ui-loading-dot">

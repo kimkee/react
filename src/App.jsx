@@ -45,23 +45,24 @@ export default function App() {
     // console.log(user);
     // if (state.loggedIn) { setIsLoggedIn(true); } else { setIsLoggedIn(false); } 
     // console.log('==========================================' + state);
+    // getUser();
   }); 
 
   const getUser = async () => { 
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
-    const { data: myinfo, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('user_id', 'c74ebc69-6bf8-4173-b06d-b57f780e4589').order('created_at', { ascending: true });
+    if(!user) return
+    const { data: myinfo, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('user_id', user?.id).order('created_at', { ascending: true });
     setMyinfo(myinfo[0])
-    console.log(myinfo[0]);
-    
+   
   };
   
   useEffect(() => {
     getUser();
     
     
-    console.log('로긴정보 = ' + user?.id);
-    console.log('마이인포 = ' + myinfo?.id);
+    // console.log('로긴정보 = ' + user?.id);
+    // console.log('마이인포 = ' + myinfo?.id);
     
     return () => {
        
