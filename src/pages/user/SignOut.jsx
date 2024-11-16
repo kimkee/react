@@ -5,7 +5,7 @@ import store from '../../store.js';
 import { getAuth, signOut } from 'firebase/auth';
 // import axios from 'axios';
 import ui from '../../ui.js';
-
+import { supabase } from '@/supabase.js';
 
 export default function SignOut() {
   // console.log(opts);
@@ -16,24 +16,19 @@ export default function SignOut() {
   const userPassword = useRef();
   const autoLogin = useRef();
 
-  const logout = async ()=>{
+  
     
-      const auth = getAuth();
-      signOut(auth).then(() => {
-        // Sign-out successful.
-        // ui.alert("로그아웃 성공!!");
-        // const gourl = localStorage.getItem("preurl").replace("#", "");
-        navigate(`/`)
-      }).catch((error) => {
-        console.log(error);
-        // An error happened.
-      });
-    
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.log(error);
+    window.location.replace('/');
   }
+  
+  
 
   useEffect( () => {
     window.scrollTo(0,0);
-    logout();
+    signOut();
     return ()=>{
       // window.removeEventListener("scroll", scrollEvent);
     }

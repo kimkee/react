@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
 import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
@@ -13,6 +13,7 @@ import store from './store.js';
 import Header from './components/Header.jsx';
 import Nav from './components/Nav.jsx';
 import Home from './pages/Home.jsx';
+import Callback from './pages/Callback.jsx';
 import NotFound from './pages/NotFound.jsx';
 import Lists from './pages/movie/Lists.jsx';
 import View from './pages/movie/View.jsx';
@@ -26,36 +27,46 @@ import SnsLogin from './pages/user/SnsLogin.jsx';
 import SignOut from './pages/user/SignOut.jsx';
 import SignUp from './pages/user/SignUp.jsx';
 import User from './pages/user/User.jsx';
+import { supabase } from '@/supabase.js';
 // ui.init();
+
+
 export default function App() {
   // const location = window.location;
   // console.log(location);
   // const { location,pathname, hash, key } = useLocation();
-
-  store.authState();
-
-  useEffect(() => {
-      /* 로그인 상태 알아보기 */
-
-      const auth = getAuth();
-      onAuthStateChanged(auth, (authUser) => {
-        if (authUser) {
-          // 사용자가 로그인한 경우
-            const info = JSON.parse(  sessionStorage.getItem("user") );
-          if(info){
-             
-          }
-        } else {
-          // 사용자가 로그아웃한 경우
-          
-        }
-      });
   
+  // store.authState();
+  const [user, setUser] = useState(null);
+  const [myinfo, setMyinfo] = useState(null);
+
+  /* 로그인 상태 알아보기 */
+  supabase.auth.onAuthStateChange((state, event) => { 
+    // console.log(user);
+    // if (state.loggedIn) { setIsLoggedIn(true); } else { setIsLoggedIn(false); } 
+    // console.log('==========================================' + state);
+  }); 
+
+  const getUser = async () => { 
+    const { data: { user } } = await supabase.auth.getUser();
+    setUser(user);
+    const { data: myinfo, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('user_id', 'c74ebc69-6bf8-4173-b06d-b57f780e4589').order('created_at', { ascending: true });
+    setMyinfo(myinfo[0])
+    console.log(myinfo[0]);
+    
+  };
+  
+  useEffect(() => {
+    getUser();
+    
+    
+    console.log('로긴정보 = ' + user?.id);
+    console.log('마이인포 = ' + myinfo?.id);
+    
     return () => {
        
     }
-  }, [ ])
-  
+  }, [])
 
 
   return (
@@ -63,13 +74,13 @@ export default function App() {
       <RecoilRoot>
         <Router>
           <Routes>
-            <Route path='home/*' element={<Header prop={{"headerType":"main"}} />} />
-            <Route path=':menu/*' element={<Header prop={{"headerType":"main"}} />} />
-            <Route path='list/*' element={<Header prop={{"headerType":"main"}} />} />
-            <Route path='search/*' element={<Header prop={{"headerType":"main"}} />} />
-            <Route path='movie/*' element={<Header prop={{"headerType":"main"}} />} />
+            <Route path='home/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
+            <Route path=':menu/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
+            <Route path='list/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
+            <Route path='search/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
+            <Route path='movie/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
             <Route path='user'>
-              <Route path=":id" element={<Header prop={{"headerType":"sub"}} />} />
+              <Route path=":id" element={<Header prop={{"headerType":"sub", user, myinfo}} />} />
             </Route>
           </Routes>
 
@@ -79,6 +90,7 @@ export default function App() {
           <Routes>
 
             {/* <Route path='*' element={<NotFound />} /> */}
+            <Route path="callback" element={<Callback prop={{user, myinfo}} />} />
 
             <Route path="/" element={<Navigate to="/home/" replace />} />
 
@@ -131,7 +143,7 @@ export default function App() {
               <Route path="signout" element={<SignOut /> } />
               <Route path="signup" element={<SignUp /> } />
               
-              <Route path=":id" element={<User />} >
+              <Route path=":id" element={<User prop={{user, myinfo}} />} >
                 <Route path=":menu">
                   <Route path=":id" element={<View prop={{"page":"search"}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
@@ -161,13 +173,13 @@ export default function App() {
           </TransitionGroup> */}
 
           <Routes>
-            <Route path='home/*' element={<Nav />} />
-            <Route path=':menu/*' element={<Nav />} />
-            <Route path='list/*' element={<Nav />} />
-            <Route path='search/*' element={<Nav />} />
-            <Route path='movie/*' element={<Nav />} />
+            <Route path='home/*' element={<Nav prop={{user, myinfo}} />} />
+            <Route path=':menu/*' element={<Nav prop={{user, myinfo}} />} />
+            <Route path='list/*' element={<Nav prop={{user, myinfo}} />} />
+            <Route path='search/*' element={<Nav prop={{user, myinfo}} />} />
+            <Route path='movie/*' element={<Nav prop={{user, myinfo}} />} />
             <Route path='user'>
-              <Route path=":id" element={<Nav />} />
+              <Route path=":id" element={<Nav prop={{user, myinfo}} />} />
             </Route>
           </Routes>
 

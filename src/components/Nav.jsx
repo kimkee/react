@@ -1,14 +1,10 @@
 import React, {  useEffect,useState } from 'react'; //useState, useEffect
 import {NavLink , useLocation } from 'react-router-dom'; // Link  , useLocation, useSearchParams,useParams, useSearchParams
 
-
-import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-
-
 import ui from '../ui.js';
 import store from '../store.js';
 
-export default function Nav() {
+export default function Nav({prop}) {
   // let params = useParams()
   // const [searchParams] = useSearchParams();
   // console.log(params)
@@ -26,29 +22,17 @@ export default function Nav() {
   };
 
   const goTop = ()=> ui.scrollTo("body", 0 , 200 );
-  const auth = getAuth();
-
+  
+  const { user } = prop;
   const [userInfo, setUserInfo] = useState({});
   
   useEffect( () => {
     window.addEventListener("scroll", scrollEvent);
 
-    setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
-
-    onAuthStateChanged(auth, (authUser) => {
-      if (authUser) {
-        // 사용자가 로그인한 경우
-        setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...JSON.parse(sessionStorage.user) }))
-      } else {
-        // 사용자가 로그아웃한 경우
-        setUserInfo({ })
-      }
-    });
-
     return ()=>{
       window.removeEventListener("scroll", scrollEvent);
     }
-  },[userInfo?.uid]);
+  },[user]);
 
   return (
     <>
@@ -71,8 +55,8 @@ export default function Nav() {
               <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink>
             </li>
             <li className={isActive("user/")}>
-              { ( store.state.userInfo.stat || userInfo?.uid) && <NavLink to={`/user/${userInfo.uid}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
-              { !userInfo?.uid && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
+              { ( user?.id) && <NavLink to={`/user/${user?.id}`} className={"bt"}> <i className="fa-regular fa-user"></i><em>Mypage</em></NavLink>}
+              { !user?.id && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink> }
             </li>
           </ul>
         </div>

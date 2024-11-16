@@ -26,7 +26,7 @@ import UserLike from './UserLike.jsx';
 import UserFolw from './UserFolw.jsx';
 
 
-export default function User() {
+export default function User({prop}) {
   
   const params = useParams();
   
@@ -37,27 +37,10 @@ export default function User() {
   const [uInfo, setUInfo] = useState({});
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
 
+  const { user } = prop;
+
   const viewUser = async (ids)=> {
     ui.loading.show(`glx`);
-    const docRef = doc(db, 'member', ids);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      setUInfo({
-        id : docSnap.id,
-        uid : docSnap.data().uid,
-        nick : docSnap.data().nick,
-        avatar : docSnap.data().avatar,
-        photoURL : docSnap.data().photoURL,
-        email : docSnap.data().email,
-        date : ui.dateForm( docSnap.data().date.toDate() ),
-        liked : docSnap.data().liked.length ,
-        tmdb_movie_scrap : docSnap.data().tmdb_movie_scrap || [] ,
-        tmdb_tv_scrap : docSnap.data().tmdb_tv_scrap || {},
-      })
-      
-    } else {
-      console.log("No such document!");
-    }
 
     // this.gotoSlide(0,0);
     document.querySelector(".page.user")?.classList.add("load");
@@ -85,11 +68,11 @@ export default function User() {
       // window.removeEventListener("scroll", scrollEvent);
     }
     // eslint-disable-next-line
-  },[uInfo.nick,uid]);
-console.log(store);
+  },[user]);
+console.log(user);
 console.log(uInfo);
 
-  if(!uInfo){return}
+  if(!user){return}
   return (
     <>
     <Outlet/>
@@ -100,7 +83,7 @@ console.log(uInfo);
         {store?.state ?
         <div className="profile">
           <div className="user">
-            <Link to={'/user/'+params.id} className="pic"><img src={store.state.avatar[uInfo.avatar] || uInfo.photoURL } className="img" /></Link>
+            <Link to={'/user/'+params.id} className="pic"><img src={user.user_metadata.avatar_url} className="img" /></Link>
             <div className="info">
               <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
               <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
@@ -108,10 +91,10 @@ console.log(uInfo);
             </div>
           </div>
           <div className="desc">
-            <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {uInfo.date}</span>
-            {uInfo.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>}
+            <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {ui.dateForm(user.created_at)}</span>
+            {user.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {user.email}</span>}
           </div>
-            { store.state.userInfo.uid == uInfo.id &&
+            { params.id == user.id &&
           <div className="bts">
               <Link to="/user/signout" className="btn sm logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
           </div>

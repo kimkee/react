@@ -29,10 +29,10 @@ const ui = {
         docHeight: () => parseInt(document.documentElement.scrollHeight || document.body.clientHeight),
         scrollTop: () => parseInt(document.documentElement.scrollTop)
     },
-    dateForm: (date, opt)=> {
-        opt = opt === undefined ? opt = 'medium' : null;
+    dateForm: (date, opt = 'medium')=> {
+        date = new Date(date);
         return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(date);
-    },
+      },
     getSafe:{
         top: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-top")  ) || 0 ,
         bottom: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom")  ) || 0,

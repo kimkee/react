@@ -1,5 +1,5 @@
 
-import React, {useState,  useEffect } from 'react'; //
+import React, {useState,  useEffect, useRef } from 'react'; //
 import {Link, NavLink, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
 import ui from '/src/ui.js';
 import store from '../store.js';
@@ -13,25 +13,15 @@ export default function Header({prop}) {
   let params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  // console.log(params);
-  // console.log(params , location);
-  const [userInfo, setUserInfo] = useState({});
+  const { user } = prop;
+  const { myinfo } = prop;
   
   useEffect(() => {
-    setUserInfo(sessionStorage.user && JSON.parse(sessionStorage.user))
-
-    getUser().then((userData) => {
-      console.log(userData); // 얻은 사용자 데이터를 사용하세요
-      setUserInfo( prevUserInfo => ({ ...prevUserInfo, ...userData }));
-    });
-
-    return ()=>{
-      
-    }
-    
-  },[userInfo?.uid,userInfo?.nick,userInfo?.displayName, userInfo?.stat]);
-  
-  console.log(userInfo);
+    console.log(user);
+    console.log(myinfo);
+    return ()=>{ }
+  },[user,myinfo ]);
+  console.table(prop);
   const test =()=>{
     ui.confirm("리액트 보다 쀼가 짱입니까?",{
       ycb:function(){
@@ -61,13 +51,14 @@ export default function Header({prop}) {
         </div>
         <div className="rdt">
            
-          { (  userInfo?.stat || userInfo?.uid) &&
-            <NavLink to={`/user/${userInfo?.uid}`} className={"user"}> 
-              <span className="pic"><img alt="" className="img" src={ store.state.avatar[userInfo.avatar] || userInfo.photoURL} /></span>
-              <span className="txt">{ userInfo.nick || userInfo.displayName}</span>
+          { ( user?.id) ?
+            <NavLink to={`/user/${user.id}`} className={"user"}> 
+              <span className="pic"><img alt="" className="img" src={ user.user_metadata.avatar_url} /></span>
+              <span className="txt">{ user.user_metadata.user_name || user.user_metadata.name}</span>
             </NavLink>
+          :
+            <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
           }
-          {!userInfo?.uid && <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>}
           
           
           <button type="button" onClick={test} className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
