@@ -22,7 +22,7 @@ export default defineConfig({
     }
   },
   build: {
-      outDir: './docs',
+      // outDir: './docs',
       minify: 'esbuild',
       chunkSizeWarningLimit :1500 ,
       // assetsInlineLimit: 0,
