@@ -1183,8 +1183,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 
 .page.sign{}
-.page.sign.in .contents{  padding-top: calc(50vh - 330rem) }
-.sign-form{max-width: 260rem;padding: 0rem 14rem;margin: 20rem auto 20rem;height: calc(100dvh - 270px);display: flex;flex-direction: column;justify-content: center;}
+.page.sign.in .contents{/* padding-top: calc(50vh - 330rem); */}
+.sign-form{max-width: 260rem;padding: 0rem 14rem;margin: 20rem auto 20rem;min-height: calc(100dvh - 180px);display: flex;flex-direction: column;justify-content: center;}
 .sign-form .hdt{text-align: center;font-size: 20rem;color:#eeeeee;padding: 10rem 0;margin-bottom: 15rem;}
 .sign-form .form .tit{margin-bottom: 30rem;display: flex;justify-content: center;align-items: center;height: 30rem;position: relative;}
 .sign-form .form .tit::before{content:"";position: absolute;left: 0;right: 0;background: #2b2b2b;height: 1rem;z-index: 0;}
@@ -1200,9 +1200,10 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .sign-form .form .savelogin{margin-top: 12rem;text-align: right;display: flex;justify-content: space-between;align-items: center;}
 .sign-form .form .savelogin .bt{color: #d5d5d5;font-size: 13rem;}
 .sign-form .form .btn-set{margin-top: 20rem;}
-.sign-form .sns.form{margin-bottom: 30rem;}
+.sign-form .sns.form{/* margin-bottom: 30rem; */padding: 24rem 0rem;}
 .sign-form .sns.form .bts{flex-wrap: wrap;display: flex;gap: 16px;}
 .sign-form .sns.form .bts .btn{ width: calc(100% - 0rem); margin: 0; }
+.sign-form .sns.form .url{ text-align: center; margin-top: 20rem}
 .sign-form .link{margin-top: 20rem;font-size:12rem;}
 .sign-form .link a{color: #d5d5d5;}
 .sign-form .join.form{margin: 10rem 0rem 20rem 0rem;}

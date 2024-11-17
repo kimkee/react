@@ -40,8 +40,7 @@ export default function SignIn() {
     if (error) console.log(error);
   };
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
   const addMember = async (user, gourl)=> {
     
   }
@@ -62,12 +61,7 @@ export default function SignIn() {
 
     <div className="container page user sign in">
       <main className="contents">
-      {isLoggedIn
-        ?  
-        <div> Welcome, you are logged in! </div> 
-        :  
-        <div> Log In </div> 
-      }
+      
         <div className="sign-form">
           {/* {<div className="hdt">로그인</div>} */}
           {<div className="sns form">
@@ -77,7 +71,7 @@ export default function SignIn() {
               <button type="button" className="btn" onClick={()=>signInWithKakao()}><i className="fa-brands fa-facebook"></i><em>Kakao </em></button>
               <button type="button" className="btn" onClick={()=>signInWithOAuth('github')  }><i className="fa-brands fa-github"></i><em>Github </em></button>
             </div>
-            <p className="">{import.meta.env.VITE_SITE_URL}</p>
+            <p className="url">{import.meta.env.VITE_SITE_URL}</p>
           </div>}
 
           {/* <div className="eml form">
