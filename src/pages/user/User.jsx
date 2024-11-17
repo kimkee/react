@@ -26,6 +26,7 @@ import UserLike from './UserLike.jsx';
 import UserFolw from './UserFolw.jsx';
 
 import { supabase } from '@/supabase.js';
+import Loading from '../../components/Loading.jsx';
 export default function User({prop}) {
   
   const params = useParams();
@@ -48,7 +49,7 @@ export default function User({prop}) {
     
     console.log(uInfo);
 
-    ui.loading.show(`glx`);
+    
 
     // this.gotoSlide(0,0);
     // document.querySelector(".page.user")?.classList.add("load");
@@ -70,7 +71,7 @@ export default function User({prop}) {
     
     // document.querySelector(".header").classList.remove("trans");
     // window.addEventListener("scroll", scrollEvent);
-    
+    ui.loading.show(`glx`);
     
     
     return ()=>{
@@ -80,7 +81,7 @@ export default function User({prop}) {
   },[uid]);
 
 
-  // if(!uInfo){return}
+  if(!uInfo){return}
   return (
     <>
     <Outlet/>
@@ -108,9 +109,12 @@ export default function User({prop}) {
           </div>
             }
         </div>
-        :null}
+        :
+        <Loading opts={'dot'} />
+        }
 
-        <div className="user-post">
+        {
+          uInfo ?<div className="user-post">
           <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-bookmark"></i></span></button>
@@ -165,6 +169,7 @@ export default function User({prop}) {
             </SwiperSlide>
           </Swiper>
         </div>
+        :null}
 
 
           

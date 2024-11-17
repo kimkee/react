@@ -68,7 +68,7 @@ export default function SignIn() {
             <div className="tit"><em className="t">SNS 로그인</em></div>
             <div className="bts">
               <button type="button" className="btn" onClick={()=>signInWithOAuth('google')  }><i className="fa-brands fa-google"></i><em>Google </em></button>
-              <button type="button" className="btn" onClick={()=>signInWithKakao()}><i className="fa-brands fa-facebook"></i><em>Kakao </em></button>
+              <button type="button" className="btn" onClick={()=>signInWithKakao()}><i className="fa-solid fa-comment"></i><em>Kakao </em></button>
               <button type="button" className="btn" onClick={()=>signInWithOAuth('github')  }><i className="fa-brands fa-github"></i><em>Github </em></button>
             </div>
             <p className="url">{import.meta.env.VITE_SITE_URL}</p>
