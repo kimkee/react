@@ -7,10 +7,9 @@ export default defineConfig({
     MY_GLOBAL_VARIABLE: '111111111111111111111'
   },
   plugins: [react()],
-  publicDir: './public',
-  root: './',
-  base:'./',
-  publicPath:"./",
+  publicDir: 'public',
+  root: process.cwd(),
+  base: '/',
   resolve: {
     alias:{
       '@': path.resolve(__dirname,'./src')
