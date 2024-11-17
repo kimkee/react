@@ -1,7 +1,7 @@
-# React + TMDB API
+# React + TMDB API + Supabase
  
 
-## React : https://kplex.pages.dev
+## https://kplex.pages.dev
 
 
 
