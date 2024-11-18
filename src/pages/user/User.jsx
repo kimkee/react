@@ -41,12 +41,13 @@ export default function User({prop}) {
   const [uInfo, setUInfo] = useState();
   
   const viewUser = async (ids)=> {
-    console.log(params.id);
+    console.log(ids);
     
     const { data: _info, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('id', ids).order('created_at', { ascending: true });
     setUInfo(_info[0])
       
     
+    console.log(user);
     console.log(uInfo);
 
     
@@ -158,7 +159,7 @@ export default function User({prop}) {
             }}
           >
             <SwiperSlide tag="section" className="ctn like">
-              {/* <UserLike uInfo={uInfo} swiper={swiper} /> */}
+              <UserLike uInfo={uInfo} swiper={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
               <UserPost />

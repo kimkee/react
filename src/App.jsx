@@ -28,6 +28,7 @@ import SignOut from './pages/user/SignOut.jsx';
 import SignUp from './pages/user/SignUp.jsx';
 import User from './pages/user/User.jsx';
 import { supabase } from '@/supabase.js';
+import getUser from '@/getUser.js';
 // ui.init();
 
 
@@ -48,22 +49,24 @@ export default function App() {
     // getUser();
   }); 
 
-  const getUser = async () => { 
-    const { data: { user } } = await supabase.auth.getUser();
-    setUser(user);
-    if(!user) return
-    const { data: myinfo, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('user_id', user?.id).order('created_at', { ascending: true });
-    setMyinfo(myinfo[0])
+  // const getUser = async () => { 
+  //   const { data: { user } } = await supabase.auth.getUser();
+  //   setUser(user);
+  //   if(!user) return
+  //   const { data: myinfo, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('user_id', user?.id).order('created_at', { ascending: true });
+  //   setMyinfo(myinfo[0])
    
-  };
+  // };
   
   useEffect(() => {
-    getUser();
+    // getUser();
     
-    
-    // console.log('로긴정보 = ' + user?.id);
-    // console.log('마이인포 = ' + myinfo?.id);
-    
+    getUser().then((data) => {
+      setUser(data.user)
+      setMyinfo(data.myinfo)      
+      console.log('로긴정보 = ' + data.user?.id);
+      console.log('마이인포 = ' + data.myinfo?.id);
+    })
     return () => {
        
     }

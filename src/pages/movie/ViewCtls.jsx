@@ -42,7 +42,9 @@ export default function ViewCtls({datas,postID, opts}) {
     const scraped =  btn.classList.contains('on');
     console.log(scraped);
     // return
-    if( store.state.userInfo.stat == true ){
+    console.log(userInfo.email);
+    
+    if( userInfo.email ){
       ui.loading.show(`glx`);
       const docRef = doc(db, 'member', store.state.userInfo.uid);
       
@@ -109,10 +111,11 @@ export default function ViewCtls({datas,postID, opts}) {
 
 
   useEffect(() => {
-    getUser().then((userData) => {
-      console.log(userData); // 얻은 사용자 데이터를 사용하세요
-      setUserInfo( userData);
-      return userData
+    getUser().then((data) => {
+      console.log(data.myinfo); // 얻은 사용자 데이터를 사용하세요
+      
+      setUserInfo(data.myinfo);
+      return data
     }).then(data => {
       setIsScrap( 
         data.tmdb_movie_scrap?.some(item => { return item.id == postID } ) 
