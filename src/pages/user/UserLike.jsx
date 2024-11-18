@@ -1,14 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
-import {db} from '../../firebaseConfig.js';
-import { getDoc, doc, updateDoc } from 'firebase/firestore';
-import { getAuth, signOut } from 'firebase/auth';
-// import { atom } from 'recoil';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import store from '../../store.js';
-import {atomStore,textState,sss} from '../../atom.js';
-
 // import axios from 'axios';
 import { supabase } from '@/supabase.js';
 import ui from '../../ui.js';
@@ -16,10 +8,7 @@ import StarPoint from '../../components/StarPoint';
 
 
 export default function UserLike({uInfo,user,swiper}) {
-  
-  // if (!uInfo.tmdb_movie_scrap) { return false }
 
-  // const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
   const [newScrapMovie, setNewScrapMovie] = useState([]);
   const [media, setMedia] = useState('movie');
 
@@ -90,13 +79,13 @@ export default function UserLike({uInfo,user,swiper}) {
   useEffect( () => {
     console.log(uInfo , user);
     mediaList('movie');
-    setNewScrapMovie( uInfo.tmdb_movie_scrap )
+    // setNewScrapMovie( uInfo.tmdb_movie_scrap )
     return ()=>{
-
+      
     }
     // eslint-disable-next-line
   },[uInfo]);
-  // console.log(newScrapMovie);
+
   // if (!uInfo ) { return false }
   // if (!newScrapMovie) { return false }
 
@@ -124,7 +113,7 @@ export default function UserLike({uInfo,user,swiper}) {
                       </div>
                       <div className="dd">
                         <div className="hits">
-                          {/* <StarPoint point={data.vote_average} /> */}
+                          <StarPoint point={data.vote_average} />
                           <em><i className="fa-regular fa-thumbs-up"></i> 평점 : <b>{data.vote_average}</b></em>
                         </div>
                         <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date || data.first_air_date}</b></div>

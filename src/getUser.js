@@ -1,7 +1,4 @@
 // getUser.js
-import { db } from './firebaseConfig.js';
-import { getDoc, doc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged  } from 'firebase/auth';
 import { supabase } from '@/supabase.js';
 // async 함수로 래핑
 const getUser = async () => {

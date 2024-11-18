@@ -40,10 +40,10 @@ export default function User({prop}) {
   
   const [uInfo, setUInfo] = useState();
   
-  const viewUser = async (ids)=> {
-    console.log(ids);
+  const viewUser = async ()=> {
+    console.log(uid);
     
-    const { data: _info, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('id', ids).order('created_at', { ascending: true });
+    const { data: _info, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('id', uid).order('created_at', { ascending: true });
     setUInfo(_info[0])
       
     
@@ -68,15 +68,11 @@ export default function User({prop}) {
   }
   useEffect( () => {
     // window.scrollTo(0,0);
-    viewUser(uid);
-    
-    // document.querySelector(".header").classList.remove("trans");
-    // window.addEventListener("scroll", scrollEvent);
-    ui.loading.show(`glx`);
-    
-    
+    viewUser();
+    window.addEventListener('hashchange', viewUser);
+    ui.loading.show(`glx`);  
     return ()=>{
-      // window.removeEventListener("scroll", scrollEvent);
+      window.removeEventListener('hashchange', viewUser);
     }
     // eslint-disable-next-line
   },[uid]);
@@ -97,7 +93,7 @@ export default function User({prop}) {
             <div className="info">
               <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
               <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
-              <div className="num l"><b className="n">{uInfo.liked||0}</b><p className="t">Liked</p></div>    
+              <div className="num l"><b className="n">{uInfo.tmdb_movie_scrap.length + uInfo.tmdb_tv_scrap.length ||0}</b><p className="t">Liked</p></div>    
             </div>
           </div>
           <div className="desc">

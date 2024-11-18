@@ -67,13 +67,13 @@ export default function ViewCtls({datas,postID, opts}) {
       console.log(datas );
 
       if( isScrap ) {
-        setIsScrap(false); //삭제
         data_scrap = [...data_scrap, datas ].filter(item => item.id != postID);
+        // setIsScrap(false); //삭제
       }else{
-        setIsScrap(true); // 추가
         data_scrap = [...data_scrap, datas ].filter((element, index, self) => {
           return self.findIndex(e => e.id === element.id ) === index;
         });
+        // setIsScrap(true); // 추가
       }
       console.log(`수정된 데이터`);
       console.log(data_scrap);
@@ -92,6 +92,7 @@ export default function ViewCtls({datas,postID, opts}) {
         .eq('id', uInfo.id)
         .select()
         console.log(data);
+        
       }
       if (opts == `tv`){
         
@@ -110,7 +111,7 @@ export default function ViewCtls({datas,postID, opts}) {
         //   ui.loading.hide();
         // }).catch(e => { console.error(e); ui.loading.hide(); });
       }
-
+      setIsScrap(!isScrap);
     }else{
       ui.confirm(`로그인이 필요합니다.<br>로그인페이지로 이동하시겠습니까? `,{
         ycb: () => {
