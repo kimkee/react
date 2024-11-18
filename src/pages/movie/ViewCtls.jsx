@@ -43,9 +43,9 @@ export default function ViewCtls({datas,postID, opts}) {
     const scraped =  btn.classList.contains('on');
     console.log(scraped);
     // return
-    console.log(userInfo?.email);
+    console.log(uInfo?.email);
     
-    if( userInfo?.email ){
+    if( uInfo?.email ){
       // ui.loading.show(`glx`);
       // const docRef = doc(db, 'member', store.state.userInfo.uid);
       datas = {
@@ -58,10 +58,10 @@ export default function ViewCtls({datas,postID, opts}) {
       }
       let data_scrap = [];
       if (opts == `movie`){
-        data_scrap = userInfo.tmdb_movie_scrap || [datas] 
+        data_scrap = uInfo.tmdb_movie_scrap || [datas] 
       }
       if (opts == `tv`){
-        data_scrap = userInfo.tmdb_tv_scrap || [datas] 
+        data_scrap = uInfo.tmdb_tv_scrap || [datas] 
       }
       console.log(data_scrap);
       console.log(datas );
@@ -89,7 +89,7 @@ export default function ViewCtls({datas,postID, opts}) {
         const { data, error } = await supabase
         .from('MEMBERS')
         .update({ tmdb_movie_scrap: data_scrap })
-        .eq('id', userInfo.id)
+        .eq('id', uInfo.id)
         .select()
         console.log(data);
       }
@@ -98,7 +98,7 @@ export default function ViewCtls({datas,postID, opts}) {
         const { data, error } = await supabase
         .from('MEMBERS')
         .update({ tmdb_tv_scrap: data_scrap })
-        .eq('id', userInfo.id)
+        .eq('id', uInfo.id)
         .select()
         console.log(data);
         
@@ -134,7 +134,7 @@ export default function ViewCtls({datas,postID, opts}) {
       console.log("도착");
     });
   }
-  const [userInfo, setUserInfo] = useState({});
+  const [uInfo, setUserInfo] = useState({});
   const [isScrap, setIsScrap] = useState('')
 
 

@@ -10,6 +10,7 @@ import store from '../../store.js';
 import {atomStore,textState,sss} from '../../atom.js';
 
 // import axios from 'axios';
+import { supabase } from '@/supabase.js';
 import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
 
@@ -27,13 +28,63 @@ export default function UserLike({uInfo,user,swiper}) {
     opts == 'movie' && setNewScrapMovie( uInfo.tmdb_movie_scrap );
     opts == 'tv' && setNewScrapMovie( uInfo.tmdb_tv_scrap );
     setMedia(opts);
-    setTimeout(() => swiper.update() , 100); 
+    setTimeout(() => swiper?.update() , 100); 
     console.log(newScrapMovie);
 
   };
 
   const deleteScrap = async (opts, data) => {
-    
+    ui.loading.show('glx');
+    data = {
+      id: data.id,
+      title: data.title || data.name,
+      poster_path: data.poster_path,
+      overview: data.overview,
+      vote_average: data.vote_average,
+      release_date: data.release_date || data.first_air_date,
+    }
+    console.log(opts, data);
+  
+    let data_scrap = [];
+    if (opts == `movie`){
+      data_scrap = uInfo.tmdb_movie_scrap || [data] 
+    }
+    if (opts == `tv`){
+      data_scrap = uInfo.tmdb_tv_scrap || [data] 
+    }
+
+  
+    data_scrap = [...data_scrap, data].filter(item => item.id != data.id);
+    setNewScrapMovie(data_scrap);
+    if (opts == `movie`){
+      uInfo.tmdb_movie_scrap = data_scrap;
+    }
+    if (opts == `tv`){
+      uInfo.tmdb_tv_scrap = data_scrap;
+    }
+     
+    console.log(data_scrap); 
+  
+    // const docRef = doc(db, 'member', uInfo.id);
+    if (opts == `movie`){
+      const { data, error } = await supabase
+      .from('MEMBERS')
+      .update({ tmdb_movie_scrap: data_scrap })
+      .eq('id', uInfo.id)
+      .select()
+      console.log(data);
+      ui.loading.hide('glx');
+    }
+    if (opts == `tv`){
+      const { data, error } = await supabase
+      .from('MEMBERS')
+      .update({ tmdb_tv_scrap: data_scrap })
+      .eq('id', uInfo.id)
+      .select()
+      console.log(data);
+      ui.loading.hide('glx');
+    }
+
   };  
 
   useEffect( () => {
