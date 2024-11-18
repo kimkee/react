@@ -62,10 +62,10 @@ export default function App() {
     // getUser();
     
     getUser().then((data) => {
-      setUser(data.user)
-      setMyinfo(data.myinfo)      
-      console.log('로긴정보 = ' + data.user?.id);
-      console.log('마이인포 = ' + data.myinfo?.id);
+      setUser(data?.user)
+      setMyinfo(data?.myinfo)      
+      console.log('로긴정보 = ' + data?.user?.id);
+      console.log('마이인포 = ' + data?.myinfo?.id);
     })
     return () => {
        
