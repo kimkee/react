@@ -81,7 +81,7 @@ export default function Lists() {
     }); 
   }
 
-  console.log(movieList);  
+  // console.log(movieList);  
   
   useEffect( () => {
 
