@@ -33,7 +33,7 @@ export default function User({prop}) {
   
   const location = useLocation();
   const navigate = useNavigate();
-  const uid = params.id;
+  const uid = params.uid;
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
   
   const { user, myinfo } = prop;
@@ -159,7 +159,7 @@ export default function User({prop}) {
             }}
           >
             <SwiperSlide tag="section" className="ctn like">
-              <UserLike uInfo={uInfo} swiper={swiper} />
+              <UserLike uInfo={uInfo} user={user} swiper={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
               <UserPost />

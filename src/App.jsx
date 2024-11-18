@@ -147,7 +147,7 @@ export default function App() {
               <Route path="signout" element={<SignOut /> } />
               <Route path="signup" element={<SignUp /> } />
               
-              <Route path=":id" element={<User prop={{user, myinfo}} />} >
+              <Route path=":uid" element={<User prop={{user, myinfo}} />} >
                 <Route path=":menu">
                   <Route path=":id" element={<View prop={{"page":"search"}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
