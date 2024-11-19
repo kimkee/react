@@ -54,7 +54,7 @@ export default function User({prop}) {
 
     // this.gotoSlide(0,0);
     // document.querySelector(".page.user")?.classList.add("load");
-    // document.querySelector(".header .htit")?.innerText = uInfo?.nick || ``;
+    
     ui.loading.hide();
   }
 
@@ -76,8 +76,8 @@ export default function User({prop}) {
     }
     // eslint-disable-next-line
   },[uid]);
-
-
+  
+  
   if(!uInfo){return}
   return (
     <>
