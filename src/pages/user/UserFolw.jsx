@@ -47,10 +47,12 @@ export default function UserFolw({uInfo,user,swiper}) {
 
   return (
     <>
-      <p>팔로우</p>
-      <p>팔로워</p> 
-      <p>
-        {atomStoreVal.state.avatar.map( i=> <span style={{'width':'33%','display':'inline-flex'}} key={i}><img style={{'width':'100%','display':'inline-flex'}} src={i} /></span>)}
+      <div className="nodata">
+        <i className="fa-solid fa-file-magnifying-glass"></i>
+        <p> 준비 중입니다.</p>
+      </div>
+      <p style={{'text-align':'center'}}>
+        {atomStoreVal.state.avatar.map( i=> <span style={{'width':'33%','display':'inline-block','text-align':'center'}} key={i}><img style={{'width':'50%','display':'inline-flex'}} src={i} /></span>)}
       </p>
     </>
   )

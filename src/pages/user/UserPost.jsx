@@ -50,6 +50,10 @@ export default function UserPost({uInfo,user,swiper}) {
 
   return (
     <>
+      <div className="nodata">
+        <i className="fa-solid fa-file-magnifying-glass"></i>
+        <p> 준비 중입니다.</p>
+      </div>
       <p>내 글</p>
       <p>댓글</p> <TextInput />
       <p>

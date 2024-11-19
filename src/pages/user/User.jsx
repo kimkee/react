@@ -146,13 +146,13 @@ export default function User({prop}) {
             }}
           >
             <SwiperSlide tag="section" className="ctn like">
-              <UserLike uInfo={uInfo} user={user} swiper={swiper} />
+              <UserLike uInfo={uInfo} user={user} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
-              <UserPost uInfo={uInfo} user={user} swiper={swiper} />
+              <UserPost uInfo={uInfo} user={user} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
-              <UserFolw uInfo={uInfo} user={user} swiper={swiper} />
+              <UserFolw uInfo={uInfo} user={user} />
 
             </SwiperSlide>
           </Swiper>
