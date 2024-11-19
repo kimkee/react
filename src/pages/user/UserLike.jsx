@@ -30,10 +30,9 @@ export default function UserLike({uInfo,user}) {
 
     setTimeout(() => swiper?.update() , 100); 
     // console.log(newScrapMovie);
-
   };
   const mdChange = (num)=>{
-    setMedia(num == 0 && 'movie' || num == 1 && 'tv')
+    setMedia(num == 0 && 'movie' || num == 1 && 'tv')   
   }
   const deleteScrap = async (opts, data) => {
     ui.loading.show('glx');
@@ -220,7 +219,7 @@ export default function UserLike({uInfo,user}) {
               </ul>
               :
               <div className="nodata">
-                {/* <i className="fa-solid fa-file-magnifying-glass"></i> */}
+                <i className="fa-solid fa-file-magnifying-glass"></i>
                 <p> 스크랩된 컨텐츠가 없습니다.</p>
               </div>
               }
