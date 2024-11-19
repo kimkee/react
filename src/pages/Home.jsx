@@ -5,10 +5,6 @@ import HomeTop from "../components/HomeTop.jsx";
 import ListSet from "../components/ListSet.jsx";
 import ListTop10 from "../components/ListTop10.jsx";
 
-import { db } from '../firebaseConfig.js';
-import { collection, query, doc, getDoc, getDocs, orderBy, limit } from 'firebase/firestore';
-import { getStorage, ref, deleteObject } from 'firebase/storage';
-
 
 export default function Home() {
   
@@ -22,23 +18,12 @@ export default function Home() {
       header.classList.remove("trans");
     }
   };
-
-  const readBbs = async (nums)=> {
-    const q = query(collection(db, "bbs"), orderBy("timestamp", "desc"), limit(nums));
-    const querySnapshot = await getDocs(q);    
-    querySnapshot.forEach( (doc) => {
-      // console.log( doc.data().title );
-    });
-  }
-  
+ 
   useEffect(() => {
     window.scrollTo(0, 0);
     const header = document.querySelector('.header');
     header.classList.add("home");
     window.addEventListener("scroll",scrollEvent);
-
-    // readBbs(10);
-
     return ()=>{
       header.classList.remove("home");
       window.removeEventListener("scroll",scrollEvent);

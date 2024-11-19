@@ -23,7 +23,6 @@ import Person from './pages/movie/Person.jsx';
 import Videos from './pages/movie/Videos.jsx';
 import Search from './pages/movie/Search.jsx';
 import SignIn from './pages/user/SignIn.jsx';
-import SnsLogin from './pages/user/SnsLogin.jsx';
 import SignOut from './pages/user/SignOut.jsx';
 import SignUp from './pages/user/SignUp.jsx';
 import User from './pages/user/User.jsx';
@@ -158,18 +157,7 @@ export default function App() {
               </Route>
               
             </Route>
-
-            <Route path="snslogin" element={<SnsLogin /> } />
-
-
-            {/* <Route path="detail/:menu/:id"  element={<Detail  />}>
-              
-              <Route path="poster/:nums" element={<Poster  />} />
-              <Route path="person/:nums" element={<Person  />} />
-              <Route path="videos/:nums" element={<Videos  />} />
-              
-            </Route> */}
-          
+         
 
           </Routes>
               

@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {useParams, useNavigate, Link } from 'react-router-dom'; //,useOutletContext  , useLocation
-import axios from 'axios';
-import { db } from '../../firebaseConfig.js';
-import { getDoc, doc, updateDoc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { supabase } from '@/supabase.js';
 import getUser from '../../getUser.js';
 import ui from '../../ui.js';
@@ -34,10 +30,7 @@ export default function ViewCtls({datas,postID, opts}) {
       console.log('Web Share API를 지원하지 않습니다.');
     }
   }
-  
-  const [scrapArray, scrapArraySet] = useState();
-
-  
+   
   const likeTog = async (e)=> {
     const btn = e.currentTarget;
     const scraped =  btn.classList.contains('on');
@@ -80,36 +73,20 @@ export default function ViewCtls({datas,postID, opts}) {
       
       // 
       if (opts == `movie`){
-        // await updateDoc(docRef, {
-        //   tmdb_movie_scrap: data_scrap
-        // }).then(() => {
-        //   console.log("Movie 스크랩: ", datas , btn);
-        //   ui.loading.hide();
-        // }).catch(e => { console.error(e); ui.loading.hide(); });
         const { data, error } = await supabase
         .from('MEMBERS')
         .update({ tmdb_movie_scrap: data_scrap })
         .eq('id', uInfo.id)
         .select()
-        console.log(data);
-        
+        console.log(data);        
       }
       if (opts == `tv`){
-        
         const { data, error } = await supabase
         .from('MEMBERS')
         .update({ tmdb_tv_scrap: data_scrap })
         .eq('id', uInfo.id)
         .select()
         console.log(data);
-        
-        
-        // await updateDoc(docRef, {
-        //   tmdb_tv_scrap: data_scrap
-        // }).then(() => {
-        //   console.log("TV 스크랩: ", datas , btn);
-        //   ui.loading.hide();
-        // }).catch(e => { console.error(e); ui.loading.hide(); });
       }
       setIsScrap(!isScrap);
     }else{
@@ -117,9 +94,7 @@ export default function ViewCtls({datas,postID, opts}) {
         ycb: () => {
           navigate(`/user/signin`);
         },
-        ncb: () => {
-
-        }
+        ncb: () => { }
       });
     }
   }

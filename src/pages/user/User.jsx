@@ -1,14 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
-import {db} from '../../firebaseConfig.js';
-import { collection, query, getDocs, orderBy, getDoc, doc, where } from 'firebase/firestore';
-import { getAuth, signOut } from 'firebase/auth';
-// import { atom } from 'recoil';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import store from '../../store.js';
-import {atomStore,textState,sss} from '../../atom.js';
-
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper'; //,EffectFade 
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
@@ -34,7 +26,6 @@ export default function User({prop}) {
   const location = useLocation();
   const navigate = useNavigate();
   const uid = params.uid;
-  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
   
   const { user, myinfo } = prop;
   
@@ -158,10 +149,10 @@ export default function User({prop}) {
               <UserLike uInfo={uInfo} user={user} swiper={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
-              <UserPost />
+              <UserPost uInfo={uInfo} user={user} swiper={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
-              <UserFolw />
+              <UserFolw uInfo={uInfo} user={user} swiper={swiper} />
 
             </SwiperSlide>
           </Swiper>
