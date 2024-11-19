@@ -78,7 +78,7 @@ export default function UserLike({uInfo,user,swiper}) {
 
   useEffect( () => {
     console.log(uInfo , user);
-    mediaList('movie');
+    mediaList(media);
     // setNewScrapMovie( uInfo.tmdb_movie_scrap )
     return ()=>{
       
