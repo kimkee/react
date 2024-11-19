@@ -80,7 +80,12 @@ export default function User({prop}) {
         {uInfo ?
         <div className="profile">
           <div className="user">
-            <Link to={'/user/'+params.id} className="pic"><img src={uInfo.profile_picture} className="img" /></Link>
+            <Link to={'/user/'+params.uid} className="pic">
+              <img src={uInfo.profile_picture} className="img" />
+              {uInfo.provider == 'google' && <i className="fa-brands fa-google"></i>}
+              {uInfo.provider == 'github' && <i className="fa-brands fa-github"></i>}
+              {uInfo.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
+            </Link>
             <div className="info">
               <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
               <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    

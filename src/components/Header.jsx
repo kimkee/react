@@ -38,7 +38,7 @@ export default function Header({prop}) {
 
         </div>
         <div className="rdt">
-           
+          {/*            
           { ( user?.id && myinfo?.id) ?
             <NavLink to={`/user/${myinfo.id}`} className={"user"}> 
               <span className="pic"><img alt="" className="img" src={ myinfo.profile_picture} /></span>
@@ -47,6 +47,7 @@ export default function Header({prop}) {
           :
             <NavLink to={`/user/signin`} className={"bt login"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
           }
+          */}
           
           
           <button type="button" className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>

@@ -360,6 +360,9 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar .menu>li.active .bt{color: #61dafb;}
 .menubar .menu>li.active .bt i,
 .menubar .menu>li .bt.router-link-active i{font-weight:900;}
+.menubar .menu>li .pic{width: 24rem;min-width: 24rem;height: 24rem;padding-bottom: 24rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;margin-bottom: -5rem;}
+.menubar .menu>li .pic .img{position: absolute; width: 100%; left: 0; top: 0;}
+
 
 
 /* 플로팅 탑버튼 글쓰기버튼 */
@@ -405,7 +408,7 @@ a.btn.disabled{ pointer-events: none; }
 .btn.d.disabled{border-color: #dddddd;background-color: #ffffff;color: #dddddd;}
 
 .btn.e{border-color:#646464; background-color:#646464; color:#ffffff;}
-.btn>i{margin: 0rem 5rem 0rem 0rem;}
+.btn>i{margin: -2rem 5rem -2rem 0rem;}
 
 .btn-set{position:relative;display:flex;margin-left: -5rem;margin-right: -5rem;}
 .btn-set .btn{width:100%;margin: 0 5rem;}
@@ -1279,8 +1282,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view.load .contents{display:block;}
 .page.user.view .profile{padding: 30rem 0rem 20rem 0rem;position: relative;}
 .page.user.view .profile .user{display: flex;align-items: center;margin: 0rem 20rem 20rem 20rem;}
-.page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
-.page.user.view .profile .user .pic .img{position: absolute; width: 100%; left: 0; top: 0;}
+.page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;}
+.page.user.view .profile .user .pic .img{position: absolute;width: 100%;left: 0;top: 0;border-radius: 999rem;}
+.page.user.view .profile .user .pic i{background: #ffffff91;color: #111111;position: absolute;right: 0rem;bottom: 0rem;font-size: 13rem;width: 20rem;height: 20rem;display: flex;justify-content: center;align-items: center;border-radius: 100%;}
 .page.user.view .profile .user .info{display: flex; width:100%;}
 .page.user.view .profile .user .info .num{text-align: center; width: 100%;}
 .page.user.view .profile .user .info .num .n{}
