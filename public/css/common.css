@@ -648,7 +648,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .movie-list.user .list{margin-bottom: 0rem;padding: 14rem;display: grid;/* flex-wrap: wrap; */gap: 10rem;grid-template-columns: repeat(2, minmax(0, 1fr));}
 .movie-list.user .list>li{word-break: break-all;flex: 1;/* width: 50%; */}
-.movie-list.user .list>li{border: 1rem solid #242b36;background: rgb(111 111 111 / 5%);}
+.movie-list.user .list>li{border: 1rem solid #202020;background: rgb(111 111 111 / 5%);}
 .movie-list.user .list>li .box{display: block;padding: 18rem 20rem 18rem 20rem;position: relative;}
 .movie-list.user .list>li .box .tits{color: #bbbbbb;padding: 0rem 0rem;font-size: 12rem;text-align: left;max-width: 100%;display: block;-webkit-line-clamp: 1;max-height: 22rem;line-height: 1.4em;-webkit-box-orient: vertical;display: -webkit-box;text-overflow: ellipsis;overflow: hidden;word-break: break-all;margin: 2rem 0rem 10rem 0rem;}
 .movie-list.user .list>li .box .cont{display: flex;font-size: 12rem;/* align-items: start; */justify-content: space-between;width: 100%;}
