@@ -608,16 +608,16 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .bbs-opt .tots{font-size:12rem;color: #afafaf;}
 .movie-list .bbs-opt .more{font-size:12rem;color: #777;}
 .movie-list .bbs-opt .more a{color: #999;}
-.movie-list .list{margin-bottom: 0rem;padding: 14rem;display: grid;/* flex-wrap: wrap; */gap: 10rem;grid-template-columns: repeat(2, minmax(0, 1fr));}
-.movie-list .list>li{word-break: break-all;flex: 1;/* width: 50%; */}
-.movie-list .list>li{border: 1rem solid #242b36;background: rgb(111 111 111 / 5%);}
+.movie-list .list{margin-bottom: -1rem;display: flex;flex-wrap: wrap;justify-content: center;}
+.movie-list .list>li{word-break: break-all; width: 100%;}
+.movie-list .list>li{border-bottom: 1rem solid #242b36;}
 .movie-list .list>li .box{display: block;padding: 18rem 20rem 18rem 20rem;position: relative;}
 .movie-list .list>li .box:hover{}
-.movie-list .list>li .box .tits{color: #bbbbbb;padding: 0rem 0rem;font-size: 12rem;text-align: left;max-width: 100%;display: block;-webkit-line-clamp: 1;max-height: 22rem;line-height: 1.4em;-webkit-box-orient: vertical;display: -webkit-box;text-overflow: ellipsis;overflow: hidden;word-break: break-all;margin: 2rem 0rem 10rem 0rem;}
-.movie-list .list>li .box .cont{display: flex;font-size: 12rem;align-items: start;justify-content: space-between;width: 100%;}
+.movie-list .list>li .box .tits{color: #bbbbbb;padding: 0rem 0rem;font-size: 14rem;text-align: left;max-width: 100%;display: block;-webkit-line-clamp: 1;max-height: 22rem;line-height: 1.4em;-webkit-box-orient: vertical;display: -webkit-box;text-overflow: ellipsis;overflow: hidden;word-break: break-all;margin: 2rem 0rem 3rem 0rem;}
+.movie-list .list>li .box .cont{display: flex;font-size: 12rem;align-items: center;}
 .movie-list .list>li .box .cont .desc{width:100%;}
-.movie-list .list>li .box .cont .pics{position: relative;/* min-width: 24%; */width: 56rem;flex: none;/* padding-bottom: calc(1200% / 780 * 28); */margin: 0rem 10rem 0rem 0rem;border-radius:4rem;overflow:hidden;background: #203140;height: 100%;}
-.movie-list .list>li .box .cont .pics .img{display: block;/* position: absolute; */left: 50%;top: 50%;/* transform: translate(-50% , -50%); */width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;}
+.movie-list .list>li .box .cont .pics{position: relative;min-width: 24%;width: 24%;padding-bottom: calc(1200% / 780 * 24);margin: 0rem 14rem 0rem 0rem;border-radius:4rem;overflow:hidden;background: #203140;}
+.movie-list .list>li .box .cont .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;}
 .movie-list .list>li .box .cont .text{color: #888888;width: 100%;-webkit-line-clamp: 6;max-height: 102rem;line-height: 1.3em;-webkit-box-orient:vertical;display:-webkit-box;text-overflow:ellipsis;overflow:hidden;word-break:break-all; font-size: 13rem;}
 .movie-list .list>li .box .bgs{background-size: cover;background-position: center; position: absolute; left: 0rem; right: 0rem; top: 0rem; bottom: 0rem; z-index: -1; opacity: 0.1;}
 .movie-list .list>li .box .cont .text br{display: none;}
@@ -646,9 +646,18 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .tabs .btn i{font-style: normal;margin: 0rem 0rem 0rem 4rem;font-size: 11rem;border-radius: 10rem;background: #636363;color: #282828;display: inline-flex;padding: 0rem 2rem;height: 14rem;min-width: 14rem;justify-content: center;align-items: center;padding-top: 1rem;}
 .movie-list.user .tabs .btn.active i{background:#61dafb}
 
+.movie-list.user .list{margin-bottom: 0rem;padding: 14rem;display: grid;/* flex-wrap: wrap; */gap: 10rem;grid-template-columns: repeat(2, minmax(0, 1fr));}
+.movie-list.user .list>li{word-break: break-all;flex: 1;/* width: 50%; */}
+.movie-list.user .list>li{border: 1rem solid #242b36;background: rgb(111 111 111 / 5%);}
+.movie-list.user .list>li .box{display: block;padding: 18rem 20rem 18rem 20rem;position: relative;}
+.movie-list.user .list>li .box .tits{color: #bbbbbb;padding: 0rem 0rem;font-size: 12rem;text-align: left;max-width: 100%;display: block;-webkit-line-clamp: 1;max-height: 22rem;line-height: 1.4em;-webkit-box-orient: vertical;display: -webkit-box;text-overflow: ellipsis;overflow: hidden;word-break: break-all;margin: 2rem 0rem 10rem 0rem;}
+.movie-list.user .list>li .box .cont{display: flex;font-size: 12rem;/* align-items: start; */justify-content: space-between;width: 100%;}
+.movie-list.user .list>li .box .cont .pics{position: relative;/* min-width: 24%; */width: 56rem;flex: none;/* padding-bottom: calc(1200% / 780 * 28); */margin: 0rem 10rem 0rem 0rem;border-radius:4rem;overflow:hidden;background: #203140;}
+.movie-list.user .list>li .box .cont .pics .img{position: static;transform: none;position: static;}
+
 .movie-list.user .list>li .box{ padding: 0; }
-.movie-list.user .list>li .box .cont {padding: 8rem 27rem 8rem 8rem;}
-.movie-list.user .list>li .box .cont .pics{margin-right: 14rem;}
+.movie-list.user .list>li .box .cont {padding: 8rem 22rem 8rem 8rem;}
+.movie-list.user .list>li .box .cont .pics{margin-right: 10rem;padding-bottom: 0;}
 .movie-list.user .list>li .box .cont .pics{/* min-width: 14%; *//* width: 14%; *//* padding-bottom: calc(1200% / 780 * 12); */}
 .movie-list.user .list>li .box .cont .desc{ margin-top: -5rem; }
 .movie-list.user .list>li .box .cont .text{-webkit-line-clamp: 3;max-height: 50rem;}
@@ -661,8 +670,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .list>li .box .cont .dd .date{}
 .movie-list.user .list>li .box .cont .dd .date b{font-weight: normal;font-size: 11rem;}
 .movie-list.user .list>li .box .bts{position: absolute;right: -2rem;top: -1rem;}
-.movie-list.user .list>li .box .bts .bt{ width: 32rem; height: 32rem; }
-.movie-list.user .list>li .box .bts .bt i{font-size: 20rem;color: #5e5e5e;}
+.movie-list.user .list>li .box .bts .bt{width: 28rem;height: 28rem;}
+.movie-list.user .list>li .box .bts .bt i{font-size: 20rem;color: #5e5e5e;font-size: 16rem;}
 
 .poster-list{ overflow: hidden;padding: 5rem calc(15rem - 1.5%); position: relative; }
 .poster-list>.list{display:flex; flex-wrap: wrap;}

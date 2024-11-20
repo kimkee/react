@@ -203,9 +203,9 @@ export default function UserLike({uInfo,user}) {
                               <div className="tits">{data.title || data.name}</div>
                               <div className="hits">
                                 <StarPoint point={data.vote_average} />
-                                <em><i className="fa-regular fa-thumbs-up"></i> 평점 : <b>{data.vote_average}</b></em>
+                                <em><i className="fa-regular fa-thumbs-up"></i> <b>{data.vote_average}</b></em>
                               </div>
-                              <div className="date"><i className="fa-regular fa-calendar-days"></i> <b>{data.release_date || data.first_air_date}</b></div>
+                              <div className="date">{/* <i className="fa-regular fa-calendar-days"></i> */} <b>{data.release_date || data.first_air_date}</b></div>
                             </div>
                           </Link>
                           <div className="bts">
