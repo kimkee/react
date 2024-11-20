@@ -638,7 +638,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list .list>li .box .info .keys{font-size: 10rem;color: #707887;margin-left: 6rem;display: none;}
 
 .movie-list.user{}
-.movie-list.user .tabs{display: flex;justify-content: center;border-bottom: 1rem solid #202020;/* border: #202020 solid 1rem; */border-top-width: 0rem;}
+.movie-list.user .tabs{display: flex;justify-content: center;border-bottom: 1rem solid #202020;border-top-width: 0rem;}
 .movie-list.user .tabs .btn{width: 100%;border: none;font-weight: 700;border-radius: 0rem;background-color: #111111;color: #6f6f6f;}
 .movie-list.user .tabs .btn+.btn{/* border-left: 1rem solid #242b36; */}
 .movie-list.user .tabs .btn.active{/* background-color: #1a1a1a; *//* font-weight: 700; */color: #61dafb;}
@@ -1296,7 +1296,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;}
 .page.user.view .profile .user .pic .img{position: absolute;width: 100%;left: 0;top: 0;border-radius: 999rem;}
 .page.user.view .profile .user .pic i{background: #ffffff91;color: #111111;position: absolute;right: 0rem;bottom: 0rem;font-size: 13rem;width: 20rem;height: 20rem;display: flex;justify-content: center;align-items: center;border-radius: 100%;}
-.page.user.view .profile .user .info{display: flex; width:100%;}
+.page.user.view .profile .user .info{display: flex;width:100%;padding: 0rem 20rem;}
 .page.user.view .profile .user .info .num{text-align: center; width: 100%;}
 .page.user.view .profile .user .info .num .n{}
 .page.user.view .profile .user .info .num .t{}
@@ -1308,7 +1308,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile .bts{/* margin: 20rem 20rem; *//* text-align: right; */position: absolute;right: 20rem;bottom: 26rem;}
 .page.user.view .profile .bts .btn{/* min-width: 104rem; */padding: 0rem 10rem 0rem 10rem;}
 .page.user.view .user-post{margin: 0rem 0rem 0rem 0rem;}
-.page.user.view .user-post .menu{position: sticky;top: calc(54rem + var(--safe-top));height: 50rem;text-align: center;display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;/* background-color: #161616; */}
+.page.user.view .user-post .menu{position: sticky;top: calc(54rem + var(--safe-top));height: 50rem;text-align: center;display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #111111;}
 .page.user.view .user-post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}
 .page.user.view .user-post .menu>li{position:relative;width: 100%;}
 .page.user.view .user-post .menu>li+li{margin-left: 0rem;}
