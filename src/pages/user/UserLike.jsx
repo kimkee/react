@@ -152,11 +152,12 @@ export default function UserLike({uInfo,user}) {
                         <div className="box">
                           <Link className="cont"  to={`${media}/${data.id}`}>
                             <div className="pics"><img src={`${img}`} alt={tit} onError={ui.error.poster} className='img'/></div>
-                            <div className="desc">
-                              <div className="tits">{data.title || data.name}</div>
+                            {/* <div className="desc">
+                              
                               <div className="text">{data.overview}</div>
-                            </div>
+                            </div> */}
                             <div className="dd">
+                            <div className="tits">{data.title || data.name}</div>
                               <div className="hits">
                                 <StarPoint point={data.vote_average} />
                                 <em><i className="fa-regular fa-thumbs-up"></i> 평점 : <b>{data.vote_average}</b></em>
@@ -194,11 +195,12 @@ export default function UserLike({uInfo,user}) {
                         <div className="box">
                           <Link className="cont"  to={`${media}/${data.id}`}>
                             <div className="pics"><img src={`${img}`} alt={tit} onError={ui.error.poster} className='img'/></div>
-                            <div className="desc">
-                              <div className="tits">{data.title || data.name}</div>
+                            {/* <div className="desc">
+                              
                               <div className="text">{data.overview}</div>
-                            </div>
+                            </div> */}
                             <div className="dd">
+                              <div className="tits">{data.title || data.name}</div>
                               <div className="hits">
                                 <StarPoint point={data.vote_average} />
                                 <em><i className="fa-regular fa-thumbs-up"></i> 평점 : <b>{data.vote_average}</b></em>

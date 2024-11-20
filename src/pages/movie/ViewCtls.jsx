@@ -45,7 +45,7 @@ export default function ViewCtls({datas,postID, opts}) {
         id: datas.id,
         title: datas.title || datas.name,
         poster_path: datas.poster_path,
-        overview: datas.overview,
+        // overview: datas.overview,
         vote_average: datas.vote_average,
         release_date: datas.release_date || datas.first_air_date,
       }
