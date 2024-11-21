@@ -671,9 +671,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .list>li .box .cont .dd .hits .ui-star{ text-align: right; margin-bottom: 4rem; }
 .movie-list.user .list>li .box .cont .dd .date{}
 .movie-list.user .list>li .box .cont .dd .date b{font-weight: normal;font-size: 11rem;}
-.movie-list.user .list>li .box .bts{position: absolute;right: -2rem;top: -1rem;}
+.movie-list.user .list>li .box .bts{position: absolute;right: 3rem;bottom: 7rem;}
 .movie-list.user .list>li .box .bts .bt{width: 28rem;height: 28rem;}
-.movie-list.user .list>li .box .bts .bt i{font-size: 20rem;color: #5e5e5e;font-size: 16rem;}
+.movie-list.user .list>li .box .bts .bt i{font-size: 20rem;color: #5e5e5e;font-size: 11rem;}
 
 .poster-list{ overflow: hidden;padding: 5rem calc(15rem - 1.5%); position: relative; }
 .poster-list>.list{display:flex; flex-wrap: wrap;}
@@ -1334,6 +1334,35 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .tablike{ min-height: calc(100dvh - 330rem); }
 .page.user.view .user-post .tablike.mv{}
 .page.user.view .user-post .tablike.tv{border-left: #202020 solid 1rem;}
+
+.page.user.view .user-post .ctn.repl{}
+.page.user.view .user-post .ctn.repl .members{}
+.page.user.view .user-post .ctn.repl .members .mlist{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 26rem;
+    padding-top: 20rem;
+}
+.page.user.view .user-post .ctn.repl .members .mlist>li{
+    width: calc(100% / 4 - 20rem);
+    text-align: center;
+}
+.page.user.view .user-post .ctn.repl .members .mlist>li .box{
+    max-width: 60rem;
+    display: inline-block;
+}
+.page.user.view .user-post .ctn.repl .members .mlist>li .box .pic{
+    display: block;
+}
+.page.user.view .user-post .ctn.repl .members .mlist>li .box .pic .img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.page.user.view .user-post .ctn.repl .members .mlist>li .box .name{
+    text-align: center;
+}
 
 .ut-avata{display: flex;gap: 5rem 0rem;flex-wrap: wrap;justify-content: center;}
 .ut-avata label{display: inline-flex;position: relative;width: calc(100% / 7);}
