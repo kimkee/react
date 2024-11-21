@@ -3,7 +3,7 @@ import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-
 
 
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import store from '../../store.js';
+// import store from '../../store.js';
 import {atomStore,textState,sss} from '../../atom.js';
 
 // import axios from 'axios';
@@ -48,7 +48,7 @@ export default function UserFolw({uInfo,user,swiper}) {
 
     }
     // eslint-disable-next-line
-  });
+  },[]);
   if(!member) return
   return (
     <>
