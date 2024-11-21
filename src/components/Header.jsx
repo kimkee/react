@@ -4,7 +4,7 @@ import {Link, NavLink, useParams, useLocation, useNavigate} from 'react-router-d
 import ui from '/src/ui.js';
 import store from '../store.js';
 import getUser from '../getUser.js';
-import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+// import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 import {atomStore,textState,sss} from '../atom.js';
 

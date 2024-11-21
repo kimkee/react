@@ -4,9 +4,9 @@ import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-
 import store from '../../store.js';
 import ui from '../../ui.js';
 
-import { db } from '../../firebaseConfig_bak.js';
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
+// import { db } from '../../firebaseConfig_bak.js';
+// import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+// import { doc, setDoc } from 'firebase/firestore';
 
 
 export default function SignUp() {

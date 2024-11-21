@@ -1,7 +1,7 @@
 
-import {db} from './firebaseConfig_bak.js';
-import { getDoc, doc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+// import {db} from './firebaseConfig_bak.js';
+// import { getDoc, doc } from 'firebase/firestore';
+// import { getAuth, onAuthStateChanged } from 'firebase/auth';
 const store = {
   state: {
     userInfo:{
@@ -74,6 +74,6 @@ const store = {
     }
   }
 };
-store.authState();
+// store.authState();
 window.store = store
 export default store;

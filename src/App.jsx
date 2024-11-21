@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
 import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 
 

@@ -1,7 +1,7 @@
 
-import {db} from './firebaseConfig_bak.js';
-import { getDoc, doc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+// import {db} from './firebaseConfig_bak.js';
+// import { getDoc, doc } from 'firebase/firestore';
+// import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { atom } from 'recoil';
 
 const textState = atom({
