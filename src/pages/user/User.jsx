@@ -52,6 +52,7 @@ export default function User({prop}) {
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
   // console.log(`spIdx   ${spIdx}`);
+  const updateSwiper = ()=> setTimeout(() => swiper?.update() , 100);
   const gotoSlide = (num)=>{
     console.log(num);
     // swiper.slideTo(num);
@@ -142,22 +143,24 @@ export default function User({prop}) {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
               setSpIdx(0)
+              updateSwiper();
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
               setSpIdx(swiper.realIndex)
+              updateSwiper();
               // gotoSlide(swiper.realIndex);
             }}
           >
             <SwiperSlide tag="section" className="ctn like">
-              <UserLike uInfo={uInfo} user={user} />
+              <UserLike uInfo={uInfo} user={user} swiper1dep={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
-              <UserPost uInfo={uInfo} user={user} />
+              <UserPost uInfo={uInfo} user={user} swiper1dep={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
-              <UserFolw uInfo={uInfo} user={user} />
+              <UserFolw uInfo={uInfo} user={user} swiper1dep={swiper} />
 
             </SwiperSlide>
           </Swiper>

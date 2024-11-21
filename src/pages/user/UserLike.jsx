@@ -16,23 +16,27 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 
-export default function UserLike({uInfo,user}) {
+export default function UserLike({uInfo,user,swiper1dep}) {
 
   // const [newScrapMovie, setNewScrapMovie] = useState([]);
   const [newScrapMV, setNewScrapMV] = useState([]);
   const [newScrapTV, setNewScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
-
+  const updateSwiper = ()=> setTimeout(() => {
+    swiper?.update()
+    swiper1dep?.update()
+  } , 100);
   const mediaList = (opts) => {
     console.log(opts);
     setNewScrapMV( uInfo.tmdb_movie_scrap );
     setNewScrapTV( uInfo.tmdb_tv_scrap );
 
-    setTimeout(() => swiper?.update() , 100); 
+    updateSwiper()
     // console.log(newScrapMovie);
   };
   const mdChange = (num)=>{
     setMedia(num == 0 && 'movie' || num == 1 && 'tv')   
+    updateSwiper()
   }
   const deleteScrap = async (opts, data) => {
     ui.loading.show('glx');
