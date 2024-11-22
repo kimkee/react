@@ -358,9 +358,12 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .menubar .menu>li .bt i{font-size:18rem;}
 .menubar .menu>li .bt.router-link-active,
 .menubar .menu>li.active .bt{color: #61dafb;}
+.menubar .menu>li.active .bt .pic{
+    border-color: #61dafb;
+}
 .menubar .menu>li.active .bt i,
 .menubar .menu>li .bt.router-link-active i{font-weight:900;}
-.menubar .menu>li .pic{width: 24rem;min-width: 24rem;height: 24rem;padding-bottom: 24rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;margin-bottom: -5rem;}
+.menubar .menu>li .pic{width: 28rem;height: 28rem;padding-bottom: 24rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;margin-bottom: -5rem;border: #aaaaaa solid 2rem;}
 .menubar .menu>li .pic .img{position: absolute; width: 100%; left: 0; top: 0;}
 
 
@@ -767,7 +770,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 300rem;background-image: linear-gradient(180deg, transparent, #111111);}
 .movie-detail .info{display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: row;}
 .movie-detail .info .thum{display:block;position:relative; width: 100%; overflow: hidden;width: 45%;}
-.movie-detail .info .thum .pics{display:block;position:relative;padding-bottom: 150%; width: 100%; overflow: hidden;width: 100%; border-radius: 6rem; background:#000000;}
+.movie-detail .info .thum .pics{display:block;position:relative;padding-bottom: calc(1200% / 780 * 93);width: 100%;overflow: hidden;width: 100%;border-radius: 6rem;background:#000000;}
 .movie-detail .info .thum .pics .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #000000;}
 .movie-detail .info .desc{width: calc(55% - 10rem);line-height:1.4;text-shadow: 0 0 3rem #000000;color: #ffffff;margin-top: -5rem;}
 .movie-detail .info .desc .tit{color: #ffffff;font-size: 22rem;text-shadow: 0 0 3rem #000000;margin-bottom: 10rem;line-height: 1.2;}

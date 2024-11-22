@@ -23,10 +23,7 @@ export default function SignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: txt,
       options: {
-        queryParams: {
-          access_type: 'offline',
-          prompt: 'consent',
-        },
+        // queryParams: { access_type: 'offline', prompt: 'consent', },
         redirectTo: `${import.meta.env.VITE_SITE_URL}/#/callback` // 콜백 URL을 명확하게 지정
       },
     })
