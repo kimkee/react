@@ -12,12 +12,18 @@ import { supabase } from '@/supabase.js';
 
 
 
-export default function UserFolw({uInfo,user,swiper}) {
+export default function UserFolw({uInfo,user,swiper1dep}) {
+  const navigate = useNavigate();
   const [member, setMember] = useState();
   const members = async ()=>{
     const { data: members, error: membersError }  = await supabase.from('MEMBERS').select("*").order('created_at', { ascending: true });
     setMember(members);
+  }  
+  const goPage = (link)=>{
+    navigate(`/user/${link}`);
+    location.reload()
   }
+  
   function TextInput() {
     const [text, setText] = useRecoilState(textState);
     const [sssVal, setSssVal] = useRecoilState(sss);
@@ -49,6 +55,7 @@ export default function UserFolw({uInfo,user,swiper}) {
     }
     // eslint-disable-next-line
   },[]);
+
   if(!member) return
   return (
     <>
@@ -60,10 +67,10 @@ export default function UserFolw({uInfo,user,swiper}) {
             const tit = data.title || data.name;
             return(
               <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
-                <Link to={`/user/${data.id}`} className='box'>
+                <button onClick={()=>goPage(data.id)} className='box'>
                   <span className="pic"><img alt="" className="img" src={ data.profile_picture} /></span>
                   <div className="name">{data.username}</div>
-                </Link>
+                </button>
               </li>)
           })
         :
