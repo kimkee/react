@@ -3,7 +3,6 @@ import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-
 
 // import { atom } from 'recoil';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import store from '../../store.js';
 import {atomStore,textState,sss} from '../../atom.js';
 
 // import axios from 'axios';

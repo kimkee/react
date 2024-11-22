@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
-import store from '../../store.js';
 import ui from '../../ui.js';
 
 // import { db } from '../../firebaseConfig_bak.js';
