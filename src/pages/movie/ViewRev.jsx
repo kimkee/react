@@ -21,7 +21,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
 
   const togView = {
     evt:(e)=>{
-      console.log(e.currentTarget);
+      // console.log(e.currentTarget);
       const btn = e.currentTarget;
       const box = btn.closest("[data-ui='elips']");
       if( box.classList.contains("open")) {
@@ -47,6 +47,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
   }
 
   const revText = useRef('');
+  const revListBox = useRef('');
   
 
   const revNumMax = 200;
@@ -120,16 +121,16 @@ export default function ViewRev({postID, opts, user, myinfo}) {
       console.table(data[0]);
       gethRevs(postID);
       revText.current.value = '';
-      revText.current.focus();
+      revListBox.current.focus();
     }
   }
 
   const [reviewArr, setReviewArr] = useState();
   const gethRevs = async ()=> {
     console.log(postID);
-    const { data: reviews, error: myinfoError }  = await supabase.from('REVIEW_TMDB').select("*").eq('idmvtv', postID).order('created_at', { ascending: false });
+    const { data: reviews, error: reviewsError }  = await supabase.from('REVIEW_TMDB').select("*").eq('mvtv', opts).eq('idmvtv', postID).order('created_at', { ascending: false });
     setReviewArr(reviews)
-    console.log(reviewArr);
+    console.log(reviewArr );
     
   }
 
@@ -161,7 +162,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
           </div>
         </div>
       </div>
-      <div className="sect revw">
+      <div className="sect revw" ref={revListBox}>
         {reviewArr ?
         <div className="ut-reply">
           <div className="rplist">
