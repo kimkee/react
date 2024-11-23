@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 import ui from '../../ui.js';
-export default function ViewRev({postID, opts}) {
+import { supabase } from '@/supabase.js';
+// import { getUser } from '@/getUser.js';
 
+
+export default function ViewRev({postID, opts, user, myinfo}) {
+  const navigate = useNavigate();
   // console.log(postID);
   const [review, setReview] = useState(null);
   const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
@@ -44,7 +49,7 @@ export default function ViewRev({postID, opts}) {
   const revText = useRef('');
   
 
-  const revNumMax = 1000;
+  const revNumMax = 200;
   const [revNumNow, setRevNumNow] = useState(0)
   const autoheight = (e)=>{
     const $els = e.target;
@@ -64,16 +69,63 @@ export default function ViewRev({postID, opts}) {
       });      
     }
   }
-
-  const sendReview = ()=>{
+  const checkLogin = ()=> { 
+    if (user?.email) { return; }
+    ui.confirm("로그인이 필요합니다.", {
+      ycb: () => { navigate('/user/signin'); return; },
+      ccb: () => { return; },
+      ybt: "로그인 하기",
+      nbt: "닫기",
+    });
+  }
+  const sendReview = async()=>{
     ui.alert(`준비 중 입니다.`,{
       ycb: () => {}
     });
+    console.log(myinfo);
+    console.log(user);
+    
+    const insertData = { 
+      user_num : myinfo?.id,
+      user_name : user?.user_metadata.full_name || user?.user_metadata.user_name,
+      created_at : new Date().toISOString(),
+      updated_at : new Date().toISOString(),
+      content : ui.textHtml( revText.current.value , "incode"),
+      profile_picture : user?.user_metadata.avatar_url, 
+      provider : user?.app_metadata.provider,
+      email : user?.email, 
+      mvtv : opts,
+      idmvtv : postID 
+    }
+    console.table(insertData);
+
+    const { data, error } = await supabase
+      .from('REVIEW_TMDB')
+      .insert([ insertData ])
+      .select('*')
+    if (error) {
+      console.error("리뷰 입력 에러 Error inserting data:", error.message);
+    } else {
+      console.table("리뷰 입력 성공 Data inserted successfully:");
+      console.table(data[0]);
+    }
   }
+
+  const [reviewArr, setReviewArr] = useState();
+  const gethRevs = async ()=> {
+    console.log(postID);
+    const { data: reviews, error: myinfoError }  = await supabase.from('REVIEW_TMDB').select("*").eq('idmvtv', postID).order('created_at', { ascending: false });
+    setReviewArr(reviews)
+    console.log(reviewArr);
+    
+  }
+
 
   useEffect(() => {
     fetchReview();
+    console.log(postID);
     
+    gethRevs(postID);
     return () => {
     
     };
@@ -87,14 +139,57 @@ export default function ViewRev({postID, opts}) {
   return (
     <>
       <div className="sect revk" id='writeRev'>
-        <h4 className="tts">리뷰(준비중)</h4>
+        <h4 className="tts">리뷰</h4>
         <div className="form textarea">
-          <textarea onInput={autoheight} ref={revText} className="rtext" placeholder="감상평을 남겨보세요. (최대1000자)"></textarea>
+          <textarea onInput={autoheight} onFocus={checkLogin} ref={revText} className="rtext"  placeholder={`${user?.email ? '감상평을 남겨보세요. (최대200자)':'로그인 후 감상평을 남겨보세요. (최대200자)'}`}></textarea>
           <span className="num"><i className="i">{revNumNow}</i><b className="n">{ui.commas.add(revNumMax)}</b></span>
           <div className="bts">
-            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
+            <button type="button" className="btn sm btsend" disabled={ !user?.email && revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
           </div>
         </div>
+      </div>
+      <div className="sect revw">
+        {reviewArr ?
+        <div className="ut-reply">
+          <div className="rplist">
+            <ul className="rlist b">
+            {
+              reviewArr &&
+              reviewArr.map((rev,idx) => {
+                const rvTxt = rev.content.replace(/\n/g, "<br>");
+                return(
+                <li key={idx} idx={rev.id}  user_num={rev.user_num}>
+                  {/* <p>{rev.id} : {rev.user_num} : {rev.user_name}</p>
+                  <p>{ui.dateForm(rev.created_at)} =  {ui.dateForm(rev.updated_at)}</p>
+                  <p>{rvTxt}</p>
+                  <p><img src={rev.profile_picture} alt="" style={{width:"32px"}} /> {rev.provider} : {rev.email}</p>
+                 */}
+                
+                  <div className="rpset">
+                    <div className="user">
+                      <span className="pic"><img src={rev.profile_picture} alt="사진"  className="img" onError={ui.error.user} /></span>
+                    </div>
+                    <div className="infs">
+                      <div className="name">
+                        <em className="nm">{rev.user_name}</em>
+                      </div>
+                      <div className="desc">
+                        <em className="time">{ ui.dateForm(rev.created_at) }</em>
+                      </div>
+                      <div data-ui="elips" className="mbox">
+                        <div className="ment txt" onClick={togView.evt}  dangerouslySetInnerHTML={{ __html: rvTxt }} ></div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              )
+            })}
+            </ul>
+          </div>
+        </div>
+        :
+        null
+        }
       </div>
 
       {review.results.length ?

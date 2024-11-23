@@ -25,11 +25,13 @@ export default function View({prop}) {
     window.addEventListener("resize",popResize);
     popup.current.classList.add("ani","on");
     ui.lock.using(true);
+    console.log(prop.myinfo);
     return () => {
       window.removeEventListener("resize",popResize);
       console.log('컴포넌트가 화면에서 사라짐');
       ui.lock.using(false);
     };
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[params.id]);
   
@@ -75,7 +77,7 @@ export default function View({prop}) {
         <div className="pct" onScroll={scrollEvent}>
           <main className="poptents">
             
-            <ViewInfo postID={postID} popTitle={popTitle} />
+            <ViewInfo user={prop.user} myinfo={prop.myinfo} postID={postID} popTitle={popTitle} />
 
           </main>
         </div>

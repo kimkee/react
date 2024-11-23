@@ -17,8 +17,7 @@ export default function Header({prop}) {
 
   
   useEffect(() => {
-    console.log(user);
-    console.log(myinfo);
+    console.log(user, myinfo);
     return ()=>{ }
   },[user,myinfo ]);
   // console.table(prop);

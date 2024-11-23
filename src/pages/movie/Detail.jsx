@@ -3,7 +3,7 @@ import { Outlet, useParams, useNavigate, useLocation } from 'react-router-dom';
 import ViewInfo from './ViewInfo';
 
 
-export default function Detail() {
+export default function Detail({prop}) {
 
   let params = useParams();
   
@@ -26,7 +26,7 @@ export default function Detail() {
     <div className="container page detail">
       <main className="contents">
 
-        <ViewInfo postID={postID} />
+        <ViewInfo user={prop.user} myinfo={prop.myinfo} postID={postID} />
 
       </main>
     </div>

@@ -109,7 +109,7 @@ export default function App() {
             <Route path="list">
               <Route path=":menu" >
                 <Route path=":cate" element={<Lists /> }>
-                  <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                  <Route path=":id" element={<View prop={{user, myinfo,"page":"search"}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
                     <Route path="person/:nums" element={<Person />} />
                     <Route path="videos/:nums" element={<Videos />} />
@@ -120,7 +120,7 @@ export default function App() {
 
             <Route path=":menu">
               <Route path='*' element={<NotFound />} />
-              <Route path=":id" element={<Detail prop={{"page":"page"}}/>} >
+              <Route path=":id" element={<Detail prop={{user, myinfo,"page":"page"}}/>} >
                 <Route path="poster/:nums" element={<Poster />} />
                 <Route path="person/:nums" element={<Person />} />
                 <Route path="videos/:nums" element={<Videos  />} />
@@ -129,7 +129,7 @@ export default function App() {
 
             <Route path="search" >
               <Route path=":menu" element={<Search />} >
-                <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                <Route path=":id" element={<View prop={{user, myinfo,"page":"search"}} />} >
                   <Route path="poster/:nums" element={<Poster prop={{"page":"search"}} />} />
                   <Route path="person/:nums" element={<Person prop={{"page":"search"}} />} />
                   <Route path="videos/:nums" element={<Videos prop={{"page":"search"}} />} />
@@ -147,7 +147,7 @@ export default function App() {
               
               <Route path=":uid" element={<User prop={{user, myinfo}} />} >
                 <Route path=":menu">
-                  <Route path=":id" element={<View prop={{"page":"search"}} />} >
+                  <Route path=":id" element={<View prop={{user, myinfo,"page":"search"}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
                     <Route path="person/:nums" element={<Person />} />
                     <Route path="videos/:nums" element={<Videos  />} />

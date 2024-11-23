@@ -32,7 +32,12 @@ const ui = {
     dateForm: (date, opt = 'medium')=> {
         date = new Date(date);
         return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(date);
-      },
+    },
+    textHtml: (text, opt) => {
+        // console.log(text,opt);
+        if (opt == 'incode') { return text.replace(/\u0020/g, '&nbsp;').replace(/\n/g, '<br>'); }
+        if (opt == 'decode') { return text.replace(/<br>/ig, '\n').replace(/&nbsp;/g, '\u0020'); }
+    },
     getSafe:{
         top: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-top")  ) || 0 ,
         bottom: ()=> parseInt( getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom")  ) || 0,

@@ -8,7 +8,7 @@ import ViewRev from './ViewRev';
 import ViewCtls from './ViewCtls';
 import Skeleton from '../../components/Skeleton';
 import Loading from '../../components/Loading';
-export default function ViewInfo({ postID, popTitle }) {
+export default function ViewInfo({user, myinfo, postID, popTitle }) {
   
   const params = useParams();
 
@@ -242,7 +242,7 @@ export default function ViewInfo({ postID, popTitle }) {
           </div>
           : null}
 
-          <ViewRev postID={postID} opts={opts}/>
+          <ViewRev user={user} myinfo={myinfo} postID={postID} opts={opts}/>
 
           {datas.production_companies.length ? 
           <>

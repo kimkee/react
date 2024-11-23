@@ -47,8 +47,6 @@ export default function SignIn() {
   }
   useEffect( () => {
     window.scrollTo(0,0);
-    console.log(supabase);
-
     return ()=>{
 
     }
