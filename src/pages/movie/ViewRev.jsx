@@ -79,9 +79,19 @@ export default function ViewRev({postID, opts, user, myinfo}) {
     });
   }
   const sendReview = async()=>{
-    ui.alert(`준비 중 입니다.`,{
-      ycb: () => {}
-    });
+    // ui.alert(`준비 중 입니다.`,{
+    //   ycb: () => {}
+    // });
+
+    console.log(`입력-${revText.current.value.trim()}-`);
+    revText.current.focus();
+    if (revText.current.value.trim() == '') {
+      revText.current.value = '';
+      revText.current.focus();
+
+      return;
+    }
+    
     console.log(myinfo);
     console.log(user);
     
@@ -108,6 +118,9 @@ export default function ViewRev({postID, opts, user, myinfo}) {
     } else {
       console.table("리뷰 입력 성공 Data inserted successfully:");
       console.table(data[0]);
+      gethRevs(postID);
+      revText.current.value = '';
+      revText.current.focus();
     }
   }
 
@@ -144,7 +157,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
           <textarea onInput={autoheight} onFocus={checkLogin} ref={revText} className="rtext"  placeholder={`${user?.email ? '감상평을 남겨보세요. (최대200자)':'로그인 후 감상평을 남겨보세요. (최대200자)'}`}></textarea>
           <span className="num"><i className="i">{revNumNow}</i><b className="n">{ui.commas.add(revNumMax)}</b></span>
           <div className="bts">
-            <button type="button" className="btn sm btsend" disabled={ !user?.email && revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
+            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
           </div>
         </div>
       </div>
