@@ -134,7 +134,17 @@ export default function ViewRev({postID, opts, user, myinfo}) {
     
   }
 
-
+  const deleteReview = async (opts, postID) => {
+    console.log(opts, postID);
+    const { data: reviews, error: reviewsError }  = await supabase.from('REVIEW_TMDB').delete().eq('id', postID);
+    if (reviewsError) {
+      console.error("리뷰 삭제 에러 Error deleting data:", reviewsError.message);
+    } else {
+      console.table("리뷰 삭제 성공 Data deleted successfully:");
+      console.table(postID);
+      gethRevs(postID);
+    }
+  }
   useEffect(() => {
     fetchReview();
     console.log(postID);
@@ -189,6 +199,11 @@ export default function ViewRev({postID, opts, user, myinfo}) {
                       </div>
                       <div className="desc">
                         <em className="time">{ ui.dateForm(rev.created_at) }</em>
+                        { rev?.user_id == user?.id &&
+                        <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteReview(opts, rev.id)}) }>
+                          <span><i className="fa-solid fa-close"></i></span>
+                        </button>
+                        }
                       </div>
                       <div data-ui="elips" className="mbox">
                         <div className="ment txt" onClick={togView.evt}  dangerouslySetInnerHTML={{ __html: rvTxt }} ></div>

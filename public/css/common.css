@@ -169,7 +169,7 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .name{display: flex;align-items: center;padding: 0rem 0 0  0;min-height:22rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .name .nm{font-size: 12rem;font-weight: 700;line-height:1.1;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .name .mb{font-size:11rem;border: #f1344d solid 1rem;color: #f1344d;border-radius: 3rem;height: 17rem;padding: 1rem 3rem;margin: -6rem 0rem -3rem 6rem;overflow: hidden;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .desc{display: flex;margin: 3rem 0 0 0; position:absolute; right: 0rem; top:0rem; text-align: right;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc{display: flex;margin: 3rem 0 0 0;position:absolute;right: 0rem;top:0rem;text-align: right;gap: 6rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc em{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .loct{font-size: 12rem;color: #666666;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .loct::before{width:9rem;height:11rem;background:url(../img/pd/icon_location_s@2x.png) no-repeat center;background-size:9rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';margin: -2rem 3rem 0rem 0rem;}
