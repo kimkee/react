@@ -85,10 +85,10 @@ export default function ViewRev({postID, opts, user, myinfo}) {
     // });
 
     console.log(`입력-${revText.current.value.trim()}-`);
-    revText.current.focus();
+    
     if (revText.current.value.trim() == '') {
       revText.current.value = '';
-      revText.current.focus();
+      
 
       return;
     }
