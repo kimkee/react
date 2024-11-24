@@ -78,7 +78,7 @@ export default function ViewCtls({datas,postID, opts}) {
         .update({ tmdb_movie_scrap: data_scrap })
         .eq('id', uInfo.id)
         .select()
-        console.log(data);        
+        console.log(data);
       }
       if (opts == `tv`){
         const { data, error } = await supabase

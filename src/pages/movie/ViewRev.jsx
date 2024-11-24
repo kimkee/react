@@ -48,8 +48,6 @@ export default function ViewRev({postID, opts, user, myinfo}) {
 
   const revText = useRef('');
   const revListBox = useRef('');
-  
-
   const revNumMax = 200;
   const [revNumNow, setRevNumNow] = useState(0)
   const autoheight = (e)=>{
@@ -80,40 +78,27 @@ export default function ViewRev({postID, opts, user, myinfo}) {
     });
   }
   const sendReview = async()=>{
-    // ui.alert(`준비 중 입니다.`,{
-    //   ycb: () => {}
-    // });
-
-    console.log(`입력-${revText.current.value.trim()}-`);
-    
+  
     if (revText.current.value.trim() == '') {
       revText.current.value = '';
-      
-
       return;
     }
-    
     console.log(myinfo);
     console.log(user);
-    
     const insertData = { 
       user_num : myinfo?.id,
-      user_name : user?.user_metadata.full_name || user?.user_metadata.user_name,
-      created_at : new Date().toISOString(),
+      user_name : myinfo?.username,
       updated_at : new Date().toISOString(),
       content : ui.textHtml( revText.current.value , "incode"),
-      profile_picture : user?.user_metadata.avatar_url, 
-      provider : user?.app_metadata.provider,
-      email : user?.email, 
+      profile_picture : myinfo?.profile_picture, 
+      provider : myinfo?.provider,
+      email : myinfo?.email, 
       mvtv : opts,
       idmvtv : postID 
     }
     console.table(insertData);
 
-    const { data, error } = await supabase
-      .from('TMDB_REVIEW')
-      .insert([ insertData ])
-      .select('*')
+    const { data, error } = await supabase.from('TMDB_REVIEW').insert([ insertData ]).select('*')
     if (error) {
       console.error("리뷰 입력 에러 Error inserting data:", error.message);
     } else {
@@ -121,6 +106,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
       console.table(data[0]);
       gethRevs(postID);
       revText.current.value = '';
+      setRevNumNow(0);
       revListBox.current.focus();
     }
   }
@@ -128,30 +114,44 @@ export default function ViewRev({postID, opts, user, myinfo}) {
   const [reviewArr, setReviewArr] = useState();
   const gethRevs = async ()=> {
     console.log(postID);
-    const { data: reviews, error: reviewsError }  = await supabase.from('TMDB_REVIEW').select("*").eq('mvtv', opts).eq('idmvtv', postID).order('created_at', { ascending: false });
-    setReviewArr(reviews)
-    console.log(reviewArr );
-    
+    const { data, error }  = await supabase.from('TMDB_REVIEW').select("*").eq('mvtv', opts).eq('idmvtv', postID).order('created_at', { ascending: false });
+    if (error) {
+      console.error("리뷰 조회 에러 Error selecting data:", error.message);
+    }else{
+      setReviewArr(data);
+      console.table("리뷰 조회 성공 Data selected successfully:");
+    }
   }
-
+  const realtimeChannel = useRef('');
+  const setupRealtimeListener = (tableName) => {
+    realtimeChannel.current = supabase.channel(`public:${tableName}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: tableName }, () => {
+        gethRevs(postID);
+        console.log(`${tableName} 업데이트`);
+      })
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          console.log(`Subscribed to ${tableName} changes`);
+        }
+      });
+  };
   const deleteReview = async (opts, postID) => {
     console.log(opts, postID);
-    const { data: reviews, error: reviewsError }  = await supabase.from('TMDB_REVIEW').delete().eq('id', postID);
-    if (reviewsError) {
-      console.error("리뷰 삭제 에러 Error deleting data:", reviewsError.message);
+    const { data, error }  = await supabase.from('TMDB_REVIEW').delete().eq('id', postID);
+    if (error) {
+      console.error("리뷰 삭제 에러 Error deleting data:", error.message);
     } else {
       console.table("리뷰 삭제 성공 Data deleted successfully:");
-      console.table(postID);
       gethRevs(postID);
     }
   }
   useEffect(() => {
     fetchReview();
     console.log(postID);
-    
     gethRevs(postID);
+    setupRealtimeListener('TMDB_REVIEW');
     return () => {
-    
+      realtimeChannel.current.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[postID]);
@@ -172,7 +172,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
           </div>
         </div>
       </div>
-      <div className="sect revw" ref={revListBox}>
+      <div className="sect revw" ref={revListBox} tabIndex={-1}>
         {reviewArr ?
         <div className="ut-reply">
           <div className="rplist">
@@ -198,7 +198,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
                         <em className="nm">{rev.user_name}</em>
                       </div>
                       <div className="desc">
-                        <em className="time">{ ui.dateForm(rev.created_at) }</em>
+                        <em className="time">{/* { ui.dateForm(rev.created_at) } */} {ui.timeForm(rev.created_at,true)}</em>
                         { rev?.user_id == user?.id &&
                         <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteReview(opts, rev.id)}) }>
                           <span><i className="fa-solid fa-close"></i></span>
