@@ -111,7 +111,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
     console.table(insertData);
 
     const { data, error } = await supabase
-      .from('REVIEW_TMDB')
+      .from('TMDB_REVIEW')
       .insert([ insertData ])
       .select('*')
     if (error) {
@@ -128,7 +128,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
   const [reviewArr, setReviewArr] = useState();
   const gethRevs = async ()=> {
     console.log(postID);
-    const { data: reviews, error: reviewsError }  = await supabase.from('REVIEW_TMDB').select("*").eq('mvtv', opts).eq('idmvtv', postID).order('created_at', { ascending: false });
+    const { data: reviews, error: reviewsError }  = await supabase.from('TMDB_REVIEW').select("*").eq('mvtv', opts).eq('idmvtv', postID).order('created_at', { ascending: false });
     setReviewArr(reviews)
     console.log(reviewArr );
     
@@ -136,7 +136,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
 
   const deleteReview = async (opts, postID) => {
     console.log(opts, postID);
-    const { data: reviews, error: reviewsError }  = await supabase.from('REVIEW_TMDB').delete().eq('id', postID);
+    const { data: reviews, error: reviewsError }  = await supabase.from('TMDB_REVIEW').delete().eq('id', postID);
     if (reviewsError) {
       console.error("리뷰 삭제 에러 Error deleting data:", reviewsError.message);
     } else {
