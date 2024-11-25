@@ -20,7 +20,7 @@ export default function UserPost({uInfo,user,swiper}) {
       .from('TMDB_REVIEW')
       .select('*')
       .eq('user_id', uInfo.user_id)
-      .order('created_at', { ascending: false });
+      .order('updated_at', { ascending: false });
     console.log(data);
     setMyReview(data);
     if(console.error(error)) console.error(error);
@@ -57,7 +57,7 @@ export default function UserPost({uInfo,user,swiper}) {
                 <Link className="cont" to={`${data.mvtv}/${data.idmvtv}`}>
                   <div className="pics"><img src={`${img}`} alt={data.title} onError={ui.error.poster} className='img'/></div>
                   <div className="dd">
-                    <div className="tits">{data.content}</div>
+                    <div className="tits">{ui.textHtml(data.content,'decode')}</div>
                     <div className="hits">
                       <StarPoint point={data.vote_average} />
                       <span className="date"> <b>{ui.dateForm(data.created_at,'short')}</b></span>

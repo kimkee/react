@@ -77,6 +77,8 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
       nbt: "닫기",
     });
   }
+
+    
   const sendReview = async()=>{
   
     if (revText.current.value.trim() == '') {
@@ -98,8 +100,8 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
       title : datas.title || datas.name,
       poster_path : datas.poster_path,
       vote_average : datas.vote_average,
-    }
-    console.table(insertData);
+    }   
+    console.table(insertData);  
 
     const { data, error } = await supabase.from('TMDB_REVIEW').insert([ insertData ]).select('*')
     if (error) {
@@ -148,10 +150,65 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
       gethRevs(postID);
     }
   }
+  const myRvText = useRef('');
+  
+  const editMode = (rvTxt, rvID) => {
+    console.log(rvTxt, rvID);   
+    document.querySelectorAll(`.rplist li .infs`).forEach(el => el.classList.remove("show"));
+    document.querySelector(`.rplist li[idx="${rvID}"] .infs`).classList.add("show");
+    document.querySelector(`#myRvTex_${rvID}`).value = ui.textHtml(rvTxt, "decode");
+    document.querySelector(`#myRvTex_${rvID}`).focus();
+  }
+  const editCancel = () => {
+    document.querySelectorAll(`.rplist li .infs`).forEach(el => el.classList.remove("show"));
+  }
+  
+  const editReview = async(opts, rvID) => {
+    console.log(opts, rvID);
+    const text = document.querySelector(`#myRvTex_${rvID}`)
+    const content = ui.textHtml( text.value, "incode" );
+    if (text.value.trim() == '') {
+      ui.alert("댓글을 입력하세요", {
+        ycb: () => {
+          text.focus();
+        }
+      });
+      return;
+    }
+    const updateData = {
+      user_num : myinfo?.id,
+      user_name : myinfo?.username,
+      updated_at : new Date().toISOString(),
+      content: content,
+      profile_picture : myinfo?.profile_picture, 
+      provider : myinfo?.provider,
+      email : myinfo?.email, 
+      mvtv : opts,
+      idmvtv : postID,
+      title : datas.title || datas.name,
+      poster_path : datas.poster_path,
+      vote_average : datas.vote_average,
+    };
+   
+    const { data, error } = await supabase
+    .from('TMDB_REVIEW')
+    .update(updateData)
+    .eq('id', rvID)
+    .select()
+            
+    if (error) {
+      console.error("리뷰 수정 에러 Error updating data:", error.message);
+    } else {
+      console.table("리뷰 수정 성공 Data updated successfully:");
+      gethRevs(postID);
+      editCancel()
+    }
+  }
+
   useEffect(() => {
     fetchReview();
     console.log(postID);
-    console.log(datas);
+    // console.log(datas || '');
     gethRevs(postID);
     setupRealtimeListener('TMDB_REVIEW');
     return () => {
@@ -200,17 +257,30 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
                     <div className="infs">
                       <div className="name">
                         <em className="nm">{rev.user_name}</em>
+                        <em className="mb">{ui.dateForm(rev.created_at,'short')}</em>
                       </div>
                       <div className="desc">
-                        <em className="time">{/* { ui.dateForm(rev.created_at) } */} {ui.timeForm(rev.created_at,true)}</em>
+                        <em className="time">{rev.created_at != rev.updated_at ? '수정됨 : ' + ui.timeForm(rev.updated_at,true) : ui.timeForm(rev.updated_at,true)}</em>
                         { rev?.user_id == user?.id &&
-                        <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteReview(opts, rev.id)}) }>
-                          <span><i className="fa-solid fa-close"></i></span>
+                        <>
+                        <button type="button" className="bt mod" onClick={ ()=> { editMode(rvTxt, rev.id) } }>
+                          <i className="fa-solid fa-pen"></i>
                         </button>
+                        <button type="button" className="bt del" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteReview(opts, rev.id)}) }>
+                          <i className="fa-regular fa-trash-can"></i>
+                        </button>
+                        </>
                         }
                       </div>
                       <div data-ui="elips" className="mbox">
                         <div className="ment txt" onClick={togView.evt}  dangerouslySetInnerHTML={{ __html: rvTxt }} ></div>
+                      </div>
+                      <div className={`medit textarea`}>
+                        <textarea onFocus={autoheight} onInput={ autoheight} id={`myRvTex_${rev.id}`}></textarea>
+                        <div className="bts">
+                          <button type="button" className="btn xs btsend" onClick={ editCancel }><i className="fa-solid fa-close"></i> <em>취소</em></button>
+                          <button type="button" className="btn xs btsend" onClick={ ()=>{editReview(opts, rev.id)} } disabled={ myRvText.current.value < 1 } ><i className="fa-solid fa-edit"></i> <em>수정</em></button>
+                        </div>
                       </div>
                     </div>
                   </div>
