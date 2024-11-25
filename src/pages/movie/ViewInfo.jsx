@@ -77,9 +77,13 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
     setDatas(null);
     setCasts(null);
     setMovs(null);
-    fetchDatas();
-    fetchCast();
-    fetchMov();
+    ui.loading.show('glx');
+    window.setTimeout(() => { 
+      fetchDatas();
+      fetchCast();
+      fetchMov();
+      ui.loading.hide('glx');
+    },500)
   }
   return (
   <>
