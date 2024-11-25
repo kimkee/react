@@ -40,11 +40,9 @@ export default function UserPost({uInfo,user,swiper}) {
   useEffect( () => {
     getMyReviews();
     window.addEventListener('hashchange', getMyReviews);
-    ui.loading.show(`glx`);  
     return ()=>{
       window.removeEventListener('hashchange', getMyReviews);
     }
-    return ()=>{ }
     // eslint-disable-next-line
   },[]);
   if(!myReview.length) return
