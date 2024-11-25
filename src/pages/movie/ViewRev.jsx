@@ -94,7 +94,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
       provider : myinfo?.provider,
       email : myinfo?.email, 
       mvtv : opts,
-      idmvtv : postID 
+      idmvtv : postID
     }
     console.table(insertData);
 
