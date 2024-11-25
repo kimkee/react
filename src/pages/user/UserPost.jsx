@@ -70,7 +70,7 @@ export default function UserPost({uInfo,user,swiper}) {
                     <i className="fa-solid fa-edit"></i>
                   </button> */}
                   <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteReview(data.mvtv, data.id)}) }>
-                    <i className="fa-solid fa-close"></i>
+                    <i className="fa-solid fa-trash-can"></i>
                   </button>
                 </div>
                 }
