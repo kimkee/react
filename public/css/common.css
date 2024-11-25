@@ -775,9 +775,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 /* 영상,Tv 정보 */
 .movie-detail{ padding-bottom: 0rem; }
 .movie-detail .m-info{position: relative;}
-.movie-detail .m-info .refresh{position: fixed;color:#fff;font-size:20rem;bottom: calc(30rem + var(--safe-bottom));left:20rem;background: rgb(255 255 255 / 70%);border: solid rgba(0, 0, 0, 0.1) 1rem;text-align: center;width: 45rem;height: 45rem;color: #000;z-index: 100;border-radius: 100%;transform: translateY(calc(90rem + var(--safe-bottom)));}
-.phd.trans ~.pct .movie-detail{}
-.phd.trans ~.pct .movie-detail .m-info .refresh{transform: translateY(0rem); transition: transform 0.2s;}
+.movie-detail .m-info .refresh{}
+.movie-detail .m-info .refresh{
+    margin-top: 21rem;
+    color: #eeeeee;
+    font-size: 16rem;
+}
 .movie-detail .bgs{position: fixed;top: 0;left: 50%;right: 0;width: 100%;max-width: var(--mwide);transform: translateX(-50%);height: 100vw;max-height: 470rem;background: center top no-repeat;background-size: auto;opacity:0.3;overflow: hidden;filter:blur(2px);z-index: 0;}
 .movie-detail .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 300rem;background-image: linear-gradient(180deg, transparent, #111111);}
 .movie-detail .info{display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: row;}
