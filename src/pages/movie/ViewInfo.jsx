@@ -93,13 +93,18 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
         <div className="m-info">
           <div className="info">
             <div className="desc">
-              {datas.title && <p className="tit"> {datas.title} </p>}
+              <p className="tit">
+                {datas.title || datas.name} 
+                <button className='refresh' onClick={refrashDatas}><i class="fa-solid fa-rotate"></i></button>
+              </p>
               {datas.tagline && <p className="sit">{datas.tagline}</p>}
-              {datas.original_title && <p className="tio">{datas.original_title}</p>}
+              <p className="tio">{datas.original_title || datas.original_name}</p>
 
-              {datas.name && <p className="tit">{datas.name}</p>}
-              {datas.original_name && <p className="tio">{datas.original_name}</p>}
+              {/* {datas.name && <p className="tit">{datas.name} </p>} */}
+              {/* {datas.original_name && <p className="tio">{datas.original_name}</p>} */}
 
+              
+              
               <div className="star">
                 <StarPoint point={datas.vote_average} />
               </div>
@@ -132,7 +137,6 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
                   <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
                 </li>} 
               </ul>
-              <button className='refresh' onClick={refrashDatas}><i class="fa-solid fa-rotate"></i></button>
             </div>
             <div className="thum">
               <Link to={`./poster/0`} className="pics"><img src={'//image.tmdb.org/t/p/w300'+datas.poster_path} alt={datas.title||datas.name} className="img" onError={ui.error.poster}/></Link>
