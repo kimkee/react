@@ -33,19 +33,10 @@ export default function User({prop}) {
   
   const viewUser = async ()=> {
     console.log(uid);
-    
-    const { data: _info, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('id', uid).order('created_at', { ascending: true });
-    setUInfo(_info[0])
-      
-    
+    const { data, error }  = await supabase.from('MEMBERS').select("*").eq('id', uid).order('created_at', { ascending: true });
+    setUInfo(data[0]);
     console.log(user);
     console.log(uInfo);
-
-    
-
-    // this.gotoSlide(0,0);
-    // document.querySelector(".page.user")?.classList.add("load");
-    // document.querySelector(".header .htit")?.innerText = uInfo?.nick || ``;
     ui.loading.hide();
   }
 

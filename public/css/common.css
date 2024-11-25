@@ -159,22 +159,30 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist .rtop.r1{text-align: center; padding: 20rem 0  40rem 0;}
 .ut-reply .rplist .rtop.r2{padding-bottom: 10rem;}
 .ut-reply .rplist ul.rlist{}
-.ut-reply .rplist ul.rlist>li{padding: 14rem 0rem;border-bottom: #333333 solid 1rem;}
+.ut-reply .rplist ul.rlist>li{padding: 11rem 0rem;border-bottom: #333333 solid 1rem;}
+.ut-reply .rplist ul.rlist>li.my{background-color: #0000004a;}
 .ut-reply .rplist ul.rlist>li:first-child{/* border-top: #333333 solid 1rem; */}
-.ut-reply .rplist ul.rlist>li .rpset{display: flex;padding: 0rem 0rem 0rem 41rem;position: relative;}
-.ut-reply .rplist ul.rlist>li .rpset .user{ position: absolute; left: 0rem; top: 0rem; }
+.ut-reply .rplist ul.rlist>li .rpset{display: flex;padding: 0rem 10rem 0rem 44rem;position: relative;margin: 0rem 0rem;}
+.ut-reply .rplist ul.rlist>li .rpset .user{position: absolute;left: 7rem;top: 0rem;}
 .ut-reply .rplist ul.rlist>li .rpset .user .pic{width: 28rem;min-width: 28rem;height: 28rem;padding-bottom: 28rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
 .ut-reply .rplist ul.rlist>li .rpset .user .pic .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #424242;}
 .ut-reply .rplist ul.rlist>li .rpset .infs{ position: relative; width: 100%; }
 .ut-reply .rplist ul.rlist>li .rpset .infs .name{display: flex;align-items: center;padding: 0rem 0 0  0;min-height:22rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .name .nm{font-size: 12rem;font-weight: 700;line-height:1.1;color: #dddddd;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .name .mb{font-size:11rem;/* border: #f1344d solid 1rem; *//* color: #f1344d; *//* border-radius: 3rem; *//* height: 17rem; *//* padding: 1rem 3rem; */margin: 0rem 0rem 0rem 8rem;overflow: hidden;}
+.ut-reply .rplist ul.rlist>li.my .rpset .infs .name .nm{color: #61dafb;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .name .mb{font-size: 9rem;/* border: #f1344d solid 1rem; *//* color: #f1344d; *//* border-radius: 3rem; *//* height: 17rem; *//* padding: 1rem 3rem; */margin: 0rem 0rem 0rem 8rem;overflow: hidden;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc{display: flex;/* margin: 3rem 0 0 0; */position:absolute;right: 0rem;top:0rem;text-align: right;gap: 6rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc em{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .loct{font-size: 12rem;color: #666666;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .loct::before{width:9rem;height:11rem;background:url(../img/pd/icon_location_s@2x.png) no-repeat center;background-size:9rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';margin: -2rem 3rem 0rem 0rem;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .desc .time{font-size: 10rem;color: #999999; text-align: right}
-.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.delt{margin: 0rem 0rem 0rem 8rem ;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc .time{font-size: 10rem;color: #999999;text-align: right}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt{
+    font-size: 12rem;
+}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.mod{margin-left: 4rem;}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.del{
+    margin-left: 4rem;
+}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox {padding-bottom: 4rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 13rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment br{display: none;}

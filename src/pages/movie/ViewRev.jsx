@@ -243,7 +243,7 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
               reviewArr.map((rev,idx) => {
                 const rvTxt = rev.content.replace(/\n/g, "<br>");
                 return(
-                <li key={idx} idx={rev.id}  user_num={rev.user_num}>
+                <li key={idx} idx={rev.id}  user_num={rev.user_num} className={rev?.user_id == user?.id ? "my" : ""}>
                   {/* <p>{rev.id} : {rev.user_num} : {rev.user_name}</p>
                   <p>{ui.dateForm(rev.created_at)} =  {ui.dateForm(rev.updated_at)}</p>
                   <p>{rvTxt}</p>
@@ -257,10 +257,10 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
                     <div className="infs">
                       <div className="name">
                         <em className="nm">{rev.user_name}</em>
-                        <em className="mb">{ui.dateForm(rev.created_at,'short')}</em>
+                        <em className="mb">{rev.created_at != rev.updated_at ? ui.timeForm(rev.updated_at,true) +' 수정됨' : ui.timeForm(rev.updated_at,true)}</em>
                       </div>
                       <div className="desc">
-                        <em className="time">{rev.created_at != rev.updated_at ? '수정됨 : ' + ui.timeForm(rev.updated_at,true) : ui.timeForm(rev.updated_at,true)}</em>
+                        <em className="time">{ui.dateForm(rev.created_at,'short')}</em>
                         { rev?.user_id == user?.id &&
                         <>
                         <button type="button" className="bt mod" onClick={ ()=> { editMode(rvTxt, rev.id) } }>
