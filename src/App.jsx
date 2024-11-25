@@ -99,7 +99,7 @@ export default function App() {
             <Route path="home" element={<Home />} />
 
             <Route path="home/:menu" element={<Home /> }>
-              <Route path=":id" element={<View prop={{"page":"home"}} />} >
+              <Route path=":id" element={<View prop={{"page":"home", user, myinfo}} />} >
                 <Route path="poster/:nums" element={<Poster />} />
                 <Route path="person/:nums" element={<Person />} />
                 <Route path="videos/:nums" element={<Videos />} />
@@ -109,7 +109,7 @@ export default function App() {
             <Route path="list">
               <Route path=":menu" >
                 <Route path=":cate" element={<Lists /> }>
-                  <Route path=":id" element={<View prop={{user, myinfo,"page":"search"}} />} >
+                  <Route path=":id" element={<View prop={{"page":"search", user, myinfo}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
                     <Route path="person/:nums" element={<Person />} />
                     <Route path="videos/:nums" element={<Videos />} />
@@ -147,7 +147,7 @@ export default function App() {
               
               <Route path=":uid" element={<User prop={{user, myinfo}} />} >
                 <Route path=":menu">
-                  <Route path=":id" element={<View prop={{user, myinfo,"page":"search"}} />} >
+                  <Route path=":id" element={<View prop={{"page":"search",user, myinfo}} />} >
                     <Route path="poster/:nums" element={<Poster />} />
                     <Route path="person/:nums" element={<Person />} />
                     <Route path="videos/:nums" element={<Videos  />} />

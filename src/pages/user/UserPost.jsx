@@ -23,7 +23,7 @@ export default function UserPost({uInfo,user,swiper}) {
       .order('updated_at', { ascending: false });
     console.log(data);
     setMyReview(data);
-    if(console.error(error)) console.error(error);
+    if(error) console.error(error);
   }
   /* 내 리뷰삭제 */
   const deleteReview = async (opts, id) => {
