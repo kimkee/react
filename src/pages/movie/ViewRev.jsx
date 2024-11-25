@@ -257,7 +257,7 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
                     <div className="infs">
                       <div className="name">
                         <em className="nm">{rev.user_name}</em>
-                        <em className="mb">{rev.created_at != rev.updated_at ? ui.timeForm(rev.updated_at,true) +' 수정됨' : ui.timeForm(rev.updated_at,true)}</em>
+                        <em className="mb">{ui.dateForm(rev.created_at) != ui.dateForm(rev.updated_at) ? ui.timeForm(rev.updated_at,true) +' 수정됨' : ui.timeForm(rev.updated_at,true)}</em>
                       </div>
                       <div className="desc">
                         <em className="time">{ui.dateForm(rev.created_at,'short')}</em>
