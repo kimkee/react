@@ -7,7 +7,7 @@ import { supabase } from '@/supabase.js';
 // import { getUser } from '@/getUser.js';
 
 
-export default function ViewRev({postID, opts, user, myinfo}) {
+export default function ViewRev({datas, postID, opts, user, myinfo}) {
   const navigate = useNavigate();
   // console.log(postID);
   const [review, setReview] = useState(null);
@@ -94,7 +94,10 @@ export default function ViewRev({postID, opts, user, myinfo}) {
       provider : myinfo?.provider,
       email : myinfo?.email, 
       mvtv : opts,
-      idmvtv : postID
+      idmvtv : postID,
+      title : datas.title || datas.name,
+      poster_path : datas.poster_path,
+      vote_average : datas.vote_average,
     }
     console.table(insertData);
 
@@ -148,6 +151,7 @@ export default function ViewRev({postID, opts, user, myinfo}) {
   useEffect(() => {
     fetchReview();
     console.log(postID);
+    console.log(datas);
     gethRevs(postID);
     setupRealtimeListener('TMDB_REVIEW');
     return () => {

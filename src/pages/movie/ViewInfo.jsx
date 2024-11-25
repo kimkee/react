@@ -242,7 +242,7 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
           </div>
           : null}
 
-          <ViewRev user={user} myinfo={myinfo} postID={postID} opts={opts}/>
+          <ViewRev datas={datas} user={user} myinfo={myinfo} postID={postID} opts={opts}/>
 
           {datas.production_companies.length ? 
           <>
