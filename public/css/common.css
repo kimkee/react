@@ -176,13 +176,9 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .loct{font-size: 12rem;color: #666666;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .loct::before{width:9rem;height:11rem;background:url(../img/pd/icon_location_s@2x.png) no-repeat center;background-size:9rem auto;font-size:0rem;display:inline-block;vertical-align:middle;content:'';margin: -2rem 3rem 0rem 0rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .time{font-size: 10rem;color: #999999;text-align: right}
-.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt{
-    font-size: 12rem;
-}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt{ font-size: 12rem; }
 .ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.mod{margin-left: 4rem;}
-.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.del{
-    margin-left: 4rem;
-}
+.ut-reply .rplist ul.rlist>li .rpset .infs .desc .bt.del{ margin-left: 4rem; }
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox {padding-bottom: 4rem;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment{font-size: 13rem;line-height: 1.4;margin: 5rem 0 0 0;word-break: break-all;-webkit-line-clamp: 2;}
 .ut-reply .rplist ul.rlist>li .rpset .infs .mbox .ment br{display: none;}
@@ -779,6 +775,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 /* 영상,Tv 정보 */
 .movie-detail{ padding-bottom: 0rem; }
 .movie-detail .m-info{position: relative;}
+.movie-detail .m-info .refresh{position: fixed;color:#fff;font-size:20rem;bottom: calc(30rem + var(--safe-bottom));left:20rem;background: rgb(255 255 255 / 70%);border: solid rgba(0, 0, 0, 0.1) 1rem;text-align: center;width: 45rem;height: 45rem;color: #000;z-index: 100;border-radius: 100%;transform: translateY(calc(90rem + var(--safe-bottom)));}
+.phd.trans ~.pct .movie-detail{}
+.phd.trans ~.pct .movie-detail .m-info .refresh{transform: translateY(0rem); transition: transform 0.2s;}
 .movie-detail .bgs{position: fixed;top: 0;left: 50%;right: 0;width: 100%;max-width: var(--mwide);transform: translateX(-50%);height: 100vw;max-height: 470rem;background: center top no-repeat;background-size: auto;opacity:0.3;overflow: hidden;filter:blur(2px);z-index: 0;}
 .movie-detail .bgs::after{content:"";position: absolute;bottom: 0;left: 0;right: 0;height: 300rem;background-image: linear-gradient(180deg, transparent, #111111);}
 .movie-detail .info{display: flex;flex-wrap: wrap;justify-content: space-between;flex-direction: row;}

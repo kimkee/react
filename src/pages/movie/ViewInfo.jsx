@@ -73,8 +73,15 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
   // if(!datas)  return ;
   // console.log( txtHt );
   // if(!datas || !casts)  return <div><div className="ui-loading-dot on"> <div className="bx"><em><i></i></em></div> </div></div>;
-
-    return (
+  const refrashDatas = ()=>{
+    setDatas(null);
+    setCasts(null);
+    setMovs(null);
+    fetchDatas();
+    fetchCast();
+    fetchMov();
+  }
+  return (
   <>
     <div className="movie-detail">
       <div className="bgs" style={{backgroundImage: `url(${bgImg})`}}></div>
@@ -86,7 +93,7 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
         <div className="m-info">
           <div className="info">
             <div className="desc">
-              
+              <button className='refresh' onClick={refrashDatas}><i class="fa-solid fa-rotate"></i></button>
               {datas.title && <p className="tit">{datas.title}</p>}
               {datas.tagline && <p className="sit">{datas.tagline}</p>}
               {datas.original_title && <p className="tio">{datas.original_title}</p>}
