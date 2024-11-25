@@ -1327,15 +1327,15 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #61dafb;border-radius: 0rem;display:block;content:"";}
 .page.user.view .user-post .menu>li.active>.bt>span i{font-weight: 900;}
 .page.user.view .user-post .pctn{}
-.page.user.view .user-post .pctn .ctn{min-height: calc(100vh - 355rem - var(--safe-top) - var(--safe-bottom) );border-left: #202020 solid 1rem;}
+.page.user.view .user-post .pctn .ctn{min-height: calc(100vh - 355rem - var(--safe-top) - var(--safe-bottom) );border-left: #202020 solid 1rem;padding-bottom: 96rem;}
 .page.user.view .user-post .pctn .ctn.b{padding: 0rem;}
 .page.user.view .user-post .pctn .board-list .list>li{}
 .page.user.view .user-post .pctn .board-list .list>li .box .info{}
 .page.user.view .user-post .pctn .board-list .list>li .box{}
-.page.user.view .user-post .pctn .ctn.post{/* padding: 20rem; */}
-.page.user.view .user-post .pctn .ctn.like{padding: 0rem;}
+.page.user.view .user-post .pctn .ctn.post{/* padding: 20rem; *//* padding-bottom: 96rem; */}
+.page.user.view .user-post .pctn .ctn.like{/* padding: 0rem; */}
 .page.user.view .user-post .pctn .ctn.revw{padding: 20rem;}
-.page.user.view .user-post .pctn .ctn.repl{padding: 20rem; border-right: #202020 solid 1rem;}
+.page.user.view .user-post .pctn .ctn.repl{/* padding: 20rem; */border-right: #202020 solid 1rem;}
 .page.user.view .user-post .pctn .ctn .nodata{padding: 80rem 0rem;display: flex;justify-content: center;align-items: center;height: 100%;gap: 8rem;}
 .page.user.view .swiper-wrapper{padding-bottom: 0;/* height: auto !important; */}
 
@@ -1344,7 +1344,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .tablike.tv{border-left: #202020 solid 1rem;}
 
 .page.user.view .user-post .ctn.repl{}
-.page.user.view .user-post .ctn.repl .members{}
+.page.user.view .user-post .ctn.repl .members{
+    padding: 20rem;
+}
 .page.user.view .user-post .ctn.repl .members .mlist{ display: flex; flex-wrap: wrap; justify-content: start; gap: 26rem; padding-top: 20rem; }
 .page.user.view .user-post .ctn.repl .members .mlist>li{ width: calc(100% / 4 - 20rem); text-align: center; }
 .page.user.view .user-post .ctn.repl .members .mlist>li .box{ max-width: 60rem; display: inline-block; }
@@ -1353,7 +1355,6 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .ctn.repl .members .mlist>li .box .name{ text-align: center; }
 
 .page.user.view .user-post .mrvlist{
-    padding-bottom: 96rem;
 }
 .page.user.view .user-post .mrvlist>li{border-bottom: 1rem solid #202020;}
 .page.user.view .user-post .mrvlist>li .box{padding: 0;position: relative;}
