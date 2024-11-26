@@ -22,14 +22,17 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const [newScrapMV, setNewScrapMV] = useState([]);
   const [newScrapTV, setNewScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
+
+  const [myscrap, setMyScrap] = useState([]);
+
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
     swiper1dep?.update()
   } , 100);
   const mediaList = (opts) => {
     console.log(opts);
-    setNewScrapMV( uInfo.tmdb_movie_scrap );
-    setNewScrapTV( uInfo.tmdb_tv_scrap );
+    // setNewScrapMV( uInfo.tmdb_movie_scrap );
+    // setNewScrapTV( uInfo.tmdb_tv_scrap );
 
     updateSwiper()
     // console.log(newScrapMovie);
@@ -38,67 +41,38 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     setMedia(num == 0 && 'movie' || num == 1 && 'tv')   
     updateSwiper()
   }
-  const deleteScrap = async (opts, data) => {
+  const deleteScrap = async (opts, id) => {
     ui.loading.show('glx');
-    data = {
-      id: data.id,
-      title: data.title || data.name,
-      poster_path: data.poster_path,
-      overview: data.overview,
-      vote_average: data.vote_average,
-      release_date: data.release_date || data.first_air_date,
+    console.log(opts, id); 
+    const { error } = await supabase.from('TMDB_SCRAP').delete()
+      .eq('id', id).eq('mvtv', opts);
+    if (error) {
+      console.error("SCRAP 삭제 에러 :", error.message);
+    }else{
+      console.table("SCRAP 삭제 성공");
+      getMyScrap(uInfo.id);
     }
-    console.log(opts, data);
-  
-    let data_scrap = [];
-    if (opts == `movie`){
-      data_scrap = uInfo.tmdb_movie_scrap || [data] 
-    }
-    if (opts == `tv`){
-      data_scrap = uInfo.tmdb_tv_scrap || [data] 
-    }
+    ui.loading.hide('glx');
+  };
 
-  
-    data_scrap = [...data_scrap, data].filter(item => item.id != data.id);
-    if (opts == `movie`){
-      setNewScrapMV(data_scrap);
-      uInfo.tmdb_movie_scrap = data_scrap;
-    }
-    if (opts == `tv`){
-      setNewScrapTV(data_scrap);
-      uInfo.tmdb_tv_scrap = data_scrap;
-    }
-     
-    console.log(data_scrap); 
-  
-    // const docRef = doc(db, 'member', uInfo.id);
-    if (opts == `movie`){
-      const { data, error } = await supabase
-      .from('MEMBERS')
-      .update({ tmdb_movie_scrap: data_scrap })
-      .eq('id', uInfo.id)
-      .select()
+  const getMyScrap = async (user_id)=> {
+    console.log(user_id);
+    const { data, error }  = await supabase.from('TMDB_SCRAP').select("*").order('created_at', { ascending: false })
+      .eq('user_num', user_id);
+    if (error) {
+      console.error("내 스크랩 조회 에러 Error selecting data:", error.message);
+    }else{
       console.log(data);
-      ui.loading.hide('glx');
-      console.log(error);
+      console.table("내 스크랩 조회 성공 Data selected successfully:");
+      // setMyScrap(data);
+      setNewScrapMV(data.filter((data)=>data.mvtv == 'movie'))
+      setNewScrapTV(data.filter((data)=>data.mvtv == 'tv'))
     }
-    
-    if (opts == `tv`){
-      const { data, error } = await supabase
-      .from('MEMBERS')
-      .update({ tmdb_tv_scrap: data_scrap })
-      .eq('id', uInfo.id)
-      .select()
-      console.log(data);
-      ui.loading.hide('glx');
-      console.log(error);
-    }
-
-  };  
-
+  }
   useEffect( () => {
     console.log(uInfo , user);
     mediaList(media);
+    getMyScrap(uInfo.id);
     // setNewScrapMovie( uInfo.tmdb_movie_scrap )
     return ()=>{
       
@@ -120,8 +94,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     <>
       <div className="movie-list user">
         <div className="tabs">
-          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{uInfo.tmdb_movie_scrap.length}</i></button>
-          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{uInfo.tmdb_tv_scrap.length}</i></button>
+          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{newScrapMV.length}</i></button>
+          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{newScrapTV.length}</i></button>
         </div>
 
         <Swiper className="swiper-wrapper swiper pctn " 
@@ -154,12 +128,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                     return(
                       <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                         <div className="box">
-                          <Link className="cont"  to={`${media}/${data.id}`}>
+                          <Link className="cont"  to={`${data.mvtv}/${data.idmvtv}`}>
                             <div className="pics"><img src={`${img}`} alt={tit} onError={ui.error.poster} className='img'/></div>
-                            {/* <div className="desc">
-                              
-                              <div className="text">{data.overview}</div>
-                            </div> */}
                             <div className="dd">
                             <div className="tits">{data.title || data.name}</div>
                               <div className="hits">
@@ -171,7 +141,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                           </Link>
                           <div className="bts">
                             { uInfo?.user_id == user?.id &&
-                              <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(media, data)}) }>
+                              <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(data.mvtv, data.id)}) }>
                                 <span><i className="fa-solid fa-trash"></i></span>
                               </button>
                             }
@@ -179,7 +149,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                         </div>
                       </li>
                     )
-                }).reverse()}
+                })}
                 
               </ul>
               :
@@ -199,12 +169,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                     return(
                       <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                         <div className="box">
-                          <Link className="cont"  to={`${media}/${data.id}`}>
+                          <Link className="cont"  to={`${data.mvtv}/${data.idmvtv}`}>
                             <div className="pics"><img src={`${img}`} alt={tit} onError={ui.error.poster} className='img'/></div>
-                            {/* <div className="desc">
-                              
-                              <div className="text">{data.overview}</div>
-                            </div> */}
                             <div className="dd">
                               <div className="tits">{data.title || data.name}</div>
                               <div className="hits">
@@ -216,7 +182,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                           </Link>
                           <div className="bts">
                             { uInfo?.user_id == user?.id &&
-                              <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(media, data)}) }>
+                              <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(data.mvtv, data.id)}) }>
                                 <span><i className="fa-solid fa-trash"></i></span>
                               </button>
                             }
@@ -224,7 +190,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                         </div>
                       </li>
                     )
-                }).reverse()}
+                })}
                 
               </ul>
               :
