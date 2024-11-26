@@ -89,7 +89,7 @@ export default function Person() {
           <main className="poptents">
           
             { !datas && !casts && !photos &&
-              <div className="m-info"><Loading opts={{type:'glx', cls:'abs'}}/></div>
+              <div className="m-info"><Loading opts={{type:'glx', cls:'full'}}/></div>
             }
             { datas && casts && photos &&
               <div className="m-info">

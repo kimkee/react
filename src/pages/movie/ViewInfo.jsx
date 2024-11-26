@@ -99,7 +99,7 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
             <div className="desc">
               <p className="tit">
                 {datas.title || datas.name} 
-                <button className='refresh' onClick={refrashDatas}><i class="fa-solid fa-rotate"></i></button>
+                <button className='refresh' onClick={refrashDatas}><i className="fa-solid fa-rotate"></i></button>
               </p>
               {datas.tagline && <p className="sit">{datas.tagline}</p>}
               <p className="tio">{datas.original_title || datas.original_name}</p>

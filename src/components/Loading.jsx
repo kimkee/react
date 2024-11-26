@@ -9,7 +9,7 @@ export default function Loading({ opts }) {
   return (
   <>
     { opts.type == 'glx' && 
-    <span className={`ui-loading ui-load-glx full ${opts.cls}`}>
+    <span className={`ui-loading ui-load-glx ${opts.cls}`}>
       <span className="gbx">
           <em className="bx">
               <i></i> <i></i><i></i> <i></i>
@@ -18,7 +18,7 @@ export default function Loading({ opts }) {
     </span>}
     { opts.type == 'dot' && 
     <span className={`ui-loading ui-loading-dot ${opts.cls}`}>
-      <div class="bx"><em><i></i></em></div>
+      <div className="bx"><em><i></i></em></div>
     </span>}
   </>
   )
