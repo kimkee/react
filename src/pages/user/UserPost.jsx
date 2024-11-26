@@ -45,7 +45,7 @@ export default function UserPost({uInfo,user,swiper}) {
     }
     // eslint-disable-next-line
   },[]);
-  if(!myReview.length) return
+  // if(!myReview) return
   return (
     <>
       <ul className="mrvlist">
