@@ -44,7 +44,7 @@ export default function UserPost({uInfo,user,swiper}) {
       window.removeEventListener('hashchange', getMyReviews);
     }
     // eslint-disable-next-line
-  },[]);
+  },[uInfo]);
   // if(!myReview) return
   return (
     <>

@@ -16,8 +16,8 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
   const navigate = useNavigate();
   const [member, setMember] = useState();
   const members = async ()=>{
-    const { data: members, error: membersError }  = await supabase.from('MEMBERS').select("*").order('created_at', { ascending: true });
-    setMember(members);
+    const { data, error }  = await supabase.from('MEMBERS').select("*").order('created_at', { ascending: true });
+    setMember(data);
   }  
   const goPage = (link)=>{
     navigate(`/user/${link}`);
@@ -54,7 +54,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
 
     }
     // eslint-disable-next-line
-  },[]);
+  },[member]);
 
   if(!member) return
   return (

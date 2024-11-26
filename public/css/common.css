@@ -1311,7 +1311,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view{}
 .page.user.view .contents{/* display:none; */padding: 0rem 0rem 0rem 0rem;margin: 0;}
 .page.user.view.load .contents{display:block;}
-.page.user.view .profile{padding: 30rem 0rem 20rem 0rem;position: relative;}
+.page.user.view .profile{padding: 30rem 0rem 20rem 0rem;position: relative;min-height: 190rem;}
 .page.user.view .profile .user{display: flex;align-items: center;margin: 0rem 20rem 20rem 20rem;}
 .page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;}
 .page.user.view .profile .user .pic .img{position: absolute;width: 100%;left: 0;top: 0;border-radius: 999rem;background: #424242;}
@@ -1476,7 +1476,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 /* 로딩 갤럭시 */
 .ui-load-glx{display: inline-block;position: relative;width: 18px;height: 18px;vertical-align: middle;} 
-.ui-load-glx.abs{position: absolute;/* left: 0; *//* right: 0; *//* bottom: 0; *//* top: 0; *//* display: block; */}
+.ui-load-glx.abs{position: absolute;left: 0;right: 0;bottom: 0;top: 0;display: flex;width: auto;height: auto;align-items: center;justify-content: center;}
+.ui-load-glx.abs .gbx{}
 .ui-load-glx.static{position: static;}
 .ui-load-glx>.gbx{width: 18px;height: 18px;display: inline-block;}
 .ui-load-glx>.gbx .bx{animation: rotate 1.2s linear infinite;display: flex;position: relative;width: 100%;height: 100%;top: 50%;left: 50%;margin-top: -9px;margin-left: -9px;}

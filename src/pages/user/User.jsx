@@ -61,7 +61,7 @@ export default function User({prop}) {
   },[uid]);
 
 
-  if(!uInfo){return}
+  
   return (
     <>
     <Outlet/>
@@ -88,14 +88,14 @@ export default function User({prop}) {
             <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {ui.dateForm(uInfo.created_at)}</span>
             {uInfo.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>}
           </div>
-            { user?.id == uInfo.user_id &&
-          <div className="bts">
-              <Link to="/user/signout" className="btn sm logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
-          </div>
-            }
+          { user?.id == uInfo.user_id &&
+            <div className="bts">
+                <Link to="/user/signout" className="btn sm logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
+            </div>
+          }  
         </div>
         :
-        <Loading opts={'dot'} />
+        <div className="profile"><Loading opts={{type:'glx',cls:'abs'}} /></div>
         }
 
         {
@@ -152,7 +152,6 @@ export default function User({prop}) {
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
               <UserFolw uInfo={uInfo} user={user} swiper1dep={swiper} />
-
             </SwiperSlide>
           </Swiper>
         </div>
