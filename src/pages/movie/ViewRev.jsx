@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 import ui from '../../ui.js';
@@ -251,12 +251,12 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
                  */}
                 
                   <div className="rpset">
-                    <div className="user">
+                    <Link to={`/user/${rev.user_num}`} className="user">
                       <span className="pic"><img src={rev.profile_picture} alt="사진"  className="img" onError={ui.error.user} /></span>
-                    </div>
+                    </Link>
                     <div className="infs">
                       <div className="name">
-                        <em className="nm">{rev.user_name}</em>
+                        <Link to={`/user/${rev.user_num}`} className="nm">{rev.user_name}</Link>
                         <em className="mb">{ui.dateForm(rev.created_at) != ui.dateForm(rev.updated_at) ? ui.timeForm(rev.updated_at,true) +' 수정됨' : ui.timeForm(rev.updated_at,true)}</em>
                       </div>
                       <div className="desc">

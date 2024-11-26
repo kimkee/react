@@ -160,7 +160,7 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist .rtop.r2{padding-bottom: 10rem;}
 .ut-reply .rplist ul.rlist{}
 .ut-reply .rplist ul.rlist>li{padding: 11rem 0rem;border-bottom: #333333 solid 1rem;}
-.ut-reply .rplist ul.rlist>li.my{background-color: #0000004a;}
+.ut-reply .rplist ul.rlist>li.my{/* border-bottom-color: #000000; */}
 .ut-reply .rplist ul.rlist>li:first-child{/* border-top: #333333 solid 1rem; */}
 .ut-reply .rplist ul.rlist>li .rpset{display: flex;padding: 0rem 0rem 0rem 39rem;position: relative;margin: 0rem 0rem;}
 .ut-reply .rplist ul.rlist>li .rpset .user{position: absolute;left: 0rem;top: 0rem;}
