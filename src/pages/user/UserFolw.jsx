@@ -23,7 +23,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
     navigate(`/user/${link}`);
     location.reload()
   }
-  
+  /* 
   function TextInput() {
     const [text, setText] = useRecoilState(textState);
     const [sssVal, setSssVal] = useRecoilState(sss);
@@ -46,7 +46,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
     );
   }
   const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
-
+ */
 
   useEffect( () => {
     members();

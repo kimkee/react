@@ -23,8 +23,6 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const [newScrapTV, setNewScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
 
-  const [myscrap, setMyScrap] = useState([]);
-
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
     swiper1dep?.update()
@@ -50,7 +48,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       console.error("SCRAP 삭제 에러 :", error.message);
     }else{
       console.table("SCRAP 삭제 성공");
-      getMyScrap(uInfo.id);
+      // getMyScrap(uInfo.id);
     }
     ui.loading.hide('glx');
   };
@@ -69,10 +67,24 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       setNewScrapTV(data.filter((data)=>data.mvtv == 'tv'))
     }
   }
+  const realtimeChannel = useRef('');
+  const setupRealtimeListener = (tableName) => {
+    realtimeChannel.current = supabase.channel(`public:${tableName}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: tableName }, () => {
+        getMyScrap(uInfo.id);
+        console.log(`${tableName} 업데이트`);
+      })
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          console.log(`Subscribed to ${tableName} changes`);
+        }
+      });
+  };
   useEffect( () => {
     console.log(uInfo , user);
     mediaList(media);
     getMyScrap(uInfo.id);
+    setupRealtimeListener('TMDB_SCRAP');
     // setNewScrapMovie( uInfo.tmdb_movie_scrap )
     return ()=>{
       

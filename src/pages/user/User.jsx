@@ -52,10 +52,10 @@ export default function User({prop}) {
   useEffect( () => {
     // window.scrollTo(0,0);
     viewUser();
-    window.addEventListener('hashchange', viewUser);
+    // window.addEventListener('hashchange', viewUser);
     ui.loading.show(`glx`);  
     return ()=>{
-      window.removeEventListener('hashchange', viewUser);
+      // window.removeEventListener('hashchange', viewUser);
     }
     // eslint-disable-next-line
   },[uid]);
