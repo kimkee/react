@@ -66,6 +66,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       setNewScrapMV(data.filter((data)=>data.mvtv == 'movie'))
       setNewScrapTV(data.filter((data)=>data.mvtv == 'tv'))
     }
+    updateSwiper()
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {

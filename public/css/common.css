@@ -591,7 +591,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 /* swiper */
 .swiper {position:relative}
-.swiper .swiper-wrapper {padding-bottom: 0rem;}
+.swiper .swiper-wrapper {padding-bottom: 2rem;}
 .swiper .swiper-slide{ overflow: hidden; }
 .swiper .swiper-slide .pic{}
 .swiper .swiper-slide .pic .swiper-lazy{}
@@ -659,7 +659,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .tabs .btn.active i{background:#61dafb}
 
 .movie-list.user .list{position: relative;margin-bottom: -1rem;/* padding: 14rem; */display: grid;/* flex-wrap: wrap; *//* gap: 10rem; */grid-template-columns: repeat(2, minmax(0, 1fr));border: #202020 solid 1rem;border-width: 0rem 0rem;}
-.movie-list.user .list::after{content: ""; height: 1rem; position: absolute; left: 0; right: 0; bottom: 0; background: #202020;}
+.movie-list.user .list::after{content: "";height: 1rem;position: absolute;left: 0;right: 0;bottom: 1px;/* background: #202020; */}
 .movie-list.user .list>li{word-break: break-all;flex: 1;/* width: 50%; */}
 .movie-list.user .list>li{border-bottom: 1rem solid #202020;/* background: #1a1a1a; */}
 .movie-list.user .list>li:nth-child(odd){border-right: #202020 solid 1rem;}
@@ -1349,9 +1349,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .pctn .ctn.revw{padding: 20rem;}
 .page.user.view .user-post .pctn .ctn.repl{/* padding: 20rem; */border-right: #202020 solid 1rem;}
 .page.user.view .user-post .pctn .ctn .nodata{padding: 80rem 0rem;display: flex;justify-content: center;align-items: center;height: 100%;gap: 8rem;}
-.page.user.view .swiper-wrapper{padding-bottom: 0;/* height: auto !important; */}
+.page.user.view .swiper-wrapper{padding-bottom: 2px;/* height: auto !important; */}
 
-.page.user.view .user-post .tablike{min-height: calc(100vh - 405rem - var(--safe-top) - var(--safe-bottom) );}
+.page.user.view .user-post .tablike{min-height: calc(100vh - 405rem - var(--safe-top) - var(--safe-bottom) );padding-bottom: 1rem;}
 .page.user.view .user-post .tablike.mv{}
 .page.user.view .user-post .tablike.tv{border-left: #202020 solid 1rem;}
 
