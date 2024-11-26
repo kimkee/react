@@ -19,6 +19,14 @@ const sss = atom({
     b:2
   } // default value (aka initial value)
 });
+const postCout = atom({
+  key: 'postCout', // unique ID (with respect to other atoms/selectors)
+  default: {
+    scraps:0,
+    reviews:0,
+    posts:0
+  } // default value (aka initial value)
+});
 const atomStore = atom({
   key: 'atomStore', // unique ID (with respect to other atoms/selectors)
   default: {
@@ -86,4 +94,4 @@ const authState = async ()=>{
     }
   }
 } 
-export {sss, atomStore,textState, store2}
+export {sss, atomStore,textState, store2, postCout};

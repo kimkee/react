@@ -19,8 +19,13 @@ import UserFolw from './UserFolw.jsx';
 
 import { supabase } from '@/supabase.js';
 import Loading from '../../components/Loading.jsx';
+
+import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+import { postCout} from '@/atom.js';
+
 export default function User({prop}) {
-  
+  const [postCoutVal, setPostCoutVal] = useRecoilState(postCout);
+
   const params = useParams();
   
   const location = useLocation();
@@ -79,9 +84,9 @@ export default function User({prop}) {
               {uInfo.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
             </Link>
             <div className="info">
-              <div className="num b"><b className="n">{uInfo.bbsNum||0}</b><p className="t">Post</p></div>    
-              <div className="num p"><b className="n">{uInfo.photoNum||0}</b><p className="t">Reply</p></div>    
-              <div className="num l"><b className="n">{uInfo.tmdb_movie_scrap.length + uInfo.tmdb_tv_scrap.length ||0}</b><p className="t">Liked</p></div>    
+              <div className="num b"><b className="n">{postCoutVal && postCoutVal?.posts}</b><p className="t">Post </p></div>    
+              <div className="num p"><b className="n">{postCoutVal && postCoutVal?.reviews}</b><p className="t">Review</p></div>    
+              <div className="num l"><b className="n">{postCoutVal && postCoutVal?.scraps}</b><p className="t">Scrap</p></div>
             </div>
           </div>
           <div className="desc">

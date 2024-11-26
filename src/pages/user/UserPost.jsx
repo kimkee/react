@@ -3,7 +3,7 @@ import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-
 
 // import { atom } from 'recoil';
 import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import {atomStore,textState,sss} from '../../atom.js';
+import {postCout} from '../../atom.js';
 
 // import axios from 'axios';
 import ui from '../../ui.js';
@@ -13,6 +13,7 @@ import StarPoint from '../../components/StarPoint.jsx';
 
 
 export default function UserPost({uInfo,user,swiper}) {
+  const [postCoutVal, setPostCoutVal] = useRecoilState(postCout);
   /* 내 리뷰 조회 */
   const [myReview, setMyReview] = useState([]);
   const getMyReviews = async () => {
@@ -23,8 +24,22 @@ export default function UserPost({uInfo,user,swiper}) {
       .order('updated_at', { ascending: false });
     console.log(data);
     setMyReview(data);
+    setPostCoutVal((prevState) => ({ ...prevState, reviews: myReview.length  }));
     if(error) console.error(error);
   }
+  const realtimeChannel = useRef('');
+  const setupRealtimeListener = (tableName) => {
+    realtimeChannel.current = supabase.channel(`public:${tableName}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: tableName }, () => {
+        getMyReviews();
+        console.log(`${tableName} 업데이트`);
+      })
+      .subscribe((status) => {
+        if (status === 'SUBSCRIBED') {
+          console.log(`Subscribed to ${tableName} changes`);
+        }
+      });
+  };
   /* 내 리뷰삭제 */
   const deleteReview = async (opts, id) => {
     console.log(opts, id);
@@ -40,6 +55,7 @@ export default function UserPost({uInfo,user,swiper}) {
   useEffect( () => {
     getMyReviews();
     window.addEventListener('hashchange', getMyReviews);
+    setupRealtimeListener('TMDB_REVIEW');
     return ()=>{
       window.removeEventListener('hashchange', getMyReviews);
     }
@@ -49,7 +65,9 @@ export default function UserPost({uInfo,user,swiper}) {
   return (
     <>
       <ul className="mrvlist">
-        
+        {/* <button className="btn" onClick={ () => { 
+          setPostCoutVal((prevState) => ({ ...prevState, reviews: myReview.length  }));
+         } }>AAA</button> */}
         {myReview.length > 0 ? myReview.map((data,num)=>{
           const imgpath = '//image.tmdb.org/t/p/w92';
           const img = imgpath + data.poster_path;
