@@ -808,6 +808,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .info .desc .lst>li b{font-weight: normal;}
 .movie-detail .dins{margin-top: 20rem;display: flex;border: #30363d solid 1rem;border-radius: 5rem;justify-content: space-around;padding: 0rem 0rem;overflow: hidden;}
 .movie-detail .dins .bt{font-size: 17rem;width: 100%;height: 34rem;background: rgb(0 0 0 / 38%);display: flex;justify-content: center;align-items: center;}
+.movie-detail .dins .bt:disabled *{opacity:0.3;}
 .movie-detail .dins .bt+.bt{border-left: #30363d solid 1rem;}
 .movie-detail .dins .bt>em{font-size: 13rem;margin-left: 8rem;}
 .movie-detail .dins .bt-scrap.on{}

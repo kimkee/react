@@ -95,7 +95,7 @@ export default function ViewCtls({datas,postID, opts}) {
           console.table(data);
           setIsScrap(true);
           setIsDimBtn(false);
-        }, 1000);
+        }, 500);
       }
 
       return
@@ -114,7 +114,7 @@ export default function ViewCtls({datas,postID, opts}) {
           console.table("SCRAP 삭제 성공");
           setIsScrap(false);
           setIsDimBtn(false);
-        }, 1000);
+        }, 500);
       }
     }
     
@@ -161,7 +161,7 @@ export default function ViewCtls({datas,postID, opts}) {
       <div className="dins">
         {/* {opts == `movie` && } */}
         <button type="button" onClick={likeTog} disabled={isDimBtn} className={`bt bt-scrap ${isScrap ? 'on' : 'off'}`}>
-          {isDimBtn ?(<Loading opts={{type:'glx', cls:''}}/>) :(<><i className="fa-solid fa-bookmark"></i><em>스크랩</em></>)}
+          {false ?(<Loading opts={{type:'glx', cls:''}}/>) :(<><i className="fa-solid fa-bookmark"></i><em>스크랩</em></>)}
           
         </button>
         <button type="button" onClick={inputReply} className="bt bt-reply"><i className="fa-regular fa-pen-to-square"></i><em>리뷰</em></button>
