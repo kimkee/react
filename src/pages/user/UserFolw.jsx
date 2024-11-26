@@ -68,7 +68,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
             return(
               <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                 <button onClick={()=>goPage(data.id)} className='box'>
-                  <span className="pic"><img alt="" className="img" src={ data.profile_picture} /></span>
+                  <span className="pic"><img alt="" className="img" src={ data.profile_picture} onError={ui.error.user} /></span>
                   <div className="name">{data.username}</div>
                 </button>
               </li>)

@@ -36,7 +36,10 @@ export default function ViewCtls({datas,postID, opts}) {
   const [isDimBtn, setIsDimBtn] = useState(true);
   const [myscrap, setMyscrap] = useState();
   const getMyScrap = async (user_id, postID)=> {
-    if(!user_id) return;
+    if(!user_id) {
+      setIsDimBtn(false)
+      return
+    };
     setIsDimBtn(true);
     console.log(user_id);
     const { data, error }  = await supabase.from('TMDB_SCRAP').select("*")

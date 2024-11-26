@@ -808,7 +808,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-detail .info .desc .lst>li b{font-weight: normal;}
 .movie-detail .dins{margin-top: 20rem;display: flex;border: #30363d solid 1rem;border-radius: 5rem;justify-content: space-around;padding: 0rem 0rem;overflow: hidden;}
 .movie-detail .dins .bt{font-size: 17rem;width: 100%;height: 34rem;background: rgb(0 0 0 / 38%);display: flex;justify-content: center;align-items: center;}
-.movie-detail .dins .bt:disabled *{opacity:0.3;}
+.movie-detail .dins .bt:disabled *{opacity:0.5;}
 .movie-detail .dins .bt+.bt{border-left: #30363d solid 1rem;}
 .movie-detail .dins .bt>em{font-size: 13rem;margin-left: 8rem;}
 .movie-detail .dins .bt-scrap.on{}
@@ -1314,7 +1314,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile{padding: 30rem 0rem 20rem 0rem;position: relative;}
 .page.user.view .profile .user{display: flex;align-items: center;margin: 0rem 20rem 20rem 20rem;}
 .page.user.view .profile .user .pic{width: 80rem;min-width: 80rem;height: 80rem;padding-bottom: 80rem;display: block;position: relative;border-radius: 100rem;}
-.page.user.view .profile .user .pic .img{position: absolute;width: 100%;left: 0;top: 0;border-radius: 999rem;}
+.page.user.view .profile .user .pic .img{position: absolute;width: 100%;left: 0;top: 0;border-radius: 999rem;background: #424242;}
 .page.user.view .profile .user .pic i{background: #ffffff91;color: #111111;position: absolute;right: 0rem;bottom: 0rem;font-size: 13rem;width: 20rem;height: 20rem;display: flex;justify-content: center;align-items: center;border-radius: 100%;}
 .page.user.view .profile .user .info{display: flex;width:100%;padding: 0rem 20rem;}
 .page.user.view .profile .user .info .num{text-align: center; width: 100%;}
@@ -1363,7 +1363,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .ctn.repl .members .mlist>li{ width: calc(100% / 4 - 20rem); text-align: center; }
 .page.user.view .user-post .ctn.repl .members .mlist>li .box{ max-width: 60rem; display: inline-block; }
 .page.user.view .user-post .ctn.repl .members .mlist>li .box .pic{ display: block; }
-.page.user.view .user-post .ctn.repl .members .mlist>li .box .pic .img{ width: 100%; object-fit: cover; border-radius: 100%; }
+.page.user.view .user-post .ctn.repl .members .mlist>li .box .pic .img{width: 60rem;height: 60rem;object-fit: cover;border-radius: 100%;background-color: #424242;}
 .page.user.view .user-post .ctn.repl .members .mlist>li .box .name{ text-align: center; }
 
 .page.user.view .user-post .mrvlist{

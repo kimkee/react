@@ -73,7 +73,7 @@ export default function User({prop}) {
         <div className="profile">
           <div className="user">
             <Link to={'/user/'+params.uid} className="pic">
-              <img src={uInfo.profile_picture} className="img" />
+              <img src={uInfo.profile_picture} className="img" onError={ui.error.user} />
               {uInfo.provider == 'google' && <i className="fa-brands fa-google"></i>}
               {uInfo.provider == 'github' && <i className="fa-brands fa-github"></i>}
               {uInfo.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
