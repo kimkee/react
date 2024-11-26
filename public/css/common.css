@@ -162,8 +162,8 @@ body.is-gnb .btn-gnb{}
 .ut-reply .rplist ul.rlist>li{padding: 11rem 0rem;border-bottom: #333333 solid 1rem;}
 .ut-reply .rplist ul.rlist>li.my{background-color: #0000004a;}
 .ut-reply .rplist ul.rlist>li:first-child{/* border-top: #333333 solid 1rem; */}
-.ut-reply .rplist ul.rlist>li .rpset{display: flex;padding: 0rem 10rem 0rem 44rem;position: relative;margin: 0rem 0rem;}
-.ut-reply .rplist ul.rlist>li .rpset .user{position: absolute;left: 7rem;top: 0rem;}
+.ut-reply .rplist ul.rlist>li .rpset{display: flex;padding: 0rem 0rem 0rem 39rem;position: relative;margin: 0rem 0rem;}
+.ut-reply .rplist ul.rlist>li .rpset .user{position: absolute;left: 0rem;top: 0rem;}
 .ut-reply .rplist ul.rlist>li .rpset .user .pic{width: 28rem;min-width: 28rem;height: 28rem;padding-bottom: 28rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
 .ut-reply .rplist ul.rlist>li .rpset .user .pic .img{display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;background-color: #424242;}
 .ut-reply .rplist ul.rlist>li .rpset .infs{ position: relative; width: 100%; }

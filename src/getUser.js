@@ -5,8 +5,8 @@ const getUser = async () => {
   const { data: { user } } = await supabase.auth.getUser();
   addUserToDatabase(user);
   if(!user) return
-  const { data: myinfo, error: myinfoError }  = await supabase.from('MEMBERS').select("*").eq('user_id', user?.id).order('created_at', { ascending: true });
-  return {user:user,myinfo:myinfo[0]}  // 사용자 데이터 반환
+  const { data, error }  = await supabase.from('MEMBERS').select("*").eq('user_id', user?.id).order('created_at', { ascending: true });
+  return {user:user,myinfo:data[0]}  // 사용자 데이터 반환
 };
 
 
