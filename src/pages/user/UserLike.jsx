@@ -18,22 +18,19 @@ import 'swiper/css/effect-fade';
 
 export default function UserLike({uInfo,user,swiper1dep}) {
 
-  // const [newScrapMovie, setNewScrapMovie] = useState([]);
-  const [newScrapMV, setNewScrapMV] = useState([]);
-  const [newScrapTV, setNewScrapTV] = useState([]);
+  const [scrapMV, setScrapMV] = useState([]);
+  const [scrapTV, setScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
 
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
     swiper1dep?.update()
+    console.log('swiper update');
+    
   } , 150);
   const mediaList = (opts) => {
     console.log(opts);
-    // setNewScrapMV( uInfo.tmdb_movie_scrap );
-    // setNewScrapTV( uInfo.tmdb_tv_scrap );
-
     updateSwiper()
-    // console.log(newScrapMovie);
   };
   const mdChange = (num)=>{
     setMedia(num == 0 && 'movie' || num == 1 && 'tv')   
@@ -63,12 +60,12 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       console.log(data);
       console.table("내 스크랩 조회 성공 Data selected successfully:");
       // setMyScrap(data);
-      setNewScrapMV(data.filter((data)=>data.mvtv == 'movie'))
-      setNewScrapTV(data.filter((data)=>data.mvtv == 'tv'))
+      setScrapMV(data.filter((data)=>data.mvtv == 'movie'))
+      setScrapTV(data.filter((data)=>data.mvtv == 'tv'))
     
     }
     updateSwiper()
-    setTimeout(updateSwiper, 1000);
+    window.setInterval(updateSwiper, 3000);
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
@@ -88,7 +85,6 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     // mediaList(media);
     getMyScrap(uInfo.id);
     setupRealtimeListener('TMDB_SCRAP');
-    // setNewScrapMovie( uInfo.tmdb_movie_scrap )
     return ()=>{
       
     }
@@ -109,14 +105,14 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     <>
       <div className="movie-list user">
         <div className="tabs">
-          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{newScrapMV.length}</i></button>
-          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{newScrapTV.length}</i></button>
+          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
+          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
         </div>
 
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
-            spaceBetween={0} slidesPerView={1} loop={false}
+            spaceBetween={10} slidesPerView={1} loop={false}
             autoplay={false} wrapperTag="div" initialSlide={ 0 } 
             autoHeight={true} watchOverflow={true} observer={true} observeSlideChildren={true} observeParents={true}
             onSwiper={(swiper) => {
@@ -130,9 +126,9 @@ export default function UserLike({uInfo,user,swiper1dep}) {
             }}
           >
             <SwiperSlide tag="section" className="tablike mv">
-              {newScrapMV.length ?
+              {scrapMV.length ?
               <ul className='list'>
-                {newScrapMV.map((data,num) =>{
+                {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
                     const img = imgpath + data.poster_path;
                     const tit = data.title || data.name;
@@ -171,9 +167,9 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               }
             </SwiperSlide>
             <SwiperSlide tag="section" className="tablike tv">
-              {newScrapTV.length ?
+              {scrapTV.length ?
               <ul className='list'>
-                {newScrapTV.map((data,num) =>{
+                {scrapTV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
                     const img = imgpath + data.poster_path;
                     const tit = data.title || data.name;
