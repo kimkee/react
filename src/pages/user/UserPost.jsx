@@ -57,6 +57,7 @@ export default function UserPost({uInfo,user,swiper}) {
     // window.addEventListener('hashchange', getMyReviews);
     setupRealtimeListener('TMDB_REVIEW');
     return ()=>{
+      realtimeChannel.current.unsubscribe();
       // window.removeEventListener('hashchange', getMyReviews);
     }
     // eslint-disable-next-line

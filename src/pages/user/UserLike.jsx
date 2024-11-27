@@ -72,14 +72,14 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       });
   };
 
-  const btnUpdate = useRef(null);
+  
   useEffect( () => {
     console.log(uInfo , user);
     getMyScrap(uInfo.id);
     setupRealtimeListener('TMDB_SCRAP');
-    btnUpdate.current.click()
-    return ()=>{
       
+    return ()=>{
+      realtimeChannel.current?.unsubscribe();
     }
     // eslint-disable-next-line
   },[uInfo]);
@@ -93,7 +93,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   return (
     <>
       <div className="movie-list user">
-        <button ref={btnUpdate} onClick={()=>{updateSwiper()}} className='btn sm hidden'>S</button>
+        <button onClick={()=>{updateSwiper()}} className='btn sm hidden'>S</button>
         <div className="tabs">
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>

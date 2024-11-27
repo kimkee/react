@@ -11,7 +11,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 em {font-style: normal;}
 p {vertical-align: baseline;}
 hr { display: none; } 
-
+.hidden{position: fixed; left: -99999rem; top: -99999rem;}
 html, body {font-size: 1400%;line-height: 1.6;font-family: 'Roboto',"Noto Sans KR",Arial,"Malgun Gothic",sans-serif;}
 input , textarea{font-family: 'Roboto',"Noto Sans KR",Arial,"Malgun Gothic",sans-serif;}
 html{font-size: 1px;}
