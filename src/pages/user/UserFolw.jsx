@@ -54,7 +54,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
 
     }
     // eslint-disable-next-line
-  },[member]);
+  },[uInfo]);
 
   if(!member) return
   return (
