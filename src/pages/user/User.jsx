@@ -45,19 +45,29 @@ export default function User({prop}) {
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
   const updateSwiper = ()=> {
-    swiper?.update();
-    swiper?.updateAutoHeight();
+    console.log('updateSwiper');
+    try {
+      swiper?.update();
+      swiper?.updateAutoHeight();
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
   }
+  
+  
+  
   useEffect( () => {
     // window.scrollTo(0,0);
-    viewUser();    
+    viewUser();
     return ()=>{};
     // eslint-disable-next-line
-  },[param_id]);
+  },[param_id,swiper]);
+  
 
   return (
     <>
@@ -70,7 +80,7 @@ export default function User({prop}) {
         <div className="profile">
           <div className="user">
             <Link to={'/user/'+params.uid} className="pic">
-              <img src={uInfo.profile_picture} className="img" onError={ui.error.user} />
+              <img src={uInfo.profile_picture} className="img" onError={ui.error.user}/>
               {uInfo.provider == 'google' && <i className="fa-brands fa-google"></i>}
               {uInfo.provider == 'github' && <i className="fa-brands fa-github"></i>}
               {uInfo.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
@@ -99,10 +109,10 @@ export default function User({prop}) {
           uInfo ?<div className="user-post">
           <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-bookmark"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 1 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-bookmark"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-users"></i></span></button>
@@ -131,21 +141,21 @@ export default function User({prop}) {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
               setSpIdx(0)
-              updateSwiper();
+              // updateSwiper();
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
               setSpIdx(swiper.realIndex)
-              updateSwiper();
+              // updateSwiper();
               // gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="section" className="ctn like">
-              <UserLike uInfo={uInfo} user={user} swiper1dep={swiper} />
-            </SwiperSlide>
             <SwiperSlide tag="section" className="ctn post">
               <UserPost uInfo={uInfo} user={user} swiper1dep={swiper} />
+            </SwiperSlide>
+            <SwiperSlide tag="section" className="ctn like">
+              <UserLike uInfo={uInfo} user={user} swiper1dep={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
               <UserFolw uInfo={uInfo} user={user} swiper1dep={swiper} />
