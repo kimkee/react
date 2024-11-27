@@ -21,6 +21,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const [scrapMV, setScrapMV] = useState([]);
   const [scrapTV, setScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
+  console.log(swiper1dep);
 
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
@@ -116,7 +117,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
               mdChange(swiper.realIndex)
-              swiper1dep.slideToLoop(0)
+              
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
@@ -126,6 +127,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
             <SwiperSlide tag="section" className="tablike mv">
               {scrapMV.length ?
               <ul className='list'>
+                <button onClick={swiper1dep?.update()} className='btn sm'>S</button>
                 {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
                     const img = imgpath + data.poster_path;
