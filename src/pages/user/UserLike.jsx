@@ -69,6 +69,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
           console.log(`Subscribed to ${tableName} changes`);
+          updateSwiper();
         }
       });
   };
