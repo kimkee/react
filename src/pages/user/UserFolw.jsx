@@ -68,7 +68,12 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
             return(
               <li key={data.id+'_'+num} data-id={data.id+'_'+num}>
                 <button onClick={()=>goPage(data.id)} className='box'>
-                  <span className="pic"><img alt="" className="img" src={ data.profile_picture} onError={ui.error.user} /></span>
+                  <span className="pic">
+                    <img alt="" className="img" src={ data.profile_picture} onError={ui.error.user} />
+                    {data.provider == 'google' && <i className="fa-brands fa-google"></i>}
+                    {data.provider == 'github' && <i className="fa-brands fa-github"></i>}
+                    {data.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
+                  </span>
                   <div className="name">{data.username}</div>
                 </button>
               </li>)
