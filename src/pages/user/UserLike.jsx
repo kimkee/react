@@ -151,7 +151,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                           <div className="bts">
                             { uInfo?.user_id == user?.id &&
                               <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(data.mvtv, data.id)}) }>
-                                <span><i className="fa-solid fa-trash"></i></span>
+                                <span><i className="fa-solid fa-trash-can"></i></span>
                               </button>
                             }
                           </div>
@@ -192,7 +192,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                           <div className="bts">
                             { uInfo?.user_id == user?.id &&
                               <button type="button" className="bt" onClick={ ()=> ui.confirm('삭제할까요?',{ybt:'네',nbt:'아니오', ycb:()=>deleteScrap(data.mvtv, data.id)}) }>
-                                <span><i className="fa-solid fa-trash"></i></span>
+                                <span><i className="fa-solid fa-trash-can"></i></span>
                               </button>
                             }
                           </div>

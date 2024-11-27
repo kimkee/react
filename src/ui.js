@@ -29,6 +29,27 @@ const ui = {
         docHeight: () => parseInt(document.documentElement.scrollHeight || document.body.clientHeight),
         scrollTop: () => parseInt(document.documentElement.scrollTop)
     },
+    postIsMod: function(createdTime, modifiedTime) {
+        // Date 객체로 변환
+        const created = new Date(createdTime);
+        const modified = new Date(modifiedTime);
+        
+        console.log(created);
+        console.log(modified);
+        
+        // 작성시간과 수정시간의 차이 계산 (밀리초 단위)
+        const timeDifference = modified - created;
+        
+        // 10초(10,000 밀리초) 이상이면 수정된 것으로 간주
+        if (timeDifference >= 10000) {
+            console.log("수정됨");
+            return true;
+        } else {
+            console.log("수정되지 않음");
+            return false;
+        }
+    }
+    ,  
     dateForm: (date, opt = 'medium')=> {
         date = new Date(date);
         return new Intl.DateTimeFormat('ko-KR', { dateStyle: opt, timeStyle: opt }).format(date);
