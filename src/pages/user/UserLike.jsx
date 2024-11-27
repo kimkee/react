@@ -26,7 +26,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
     swiper1dep?.update()
-  } , 100);
+  } , 150);
   const mediaList = (opts) => {
     console.log(opts);
     // setNewScrapMV( uInfo.tmdb_movie_scrap );
@@ -83,7 +83,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   };
   useEffect( () => {
     console.log(uInfo , user);
-    mediaList(media);
+    // mediaList(media);
     getMyScrap(uInfo.id);
     setupRealtimeListener('TMDB_SCRAP');
     // setNewScrapMovie( uInfo.tmdb_movie_scrap )
@@ -120,13 +120,13 @@ export default function UserLike({uInfo,user,swiper1dep}) {
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
-              setSpIdx(swiper.realIndex)
+              // setSpIdx(swiper.realIndex)
               mdChange(swiper.realIndex)
               // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
-              setSpIdx(swiper.realIndex)
+              // setSpIdx(swiper.realIndex)
               mdChange(swiper.realIndex)
               // gotoSlide(swiper.realIndex);
             }}
