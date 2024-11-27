@@ -45,7 +45,8 @@ export default function User({prop}) {
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
   const updateSwiper = ()=> {
-    swiper?.update()    
+    swiper?.update();
+    swiper?.updateAutoHeight();
   };
   const gotoSlide = (num)=>{
     console.log(num);
