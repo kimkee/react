@@ -57,7 +57,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       setScrapMV(data.filter((data)=>data.mvtv == 'movie'))
       setScrapTV(data.filter((data)=>data.mvtv == 'tv'))
     }
-    updateSwiper()
+    setTimeout(() => { updateSwiper(); console.log('2초후'); }, 2000);
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
@@ -69,13 +69,11 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       .subscribe((status) => {
         if (status === 'SUBSCRIBED') {
           console.log(`Subscribed to ${tableName} changes`);
-          updateSwiper();
         }
       });
   };
   useEffect( () => {
     console.log(uInfo , user);
-    // mediaList(media);
     getMyScrap(uInfo.id);
     setupRealtimeListener('TMDB_SCRAP');
     return ()=>{
