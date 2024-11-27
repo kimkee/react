@@ -22,12 +22,14 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const [scrapTV, setScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
 
+
+  const [swiper, setSwiper] = useState(null);
   const updateSwiper = ()=> setTimeout(() => {
-    swiper?.update();
+    // swiper?.update();
+    // swiper?.updateAutoHeight();
     swiper1dep?.update();
-    swiper?.updateAutoHeight();
     swiper1dep?.updateAutoHeight();
-  } , 150);
+  }, 500);
 
   const mdChange = (num)=>{
     setMedia(num == 0 && 'movie' || num == 1 && 'tv')   
@@ -82,13 +84,11 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       realtimeChannel.current?.unsubscribe();
     }
     // eslint-disable-next-line
-  },[uInfo]);
-
-  const [swiper, setSwiper] = useState(null);
+  },[uInfo,swiper]);
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
-    swiper1dep?.update()
+    // swiper1dep?.update()
   }
   return (
     <>
@@ -121,6 +121,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
               mdChange(swiper.realIndex)
+              updateSwiper()
             }}
           >
               

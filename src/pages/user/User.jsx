@@ -109,10 +109,10 @@ export default function User({prop}) {
           uInfo ?<div className="user-post">
           <ul className="menu">
             <li className={spIdx == 0 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-list"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(0)}><span><i className="fa-regular fa-bookmark"></i></span></button>
             </li>
             <li className={spIdx == 1 ? "active" : ""}>
-              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-bookmark"></i></span></button>
+              <button type="button" className="bt" onClick={()=>gotoSlide(1)}><span><i className="fa-regular fa-list"></i></span></button>
             </li>
             <li className={spIdx == 2 ? "active" : ""}>
               <button type="button" className="bt" onClick={()=>gotoSlide(2)}><span><i className="fa-regular fa-users"></i></span></button>
@@ -151,11 +151,11 @@ export default function User({prop}) {
               // gotoSlide(swiper.realIndex);
             }}
           >
-            <SwiperSlide tag="section" className="ctn post">
-              <UserPost uInfo={uInfo} user={user} swiper1dep={swiper} />
-            </SwiperSlide>
             <SwiperSlide tag="section" className="ctn like">
               <UserLike uInfo={uInfo} user={user} swiper1dep={swiper} />
+            </SwiperSlide>
+            <SwiperSlide tag="section" className="ctn post">
+              <UserPost uInfo={uInfo} user={user} swiper1dep={swiper} />
             </SwiperSlide>
             <SwiperSlide tag="section" className="ctn repl">
               <UserFolw uInfo={uInfo} user={user} swiper1dep={swiper} />
