@@ -44,7 +44,7 @@ export default function User({prop}) {
 
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
-  const updateSwiper = ()=> setTimeout(() => swiper?.update() , 100);
+  const updateSwiper = ()=> setTimeout(() => swiper?.update() , 1000);
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
