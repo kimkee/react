@@ -71,13 +71,15 @@ export default function UserLike({uInfo,user,swiper1dep}) {
         }
       });
   };
+
+  const btnUpdate = useRef(null);
   useEffect( () => {
     console.log(uInfo , user);
     getMyScrap(uInfo.id);
     setupRealtimeListener('TMDB_SCRAP');
-    window.addEventListener('scroll', updateSwiper);
+    btnUpdate.current.click()
     return ()=>{
-      window.removeEventListener('scroll', updateSwiper);  
+      
     }
     // eslint-disable-next-line
   },[uInfo]);
@@ -91,22 +93,30 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   return (
     <>
       <div className="movie-list user">
+        <button ref={btnUpdate} onClick={()=>{updateSwiper()}} className='btn sm hidden'>S</button>
         <div className="tabs">
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
         </div>
-        {/* <button onClick={()=>{updateSwiper()}} className='btn sm'>S</button> */}
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
-            spaceBetween={10} slidesPerView={1} loop={false}
-            autoplay={false} wrapperTag="div" initialSlide={ 0 } 
-            autoHeight={true} watchOverflow={true} observer={true} observeSlideChildren={true} observeParents={true}
+            spaceBetween={0}
+            slidesPerView={1}
+            loop={false}
+            autoplay={false}
+            wrapperTag="div"
+            initialSlide={ 0 } 
+            autoHeight={true}
+            watchOverflow={true}
+            observer={true}
+            observeSlideChildren={true}
+            observeParents={true}
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
               mdChange(swiper.realIndex)
-              
+              updateSwiper()
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
