@@ -24,9 +24,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
 
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
-    swiper1dep?.update()
-    console.log('swiper update');
-    
+    swiper1dep?.update()    
   } , 150);
   const mediaList = (opts) => {
     console.log(opts);
@@ -65,7 +63,6 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     
     }
     updateSwiper()
-    window.setInterval(updateSwiper, 3000);
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
