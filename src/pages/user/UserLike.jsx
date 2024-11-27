@@ -116,6 +116,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
               mdChange(swiper.realIndex)
+              swiper1dep.slideToLoop(0)
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
