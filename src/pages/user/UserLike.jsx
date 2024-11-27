@@ -21,16 +21,12 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const [scrapMV, setScrapMV] = useState([]);
   const [scrapTV, setScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
-  console.log(swiper1dep);
 
   const updateSwiper = ()=> setTimeout(() => {
     swiper?.update()
     swiper1dep?.update()    
   } , 150);
-  const mediaList = (opts) => {
-    console.log(opts);
-    updateSwiper()
-  };
+
   const mdChange = (num)=>{
     setMedia(num == 0 && 'movie' || num == 1 && 'tv')   
     updateSwiper()
@@ -38,13 +34,11 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const deleteScrap = async (opts, id) => {
     ui.loading.show('glx');
     console.log(opts, id); 
-    const { error } = await supabase.from('TMDB_SCRAP').delete()
-      .eq('id', id).eq('mvtv', opts);
+    const { error } = await supabase.from('TMDB_SCRAP').delete().eq('id', id).eq('mvtv', opts);
     if (error) {
       console.error("SCRAP 삭제 에러 :", error.message);
     }else{
       console.table("SCRAP 삭제 성공");
-      // getMyScrap(uInfo.id);
     }
     ui.loading.hide('glx');
   };
@@ -58,10 +52,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     }else{
       console.log(data);
       console.table("내 스크랩 조회 성공 Data selected successfully:");
-      // setMyScrap(data);
       setScrapMV(data.filter((data)=>data.mvtv == 'movie'))
       setScrapTV(data.filter((data)=>data.mvtv == 'tv'))
-    
     }
     updateSwiper()
   }
@@ -96,7 +88,6 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   // console.log(`spIdx   ${spIdx}`);
   const gotoSlide = (num)=>{
     console.log(num);
-    // swiper.slideTo(num);
     swiper.slideToLoop(num);
   }
   return (
@@ -106,7 +97,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
         </div>
-{/* <button onClick={()=>{swiper1dep?.update()}} className='btn sm'>S</button> */}
+<button onClick={()=>{swiper1dep?.update()}} className='btn sm'>S</button>
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,

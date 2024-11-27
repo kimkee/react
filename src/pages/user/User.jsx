@@ -44,10 +44,9 @@ export default function User({prop}) {
 
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
-  const updateSwiper = ()=> setInterval(() => {
-    console.log('updateSwiper');
-    swiper?.update()
-  }, 3000);
+  const updateSwiper = ()=> {
+    swiper?.update()    
+  };
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
@@ -55,7 +54,7 @@ export default function User({prop}) {
   useEffect( () => {
     // window.scrollTo(0,0);
     viewUser();    
-    return ()=>{ }
+    return ()=>{};
     // eslint-disable-next-line
   },[param_id]);
 
