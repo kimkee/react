@@ -68,7 +68,6 @@ export default function User({prop}) {
         
         {uInfo ?
         <div className="profile">
-          <button onClick={updateSwiper}>P</button>
           <div className="user">
             <Link to={'/user/'+params.uid} className="pic">
               <img src={uInfo.profile_picture} className="img" onError={ui.error.user} />

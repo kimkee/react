@@ -75,8 +75,9 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     console.log(uInfo , user);
     getMyScrap(uInfo.id);
     setupRealtimeListener('TMDB_SCRAP');
+    window.addEventListener('scroll', updateSwiper);
     return ()=>{
-      
+      window.removeEventListener('scroll', updateSwiper);  
     }
     // eslint-disable-next-line
   },[uInfo]);
@@ -94,7 +95,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
         </div>
-        <button onClick={()=>{updateSwiper()}} className='btn sm'>S</button>
+        {/* <button onClick={()=>{updateSwiper()}} className='btn sm'>S</button> */}
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
