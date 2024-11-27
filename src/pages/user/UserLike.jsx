@@ -106,7 +106,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
         </div>
-
+{/* <button onClick={()=>{swiper1dep?.update()}} className='btn sm'>S</button> */}
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
@@ -124,10 +124,10 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               mdChange(swiper.realIndex)
             }}
           >
+              
             <SwiperSlide tag="section" className="tablike mv">
               {scrapMV.length ?
               <ul className='list'>
-                <button onClick={swiper1dep?.update()} className='btn sm'>S</button>
                 {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
                     const img = imgpath + data.poster_path;
