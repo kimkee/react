@@ -23,8 +23,10 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const [media, setMedia] = useState('movie');
 
   const updateSwiper = ()=> setTimeout(() => {
-    swiper?.update()
-    swiper1dep?.update()    
+    swiper?.update();
+    swiper1dep?.update();
+    swiper?.updateAutoHeight();
+    swiper1dep?.updateAutoHeight();
   } , 150);
 
   const mdChange = (num)=>{
@@ -89,6 +91,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
+    swiper1dep?.update()
   }
   return (
     <>
@@ -97,7 +100,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
         </div>
-<button onClick={()=>{swiper1dep?.update()}} className='btn sm'>S</button>
+        <button onClick={()=>{updateSwiper()}} className='btn sm'>S</button>
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
