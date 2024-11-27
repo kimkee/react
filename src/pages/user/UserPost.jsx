@@ -54,10 +54,10 @@ export default function UserPost({uInfo,user,swiper}) {
   }
   useEffect( () => {
     getMyReviews();
-    window.addEventListener('hashchange', getMyReviews);
+    // window.addEventListener('hashchange', getMyReviews);
     setupRealtimeListener('TMDB_REVIEW');
     return ()=>{
-      window.removeEventListener('hashchange', getMyReviews);
+      // window.removeEventListener('hashchange', getMyReviews);
     }
     // eslint-disable-next-line
   },[uInfo]);
@@ -104,14 +104,6 @@ export default function UserPost({uInfo,user,swiper}) {
         </div>}
       </ul>
       
-      {/* <p>내 글</p>
-      <p>댓글</p> <TextInput />
-      <p>
-        { user?.id == uInfo.user_id ?
-          <Link to="/user/signout" className="btn logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
-          :null
-        }
-      </p> */}
     </>
   )
 }

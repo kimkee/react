@@ -27,46 +27,35 @@ export default function User({prop}) {
   const [postCoutVal, setPostCoutVal] = useRecoilState(postCout);
 
   const params = useParams();
-  
-  const location = useLocation();
-  const navigate = useNavigate();
-  const uid = params.uid;
+  const param_id = params.uid;
   
   const { user, myinfo } = prop;
   
   const [uInfo, setUInfo] = useState();
   
   const viewUser = async ()=> {
-    console.log(uid);
-    const { data, error }  = await supabase.from('MEMBERS').select("*").eq('id', uid).order('created_at', { ascending: true });
+    ui.loading.show(`glx`);
+    console.log(param_id);
+    const { data, error }  = await supabase.from('MEMBERS').select("*").eq('id', param_id).order('created_at', { ascending: true });
     setUInfo(data[0]);
-    console.log(user);
     console.log(uInfo);
     ui.loading.hide();
   }
 
   const [swiper, setSwiper] = useState(null);
   const [spIdx, setSpIdx] = useState(null);
-  // console.log(`spIdx   ${spIdx}`);
   const updateSwiper = ()=> setTimeout(() => swiper?.update() , 100);
   const gotoSlide = (num)=>{
     console.log(num);
-    // swiper.slideTo(num);
     swiper.slideToLoop(num);
   }
   useEffect( () => {
     // window.scrollTo(0,0);
-    viewUser();
-    // window.addEventListener('hashchange', viewUser);
-    ui.loading.show(`glx`);  
-    return ()=>{
-      // window.removeEventListener('hashchange', viewUser);
-    }
+    viewUser();    
+    return ()=>{ }
     // eslint-disable-next-line
-  },[uid]);
+  },[param_id]);
 
-
-  
   return (
     <>
     <Outlet/>
@@ -93,7 +82,7 @@ export default function User({prop}) {
             <span className="txt"><i className="fa-regular fa-calendar-days"></i> Join : {ui.dateForm(uInfo.created_at)}</span>
             {uInfo.email && <span className="txt"><i className="fa-regular fa-envelope"></i> {uInfo.email}</span>}
           </div>
-          { user?.id == uInfo.user_id &&
+          { myinfo?.user_id == uInfo.user_id &&
             <div className="bts">
                 <Link to="/user/signout" className="btn sm logout"><i className="fa-regular fa-right-from-bracket"></i>Logout</Link>
             </div>

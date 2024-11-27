@@ -120,15 +120,11 @@ export default function UserLike({uInfo,user,swiper1dep}) {
             onSwiper={(swiper) => {
               console.log("initialize swiper", swiper);
               setSwiper(swiper);
-              // setSpIdx(swiper.realIndex)
               mdChange(swiper.realIndex)
-              // swiper.slideTo( Math.floor( Math.random() *10 ) );
             }}
             onSlideChange={(swiper) => {
               console.log('slide change' , swiper.realIndex , swiper.activeIndex);
-              // setSpIdx(swiper.realIndex)
               mdChange(swiper.realIndex)
-              // gotoSlide(swiper.realIndex);
             }}
           >
             <SwiperSlide tag="section" className="tablike mv">
@@ -149,7 +145,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                                 <StarPoint point={data.vote_average} />
                                 <em><i className="fa-regular fa-thumbs-up"></i> <b>{data.vote_average}</b></em>
                               </div>
-                              <div className="date">{/* <i className="fa-regular fa-calendar-days"></i> */} <b>{data.release_date || data.first_air_date}</b></div>
+                              <div className="date"><b>{data.release_date || data.first_air_date}</b></div>
                             </div>
                           </Link>
                           <div className="bts">
@@ -190,7 +186,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                                 <StarPoint point={data.vote_average} />
                                 <em><i className="fa-regular fa-thumbs-up"></i> <b>{data.vote_average}</b></em>
                               </div>
-                              <div className="date">{/* <i className="fa-regular fa-calendar-days"></i> */} <b>{data.release_date || data.first_air_date}</b></div>
+                              <div className="date"><b>{data.release_date || data.first_air_date}</b></div>
                             </div>
                           </Link>
                           <div className="bts">
