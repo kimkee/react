@@ -50,14 +50,13 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     const { data, error }  = await supabase.from('TMDB_SCRAP').select("*").order('created_at', { ascending: false })
       .eq('user_num', user_id);
     if (error) {
-      console.error("내 스크랩 조회 에러 Error selecting data:", error.message);
+      console.error("내 스크랩 조회 에러", error.message);
     }else{
       console.log(data);
-      console.table("내 스크랩 조회 성공 Data selected successfully:");
-      setScrapMV(data.filter((data)=>data.mvtv == 'movie'))
-      setScrapTV(data.filter((data)=>data.mvtv == 'tv'))
+      console.table("내 스크랩 조회 성공");
+      setScrapMV(data.filter( data => data.mvtv == 'movie'))
+      setScrapTV(data.filter( data => data.mvtv == 'tv'))
     }
-    setTimeout(() => { updateSwiper(); console.log('2초후'); }, 2000);
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
@@ -82,11 +81,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     // eslint-disable-next-line
   },[uInfo]);
 
-  // if (!uInfo ) { return false }
-  // if (!newScrapMovie) { return false }
   const [swiper, setSwiper] = useState(null);
-  const [spIdx, setSpIdx] = useState(null);
-  // console.log(`spIdx   ${spIdx}`);
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
