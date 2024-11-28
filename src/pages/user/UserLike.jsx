@@ -6,7 +6,7 @@ import { supabase } from '@/supabase.js';
 import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper'; //,EffectFade 
+import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper/modules'; //,EffectFade 
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
 // Import Swiper styles
 import 'swiper/css';

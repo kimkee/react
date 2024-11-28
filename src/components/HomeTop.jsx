@@ -4,10 +4,8 @@ import { Link  } from 'react-router-dom';  // useParams , Outlet, useSearchParam
 import axios from 'axios';
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper'; //,EffectFade 
-
+import { Navigation, Pagination, Scrollbar, Autoplay, A11y } from 'swiper/modules'; //,EffectFade 
 import { Swiper, SwiperSlide } from 'swiper/react'; //, useSwiper 
-
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,9 +13,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
+
 import ui from '../ui.js';
 import StarPoint from '../components/StarPoint';
-
 
 export default  function HomeTop({opts}){
   // console.log(opts);
