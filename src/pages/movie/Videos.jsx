@@ -92,7 +92,7 @@ export default function Videos({prop}) {
               {movs && movs.results.length ? 
               <Swiper className="swiper-wrapper swiper slide" 
               // install Swiper modules
-              modules={[Navigation, Pagination, Scrollbar, Autoplay,EffectFade, A11y]}
+              modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]}
               spaceBetween={20}
               slidesPerView={1}
               navigation
