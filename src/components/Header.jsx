@@ -1,15 +1,9 @@
 
 import React, {useState,  useEffect, useRef } from 'react'; //
 import {Link, NavLink, useParams, useLocation, useNavigate} from 'react-router-dom'; // ,useParams,useLocation
-import ui from '/src/ui.js';
-// import store from '../store.js';
-import getUser from '../getUser.js';
-// import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
-import {atomStore,textState,sss} from '../atom.js';
 
 export default function Header({prop}) {
-  const [store2, setText] = useRecoilState(atomStore);
+
   let params = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,7 +27,6 @@ export default function Header({prop}) {
           }
           
           {/* {store2.state.userInfo.stat+""} */}
-          { params.id ? <h3 className="htit">{store2.state.userInfo.nick}</h3> : null }
 
         </div>
         <div className="rdt">
