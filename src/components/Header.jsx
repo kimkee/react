@@ -42,6 +42,7 @@ export default function Header({prop}) {
           */}
           
           
+          {/* <button type="button" className="bt usr"><i className="fa-regular fa-users"></i><b>회원들</b></button> */}
           <button type="button" className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
         </div>
       </div>

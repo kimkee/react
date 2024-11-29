@@ -193,7 +193,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               </ul>
               { scrapMV.length < scrapMvTot &&
               <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+pagingAmount)}} className='btn'>
-                <i className="fa-solid fa-angle-down"></i> <b>더보기</b></button>
+                <b>More</b> <i className="fa-solid fa-caret-down"></i></button>
               </div>
               }
               </>
@@ -241,7 +241,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               </ul>
               { scrapTV.length < scrapTvTot &&
               <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'tv',scrapTV.length+pagingAmount)}} className='btn'>
-                <i className="fa-solid fa-angle-down"></i> <b>더보기</b></button>
+                <b>More</b> <i className="fa-solid fa-caret-down"></i></button>
               </div>
               }
               </>
