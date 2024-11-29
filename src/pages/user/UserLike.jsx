@@ -47,18 +47,28 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     ui.loading.hide('glx');
   };
 
-  const getMyScrap = async (user_id)=> {
+  const getMyScrap = async (user_id, opts, num)=> {
     console.log(user_id);
-    const { data, error }  = await supabase.from('TMDB_SCRAP').select("*").order('created_at', { ascending: false })
-      .eq('user_num', user_id);
-    if (error) {
-      console.error("내 스크랩 조회 에러", error.message);
-    }else{
-      console.log(data);
-      console.table("내 스크랩 조회 성공");
-      setScrapMV(data.filter( data => data.mvtv == 'movie'))
-      setScrapTV(data.filter( data => data.mvtv == 'tv'))
-    }
+    num = num || 19;
+    const data = await supabase
+      .from('TMDB_SCRAP')
+      .select("*")
+      .order('created_at', { ascending: false })
+      .eq('user_num', user_id)
+      .eq('mvtv', opts)
+      .range(0,num)
+      // .limit(20)
+      .then((resusts) => { 
+        console.log(resusts.data) 
+        console.table("내 스크랩 조회 성공");
+        opts == 'movie' && setScrapMV(resusts.data);
+        opts == 'tv'    && setScrapTV(resusts.data);
+      })
+      .catch((error) => {
+        console.error("내 스크랩 조회 에러", error.message);
+      });
+    console.log(data);
+    
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
@@ -77,7 +87,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   
   useEffect( () => {
     console.log(uInfo , user);
-    getMyScrap(uInfo.id);
+    getMyScrap(uInfo.id,'movie');
+    getMyScrap(uInfo.id,'tv');
     setupRealtimeListener('TMDB_SCRAP');
       
     return ()=>{
@@ -94,6 +105,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     <>
       <div className="movie-list user">
         <button onClick={()=>{updateSwiper()}} className='btn sm hidden'>S</button>
+        
         <div className="tabs">
           <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV?.length}</i></button>
           <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV?.length}</i></button>
@@ -126,7 +138,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           >
               
             <SwiperSlide tag="section" className="tablike mv">
-              {scrapMV.length ?
+              {scrapMV?.length ?
+              <>
               <ul className='list'>
                 {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
@@ -159,6 +172,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                 })}
                 
               </ul>
+              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+19)}} className='btn sm'>더보기</button></div>
+              </>
               :
               <div className="nodata">
                 <i className="fa-solid fa-file-magnifying-glass"></i>
@@ -167,7 +182,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               }
             </SwiperSlide>
             <SwiperSlide tag="section" className="tablike tv">
-              {scrapTV.length ?
+              {scrapTV?.length ?
+              <>
               <ul className='list'>
                 {scrapTV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
@@ -200,6 +216,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                 })}
                 
               </ul>
+              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'tv',scrapTV.length+19)}} className='btn sm'>더보기</button></div>
+              </>
               :
               <div className="nodata">
                 <i className="fa-solid fa-file-magnifying-glass"></i>
