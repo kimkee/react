@@ -58,7 +58,7 @@ export default  function HomeTop({opts}){
     }
     
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[]);
+  },[swiper]);
 
   const [topVal, setTopVal] = useState(0);
   const scrollHome = ()=> setTopVal( parseInt( ui.viewport.scrollTop() * 0.2 )) ;
