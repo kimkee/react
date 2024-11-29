@@ -73,7 +73,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       .order('created_at', { ascending: false })
       .eq('user_num', user_id)
       .eq('mvtv', opts)
-      .range(0,num)
+      // .range(0,num)
       // .limit(20)
       .then((resusts) => { 
         console.log(resusts.data) 
@@ -91,7 +91,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const setupRealtimeListener = (tableName) => {
     realtimeChannel.current = supabase.channel(`public:${tableName}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: tableName }, () => {
-        getMyScrap(uInfo.id);
+        getMyScrap(uInfo.id,'movie');
+        getMyScrap(uInfo.id,'tv');
         console.log(`${tableName} 업데이트`);
       })
       .subscribe((status) => {
@@ -193,7 +194,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               </ul>
               { scrapMV.length < scrapMvTot &&
               <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+pagingAmount)}} className='btn'>
-                <i class="fa-solid fa-angle-down"></i> <b>더보기</b></button>
+                <i className="fa-solid fa-angle-down"></i> <b>더보기</b></button>
               </div>
               }
               </>
@@ -241,7 +242,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               </ul>
               { scrapTV.length < scrapTvTot &&
               <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'tv',scrapTV.length+pagingAmount)}} className='btn'>
-                <i class="fa-solid fa-angle-down"></i> <b>더보기</b></button>
+                <i className="fa-solid fa-angle-down"></i> <b>더보기</b></button>
               </div>
               }
               </>
