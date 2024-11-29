@@ -47,9 +47,26 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     ui.loading.hide('glx');
   };
 
+  const [scrapMvTot, setScrapMvTot] = useState(0);
+  const [scrapTvTot, setScrapTvTot] = useState(0);
+  const getMyScrapTotal = async (user_id, opts)=> {
+    const { count, error } = await supabase
+    .from('TMDB_SCRAP')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_num', user_id)
+    .eq('mvtv', opts);
+    if (error) {
+      console.error("행 수 조회 에러", error.message);
+    } else {
+      console.log("총 행 수:", count);
+      opts == 'movie' && setScrapMvTot(count);
+      opts == 'tv'    && setScrapTvTot(count);
+    }
+  }
+  const pagingAmount = 39;
   const getMyScrap = async (user_id, opts, num)=> {
     console.log(user_id);
-    num = num || 19;
+    num = num || pagingAmount;
     const data = await supabase
       .from('TMDB_SCRAP')
       .select("*")
@@ -67,7 +84,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       .catch((error) => {
         console.error("내 스크랩 조회 에러", error.message);
       });
-    console.log(data);
+    // console.log(data);
     
   }
   const realtimeChannel = useRef('');
@@ -89,6 +106,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     console.log(uInfo , user);
     getMyScrap(uInfo.id,'movie');
     getMyScrap(uInfo.id,'tv');
+    getMyScrapTotal(uInfo.id,'movie');
+    getMyScrapTotal(uInfo.id,'tv');
     setupRealtimeListener('TMDB_SCRAP');
       
     return ()=>{
@@ -107,8 +126,8 @@ export default function UserLike({uInfo,user,swiper1dep}) {
         <button onClick={()=>{updateSwiper()}} className='btn sm hidden'>S</button>
         
         <div className="tabs">
-          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV?.length}</i></button>
-          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV?.length}</i></button>
+          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMvTot}</i></button>
+          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTvTot}</i></button>
         </div>
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
@@ -138,7 +157,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           >
               
             <SwiperSlide tag="section" className="tablike mv">
-              {scrapMV?.length ?
+              {scrapMV.length ?
               <>
               <ul className='list'>
                 {scrapMV.map((data,num) =>{
@@ -172,7 +191,11 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                 })}
                 
               </ul>
-              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+19)}} className='btn sm'>더보기</button></div>
+              { scrapMV.length < scrapMvTot &&
+              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+pagingAmount)}} className='btn'>
+                <i class="fa-solid fa-angle-down"></i> <b>더보기</b></button>
+              </div>
+              }
               </>
               :
               <div className="nodata">
@@ -182,7 +205,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               }
             </SwiperSlide>
             <SwiperSlide tag="section" className="tablike tv">
-              {scrapTV?.length ?
+              {scrapTV.length ?
               <>
               <ul className='list'>
                 {scrapTV.map((data,num) =>{
@@ -216,7 +239,11 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                 })}
                 
               </ul>
-              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'tv',scrapTV.length+19)}} className='btn sm'>더보기</button></div>
+              { scrapTV.length < scrapTvTot &&
+              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'tv',scrapTV.length+pagingAmount)}} className='btn'>
+                <i class="fa-solid fa-angle-down"></i> <b>더보기</b></button>
+              </div>
+              }
               </>
               :
               <div className="nodata">

@@ -1353,9 +1353,12 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .pctn .ctn .nodata{padding: 80rem 0rem;display: flex;justify-content: center;align-items: center;height: 100%;gap: 8rem;}
 .page.user.view .swiper-wrapper{padding-bottom: 2px;/* height: auto !important; */}
 
-.page.user.view .user-post .pctn .ctn .loading{ padding: 16rem 10rem; }
-.page.user.view .user-post .pctn .ctn .loading .btn{ width: 100%; }
-
+.page.user.view .user-post .pctn .ctn .loading{/* padding: 16rem 10rem; */}
+.page.user.view .user-post .pctn .ctn .loading .btn{width: 100%;border: solid 0px #202020;border-width: 0rem 0rem 1rem 0rem;background: #111111;}
+.page.user.view .user-post .pctn .ctn .loading .btn i{
+    margin-top: -4rem;
+}
+.page.user.view .user-post .pctn .ctn .loading .btn b{}
 .page.user.view .user-post .tablike{min-height: calc(100vh - 410rem - var(--safe-top) - var(--safe-bottom) );padding-bottom: 80rem;}
 .page.user.view .user-post .tablike.mv{}
 .page.user.view .user-post .tablike.tv{border-left: #202020 solid 1rem;}
