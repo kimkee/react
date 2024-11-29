@@ -18,8 +18,8 @@ import 'swiper/css/effect-fade';
 
 export default function UserLike({uInfo,user,swiper1dep}) {
 
-  const [scrapMV, setScrapMV] = useState(null);
-  const [scrapTV, setScrapTV] = useState(null);
+  const [scrapMV, setScrapMV] = useState([]);
+  const [scrapTV, setScrapTV] = useState([]);
   const [media, setMedia] = useState('movie');
 
 
@@ -126,7 +126,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           >
               
             <SwiperSlide tag="section" className="tablike mv">
-              {scrapMV?.length >= 1 ?
+              {scrapMV.length ?
               <ul className='list'>
                 {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
