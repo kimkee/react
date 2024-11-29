@@ -63,17 +63,17 @@ export default function UserLike({uInfo,user,swiper1dep}) {
       opts == 'tv'    && setScrapTvTot(count);
     }
   }
-  const pagingAmount = 39;
+  const pagingAmount = 40;
   const getMyScrap = async (user_id, opts, num)=> {
     console.log(user_id);
-    num = num || pagingAmount;
+    num = (num || pagingAmount) - 1;
     const data = await supabase
       .from('TMDB_SCRAP')
       .select("*")
       .order('created_at', { ascending: false })
       .eq('user_num', user_id)
       .eq('mvtv', opts)
-      // .range(0,num)
+      .range(0,num)
       // .limit(20)
       .then((resusts) => { 
         console.log(resusts.data) 
@@ -119,7 +119,6 @@ export default function UserLike({uInfo,user,swiper1dep}) {
   const gotoSlide = (num)=>{
     console.log(num);
     swiper.slideToLoop(num);
-    // swiper1dep?.update()
   }
   return (
     <>
@@ -132,7 +131,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
         </div>
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
-            modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]} //EffectFade,
+            modules={[Navigation, Pagination, Scrollbar, Autoplay, A11y]}
             spaceBetween={0}
             slidesPerView={1}
             loop={false}
