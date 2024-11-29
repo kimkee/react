@@ -15,7 +15,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
-import Loading from '../../components/Loading.jsx';
 
 export default function UserLike({uInfo,user,swiper1dep}) {
 
@@ -91,16 +90,13 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     swiper.slideToLoop(num);
     // swiper1dep?.update()
   }
-
-  if (!scrapMV || !scrapTV) { return }
-
   return (
     <>
       <div className="movie-list user">
         <button onClick={()=>{updateSwiper()}} className='btn sm hidden'>S</button>
         <div className="tabs">
-          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV.length}</i></button>
-          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV.length}</i></button>
+          <button className={`btn ${media == 'movie' ? 'active':''}`} onClick={()=>gotoSlide(0)}><em>Movie</em> <i>{scrapMV?.length}</i></button>
+          <button className={`btn ${media == 'tv' ? 'active':''}`} onClick={()=>gotoSlide(1)}><em>TV</em> <i>{scrapTV?.length}</i></button>
         </div>
         <Swiper className="swiper-wrapper swiper pctn " 
             // install Swiper modules
@@ -130,7 +126,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           >
               
             <SwiperSlide tag="section" className="tablike mv">
-              {scrapMV ?
+              {scrapMV?.length >= 1 ?
               <ul className='list'>
                 {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
@@ -171,7 +167,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               }
             </SwiperSlide>
             <SwiperSlide tag="section" className="tablike tv">
-              {scrapTV ?
+              {scrapTV.length ?
               <ul className='list'>
                 {scrapTV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
