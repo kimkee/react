@@ -145,15 +145,35 @@ export default function Search() {
     url.searchParams.set("search", txt);
     // keyWordBox.current.classList.remove("open");
   }
-  const onChange = (event) => {
+  // 검색어 입력란에 입력할때마다 실행되는 debounce 함수
+  // wait ms 만큼 기다렸다가 func를 실행
+  const debounce = (func, wait) => {
+    let timeout;
+    return function (...args) {
+      const context = this;
+      const later = function () {
+        timeout = null;
+        func.apply(context, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  };
+  // 입력란에 입력할때마다 실행되는 함수
+  // 100ms만큼 기다렸다가 실행
+  const onChange = debounce((event) => {
+    // keyword state를 변경
     keywordSet(event.target.value );
+    // schList state를 초기화
     schListSet([]);
+    // url의 search string을 변경
     const url = new URL(window.location);
     url.searchParams.set("search", event.target.value);
-    console.log(url);
+    // console.log(url);
+    // 브라우저의 주소를 변경
     window.history.replaceState(null, null, `#/search/${opts}?search=${event.target.value}`);
-    // keyWordBox.current.classList.remove("open");
-  }
+    // // keyWordBox.current.classList.remove("open");
+  }, 100);
 
   const keyWordBox = useRef();
   const schsForm = useRef();
