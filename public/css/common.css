@@ -681,7 +681,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .movie-list.user .list>li .box .cont .dd .hits em i{/* font-weight: normal; */font-size: 11rem;}
 .movie-list.user .list>li .box .cont .dd .hits em b{font-weight: normal;font-size: 11rem;}
 .movie-list.user .list>li .box .cont .dd .hits .ui-star{ text-align: right; margin-bottom: 4rem; }
-.movie-list.user .list>li .box .cont .dd .date{}
+.movie-list.user .list>li .box .cont .dd .date{ margin-top: 2rem; }
 .movie-list.user .list>li .box .cont .dd .date b{font-weight: normal;font-size: 11rem;}
 .movie-list.user .list>li .box .bts{position: absolute;right: 3rem;bottom: 7rem;}
 .movie-list.user .list>li .box .bts .bt{width: 28rem;height: 28rem;}

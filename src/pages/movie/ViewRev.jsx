@@ -111,8 +111,9 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
       console.table(data[0]);
       gethRevs(postID);
       revText.current.value = '';
-      setRevNumNow(0);
+      revText.current.style.height = '';
       revListBox.current.focus();
+      setRevNumNow(0);
     }
   }
 
