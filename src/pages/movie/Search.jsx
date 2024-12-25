@@ -238,6 +238,7 @@ export default function Search() {
             </form>
           </div>
         </div>
+        
         {keywordList.length > 0 &&
         <div className={`recent-kwds`} ref={keyWordBox}>
           <ul className="lst">
