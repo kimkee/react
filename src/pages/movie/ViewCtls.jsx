@@ -129,7 +129,7 @@ export default function ViewCtls({datas,postID, opts}) {
     const $writeRev = document.querySelector("#writeRev");
     const rvPosTop = $writeRev.offsetTop;
     console.log(rvPosTop);
-    ui.scrollTo( boxScroll, rvPosTop ,100, 200, ()=>{
+    ui.scrollTo( boxScroll, rvPosTop , 200, ()=>{
       console.log("도착");
     });
   }
