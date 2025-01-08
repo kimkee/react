@@ -39,6 +39,7 @@ const addUserToDatabase = async (user) => {
           profile_picture : user.user_metadata.avatar_url,
           level : 10,
           created_at: new Date(),
+          join_url: process.env.VITE_SITE_URL || '',
         },
       ]);
 
