@@ -119,27 +119,26 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
                 <li className="vot"> 
                   <i className="fa-regular fa-thumbs-up"></i> <b>평점</b> : {datas.vote_average} / 10 
                 </li>
-                {datas.release_date &&
+                {datas.release_date ?
                 <li className="opn">
                   <i className=" fa-regular fa-camera-movie"></i>  <b>개봉</b> : {datas.release_date}
-                </li>}
-                {datas.first_air_date &&
+                </li>:null}
+                {datas.first_air_date ?
                 <li className="opn">
                   <i className=" fa-regular fa-camera-movie"></i>  {datas.first_air_date} ~ {datas.last_air_date}
-                </li>}
-                
+                </li>:null}
                 {datas.runtime ? 
                 <li className="tim">
                   <i className="fa-regular fa-timer"></i> <b>시간</b> : {datas.runtime} 분
                 </li>:null} 
-                {datas.number_of_seasons && 
+                {datas.number_of_seasons ?
                 <li className="tim">
                   <i className="fa-regular fa-timer"></i> <b>시즌</b> : {datas.number_of_seasons}개  - <b>에피소드</b> : {datas.number_of_episodes}개
-                </li>} 
-                {datas.homepage && 
+                </li>:null}
+                {datas.homepage ?
                 <li className="web">
                   <i className="fa-regular fa-globe"></i> <a  className="lk" href={datas.homepage } target="_blank" rel="noopener noreferrer">{datas.homepage}</a>
-                </li>} 
+                </li>:null}
               </ul>
             </div>
             <div className="thum">
