@@ -128,10 +128,10 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
                   <i className=" fa-regular fa-camera-movie"></i>  {datas.first_air_date} ~ {datas.last_air_date}
                 </li>}
                 
-                {datas.runtime && 
+                {datas.runtime ? 
                 <li className="tim">
                   <i className="fa-regular fa-timer"></i> <b>시간</b> : {datas.runtime} 분
-                </li>} 
+                </li>:null} 
                 {datas.number_of_seasons && 
                 <li className="tim">
                   <i className="fa-regular fa-timer"></i> <b>시즌</b> : {datas.number_of_seasons}개  - <b>에피소드</b> : {datas.number_of_episodes}개
