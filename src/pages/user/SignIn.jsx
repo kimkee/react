@@ -24,7 +24,7 @@ export default function SignIn() {
       provider: txt,
       options: {
         // queryParams: { access_type: 'offline', prompt: 'consent', },
-        redirectTo: `${import.meta.env.VITE_SITE_URL}/#/callback` // 콜백 URL을 명확하게 지정
+        redirectTo: `${import.meta.env.VITE_SITE_URL}` // 콜백 URL을 명확하게 지정
       },
     })
     if (error) console.log(error)
@@ -35,7 +35,7 @@ export default function SignIn() {
       provider: 'kakao',
       options: {
         scope: 'profile_nickname account_email profile_image', // 동의 항목 설정
-        redirectTo: `${import.meta.env.VITE_SITE_URL}/#/callback` // 콜백 URL을 명확하게 지정
+        redirectTo: `${import.meta.env.VITE_SITE_URL}` // 콜백 URL을 명확하게 지정
       },
     });
     if (error) console.log(error);
