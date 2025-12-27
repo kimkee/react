@@ -189,7 +189,7 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
                 moves.results.filter( (item, i) => i < 100 ).reverse().map( (mov,idx) => {
                   return (
                     <div className="box" key={mov.id}>
-                      <Link to={`./videos/${idx+1}`} className="pic" >
+                      <Link to={`./videos/${idx}`} className="pic" >
                         <span className="msg"><span className="tit">{mov.name}</span></span>
                         <i className="ico fa-solid fa-play"></i>
                         <img className="img" src={`//i.ytimg.com/vi/${mov.key}/hqdefault.jpg`}   alt={mov.name} loading="lazy" />
