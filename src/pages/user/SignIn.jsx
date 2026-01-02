@@ -23,7 +23,7 @@ export default function SignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: txt,
       options: {
-        // queryParams: { access_type: 'offline', prompt: 'consent', },
+        queryParams: { access_type: 'offline', prompt: 'consent', },
         redirectTo: `${import.meta.env.VITE_SITE_URL}` // 콜백 URL을 명확하게 지정
       },
     })
@@ -34,6 +34,7 @@ export default function SignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'kakao',
       options: {
+        queryParams: { access_type: 'offline', prompt: 'consent', }, // 토큰 갱신을 위한 옵션
         scope: 'profile_nickname account_email profile_image', // 동의 항목 설정
         redirectTo: `${import.meta.env.VITE_SITE_URL}` // 콜백 URL을 명확하게 지정
       },
