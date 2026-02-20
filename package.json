@@ -17,7 +17,7 @@
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
     "react-transition-group": "^4.4.5",
-    "swiper": "^11.1.15"
+    "swiper": "^12.1.2"
   },
   "devDependencies": {
     "@types/react": "^19.0.8",
