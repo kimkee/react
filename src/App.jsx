@@ -3,7 +3,7 @@ import React, {useEffect,useState} from 'react';
 import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+// import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
 
 
 import ui from './ui.js';
@@ -73,7 +73,7 @@ export default function App() {
 
   return (
     <>
-      <RecoilRoot>
+      {/* <RecoilRoot> */}
         <Router>
           <Routes>
             <Route path='home/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
@@ -175,7 +175,7 @@ export default function App() {
           </Routes>
 
         </Router>
-      </RecoilRoot>
+      {/* </RecoilRoot> */}
     </>
   );
 }

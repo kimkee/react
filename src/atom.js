@@ -1,35 +1,20 @@
-
 // import {db} from './firebaseConfig_bak.js';
 // import { getDoc, doc } from 'firebase/firestore';
 // import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-const textState = atom({
-  key: 'textState', // unique ID (with respect to other atoms/selectors)
-  default: '2312312', // default value (aka initial value)
-});
-const store2 = atom({
-  key: 'store2', // unique ID (with respect to other atoms/selectors)
-  default: {}, // default value (aka initial value)
-});
+const textState = atom('2312312');
+const store2 = atom({});
 const sss = atom({
-  key: 'sss', // unique ID (with respect to other atoms/selectors)
-  default: {
     a:1,
     b:2
-  } // default value (aka initial value)
 });
 const postCout = atom({
-  key: 'postCout', // unique ID (with respect to other atoms/selectors)
-  default: {
     scraps:0,
     reviews:0,
     posts:0
-  } // default value (aka initial value)
 });
 const atomStore = atom({
-  key: 'atomStore', // unique ID (with respect to other atoms/selectors)
-  default: {
     state: {
       userInfo:{
         stat: false,
@@ -59,7 +44,6 @@ const atomStore = atom({
       saying : "sssssssss",
       count: 0,
     }
-  }, // default value (aka initial value)
 });
 
 

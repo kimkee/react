@@ -20,11 +20,12 @@ import UserFolw from './UserFolw.jsx';
 import { supabase } from '@/supabase.js';
 import Loading from '../../components/Loading.jsx';
 
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+// import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+import { useAtom, useAtomValue } from 'jotai';
 import { postCout} from '@/atom.js';
 
 export default function User({prop}) {
-  const [postCoutVal, setPostCoutVal] = useRecoilState(postCout);
+  const [postCoutVal, setPostCoutVal] = useAtom(postCout);
 
   const params = useParams();
   const param_id = params.uid;

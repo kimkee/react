@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
 // import { atom } from 'recoil';
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+import { useAtom } from 'jotai';
 import {postCout} from '../../atom.js';
 
 // import axios from 'axios';
@@ -13,7 +13,7 @@ import StarPoint from '../../components/StarPoint.jsx';
 
 
 export default function UserPost({uInfo,user,swiper}) {
-  const [postCoutVal, setPostCoutVal] = useRecoilState(postCout);
+  const [postCoutVal, setPostCoutVal] = useAtom(postCout);
   /* 내 리뷰 조회 */
   const [myReview, setMyReview] = useState([]);
   const getMyReviews = async () => {

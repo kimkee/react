@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
 
-import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
+import { useAtom } from 'jotai';
 // import store from '../../store.js';
 import {atomStore,textState,sss} from '../../atom.js';
 
@@ -22,13 +22,14 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
   const goPage = (link)=>{
     navigate(`/user/${link}`);
     location.reload()
+    // window.location.href = `/user/${link}`;
   }
   /* 
   function TextInput() {
-    const [text, setText] = useRecoilState(textState);
-    const [sssVal, setSssVal] = useRecoilState(sss);
+    const [text, setText] = useAtom(textState);
+    const [sssVal, setSssVal] = useAtom(sss);
     
-  
+
     const onChange = (event) => {
       setText(event.target.value);
       
@@ -45,7 +46,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
       </div>
     );
   }
-  const [atomStoreVal, setAtomStore] = useRecoilState(atomStore);
+  const [atomStoreVal, setAtomStore] = useAtom(atomStore);
  */
 
   useEffect( () => {
