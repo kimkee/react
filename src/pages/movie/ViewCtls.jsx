@@ -168,7 +168,7 @@ export default function ViewCtls({datas,postID, opts}) {
           
         </button>
         <button type="button" onClick={inputReply} className="bt bt-reply"><i className="fa-regular fa-pen-to-square"></i><em>리뷰</em></button>
-        <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-regular fa-share-nodes"></i><em>공유하기</em></button>
+        <button type="button" onClick={shareLink} className="bt bt-shar"><i className="fa-solid fa-share-nodes"></i><em>공유하기</em></button>
       </div>
     </>
   )

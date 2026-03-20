@@ -83,7 +83,7 @@ export default function Videos({prop}) {
           </div>
         </div>
 
-        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-regular fa-xmark"></i></button>
+        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } >{/* <i className="fa-regular fa-arrow-left"></i> */}<i className="fa-solid fa-xmark"></i></button>
         
        
         <div className="pct">

@@ -42,16 +42,16 @@ export default function Nav({prop}) {
         <div className="inr">
           <ul className="menu">
             <li className={isActive("home")}>
-              <NavLink to={`/home/`} className={"bt"}><i className="fa-regular fa-house"></i><em>Home</em></NavLink>
+              <NavLink to={`/home/`} className={"bt"}><i className="fa-solid fa-house"></i><em>Home</em></NavLink>
             </li>
             <li className={isActive("list/movie")}>
-              <NavLink to={`/list/movie/0/`} className={"bt"}><i className="fa-regular fa-clapperboard-play"></i><em>Movie</em></NavLink>
+              <NavLink to={`/list/movie/0/`} className={"bt"}><i className="fa-solid fa-clapperboard"></i><em>Movie</em></NavLink>
             </li>
             <li className={isActive("list/tv")}>
-              <NavLink to={`/list/tv/0/`} className={"bt"}><i className="fa-regular fa-tv-retro"></i><em>TV</em></NavLink>
+              <NavLink to={`/list/tv/0/`} className={"bt"}><i className="fa-solid fa-tv"></i><em>TV</em></NavLink>
             </li>
             <li className={isActive("search/")}>
-              <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-regular fa-search"></i><em>Search</em></NavLink>
+              <NavLink to={`/search/movie/`} className={"bt"}><i className="fa-solid fa-search"></i><em>Search</em></NavLink>
             </li>
             <li className={isActive("user/")}>
               {  myinfo?.id

@@ -36,7 +36,7 @@ export default function View() {
   <>
     <article className="pop-layer c on bottom popup sch">
       <div className="pbd">
-        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-xmark"></i></button>
+        <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-solid fa-xmark"></i></button>
         <div className="phd">
           <div className="inr">
             <div className="ptit">검색</div>
@@ -45,7 +45,7 @@ export default function View() {
         <div className="pct">
           <main className="poptents">
             <input type="search" placeholder="검색어를 입력하세요." onChange={onChange} />
-            <button type="button" onClick={ goSearch } className="bt-sch"><i className="fa-regular fa-search"></i></button>
+            <button type="button" onClick={ goSearch } className="bt-sch"><i className="fa-solid fa-search"></i></button>
           </main>
         </div>
       </div>

@@ -87,7 +87,7 @@ a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 .header .bt.gnb::before{top: 8rem;}
 .header .bt.gnb>b{top: 16rem;}
 .header .bt.gnb::after{top: 24rem;}
-.header i {font-weight:normal;}
+.header i { }
 .header .bt.usr i{font-size: 20rem;}
 .header .user{display: flex;align-items: center;margin-right: 14rem;}
 .header .user .pic{margin-left: auto; width: 26rem;min-width: 26rem;height: 26rem;padding-bottom: 26rem;display: block;position: relative;border-radius: 100rem;overflow: hidden;}
@@ -972,7 +972,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.person .info .desc .lst>li.vot{/* margin-top: 14rem; */}
 .popup.person .info .desc .lst>li.opn{}
 .popup.person .info .desc .lst>li.tim{}
-.popup.person .info .desc .lst>li i{margin-right: 4rem;min-width: 14rem; position: absolute; left: 0rem; top: 3rem;}
+.popup.person .info .desc .lst>li i{margin-right: 4rem;min-width: 14rem; position: absolute; left: 0rem; top: 3rem; font-weight: 600;}
 .popup.person .info .desc .lst>li b{font-weight: normal;}
 
 .popup.person .post{margin-top: 20rem;}
@@ -1333,7 +1333,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .user-post .menu>li{position:relative;width: 100%;}
 .page.user.view .user-post .menu>li+li{margin-left: 0rem;}
 .page.user.view .user-post .menu>li>.bt{width: 100%;font-size: 18rem;color: #959595;display: flex;justify-content: center;align-items: center;height: 50rem;position: relative;font-weight:normal;}
-.page.user.view .user-post .menu>li>.bt>span i{}
+.page.user.view .user-post .menu>li>.bt>span i{font-weight: 600;}
 .page.user.view .user-post .menu>li:last-child>.bt{ border-right-width:1rem; }
 .page.user.view .user-post .menu>li.active>.bt{color: #61dafb;}
 .page.user.view .user-post .menu>li.active>.bt::after{position:absolute;left:0rem;bottom: 0rem;right: 0rem;height: 2.5rem;background-color: #61dafb;border-radius: 0rem;display:block;content:"";}

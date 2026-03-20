@@ -22,8 +22,8 @@ export default function Header({prop}) {
         <div className="ldt">
          
           { prop.headerType == "main" 
-            ? <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i className="fa-brands fa-vuejs"></i></Link></h1> 
-            : <button type="button" className="bt back" onClick={()=>navigate(-1)}><i className="fa-regular fa-arrow-left"></i>뒤로</button>
+            ? <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i className="fa-solid fa-clapperboard"></i></Link></h1> 
+            : <button type="button" className="bt back" onClick={()=>navigate(-1)}><i className="fa-solid fa-arrow-left"></i>뒤로</button>
           }
           
           {/* {store2.state.userInfo.stat+""} */}
@@ -43,7 +43,7 @@ export default function Header({prop}) {
           
           
           {/* <button type="button" className="bt usr"><i className="fa-regular fa-users"></i><b>회원들</b></button> */}
-          <button type="button" className="bt gnb"><i className="fa-regular fa-bars"></i><b>메뉴</b></button>
+          <button type="button" className="bt gnb"><i className="fa-solid fa-bars"></i><b>메뉴</b></button>
         </div>
       </div>
     </header>

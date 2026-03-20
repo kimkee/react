@@ -230,10 +230,10 @@ export default function Search() {
                   onInvalid={ (e)=> e.preventDefault() }
                 />
                 <button type="button" className="bt-del" title='삭제' onClick={delFormText} >
-                  <i className="fa-regular fa-xmark"></i>
+                  <i className="fa-solid fa-xmark"></i>
                 </button>
               </span>
-              <button type="submit" className="bt-sch" title='검색'><i className="fa-regular fa-search"></i></button>
+              <button type="submit" className="bt-sch" title='검색'><i className="fa-solid fa-search"></i></button>
               
             </form>
           </div>
@@ -246,7 +246,7 @@ export default function Search() {
             return (
               <li key={kwd}>
                 <button className="kwd" type="button" onClick={ ()=> goRecentSearch(kwd) }>{kwd}</button>
-                <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-regular fa-xmark"></i></button>
+                <button className="del" type="button" onClick={ ()=> delRecentKwd(kwd) }><i className="fa-solid fa-xmark"></i></button>
               </li>
             )
           }) }

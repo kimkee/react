@@ -69,7 +69,7 @@ export default function View({prop}) {
         </div>
         {
           isPage() ?
-          <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-regular fa-arrow-left"></i></button>
+          <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-solid fa-arrow-left"></i></button>
           :
           <button type="button" className="btn-pop-close home" onClick={ () => { navigate("/home/") } } ><i className="fa-solid fa-house"></i></button>
         }

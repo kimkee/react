@@ -240,7 +240,7 @@ const ui = {
                 <div class="pbt">
                     <button type="button" class="btn btn-confirm">${opt.ybt}</button>
                 </div>
-                <!-- <button type="button" class="btn-close"><i class="fa-regular fa-xmark"></i></button> -->
+                <!-- <button type="button" class="btn-close"><i class="fa-solid fa-xmark"></i></button> -->
             </div>
         </article>`;
         const body = document.querySelector("body");
@@ -290,7 +290,7 @@ const ui = {
                     <button type="button" class="btn btn-cancel">${opt.nbt}</button>
                     <button type="button" class="btn btn-confirm">${opt.ybt}</button>
                 </div>
-                <!-- <button type="button" class="btn-close"><i class="fa-regular fa-xmark"></i></button> -->
+                <!-- <button type="button" class="btn-close"><i class="fa-solid fa-xmark"></i></button> -->
             </div>
         </article>`;
         const body = document.querySelector("body");
