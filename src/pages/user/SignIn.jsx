@@ -86,7 +86,7 @@ export default function SignIn() {
             </ul>
             <div className="savelogin">
               <Link className={`bt`} to={"/user/signup"}>
-                회원가입하러 가기 <i className="fa-regular fa-chevron-right"></i>
+                회원가입하러 가기 <i className="fa-solid fa-chevron-right"></i>
               </Link>
               <label className="checkbox"><input type="checkbox" ref={autoLogin} onChange={saveSheck} /><span className="txt">자동 로그인</span></label>
             </div>

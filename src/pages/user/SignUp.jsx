@@ -179,7 +179,7 @@ export default function SignUp() {
             <button type="button" className="btn" disabled={!(inpVal.isMail && inpVal.isPwds && inpVal.isNick)} onClick={member.joinReq}><i className="fa-regular fa-right-to-bracket"></i><em>회원가입</em></button>
           </div>
           <div className="link">
-            이미 회원이신가요? <Link className="bt" to="/user/signin">로그인 하러가기 <i className="fa-regular fa-chevron-right"></i></Link>
+            이미 회원이신가요? <Link className="bt" to="/user/signin">로그인 하러가기 <i className="fa-solid fa-chevron-right"></i></Link>
           </div>
         
         </div>

@@ -56,7 +56,7 @@ export default  function ListSet({opts}){
         <div className="hbox">
           <Link  className="link" to={`/list/${opts.media}/${opts.cate || 0}`}>
             <h3 className="stit">{opts.title}</h3>
-            <span className="more"><i className="fa-regular fa-chevron-right"></i></span>
+            <span className="more"><i className="fa-solid fa-chevron-right"></i></span>
           </Link>
           <div className="bt-nav">
             <button type="button" disabled={isNavPrev}  className="bt prev" onClick={goScroll}><i className="fa-solid fa-caret-left"></i></button>
