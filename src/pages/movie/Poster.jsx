@@ -114,7 +114,7 @@ export default function Poster({prop}) {
                   <div className='box'>
                     <div  className='pics'>
                       <img src={pstImg} className="img" alt={`${title}_Poster[1]`} onError={ui.error.poster} loading="lazy"/>
-                      <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
+                      <div className="lazy-preloader"><i className="fa-solid fa-spinner"></i></div>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -126,7 +126,7 @@ export default function Poster({prop}) {
                       <div className="box">
                           <div className="pics">
                             <img src={`${img}`} alt={`${title}_Poster[${idx+2}]`} className='img' onError={ui.error.poster} loading="lazy" />
-                            <div className="lazy-preloader"><i className="fa-duotone fa-spinner"></i></div>
+                            <div className="lazy-preloader"><i className="fa-solid fa-spinner"></i></div>
                           </div>
                       </div>
                     </SwiperSlide>

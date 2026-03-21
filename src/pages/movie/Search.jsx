@@ -278,7 +278,7 @@ export default function Search() {
 
           { schList.length > 0 &&
           <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
-            <em><i className="fa-duotone fa-spinner"></i></em>
+            <em><i className="fa-solid fa-spinner"></i></em>
             <button onClick={ (e)=>{
               callStat = true;
               fetchMoive( page , e);
