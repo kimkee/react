@@ -98,7 +98,7 @@ export default function User({prop}) {
           </div>
           { myinfo?.user_id == uInfo.user_id &&
             <div className="bts">
-                <Link to="/user/signout" className="btn sm logout"><i className="fa-solid fa-right-from-bracket"></i>Logout</Link>
+                <Link to="/user/signout" className="btn sm logout"><i className="fa-solid fa-right-from-bracket"></i><span>LOGOUT</span></Link>
             </div>
           }  
         </div>
