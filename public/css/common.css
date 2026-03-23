@@ -1260,7 +1260,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.user.view .profile .desc .txt i{font-weight:normal;}
 .page.user.view .profile .bts{ position: absolute;right: 20rem;bottom: 26rem;}
 .page.user.view .profile .bts .btn{padding: 0rem 10rem 0rem 10rem;}
-.page.user.view .profile .bts .btn.logout>span{display: inline-flex;}
+.page.user.view .profile .bts .btn.logout>span{display: inline-flex;margin: -3rem 0rem 0rem 0rem;}
 .page.user.view .user-post{margin: 0rem 0rem 0rem 0rem;}
 .page.user.view .user-post .menu{position: sticky;top: calc(54rem + var(--safe-top));height: 50rem;text-align: center;display: flex;justify-content: start;padding: 0rem 0rem;border-bottom: #242b36 solid 1rem;z-index: 100;background-color: #111111;}
 .page.user.view .user-post .menu:after{clear:both;content:"";display:block;font-size:0;height:0;line-height:0;visibility:hidden}

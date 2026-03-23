@@ -73,7 +73,7 @@ export default function UserFolw({uInfo,user,swiper1dep}) {
                     <img alt="" className="img" src={ data.profile_picture} onError={ui.error.user} />
                     {data.provider == 'google' && <i className="fa-brands fa-google"></i>}
                     {data.provider == 'github' && <i className="fa-brands fa-github"></i>}
-                    {data.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
+                    {data.provider == 'kakao'  && <i className="fa-brands fa-kakao-talk"></i>}
                   </span>
                   <div className="name">{data.username}</div>
                 </button>

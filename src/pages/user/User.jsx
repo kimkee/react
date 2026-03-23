@@ -84,7 +84,7 @@ export default function User({prop}) {
               <img src={uInfo.profile_picture} className="img" onError={ui.error.user}/>
               {uInfo.provider == 'google' && <i className="fa-brands fa-google"></i>}
               {uInfo.provider == 'github' && <i className="fa-brands fa-github"></i>}
-              {uInfo.provider == 'kakao'  && <i className="fa-solid fa-comment"></i>}
+              {uInfo.provider == 'kakao'  && <i className="fa-brands fa-kakao-talk"></i>}
             </Link>
             <div className="info">
               <div className="num b"><b className="n">{postCoutVal && postCoutVal?.posts}</b><p className="t">Post </p></div>    
@@ -98,7 +98,7 @@ export default function User({prop}) {
           </div>
           { myinfo?.user_id == uInfo.user_id &&
             <div className="bts">
-                <Link to="/user/signout" className="btn sm logout"><i className="fa-solid fa-right-from-bracket"></i><span>LOGOUT</span></Link>
+                <Link to="/user/signout" className="btn sm logout"><i className="fa-solid fa-right-from-bracket"></i><span>Logout</span></Link>
             </div>
           }  
         </div>
