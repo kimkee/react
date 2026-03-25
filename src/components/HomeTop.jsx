@@ -105,7 +105,7 @@ export default  function HomeTop({opts}){
             onSlideChange={() => {/* console.log('slide change') */}}
           >
             {
-              mlist.filter( (item, i) => i < 10 ).map( (data, idx) => {
+              mlist.filter( (item, i) => i < 7 ).map( (data, idx) => {
                 const img = `//image.tmdb.org/t/p/w780${data.poster_path}`;
                 return (
                   <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">

@@ -1205,9 +1205,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnTop .screen{position: absolute;height: 200rem;z-index: 9;left: 0;right: 0;bottom: 0rem;background-image: linear-gradient(360deg, rgb(17 17 17), transparent);padding: 4% 0;}
 .page.home .sect.mnTop .controls{position: absolute;left: 0px;right: 0px;bottom: 0px;z-index: 10;text-align: center;display: flex;justify-content: center;align-items: center;gap: 11rem;}
 .page.home .sect.mnTop .controls .bts{display: inline-flex;}
-.page.home .sect.mnTop .controls .bts .play{border: #dddddd solid 1px;border-radius: 100rem;width: 18rem;height: 18rem;display: flex;align-items: center;justify-content: center;}
+.page.home .sect.mnTop .controls .bts .play{border: #aaaaaa solid 1px;border-radius: 100rem;width: 18rem;height: 18rem;display: flex;align-items: center;justify-content: center;}
 .page.home .sect.mnTop .controls .bts .play i{font-size: 8rem;}
-.page.home .sect.mnTop .controls .custom-pagination{display: inline-flex;width: auto;gap: 4rem;}
+.page.home .sect.mnTop .controls .custom-pagination{display: inline-flex;width: auto;gap: 6rem;}
 .page.home .sect.mnTop .controls .swiper-pagination-bullet{border-radius: 10rem;height: 8rem;opacity: 0.8;width: 8rem;transform: scale(1);}
 .page.home .sect.mnTop .controls .swiper-pagination-bullet-active{width: 22rem;}
 
@@ -1248,8 +1248,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList.topic .slide ul>li .box .info .ui-star{}
 .page.home .sect.mnList.topic .slide ul>li .box .info .ui-star i{font-size: clamp(10rem,3vw,16rem);}
 .page.home .sect.mnList.topic .slide ul>li .box .pics .img{}
-.page.home .sect.mnList.topic .slide ul>li .box .pics::after{counter-increment: section;content:  counter(section);position: absolute;left: -6rem;top: -9rem;line-height: 1;font-size:28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;}
-
+.page.home .sect.mnList.topic .slide ul>li .box .rank{counter-increment: section;content:  counter(section);position: absolute;left: -5rem;top: -4rem;line-height: 1;font-size:28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;z-index: 10;}
+.page.home .sect.mnList.topic .slide ul>li.top3 .box .rank{color: aliceblue}
 /* User  회원정보 */
 .page.user.view{}
 .page.user.view .contents{padding: 0rem 0rem 0rem 0rem;margin: 0;}

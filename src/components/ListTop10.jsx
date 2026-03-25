@@ -58,8 +58,9 @@ export default  function ListSet({opts}){
                 const img = `//image.tmdb.org/t/p/w154${data.poster_path}`;
                 const tit = data.title || data.name;
                 return (
-                  <li key={idx}  className="pbox">
+                  <li key={idx} className={`pbox ${idx<3 ? 'top3' : ''}`}>
                     <Link className="box" to={`${opts.media}/${data.id}`}>
+                      <div className="rank">{idx+1}</div>
                       <div className="pics"><img src={`${img}`} alt={tit} className='img' onError={ui.error.poster} /></div>
                       <div className="info"><StarPoint point={data.vote_average} /></div>
                     </Link>
