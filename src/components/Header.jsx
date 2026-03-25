@@ -22,7 +22,7 @@ export default function Header({prop}) {
         <div className="ldt">
          
           { prop.headerType == "main" 
-            ? <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i class="fa-brands fa-react"></i></Link></h1> 
+            ? <h1 className="logo"> <Link to={`/home/`} className="btlogo"><i className="fa-brands fa-react"></i></Link></h1> 
             : <button type="button" className="bt back" onClick={()=>navigate(-1)}><i className="fa-solid fa-arrow-left"></i>뒤로</button>
           }
           

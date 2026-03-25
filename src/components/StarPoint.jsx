@@ -16,6 +16,17 @@ export default function StarPoint({point, cls}) {
     resSet( r );
   }
 
+  const renderStars = (rating = 0) => {
+    const elements = [];
+    for (let i = 0; i < Math.floor(rating); i++) {
+      elements.push(<i className="fa-solid fa-star" key={`full-${i}`}></i>);
+    }
+    if (rating % 1 !== 0) {
+      elements.push(<i className="fa-solid fa-star-half" key={`half`}></i>);
+    }
+    return elements;
+  };
+
   useEffect( () => {
     setPoint();
     // eslint-disable-next-line
@@ -24,113 +35,7 @@ export default function StarPoint({point, cls}) {
   return (
     <em className={"ui-star "+clss} data-point={point}> 
       <span className='fgstar' dara-star={res}> 
-      { res === 0  &&
-        <>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-
-      { res === 0.5  &&
-        <>
-        <i className="fa-solid fa-star-half"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-
-      { res === 1  &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-
-      { res === 1.5  &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star-half"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      } 
-      { res === 2 && 
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-
-      { res === 2.5 &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star-half"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-      { res === 3 && 
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star none"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-      { res === 3.5 &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star-half"></i>
-        <i className="fa-solid fa-star none"></i>
-        </>
-      }
-      { 
-        res === 4 &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star none"></i>
-        </> 
-      }
-      { 
-        res === 4.5 &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star-half"></i>
-        </> 
-      }
-      { 
-        res === 5 &&
-        <>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        <i className="fa-solid fa-star"></i>
-        </> 
-      }
-
+        { renderStars(res) }
       </span>
       <span className='bgstar'>
         <i className="fa-solid fa-star"></i>

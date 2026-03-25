@@ -558,9 +558,9 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 
 .ui-star{display: inline-flex;position: relative;white-space: nowrap;line-height: 1;vertical-align: middle;}
 .ui-star::after{content:".";opacity: 0;vertical-align: middle;}
-.ui-star .bgstar{position: absolute;left: 0;top: 0;z-index: 0;display: inline-flex;}
+.ui-star .bgstar{position: absolute;left: 0;top: 0;z-index: 0;display: inline-flex;position: relative;display: inline-flex;}
 .ui-star .bgstar i{color: #b1b1b1;}
-.ui-star .fgstar{position: relative;z-index: 10;display: inline-flex;}
+.ui-star .fgstar{position: relative;z-index: 10;display: inline-flex;position: absolute;left: 0;top: 0;display: inline-flex;}
 .ui-star .none{opacity: 0;}
 
 .ui-star i{color: #61dafb;font-style: normal;vertical-align: middle;line-height: 1;font-size: clamp(10rem,2.8vw,13rem);text-shadow: #414141 0px 0px 3px;}
