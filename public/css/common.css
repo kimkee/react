@@ -58,7 +58,7 @@ a, button{-webkit-tap-highlight-color: rgb(0 0 0 / 30%);}
 .header{height: calc( 54rem + var(--safe-top) + var(--safe-watch) );text-align:center;display:block;z-index: 500;position: relative;}
 .header>.inr{display:flex;height: calc( 54rem + var(--safe-top) + var(--safe-watch)  );align-items: center;justify-content: space-between;align-items: center;position: fixed;left: 0;right: 0;z-index: 500;top: 0rem;background: #1c1c1c;border-bottom: #3a3a3a17 solid 1rem;padding: 0rem 20rem;padding-top: calc(  var(--safe-top) + var(--safe-watch)  );touch-action: none;transition: background-color 0.3s;left: 50%;width: 100%;max-width: var(--mwide);transform: translateX(-50%);margin-left: calc( 0px - var(--scrPad) /2 );}
 .header:not(.home).main>.inr,
-.header.home.trans>.inr{background: rgb(49 49 49 / 40%);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);}
+.header.home.trans>.inr{background: rgb(49 49 49 / 40%);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border-bottom: rgb(58 58 58 / 38%) solid 1rem;}
 .header.home{height: 0rem;}
 .header.home>.inr{ background-color: transparent;border-color: transparent;}
 .header.trans{height: 0rem; }
@@ -1248,8 +1248,8 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList.topic .slide ul>li .box .info .ui-star{}
 .page.home .sect.mnList.topic .slide ul>li .box .info .ui-star i{font-size: clamp(10rem,3vw,16rem);}
 .page.home .sect.mnList.topic .slide ul>li .box .pics .img{}
-.page.home .sect.mnList.topic .slide ul>li .box .rank{counter-increment: section;content:  counter(section);position: absolute;left: -5rem;top: -4rem;line-height: 1;font-size:28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;z-index: 10;}
-.page.home .sect.mnList.topic .slide ul>li.top3 .box .rank{color: aliceblue}
+.page.home .sect.mnList.topic .slide ul>li .box .rank{counter-increment: section;content:  counter(section);position: absolute;left: -5rem;top: -4rem;line-height: 1;font-size: 28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;z-index: 10;}
+.page.home .sect.mnList.topic .slide ul>li.top3 .box .rank{color: #b7efff;/* font-size: 28rem; */}
 /* User  회원정보 */
 .page.user.view{}
 .page.user.view .contents{padding: 0rem 0rem 0rem 0rem;margin: 0;}

@@ -12,7 +12,7 @@ export default function Home() {
     const header = document.querySelector('.header');
     const scr = parseInt( ui.viewport.scrollTop() );
     if ( ui.lock.stat) return;
-    if( scr > 100){
+    if( scr >= 0){
       header.classList.add("trans");
     }else{
       header.classList.remove("trans");
@@ -23,6 +23,7 @@ export default function Home() {
     window.scrollTo(0, 0);
     const header = document.querySelector('.header');
     header.classList.add("home");
+    scrollEvent();
     window.addEventListener("scroll",scrollEvent);
     return ()=>{
       header.classList.remove("home");
