@@ -5,7 +5,7 @@ import { supabase } from '../../supabase.js';
 
 // import axios from 'axios';
 import ui from '../../ui.js';
-
+import StarPoint from '../../components/StarPoint';
 
 export default function SignIn() {
   // console.log(opts);
@@ -73,6 +73,22 @@ export default function SignIn() {
             </div>
             <p className="url">{import.meta.env.VITE_SITE_URL}</p>
           </div>}
+
+
+
+          <div style={{display: 'none'}}>
+            <p><StarPoint cls='lg' point={10} /></p>
+            <p><StarPoint cls='lg' point={9} /></p>
+            <p><StarPoint cls='lg' point={8} /></p>
+            <p><StarPoint cls='lg' point={7} /></p>
+            <p><StarPoint cls='lg' point={6} /></p>
+            <p><StarPoint cls='lg' point={5} /></p>
+            <p><StarPoint cls='lg' point={4} /></p>
+            <p><StarPoint cls='lg' point={3} /></p>
+            <p><StarPoint cls='lg' point={2} /></p>
+            <p><StarPoint cls='lg' point={1} /></p>
+            <p><StarPoint cls='lg' point={0} /></p>
+          </div>
 
           {/* <div className="eml form">
             <div className="tit"><em className="t">Email 계정 로그인</em></div>

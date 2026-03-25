@@ -3,9 +3,9 @@ import {} from 'react-router-dom'; // Link  , useLocation, useSearchParams,usePa
 
 // import ui from '/src/ui.js';
 
-export default function StarPoint({point}) {
+export default function StarPoint({point, cls}) {
   const [res, resSet] = useState(null) ;
-  
+  const clss = cls ? cls : '';
   const stars = [0, 0.5 , 1 , 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
   
   const setPoint = ()=>{
@@ -22,115 +22,124 @@ export default function StarPoint({point}) {
   },[res]);
   
   return (
-    <em className="ui-star"> 
-    
-    { res === 0  &&
-      <>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i> 
-      </>
-    }
+    <em className={"ui-star "+clss} data-point={point}> 
+      <span className='fgstar' dara-star={res}> 
+      { res === 0  &&
+        <>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
 
-    { res === 0.5  &&
-      <>
-      <i className="fa-duotone fa-star-sharp-half"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    }
+      { res === 0.5  &&
+        <>
+        <i className="fa-solid fa-star-half"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
 
-    { res === 1  &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    }
+      { res === 1  &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
 
-    { res === 1.5  &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp-half"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    } 
-    { res === 2 && 
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    }
+      { res === 1.5  &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star-half"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      } 
+      { res === 2 && 
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
 
-    { res === 2.5 &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp-half"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    }
-    { res === 3 && 
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    }
-    { res === 3.5 &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp-half"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </>
-    }
-    { 
-      res === 4 &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp"></i>
-      </> 
-    }
-    { 
-      res === 4.5 &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-duotone fa-star-sharp-half"></i>
-      </> 
-    }
-    { 
-      res === 5 &&
-      <>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      <i className="fa-solid fa-star-sharp"></i>
-      </> 
-    }
+      { res === 2.5 &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star-half"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
+      { res === 3 && 
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star none"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
+      { res === 3.5 &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star-half"></i>
+        <i className="fa-solid fa-star none"></i>
+        </>
+      }
+      { 
+        res === 4 &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star none"></i>
+        </> 
+      }
+      { 
+        res === 4.5 &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star-half"></i>
+        </> 
+      }
+      { 
+        res === 5 &&
+        <>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        </> 
+      }
 
+      </span>
+      <span className='bgstar'>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+        <i className="fa-solid fa-star"></i>
+      </span>
+      {/* <span className="point" style={{'position':'absolute','right':'110%', top:'0px', display:'inline-block'}}>{res}</span> */}
     </em>
   )
 }
