@@ -64,6 +64,13 @@ export default  function HomeTop({opts}){
   const scrollHome = ()=> setTopVal( parseInt( ui.viewport.scrollTop() * 0.2 )) ;
 
   // console.log(MY_GLOBAL_VARIABLE);
+  
+  const togglePlayStop = () => {
+    setPlayStop( !playStop );
+    if(playStop) swiper.autoplay.start();
+    else swiper.autoplay.stop();
+  }
+  const [playStop, setPlayStop] = useState(false);
 
   return(
     <>
@@ -83,7 +90,10 @@ export default  function HomeTop({opts}){
             // autoplay={false}
             autoplay={{ delay: 3000 ,waitForTransition:false, pauseOnMouseEnter: true ,disableOnInteraction: false}}
             wrapperTag="ul"
-            pagination={{ clickable: true }}
+            pagination={{ 
+              el: ".custom-pagination",
+              clickable: true
+            }}
             // scrollbar={{ draggable: true }}
             // initialSlide={ Math.floor( Math.random() *10  ) } // 0 ~ 9
             autoHeight={false}
@@ -95,7 +105,7 @@ export default  function HomeTop({opts}){
             onSlideChange={() => {/* console.log('slide change') */}}
           >
             {
-              mlist?.filter( (item, i) => i < 10 ).map( (data, idx) => {
+              mlist.filter( (item, i) => i < 10 ).map( (data, idx) => {
                 const img = `//image.tmdb.org/t/p/w780${data.poster_path}`;
                 return (
                   <SwiperSlide tag="li" key={idx}  className="swiper-slide pbox">
@@ -115,6 +125,17 @@ export default  function HomeTop({opts}){
                 )
               })
             }
+
+            <div className="controls">
+              <div className="custom-pagination"></div>
+              { mlist.length > 1 &&
+              <div className="bts">
+                <button className="play" onClick={togglePlayStop} title={ playStop ? 'play' : 'pause' } >
+                  {playStop ? <i className="fa-solid fa-play"></i> : <i className="fa-solid fa-pause"></i> }
+                </button> 
+              </div> }
+            </div>
+
           </Swiper>
         </div>
       </section>
