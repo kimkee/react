@@ -4,17 +4,17 @@ import {} from 'react-router-dom'; // Link  , useLocation, useSearchParams,usePa
 // import ui from '/src/ui.js';
 
 export default function StarPoint({point, cls}) {
-  const [res, resSet] = useState(null) ;
+  // const [res, resSet] = useState(null) ;
   const clss = cls ? cls : '';
-  const stars = [0, 0.5 , 1 , 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
   
-  const setPoint = ()=>{
-    let n = (Math.round( point * 100) / 100).toFixed(1) / 2 ;
-    let r = 0;
-    stars.reverse().forEach( p => n <= p ? r = p :null );
-    // console.log(n , r);
-    resSet( r );
-  }
+  const n = parseFloat((Math.round(point * 100) / 100).toFixed(1)) / 2;
+  const stars = [0, 0.5 , 1 , 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5]
+  let res = 0;
+  stars.reverse().forEach(p => { 
+    if (n <= p) {
+      res = p;
+    } 
+  });
 
   const renderStars = (rating = 0) => {
     const elements = [];
@@ -27,11 +27,6 @@ export default function StarPoint({point, cls}) {
     return elements;
   };
 
-  useEffect( () => {
-    setPoint();
-    // eslint-disable-next-line
-  },[res]);
-  
   return (
     <em className={"ui-star "+clss} data-point={point}> 
       <span className='fgstar' dara-star={res}> 
