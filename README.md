@@ -1,159 +1,82 @@
-# React + TMDB API + Supabase
- 
+<div align="center">
+  
+# 🎬 KPlex : Movie Information App
 
-## https://kplex.pages.dev
- 
+[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=white)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React Router](https://img.shields.io/badge/React_Router-6.8.1-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.io/)
+[![TMDB API](https://img.shields.io/badge/TMDB_API-01B4E4?style=flat-square&logo=themoviedb&logoColor=white)](https://www.themoviedb.org/)
 
+**TMDB API**와 **Supabase**를 활용하여 제작한 영화 정보 및 커뮤니티 애플리케이션입니다.
 
-<br>
+[**🔗 라이브 데모 보러가기 (https://kplex.pages.dev)**](https://kplex.pages.dev) 
+</div>
 
-## 기능구현
-- 인기영화,추천영화, 장르별 리스트
-- 10점만점의 추천정보 점수를 5점 만점의 별점UI로 추가구현
-- 영화 검색 기능 구현
-- Supabase 로그인
-- 관심영화 스크랩기능
-- 영화 리뷰 쓰기,수정,삭제
+<br/>
 
-|  홈 | 상세 | 리스트 | 검색 |
-| :-: | :-: | :-: | :-: |
-| <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_01.jpg" width="200px" align="top"> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_02.jpg" width="200px" align="top"> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_03.jpg" width="200px" align="top"> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_04.jpg" width="200px" align="top"> |
+## 📸 Preview
 
-<br>
+| 홈 (Home) | 상세 정보 (Detail) | 리스트 (List) | 검색 (Search) |
+| :---: | :---: | :---: | :---: |
+| <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_01.jpg" width="220px" /> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_02.jpg" width="220px" /> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_03.jpg" width="220px" /> | <img src="https://raw.githubusercontent.com/kimkee/kimkee/main/img/tmdb/ss_04.jpg" width="220px" /> |
 
-## React Version
-- "react": "^18.2.0",
-- "react-router-dom": "^6.8.1",
-- "axios": "^1.3.3",
-- "swiper": "^9.0.3", (https://swiperjs.com/react)
-## Tools
+<br/>
 
-- JSON View  https://chrome.google.com/webstore/detail/jsonview/gmegofmjomhknnokphhckolhcffdaihd<br>
-크롬에서 JSON API 미리보기기능
-- 
+## ✨ Key Features
 
+- **영화 탐색**: 인기 영화, 추천 영화, 장르별 영화 리스트 제공
+- **직관적인 평점 UI**: 10점 만점의 데이터를 5점 만점의 **별점 UI(반 스크롤 포함)** 로 변환하여 시각화 구현
+- **검색 기능**: 실시간 영화 검색 기능
+- **회원 인증 (Supabase)**: 빠르고 안전한 소셜 로그인 (Google, Kakao 등) 지원
+- **마이페이지 기능**: 관심 영화 스크랩 및 보관 기능
+- **커뮤니티 (리뷰)**: 영화에 대한 리뷰 작성, 수정 및 삭제 기능
 
-## Reference
+<br/>
 
-- [영화 API 사용법](https://velog.io/@letgodchan0/TIL-%EC%98%81%ED%99%94-API-%EC%82%AC%EC%9A%A9%EB%B2%95)
-- [React에서 Axios 사용하기](https://velog.io/@mgk8609/React%EC%97%90%EC%84%9C-Axios-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+## 🛠️ Tech Stack
 
-<br>
+- **Frontend**: `React (v18)`, `React-Router-Dom`, `Axios`, `Swiper`
+- **Backend & Auth / DB**: `Supabase`
+- **Build Tool**: `Vite`
+- **External API**: `TMDB API`
 
-## TMDB API
+<br/>
 
-- 상영작
-https://api.themoviedb.org/3/movie/now_playing?language=ko&region=kr&page=1&sort_by=release_date.desc&api_key=[API_KEY]
+## 🚀 Getting Started
 
-- Discover
-https://api.themoviedb.org/3/discover/movie?language=ko&region=kr&page=1&sort_by=release_date.desc&api_key=[API_KEY]
+### Prerequisites
+- Node.js 설치 
+- 환경 변수 세팅 (`.env` 파일에 TMDB API Key 및 Supabase API 정보 입력 필요)
 
-- 인기작
-https://api.themoviedb.org/3/movie/popular?language=ko&region=kr&api_key=[API_KEY]
+### Installation & Run
 
-- 장르
-https://api.themoviedb.org/3/genre/movie/list?language=ko&region=kr&api_key=[API_KEY]
+```bash
+# 1. 패키지 설치
+$ npm install
 
-- 영화상세
-https://api.themoviedb.org/3/movie/496243/credits?&region=kr&language=ko&api_key=[API_KEY]
+# 2. 로컬 서버 실행
+$ npm run dev
 
-- 검색
-https://api.themoviedb.org/3/search/movie?language=ko&region=kr&query=기생충&api_key=[API_KEY]
-- 이미지
-https://image.tmdb.org/t/p/w200/jjHccoFjbqlfr4VGLVLT7yek0Xn.jpg
-<br><br><br><br>
-
-
-## Project setup
-``` 
-npm create vite@latest
+# 3. 배포용 빌드 (Production)
+$ npm run build
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run dev
-```
+<br/>
 
-### Compiles and minifies for production
-```
-npm run build
-```
-# Vite
+## 📚 API Reference (TMDB)
 
-- https://vitejs.dev/
+해당 프로젝트는 [TMDB API](https://developer.themoviedb.org/docs)를 기반으로 작성되었습니다.
+- **현재 상영작 (Now Playing)**: `/movie/now_playing`
+- **인기 영화 (Popular)**: `/movie/popular`
+- **장르 (Genre)**: `/genre/movie/list`
+- **영화 검색 (Search)**: `/search/movie`
+- **영화 상세 스태프 크레딧**: `/movie/{movie_id}/credits`
+- **영화 발견 (Discover)**: `/discover/movie`
 
-- https://vitejs-kr.github.io/
+<br/>
 
-
-<!-- # Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify) 
-
---> 
+## 🔗 References & Tools
+- [영화 API 사용법 참고 (Velog)](https://velog.io/@letgodchan0/TIL-%EC%98%81%ED%99%94-API-%EC%82%AC%EC%9A%A9%EB%B2%95)
+- [React에서 Axios 사용하기 (Velog)](https://velog.io/@mgk8609/React%EC%97%90%EC%84%9C-Axios-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0)
+- [JSON View Chrome Extension](https://chrome.google.com/webstore/detail/jsonview/gmegofmjomhknnokphhckolhcffdaihd)
