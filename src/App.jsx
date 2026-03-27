@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
-import { HashRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
@@ -94,7 +94,7 @@ export default function App() {
             {/* <Route path='*' element={<NotFound />} /> */}
             <Route path="callback" element={<Callback prop={{user, myinfo}} />} />
 
-            <Route path="/" element={<Navigate to="/home/" replace />} />
+            <Route path="/" element={(window.location.hash.includes("access_token") || window.location.search.includes("code=")) ? <Callback prop={{user, myinfo}} /> : <Navigate to="/home/" replace />} />
 
             <Route path="home" element={<Home />} />
 

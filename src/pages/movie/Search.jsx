@@ -128,7 +128,7 @@ export default function Search() {
   // const [stext ,stextSet]  = useState('');
   const goSearch = (e) => {
     keywordSet( inputRef.current?.value );
-    window.history.replaceState(null, null, `#/search/${opts}?search=${inputRef.current?.value}`);
+    window.history.replaceState(null, null, `/search/${opts}?search=${inputRef.current?.value}`);
     schListSet([]);
     fetchMoive( 1 );
     e.preventDefault();
@@ -138,7 +138,7 @@ export default function Search() {
   const goRecentSearch = (txt)=>{
     inputRef.current.value = txt;
     keywordSet( txt );
-    window.history.replaceState(null, null, `#/search/${opts}?search=${txt}`);
+    window.history.replaceState(null, null, `/search/${opts}?search=${txt}`);
     // setMlist([]);
     // fetchMoive( 1,txt );
     const url = new URL(window.location);
@@ -171,7 +171,7 @@ export default function Search() {
     url.searchParams.set("search", event.target.value);
     // console.log(url);
     // 브라우저의 주소를 변경
-    window.history.replaceState(null, null, `#/search/${opts}?search=${event.target.value}`);
+    window.history.replaceState(null, null, `/search/${opts}?search=${event.target.value}`);
     // // keyWordBox.current.classList.remove("open");
   }, 100);
 
@@ -202,7 +202,7 @@ export default function Search() {
     inputRef.current.value = "";
     inputRef.current.focus();
     keywordSet(``);
-    window.history.replaceState(null, null, `#/search/${opts}?search=`);
+    window.history.replaceState(null, null, `/search/${opts}?search=`);
   }
   
   // console.log(mlist);
