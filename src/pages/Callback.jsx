@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase.js';
+import Loading from '../components/Loading.jsx';
 
 export default function Callback() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Callback() {
     // 만약 이벤트 리스너가 작동하지 않거나, 잘못 접근한 경우를 대비한 폴백
     const timer = setTimeout(() => {
       navigate('/home', { replace: true });
-    }, 2000);
+    }, 3000);
 
     return () => {
       authListener.subscription.unsubscribe();
@@ -29,9 +30,10 @@ export default function Callback() {
   }, [navigate]);
 
   return (
-    <div className="container page">
+    <div className="container page callback">
       <main className="contents">
-        <div style={{ textAlign: 'center', padding: '100px 0' }}>
+        <div className='login-box'>
+          <Loading opts={{type:'glx', cls:''}}/>
           <h2>로그인 처리 중...</h2>
           <p>잠시만 기다려주세요.</p>
         </div>

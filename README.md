@@ -2,15 +2,15 @@
   
 # 🎬 KPlex : Movie Information App
 
-[![React](https://img.shields.io/badge/React-19.2.1-61DAFB?style=flat-square&logo=react&logoColor=white)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?style=flat-square&logo=react&logoColor=white)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![React Router](https://img.shields.io/badge/React_Router-7.1.5-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![React Router](https://img.shields.io/badge/React_Router-7.13.2-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.io/)
 [![TMDB API](https://img.shields.io/badge/TMDB_API-01B4E4?style=flat-square&logo=themoviedb&logoColor=white)](https://www.themoviedb.org/)
 
 **TMDB API**와 **Supabase**를 활용하여 제작한 영화 정보 및 커뮤니티 애플리케이션입니다.
 
-[**🔗 라이브 데모 보러가기 (https://kplex.pages.dev)**](https://kplex.pages.dev) 
+[**🔗 라이브 데모 보러가기 - https://kplex.vercel.app/**](https://kplex.vercel.app/) 
 </div>
 
 <br/>
@@ -36,7 +36,7 @@
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: `React (v18)`, `React-Router-Dom`, `Axios`, `Swiper`
+- **Frontend**: `React (v19.2.4)`, `React-Router-Dom`, `Axios`, `Swiper`
 - **Backend & Auth / DB**: `Supabase`
 - **Build Tool**: `Vite`
 - **External API**: `TMDB API`

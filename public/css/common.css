@@ -1250,6 +1250,13 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .page.home .sect.mnList.topic .slide ul>li .box .pics .img{}
 .page.home .sect.mnList.topic .slide ul>li .box .rank{counter-increment: section;content:  counter(section);position: absolute;left: -5rem;top: -4rem;line-height: 1;font-size: 28rem;color: #ffffff;font-weight: 900;text-shadow: 0rem 1rem 3rem rgb(0 0 0 / 55%);font-style: italic;z-index: 10;}
 .page.home .sect.mnList.topic .slide ul>li.top3 .box .rank{color: #b7efff;/* font-size: 28rem; */}
+
+
+.page.callback{ display: flex; width: 100%; justify-content: center; }
+.page.callback .contents{display: flex;justify-content: center;align-items: center;text-align: center;min-height: calc(100dvh - 180px);width: 100%;}
+.page.callback .contents .login-box{display: flex;flex-direction: column;gap: 10rem;align-items: center;}
+.page.callback .contents .ui-loading{ transform: scale(1.5); margin-bottom: 12rem; }
+
 /* User  회원정보 */
 .page.user.view{}
 .page.user.view .contents{padding: 0rem 0rem 0rem 0rem;margin: 0;}
