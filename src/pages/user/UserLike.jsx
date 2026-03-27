@@ -18,8 +18,8 @@ import 'swiper/css/effect-fade';
 
 export default function UserLike({uInfo,user,swiper1dep}) {
 
-  const [scrapMV, setScrapMV] = useState([]);
-  const [scrapTV, setScrapTV] = useState([]);
+  const [scrapMV, setScrapMV] = useState(null);
+  const [scrapTV, setScrapTV] = useState(null);
   const [media, setMedia] = useState('movie');
 
 
@@ -157,10 +157,10 @@ export default function UserLike({uInfo,user,swiper1dep}) {
           >
               
             <SwiperSlide tag="section" className="tablike mv">
-              {scrapMV.length ?
+              {scrapMV && scrapMV.length > 0 &&
               <>
-              <ul className='list'>
-                {scrapMV.map((data,num) =>{
+                <ul className='list'>
+                  {scrapMV.map((data,num) =>{
                     const imgpath = '//image.tmdb.org/t/p/w92';
                     const img = imgpath + data.poster_path;
                     const tit = data.title || data.name;
@@ -190,22 +190,23 @@ export default function UserLike({uInfo,user,swiper1dep}) {
                     )
                 })}
                 
-              </ul>
-              { scrapMV.length < scrapMvTot &&
-              <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+pagingAmount)}} className='btn'>
-                <b>More</b> <i className="fa-solid fa-caret-down"></i></button>
-              </div>
-              }
+                </ul>
+                { scrapMV.length < scrapMvTot &&
+                <div className="loading"><button type="button" onClick={()=>{getMyScrap(uInfo.id,'movie',scrapMV.length+pagingAmount)}} className='btn'>
+                  <b>More</b> <i className="fa-solid fa-caret-down"></i></button>
+                </div>
+                }
               </>
-              :
+              }
+              {scrapMV && scrapMV.length  == 0 &&
               <div className="nodata">
-                <i className="fa-solid fa-file-magnifying-glass"></i>
+                <i className="fa-solid fa-comment-dots"></i>
                 <p> 스크랩된 컨텐츠가 없습니다.</p>
               </div>
               }
             </SwiperSlide>
             <SwiperSlide tag="section" className="tablike tv">
-              {scrapTV.length ?
+              { scrapTV && scrapTV.length > 0 &&
               <>
               <ul className='list'>
                 {scrapTV.map((data,num) =>{
@@ -245,9 +246,10 @@ export default function UserLike({uInfo,user,swiper1dep}) {
               </div>
               }
               </>
-              :
+              }
+              { scrapTV && scrapTV.length == 0 &&
               <div className="nodata">
-                <i className="fa-solid fa-file-magnifying-glass"></i>
+                <i className="fa-solid fa-comment-dots"></i>
                 <p> 스크랩된 컨텐츠가 없습니다.</p>
               </div>
               }

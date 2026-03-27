@@ -98,7 +98,7 @@ export default function UserPost({uInfo,user,swiper}) {
           )
         }):
         <div className="nodata">
-          <i className="fa-solid fa-person-digging"></i>
+          <i className="fa-solid fa-comment-dots"></i>
           <p>작성하신 리뷰가 없습니다</p>
         </div>}
       </ul>

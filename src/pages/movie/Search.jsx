@@ -259,7 +259,7 @@ export default function Search() {
         
         schList.length <= 0  ? 
           <div className="nodata">
-            <i className="fa-solid fa-file-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
             { keyword ? <p> ‟{keyword}” 검색 결과가 없습니다.</p> : <p> 검색어를 입력하세요.</p> } 
           </div>
           :
