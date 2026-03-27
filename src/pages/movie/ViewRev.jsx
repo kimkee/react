@@ -226,11 +226,26 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
     <>
       <div className="sect revk" id='writeRev'>
         <h4 className="tts">리뷰</h4>
-        <div className="form textarea">
-          <textarea onInput={autoheight} onFocus={checkLogin} ref={revText} className="rtext"  placeholder={`${user?.email ? '감상평을 남겨보세요. (최대200자)':'로그인 후 감상평을 남겨보세요. (최대200자)'}`}></textarea>
-          <span className="num"><i className="i">{revNumNow}</i><b className="n">{ui.commas.add(revNumMax)}</b></span>
-          <div className="bts">
-            <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
+        <div className="revbox">
+          {myinfo ?
+          <Link to={`/user/${myinfo.id}`} className="user">
+            <span className="pic">
+              <img alt="user" className="img" src={myinfo.profile_picture} />
+            </span>
+          </Link>
+          :
+          <div className="user">
+            <span className="pic">
+              <img alt="user" className="img" src={`${import.meta.env.VITE_APP_PUBLIC_URL}img/common/user.png`} />
+            </span>
+          </div>
+          }
+          <div className="form textarea">
+            <textarea onInput={autoheight} onFocus={checkLogin} ref={revText} className="rtext"  placeholder={`${user?.email ? '감상평을 남겨보세요. (최대200자)':'로그인 후 감상평을 남겨보세요. (최대200자)'}`}></textarea>
+            <span className="num"><i className="i">{revNumNow}</i><b className="n">{ui.commas.add(revNumMax)}</b></span>
+            <div className="bts">
+              <button type="button" className="btn sm btsend" disabled={ revNumNow < 1 } onClick={sendReview}><i className="fa-regular fa-paper-plane"></i> <em>등록</em></button>
+            </div>
           </div>
         </div>
       </div>

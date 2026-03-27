@@ -56,9 +56,9 @@ export default function Nav({prop}) {
             <li className={isActive("user/")}>
               {  myinfo?.id
               ?
-              <NavLink to={`/user/${myinfo?.id}`} className={"bt"}> <span className="pic"><img alt="" className="img" src={ myinfo.profile_picture} /></span><em>MY</em></NavLink>
+              <NavLink to={`/user/${myinfo?.id}`} className={"bt"}> <span className="pic"><img alt="" className="img" src={ myinfo.profile_picture} /></span><em>My</em></NavLink>
               :
-              <NavLink to={`/user/signin`} className={"bt"}><i className="fa-regular fa-user"></i><em>Login</em></NavLink>
+              <NavLink to={`/user/signin`} className={"bt login"}><span className="pic"> <i className="fa-regular fa-user"></i> </span><em>My</em></NavLink>
               }
             </li>
           </ul>
