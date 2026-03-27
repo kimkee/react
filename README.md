@@ -2,9 +2,9 @@
   
 # 🎬 KPlex : Movie Information App
 
-[![React](https://img.shields.io/badge/React-18.2.0-61DAFB?style=flat-square&logo=react&logoColor=white)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.1-61DAFB?style=flat-square&logo=react&logoColor=white)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
-[![React Router](https://img.shields.io/badge/React_Router-6.8.1-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
+[![React Router](https://img.shields.io/badge/React_Router-7.1.5-CA4245?style=flat-square&logo=react-router&logoColor=white)](https://reactrouter.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.io/)
 [![TMDB API](https://img.shields.io/badge/TMDB_API-01B4E4?style=flat-square&logo=themoviedb&logoColor=white)](https://www.themoviedb.org/)
 
