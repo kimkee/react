@@ -28,7 +28,7 @@ export default function StarPoint({point, cls}) {
   };
 
   return (
-    <em className={"ui-star "+clss} data-point={point}> 
+    <em className={"ui-star "+clss} data-point={point}  role="img" aria-label={`평점 ${point}/10점 만점`}> 
       <span className='fgstar' dara-star={res}> 
         { renderStars(res) }
       </span>

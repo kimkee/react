@@ -282,7 +282,7 @@ export default function Search() {
             <button onClick={ (e)=>{
               callStat = true;
               fetchMoive( page , e);
-            }} type="button" className="btn-load" title="불러오기"><i className="fa-regular fa-rotate-right"></i></button>
+            }} type="button" className="btn-load" title="불러오기"><i className="fa-solid fa-rotate-right"></i></button>
           </div>
           }
           </>

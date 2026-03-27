@@ -77,6 +77,7 @@ export default function Lists() {
     }).catch(e=>{
       console.log(e);
       callStat = true;
+      movieListSet( prevList => [...prevList] );
       loadErrorSet(" error");
     }); 
   }
@@ -167,7 +168,7 @@ export default function Lists() {
               <span className="gbx"> <em className="bx"> <i></i> <i></i><i></i><i></i> </em> </span>
             </span>
             <button onClick={ (e)=>{ callStat = true; fetchMoive( page , e); } } type="button" className="btn-load">
-              <i className="fa-regular fa-rotate-right"></i>
+              <i className="fa-solid fa-rotate-right"></i>
             </button>
           </div>
           </>
