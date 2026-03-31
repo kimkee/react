@@ -8,7 +8,7 @@ import ItemA from '../../components/ItemA.jsx';
 
 
 export default function Search() {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const params = useParams();
 
   const opts = params.menu;
@@ -128,7 +128,7 @@ export default function Search() {
   // const [stext ,stextSet]  = useState('');
   const goSearch = (e) => {
     keywordSet( inputRef.current?.value );
-    window.history.replaceState(null, null, `/search/${opts}?search=${inputRef.current?.value}`);
+    setSearchParams({ search: inputRef.current?.value }, { replace: true });
     schListSet([]);
     fetchMoive( 1 );
     e.preventDefault();
@@ -138,7 +138,7 @@ export default function Search() {
   const goRecentSearch = (txt)=>{
     inputRef.current.value = txt;
     keywordSet( txt );
-    window.history.replaceState(null, null, `/search/${opts}?search=${txt}`);
+    setSearchParams({ search: txt }, { replace: true });
     // setMlist([]);
     // fetchMoive( 1,txt );
     const url = new URL(window.location);
@@ -171,7 +171,7 @@ export default function Search() {
     url.searchParams.set("search", event.target.value);
     // console.log(url);
     // 브라우저의 주소를 변경
-    window.history.replaceState(null, null, `/search/${opts}?search=${event.target.value}`);
+    setSearchParams({ search: event.target.value }, { replace: true });
     // // keyWordBox.current.classList.remove("open");
   }, 100);
 
@@ -202,7 +202,7 @@ export default function Search() {
     inputRef.current.value = "";
     inputRef.current.focus();
     keywordSet(``);
-    window.history.replaceState(null, null, `/search/${opts}?search=`);
+    setSearchParams({ search: '' }, { replace: true });
   }
   
   // console.log(mlist);

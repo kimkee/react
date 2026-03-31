@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabase.js';
 import Loading from '../components/Loading.jsx';
 
 export default function Callback() {
   const navigate = useNavigate();
+  const isRedirected = useRef(false);
 
   useEffect(() => {
     // Auth 상태 변경을 리스닝하여 로그인이 완료되면 홈으로 리다이렉트
     const { data: authListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         if (event === 'SIGNED_IN' || event === 'INITIAL_SESSION') {
-          if (session) {
-            navigate('/home', { replace: true });
+          if (session && !isRedirected.current) {
+            isRedirected.current = true;
+            const targetPath = sessionStorage.getItem('prevLocation') || '/home';
+            sessionStorage.removeItem('prevLocation');
+            navigate(targetPath, { replace: true });
           }
         }
       }
@@ -20,7 +24,12 @@ export default function Callback() {
 
     // 만약 이벤트 리스너가 작동하지 않거나, 잘못 접근한 경우를 대비한 폴백
     const timer = setTimeout(() => {
-      navigate('/home', { replace: true });
+      if (!isRedirected.current) {
+        isRedirected.current = true;
+        const targetPath = sessionStorage.getItem('prevLocation') || '/home';
+        sessionStorage.removeItem('prevLocation');
+        navigate(targetPath, { replace: true });
+      }
     }, 3000);
 
     return () => {

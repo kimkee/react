@@ -1,6 +1,6 @@
 import React, {useEffect,useState} from 'react';
 // import { HashRouter,BrowserRouter, Routes, Route,Router , useLocation ,useHash,Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route ,Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route ,Navigate, useLocation } from 'react-router-dom';
 // import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 // import { RecoilRoot, atom, selector, useRecoilState, useRecoilValue, } from 'recoil';
@@ -29,6 +29,21 @@ import { supabase } from '@/supabase.js';
 import getUser from '@/getUser.js';
 // ui.init();
 
+const RouteTracker = () => {
+  const location = useLocation();
+  useEffect(() => {
+    // 사용자가 로그인, 콜백 관련 페이지가 아닐 때만 이전 주소 복사
+    const path = location.pathname + location.search;
+    if (
+      location.pathname !== '/' && 
+      !location.pathname.startsWith('/user/') && 
+      !location.pathname.startsWith('/callback')
+    ) {
+      sessionStorage.setItem('prevLocation', path);
+    }
+  }, [location]);
+  return null;
+}
 
 export default function App() {
   // const location = window.location;
@@ -75,6 +90,7 @@ export default function App() {
     <>
       {/* <RecoilRoot> */}
         <Router>
+          <RouteTracker />
           <Routes>
             <Route path='home/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
             <Route path=':menu/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
