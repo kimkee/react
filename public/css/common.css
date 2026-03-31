@@ -214,6 +214,7 @@ img[src*="noimage.png"]{opacity: 0.25;}
 .pop-layer.a{font-size: 0;position:fixed;left:0rem;right:0rem;top: 0rem;bottom:0;z-index:1000;background-color: rgba(0,0,0,0.0);outline:none;transition: background-color 0.2s;text-align: center;padding-right: var(--scrPad);}
 .pop-layer.a.on{display:block;background-color: rgba(0,0,0,0.5);}
 .pop-layer.a>.pbd{position:relative;overflow: hidden;transition: transform 0.2s ease-in-out; transition-property: transform,opacity;}
+.pop-layer.a.no-transition>.pbd{transition: none;}
 .pop-layer.a>.pbd>.phd{height: 50rem;position: relative;}
 .pop-layer.a>.pbd>.phd>.inr{position: relative;left:0rem;right:0rem;top:0rem;z-index:10;height: 54rem;height: calc( 54rem + var(--safe-top) + var(--safe-watch) );padding-top: calc( 0rem + var(--safe-top) + var(--safe-watch) );text-align:center;background: #26384e;box-sizing:border-box;display: flex;align-items: center;justify-content: center;}
 .pop-layer.a>.pbd>.phd.trans>.inr{backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);}
@@ -861,7 +862,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 /* 영상상세 팝업 */
 .popup.movie.view{}
 .popup.movie.view .pbd .btn-pop-close.back{left: 20rem; right: auto;}
-.popup.movie.view .pbd .btn-pop-close.home{left: 20rem; right: auto; font-size:20rem;}
+.popup.movie.view .pbd .btn-pop-close.home{left: 16rem;top: 10rem;right: auto;font-size: 32rem;width: 32px;display: block;color: #61dafb;line-height: 1;}
 .popup.movie.view .pbd .btn-share{right: 20rem;font-size:20rem;position: absolute;width: 30rem;height: 30rem;top: calc( 13rem + var(--safe-top) + var(--safe-watch) );font-size: 24rem;width: 30rem;height: 30rem;color: #ffffff;z-index: 20;text-shadow: 0rem 0rem 2rem rgb(0 0 0 / 50%);}
 .popup.movie.view.on{background-color: rgba(0,0,0,0);}
 .popup.movie.view>.pbd{box-shadow: 0px 0px 5px rgb(114 114 114 / 56%);}

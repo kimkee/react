@@ -17,6 +17,7 @@ export default function View({prop}) {
 
   const isPage = ()=> prop.page === "list" || prop.page === "search" || prop.page === "home"
   const goTop = ()=> ui.scrollTo(".popup.movie .pct", 0, 200 );
+  const noTransition = ()=> window.history.state?.idx > 0 ? '' : 'no-transition';
 
   useEffect(() => {
     ui.loading.show('glx');
@@ -59,7 +60,7 @@ export default function View({prop}) {
   return (
   <>
     <Outlet/>
-    <article ref={popup} className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} `}>
+    <article ref={popup} className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} ${noTransition()}`}>
       <div className="pbd">
         <div className={`phd ${ scr > 50 ? 'trans' : ''}`} >
           <div className="inr">
@@ -68,10 +69,10 @@ export default function View({prop}) {
           </div>
         </div>
         {
-          isPage() ?
+          isPage() && window.history.state?.idx > 0 ?
           <button type="button" className="btn-pop-close back" onClick={ () => { navigate(-1) } } ><i className="fa-solid fa-arrow-left"></i></button>
           :
-          <button type="button" className="btn-pop-close home" onClick={ () => { navigate("/home/") } } ><i className="fa-solid fa-house"></i></button>
+          <button type="button" className="btn-pop-close home" onClick={ () => { navigate("/home/") } } ><i className="fa-brands fa-react"></i></button>
         }
         
         <div className="pct" onScroll={scrollEvent}>
