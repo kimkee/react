@@ -6,6 +6,7 @@ import { supabase } from '../../supabase.js';
 // import axios from 'axios';
 import ui from '../../ui.js';
 import StarPoint from '../../components/StarPoint';
+import Loading from '../../components/Loading.jsx';
 
 export default function SignIn() {
   // console.log(opts);
@@ -16,8 +17,24 @@ export default function SignIn() {
   let location = useLocation()
   let navigate = useNavigate();
   let opts = params.menu;
-
   
+  const [isChecking, setIsChecking] = useState(true);
+
+  useEffect(() => {
+    // 마운트 즉시 로그인(세션) 상태를 확인
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        // 이미 로그인 되어 있다면 이전 위치로 조용히 돌려버림 (깜빡임 방지)
+        const targetPath = sessionStorage.getItem('prevLocation') || '/home';
+        navigate(targetPath, { replace: true });
+      } else {
+        // 로그인이 안 되어 있을 때만 폼을 띄우도록 허가
+        setIsChecking(false);
+      }
+    });
+    
+    window.scrollTo(0,0);
+  }, [navigate]);
 
   const signInWithOAuth = async (txt) => {
     const { error } = await supabase.auth.signInWithOAuth({
@@ -46,14 +63,16 @@ export default function SignIn() {
   const addMember = async (user, gourl)=> {
     
   }
-  useEffect( () => {
-    window.scrollTo(0,0);
-    return ()=>{
 
-    }
-    // eslint-disable-next-line
-  });
-
+  if (isChecking) {
+    return (
+      <div className="container page user sign in">
+        <main className="contents">
+          <Loading opts={{type:'glx', cls:'full'}} />
+        </main>
+      </div>
+    );
+  }
 
   return (
     <>
