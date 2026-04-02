@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';  // Link,useParams , useLocation, useSearchParams,
 
 import ui from '../../ui.js';
-
+import { useAtom, useAtomValue } from 'jotai';
+import { atomStore} from '@/atom.js';
 // import { db } from '../../firebaseConfig_bak.js';
 // import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 // import { doc, setDoc } from 'firebase/firestore';
@@ -10,7 +11,8 @@ import ui from '../../ui.js';
 
 export default function SignUp() {
   // console.log(opts);
-
+  const [store, setStore] = useAtom( atomStore );
+  
   let params = useParams()
   
    

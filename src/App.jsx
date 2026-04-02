@@ -36,7 +36,9 @@ const RouteTracker = () => {
     const path = location.pathname + location.search;
     if (
       location.pathname !== '/' && 
-      !location.pathname.startsWith('/user/') && 
+      !location.pathname.startsWith('/user/signin') && 
+      !location.pathname.startsWith('/user/signup') && 
+      !location.pathname.startsWith('/user/signout') && 
       !location.pathname.startsWith('/callback')
     ) {
       sessionStorage.setItem('prevLocation', path);
