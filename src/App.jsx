@@ -100,7 +100,7 @@ export default function App() {
             <Route path='search/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
             <Route path='movie/*' element={<Header prop={{"headerType":"main", user, myinfo}} />} />
             <Route path='user'>
-              <Route path=":id" element={<Header prop={{"headerType":"sub", user, myinfo}} />} />
+              <Route path=":id" element={<Header prop={{"headerType":"main", user, myinfo}} />} />
             </Route>
           </Routes>
 
