@@ -891,6 +891,7 @@ html.is-lock {height: 100%;width: 100%;overflow: hidden;position: fixed;}
 .popup.poster .poster-box .pics .img{z-index: 10;display: block;position: absolute;left: 50%;top: 50%;transform: translate(-50% , -50%);width: 100%;object-fit: cover;max-width: inherit;min-width: 100%;height: 100%;} 
 
 .popup.poster .poster-box .lazy-preloader{width: 40rem;height: 40rem;display: flex;justify-content: center;align-items: center;z-index: 5;animation: loading-rotate 1s infinite steps(8);font-size:0rem;position: absolute;left: 50%;top: 50%;margin: -20rem 0 0 -20rem;}
+.popup.poster .poster-box .lazy-preloader{animation: none; transform: scale(1.5)}
 .popup.poster .poster-box .lazy-preloader i{font-size:28rem;}
 .popup.poster .poster-box .lazy-preloader .ui-load-glx{ position: absolute; }
 .popup.poster .poster-box .swiper .swiper-wrapper{padding-bottom: 45rem;}

@@ -5,6 +5,7 @@ import ui from '../../ui.js';
 import Skeleton from '../../components/Skeleton.jsx';
 import ItemB from '../../components/ItemB.jsx';
 import CateMenu from '../../components/CateMenu.jsx';
+import Loading from '../../components/Loading.jsx';
 
 
 export default function Lists() {
@@ -164,9 +165,7 @@ export default function Lists() {
           }
           </ul>
           <div className={`ui-loadmore${loadActive+loadHide+loadError}`}>
-            <span className="ui-loading ui-load-glx">
-              <span className="gbx"> <em className="bx"> <i></i> <i></i><i></i><i></i> </em> </span>
-            </span>
+            <Loading opts={{type:'glx',cls:''}} />
             <button onClick={ (e)=>{ callStat = true; fetchMoive( page , e); } } type="button" className="btn-load">
               <i className="fa-solid fa-rotate-right"></i>
             </button>

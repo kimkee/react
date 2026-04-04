@@ -50,20 +50,20 @@ export default function Person() {
   };
 
   useEffect(() => {
-  console.log(  document.querySelector(".popup.person .pct").offsetHeight );
-  fetchPerson();
-  fetchCredits();
-  fetchPhotos();
-  popResize();
+    console.log(  document.querySelector(".popup.person .pct").offsetHeight );
+    fetchPerson();
+    fetchCredits();
+    fetchPhotos();
+    popResize();
 
-  window.addEventListener("resize",popResize);
-  document.querySelector(".popup.person").classList.add("ani","on");
-  ui.lock.using(true); 
+    window.addEventListener("resize",popResize);
+    document.querySelector(".popup.person").classList.add("ani","on");
+    ui.lock.using(true); 
 
-  return () => {
-      window.removeEventListener("resize",popResize);
-      ui.lock.using(false);
-  };
+    return () => {
+        window.removeEventListener("resize",popResize);
+        ui.lock.using(false);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 

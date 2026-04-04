@@ -4,6 +4,7 @@ import { Outlet, NavLink, Link, useSearchParams,useParams  } from 'react-router-
 import axios from 'axios';
 import ui from '../../ui.js';
 import ItemA from '../../components/ItemA.jsx';
+import Loading from '../../components/Loading.jsx';
 // import View from 'View.jsx';
 
 
@@ -278,7 +279,7 @@ export default function Search() {
 
           { schList.length > 0 &&
           <div className={`ui-loadmore ${loadActive} ${loadHide}  ${loadError}`}>
-            <em><i className="fa-solid fa-spinner"></i></em>
+            <Loading opts={{type:'glx',cls:''}} />
             <button onClick={ (e)=>{
               callStat = true;
               fetchMoive( page , e);
