@@ -56,11 +56,19 @@ export default function View({prop}) {
     setTimeout(() => ui.loading.hide(), 500);
   }
 
+  const pctRef = useRef(null);
+    // article 전체 영역 휠 → pct 스크롤로 위임
+  const handleWheel = (e) => {
+    if (e.shiftKey) return;
+    const pct = pctRef.current;
+    if (!pct) return;
+    pct.scrollTop += e.deltaY;
+  };
 
   return (
   <>
     <Outlet/>
-    <article ref={popup} className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} ${noTransition()}`}>
+    <article ref={popup} onWheel={handleWheel} className={`pop-layer a bottom popup movie view ${ isPage() ? '' : 'page'} ${noTransition()}`}>
       <div className="pbd">
         <div className={`phd ${ scr > 50 ? 'trans' : ''}`} >
           <div className="inr">
@@ -75,7 +83,7 @@ export default function View({prop}) {
           <button type="button" className="btn-pop-close home" onClick={ () => { navigate("/home/") } } ><i className="fa-brands fa-react"></i></button>
         }
         
-        <div className="pct" onScroll={scrollEvent}>
+        <div ref={pctRef} className="pct" onScroll={scrollEvent}>
           <main className="poptents">
             
             <ViewInfo user={prop.user} myinfo={prop.myinfo} postID={postID} popTitle={popTitle} />
