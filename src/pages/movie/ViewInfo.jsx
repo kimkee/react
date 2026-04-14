@@ -187,13 +187,22 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
             <div className="lst">
               {
                 moves.results.filter( (item, i) => i < 100 ).reverse().map( (mov,idx) => {
+                  const handleLoad = (e) => {
+                    const target = e.currentTarget;
+                    // YouTube returns a 120x90 image if the thumbnail is not available.
+                    // hqdefault should be 480x360.
+                    // console.log(target);
+                    if (target.src.includes('ytimg.com') && target.naturalWidth <= 120) {
+                      target.src = bgImg;
+                      target.style.opacity = 0.6;
+                    }
+                  };
                   return (
                     <div className="box" key={mov.id}>
                       <Link to={`./videos/${idx}`} className="pic" >
                         <span className="msg"><span className="tit">{mov.name}</span></span>
                         <i className="ico fa-solid fa-play"></i>
-                        <img className="img" src={`//i.ytimg.com/vi/${mov.key}/hqdefault.jpg`}   alt={mov.name} loading="lazy" />
-                        {/* <img className="img" src={`//i.ytimg.com/vi/${mov.key}/sddefault.jpg`}   alt={mov.name} loading="lazy" /> */}
+                        <img className="img" src={`//i.ytimg.com/vi/${mov.key}/hqdefault.jpg`} onLoad={handleLoad} alt={mov.name} loading="lazy" />
                       </Link>
                     </div>
                   )
