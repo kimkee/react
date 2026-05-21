@@ -40,7 +40,7 @@ export default function ViewInfo({user, myinfo, postID, popTitle }) {
     }).catch( e => { console.log(e); });
   };
 
-  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchMov = () => {
     axios.get( movURL ).then(response => {
       console.log("영상" , response.data);
