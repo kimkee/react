@@ -20,8 +20,16 @@ export default function Search() {
   const [cate, setCate] = useState({});
   // const total;
   const getCate = async ()=>{
-    
-    await axios.get(`https://api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
+    const cateURL = `//api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr`;
+    const options = {
+      method: 'GET',
+      url: cateURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    await axios.request(options).then(res =>{
       // console.log(res.data.genres);  
       const mcate = {};
       res.data.genres.forEach( d => mcate[d.id] = d.name );
@@ -47,9 +55,18 @@ export default function Search() {
     inputRef.current.value = keyword;
     kwd = keyword || '';
     
-    const fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/search/${opts}?language=ko&region=kr&page=${page}&query=${kwd}&sort_by=release_date.desc`;
 
-    axios.get( fetchURL ).then(res =>{
+    const options = {
+      method: 'GET',
+      url: fetchURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+
+    axios.request( options ).then(res =>{
       console.log(res.data);
       schListSet( prevList => [...prevList,...res.data.results] );
       console.log(page + "=== " + res.data.total_pages );

@@ -26,24 +26,48 @@ export default function Person() {
   const [casts, setCasts] = useState(null);
   const [photos, setPhotos] = useState(null);
 
-  const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchPerson = () => {
-  axios.get( personURL ).then(response => {
+    const personURL = `https://api.themoviedb.org/3/person/${personID}?language=ko&region=kr`;
+    const options = {
+      method: 'GET',
+      url: personURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(response => {
       console.log("인물 정보" , response.data);
       setDatas(response.data);
       
     }).catch( e => { console.log(e); });
   };
-  const creditsURL = `https://api.themoviedb.org/3/person/${personID}/movie_credits?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchCredits = () => {
-  axios.get( creditsURL ).then(response => {
+    const creditsURL = `https://api.themoviedb.org/3/person/${personID}/movie_credits?language=ko&region=kr`;
+    const options = {
+      method: 'GET',
+      url: creditsURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(response => {
       console.log("인물 출연작" , response.data);
       setCasts(response.data);
     }).catch( e => { console.log(e); });
   };
-  const photoURL = `https://api.themoviedb.org/3/person/${personID}/images?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchPhotos = () => {
-  axios.get( photoURL ).then(response => {
+    const photoURL = `https://api.themoviedb.org/3/person/${personID}/images?language=ko&region=kr`;
+    const options = {
+      method: 'GET',
+      url: photoURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(response => {
       console.log("인물 사진" , response.data);
       setPhotos(response.data);
     }).catch( e => { console.log(e); });

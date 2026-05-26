@@ -42,9 +42,17 @@ export default function Videos({prop}) {
 
   const [movs, setMovs] = useState(null);
   const loopSet = ()=> movs.results.length > 1 ? true : false;
-  const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr&language=ko&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchMov = () => {
-    axios.get( movURL ).then(response => {
+    const movURL = `https://api.themoviedb.org/3/${opts}/${postID}/videos?language=ko&region=kr`;
+    const options = {
+      method: 'GET',
+      url: movURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(response => {
       console.log("영상" , response.data);
       setMovs( response.data);
     }).catch( e => { console.log(e); });

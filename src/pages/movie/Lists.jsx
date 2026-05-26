@@ -33,7 +33,16 @@ export default function Lists() {
   // let cate = {};
   // const total;
   const getCate = async ()=>{
-    await axios.get(`//api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}`).then(res =>{
+    const cateURL = `//api.themoviedb.org/3/genre/${opts}/list?language=ko&region=kr`;
+    const options = {
+      method: 'GET',
+      url: cateURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    await axios.request(options).then(res =>{
       // console.log(res.data.genres);
       genrMenuSet(res.data.genres);
     });
@@ -51,14 +60,22 @@ export default function Lists() {
     //  with_genres=16  장르별
     // /trending/movie/day
     // let fetchURL = `https://api.themoviedb.org/3/${opts}/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
-    const fetchURL = `https://api.themoviedb.org/3/discover/${opts}?${cateList}&page=${page}&language=ko&region=kr&sort_by=popularity.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/trending/${opts}/week?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     // top_rated
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/tv/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // 'https://api.themoviedb.org/3/movie/popular?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
     // setMlist([])
-    await axios.get( fetchURL ).then(res =>{
+    const fetchURL = `https://api.themoviedb.org/3/discover/${opts}?${cateList}&page=${page}&language=ko&region=kr&sort_by=popularity.desc`;
+    const options = {
+      method: 'GET',
+      url: fetchURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    await axios.request( options ).then(res =>{
       console.log(res.data);console.log( "로드 " + page );
       movieListSet( prevList => [...prevList, ...res.data.results] );
       console.log(`callStat : ${callStat} , page : ${page} , res.data.total_pages :  ${res.data.total_pages} `);

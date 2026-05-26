@@ -42,9 +42,17 @@ export default function Poster({prop}) {
   const [pstImg, pstImgSet] = useState('');
   const [title, titleSet] = useState('');
   const loopSet = ()=> datas.images.posters.length > 1 ? true : false;
-  const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&api_key=${import.meta.env.VITE_TMDB_API_KEY}&append_to_response=videos,images&include_image_language=en,null`;
   const fetchDatas = () => {
-    axios.get( fetchURL ).then(response => {
+    const fetchURL = `https://api.themoviedb.org/3/${opts}/${postID}?language=ko&region=kr&append_to_response=videos,images&include_image_language=en,null`;
+    const options = {
+      method: 'GET',
+      url: fetchURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(response => {
       console.log("영화정보" , response.data);
       setDatas(response.data);
       let bgDm = response.data.poster_path ? response.data.poster_path : response.data.backdrop_path;

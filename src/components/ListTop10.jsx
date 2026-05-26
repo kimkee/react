@@ -20,9 +20,16 @@ export default  function ListSet({opts}){
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
-    const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=popularity.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
-
-    axios.get( fetchURL ).then(res =>{
+    const fetchURL = `https://api.themoviedb.org/3/${opts.list}?page=1${cateList}&language=ko&region=kr&sort_by=popularity.desc`;
+    const options = {
+      method: 'GET',
+      url: fetchURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(res =>{
       console.log(res.data);
       setMlist( predata => [...predata, ...res.data.results] );
       // console.log( mlist );

@@ -11,9 +11,17 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
   const navigate = useNavigate();
   // console.log(postID);
   const [review, setReview] = useState(null);
-  const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews?api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
   const fetchReview = () => {
-    axios.get( fetchRev ).then(response => {
+    const fetchRev = `https://api.themoviedb.org/3/${opts}/${postID}/reviews`;
+    const options = {
+      method: 'GET',
+      url: fetchRev,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(response => {
       console.log("리뷰들" , response.data);
       setReview(response.data);
     }).catch( e => { console.log(e); });
