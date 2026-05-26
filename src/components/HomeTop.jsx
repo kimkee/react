@@ -21,10 +21,10 @@ export default  function HomeTop({opts}){
   // console.log(opts);
   let page = Math.floor( Math.random() *3 )+1;
   const [mlist, setMlist] = useState([]);
-  const fetchMoive = (page)=>{
+  const fetchMovie = (page)=>{
     ui.loading.show(`glx`);
    
-    const fetchURL = `https://api.themoviedb.org/3/${opts.media}/now_playing?language=ko&page=${page}&sort_by=release_date.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/${opts.media}/now_playing?language=ko&page=${page}&sort_by=popularity.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     axios.get( fetchURL ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
@@ -49,7 +49,7 @@ export default  function HomeTop({opts}){
   };
 
   useEffect(() => {
-    fetchMoive(page);
+    fetchMovie(page);
     nexto();
     
     window.addEventListener("scroll", scrollHome);

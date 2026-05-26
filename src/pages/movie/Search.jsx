@@ -40,7 +40,7 @@ export default function Search() {
   const [loadError, loadErrorSet] = useState(``);
   const inputRef = useRef();
   
-  const fetchMoive = (page , kwd )=>{
+  const fetchMovie = (page , kwd )=>{
 
     console.log( "검색어 " +keyword);
     console.log( "로드 " + page );
@@ -75,7 +75,7 @@ export default function Search() {
   useEffect(() => {
     getCate();
     ui.loading.show(`glx`);
-    fetchMoive(page);
+    fetchMovie(page);
     document.querySelector('.header').classList.add("hide");
     schListSet([]);
     !keyword && !document.querySelector(".pop-layer") && inputRef.current.focus();
@@ -111,7 +111,7 @@ export default function Search() {
       setTimeout( ()=> {
         // setPage( page + 1 );
         page = page + 1;
-        fetchMoive( page );
+        fetchMovie( page );
       } ,400 );
     }
   };
@@ -131,7 +131,7 @@ export default function Search() {
     keywordSet( inputRef.current?.value );
     setSearchParams({ search: inputRef.current?.value }, { replace: true });
     schListSet([]);
-    fetchMoive( 1 );
+    fetchMovie( 1 );
     e.preventDefault();
     saveKwdStorage(inputRef.current?.value);
     // keyWordBox.current.classList.remove("open");
@@ -141,7 +141,7 @@ export default function Search() {
     keywordSet( txt );
     setSearchParams({ search: txt }, { replace: true });
     // setMlist([]);
-    // fetchMoive( 1,txt );
+    // fetchMovie( 1,txt );
     const url = new URL(window.location);
     url.searchParams.set("search", txt);
     // keyWordBox.current.classList.remove("open");
@@ -282,7 +282,7 @@ export default function Search() {
             <Loading opts={{type:'glx',cls:''}} />
             <button onClick={ (e)=>{
               callStat = true;
-              fetchMoive( page , e);
+              fetchMovie( page , e);
             }} type="button" className="btn-load" title="불러오기"><i className="fa-solid fa-rotate-right"></i></button>
           </div>
           }

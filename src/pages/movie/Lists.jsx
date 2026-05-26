@@ -44,14 +44,14 @@ export default function Lists() {
   const [loadHide, loadHideSet] = useState(``);
   const [loadError, loadErrorSet] = useState(``);
   
-  const fetchMoive = async (page)=>{
+  const fetchMovie = async (page)=>{
     
     // nowPageSet({ "pge":0, "tot":0 });
     //  vote_count.desc  추천순
     //  with_genres=16  장르별
     // /trending/movie/day
     // let fetchURL = `https://api.themoviedb.org/3/${opts}/popular?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
-    const fetchURL = `https://api.themoviedb.org/3/discover/${opts}?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
+    const fetchURL = `https://api.themoviedb.org/3/discover/${opts}?${cateList}&page=${page}&language=ko&region=kr&sort_by=popularity.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     // let fetchURL = `https://api.themoviedb.org/3/trending/${opts}/week?${cateList}&page=${page}&language=ko&region=kr&sort_by=vote_count.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
     // top_rated
     // 'https://api.themoviedb.org/3/movie/now_playing?page='+page+'&language=ko&region=kr&sort_by=release_date.desc&api_key=f76021076e8162ea929bd2cea62c6646'
@@ -90,7 +90,7 @@ export default function Lists() {
     movieListSet([])
     window.scrollTo(0,0);
     // ui.loading.show();
-    fetchMoive(1);
+    fetchMovie(1);
     getCate();
     document.querySelector(".header").classList.remove("trans");
     window.addEventListener("scroll", scrollEvent);
@@ -122,7 +122,7 @@ export default function Lists() {
       setTimeout( ()=> {
         // setPage( page + 1 );
         page = page + 1;
-        fetchMoive( page   );
+        fetchMovie( page   );
       } ,400 );
     }
   };
@@ -166,7 +166,7 @@ export default function Lists() {
           </ul>
           <div className={`ui-loadmore${loadActive+loadHide+loadError}`}>
             <Loading opts={{type:'glx',cls:''}} />
-            <button onClick={ (e)=>{ callStat = true; fetchMoive( page , e); } } type="button" className="btn-load">
+            <button onClick={ (e)=>{ callStat = true; fetchMovie( page , e); } } type="button" className="btn-load">
               <i className="fa-solid fa-rotate-right"></i>
             </button>
           </div>
