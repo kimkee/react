@@ -24,8 +24,16 @@ export default  function HomeTop({opts}){
   const fetchMovie = (page)=>{
     ui.loading.show(`glx`);
    
-    const fetchURL = `https://api.themoviedb.org/3/${opts.media}/now_playing?language=ko&page=${page}&sort_by=popularity.desc&api_key=${import.meta.env.VITE_TMDB_API_KEY}`;
-    axios.get( fetchURL ).then(res =>{
+    const fetchURL = `https://api.themoviedb.org/3/${opts.media}/now_playing?language=ko&page=${page}&sort_by=popularity.desc`;
+    const options = {
+      method: 'GET',
+      url: fetchURL,
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
+      }
+    };
+    axios.request( options ).then(res =>{
       console.log(res.data);
       setMlist( mlist => [...mlist,...res.data.results] );
       // console.log( mlist );
