@@ -221,9 +221,7 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
     gethRevs(postID);
     setupRealtimeListener('TMDB_REVIEW');
     return () => {
-      if (realtimeChannel.current) {
-        supabase.removeChannel(realtimeChannel.current);
-      }
+      realtimeChannel.current.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[postID]);

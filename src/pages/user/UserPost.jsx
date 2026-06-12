@@ -56,9 +56,7 @@ export default function UserPost({uInfo,user,swiper}) {
     getMyReviews();
     setupRealtimeListener('TMDB_REVIEW');
     return ()=>{
-      if (realtimeChannel.current) {
-        supabase.removeChannel(realtimeChannel.current);
-      }
+      realtimeChannel.current.unsubscribe();
     }
     // eslint-disable-next-line
   },[uInfo]);

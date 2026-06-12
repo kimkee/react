@@ -112,9 +112,7 @@ export default function UserLike({uInfo,user,swiper1dep}) {
     setupRealtimeListener('TMDB_SCRAP');
       
     return ()=>{
-      if (realtimeChannel.current) {
-        supabase.removeChannel(realtimeChannel.current);
-      }
+      realtimeChannel.current?.unsubscribe();
     }
     // eslint-disable-next-line
   },[uInfo,swiper]);
