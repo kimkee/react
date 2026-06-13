@@ -138,7 +138,7 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
-    realtimeChannel.current = supabase.channel(`public:${tableName}`)
+    realtimeChannel.current = supabase.channel(`public:${tableName}:detail:${postID}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: tableName }, () => {
         gethRevs(postID);
         console.log(`${tableName} 업데이트`);
@@ -221,7 +221,9 @@ export default function ViewRev({datas, postID, opts, user, myinfo}) {
     gethRevs(postID);
     setupRealtimeListener('TMDB_REVIEW');
     return () => {
-      realtimeChannel.current.unsubscribe();
+      if (realtimeChannel.current) {
+        supabase.removeChannel(realtimeChannel.current);
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[postID]);

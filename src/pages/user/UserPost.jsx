@@ -29,7 +29,7 @@ export default function UserPost({uInfo,user,swiper}) {
   }
   const realtimeChannel = useRef('');
   const setupRealtimeListener = (tableName) => {
-    realtimeChannel.current = supabase.channel(`public:${tableName}`)
+    realtimeChannel.current = supabase.channel(`public:${tableName}:user:${uInfo.user_id}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: tableName }, () => {
         getMyReviews();
         console.log(`${tableName} 업데이트`);
@@ -56,7 +56,9 @@ export default function UserPost({uInfo,user,swiper}) {
     getMyReviews();
     setupRealtimeListener('TMDB_REVIEW');
     return ()=>{
-      realtimeChannel.current.unsubscribe();
+      if (realtimeChannel.current) {
+        supabase.removeChannel(realtimeChannel.current);
+      }
     }
     // eslint-disable-next-line
   },[uInfo]);
